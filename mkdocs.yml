@@ -22,3 +22,10 @@ extra_javascript:
 extra_css:
   - https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css
   - stylesheets/extra.css
+
+nav:
+  - Welcome: index.md
+  - One-Sided Matching and Serial Dictatorship: lecture1.md
+  - Stable Two-Sided Matchings: lecture2.md
+  - Online Learning and Regret Minimization: lecture3.md
+  - Top Trading Cycles: lecture3b.md
