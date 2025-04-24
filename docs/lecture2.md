@@ -8,6 +8,8 @@ After medical school, med students start their internship called a "residency." 
 - The biggest difference between doctor-residency matching and student-dorm matching is that we now have two-sided preferences (each doctor and hospital have preferences over each other).
 - Matching students to dorms is a centralized process; matching doctors to hospitals requires incentivizing participants to use a centralized process to prevent side deals.
 
+## Stable Matching
+
 <div class="definition" markdown="1">
 <strong>Definition: Blocking Pair</strong>
 
@@ -46,11 +48,14 @@ While there's an unmatched doctor \(i\):
 The algorithm stops when everyone is matched.
 </div>
 
-**Example:**
+<div class="example" markdown="1">
+<strong>Example</strong>
+
 - **Doctors:** Alice (X, Y, Z), Bob (Y, X, Z), Charlie (Y, Z, X).
 - **Hospitals:** X (Bob, Alice, Charlie), Y (Alice, Bob, Charlie), Z (Bob, Charlie, Alice).
 
 Stable matching result: \((Alice, X), (Bob, Y), (Charlie, Z)\).
+</div>
 
 <div class="theorem" markdown="1">
 <strong>Theorem: Runtime of Deferred Acceptance</strong>
@@ -59,7 +64,10 @@ Deferred Acceptance runs in \(O(n^2)\) time.
 </div>
 
 <div class="proof" markdown="1">
-<strong>Proof:</strong> There are at most \(n^2\) proposals (each doctor proposes at most \(n\) hospitals). Each proposal is \(O(1)\), hence total runtime is \(O(n^2)\).
+<strong>Proof:</strong>
+
+- There are at most \(n^2\) proposals (each doctor proposes at most \(n\) hospitals).
+- Each proposal is \(O(1)\), hence total runtime is \(O(n^2)\).
 </div>
 
 <div class="theorem" markdown="1">
@@ -115,12 +123,14 @@ Hospitals can benefit from misreporting preferences.
 **Why no DA in US undergrad admissions?** Decentralized applications, holistic admission processes, larger applicant pools.
 
 **Historical Doctor-Hospital Matching:**
+
 - 1950s: DA-like algorithms initially used.
 - 1960s: Couples complicate preferences.
 - 1980s: Negative results—stable matching existence with couples is NP-complete.
 - 1990s: Extended DA for couples adopted.
 
 **Practical Doctor Ranking:**
+
 - Interviews (costly)
 - Tests (changing role due to USMLE)
 - Safety choices (not actually safer)
@@ -138,6 +148,7 @@ Misranking doctors (safety choices) does not secure a better match.
 Hospitals use safety choices due to ignorance or prestige metrics ("number needed to fill").
 
 **Other DA Applications:**
+
 - Routing Network Packets: Distributed, truncated preference lists.
 - Stanford Marriage Pact: Originally DA-based, now max-weight matching; stability less critical.
 
