@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../lecture1/">
+        <link rel="prev" href="../lecture3b/">
       
       
-        <link rel="next" href="../lecture3/">
+        <link rel="next" href="../lecture5/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Stable Two-Sided Matchings - Stanford CS269I Course Notes</title>
+        <title>Equilibria in Games - Stanford CS269I Course Notes</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stable-two-sided-matchings" class="md-skip">
+        <a href="#equilibria-in-games" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stable Two-Sided Matchings
+              Equilibria in Games
             
           </span>
         </div>
@@ -247,32 +247,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Stable Two-Sided Matchings
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lecture2/" class="md-nav__link">
         
   
   
@@ -283,53 +261,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#stable-matching" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stable Matching
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deferred-acceptance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deferred Acceptance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deferred-acceptance-in-practice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deferred Acceptance in Practice
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -382,10 +313,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lecture4/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -396,6 +349,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#equilibrium-in-2-player-zero-sum-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equilibrium in 2-Player Zero-Sum Games
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nash-equilibrium-in-non-zero-sum-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nash Equilibrium in Non-Zero-Sum Games
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -471,27 +462,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stable-matching" class="md-nav__link">
+  <a href="#equilibrium-in-2-player-zero-sum-games" class="md-nav__link">
     <span class="md-ellipsis">
-      Stable Matching
+      Equilibrium in 2-Player Zero-Sum Games
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deferred-acceptance" class="md-nav__link">
+  <a href="#nash-equilibrium-in-non-zero-sum-games" class="md-nav__link">
     <span class="md-ellipsis">
-      Deferred Acceptance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deferred-acceptance-in-practice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deferred Acceptance in Practice
+      Nash Equilibrium in Non-Zero-Sum Games
     </span>
   </a>
   
@@ -513,125 +495,132 @@
 
 
 
-<h1 id="stable-two-sided-matchings">Stable Two-Sided Matchings</h1>
-<p>(4/2/2025)</p>
-<p>After medical school, med students start their internship called a "residency." Each (prospective) doctor has preferences over hospitals, and each hospital has preferences over doctors. How should doctors and hospitals be matched?</p>
-<p><strong>Key Nuances:</strong></p>
-<ul>
-<li>The biggest difference between doctor-residency matching and student-dorm matching is that we now have two-sided preferences (each doctor and hospital have preferences over each other).</li>
-<li>Matching students to dorms is a centralized process; matching doctors to hospitals requires incentivizing participants to use a centralized process to prevent side deals.</li>
-</ul>
-<h2 id="stable-matching">Stable Matching</h2>
-<div class="definition">
-<p><strong>Definition: Blocking Pair</strong></p>
-<p>Given a match <span class="arithmatex">\(M\)</span>, the pair (doctor <span class="arithmatex">\(i\)</span>, hospital <span class="arithmatex">\(j\)</span>) forms a blocking pair if they prefer each other to their current assignments in <span class="arithmatex">\(M\)</span>.</p>
+<h1 id="equilibria-in-games">Equilibria in Games</h1>
+<p>(1/23/2023)</p>
+<p>Previously, agents had dominant strategies. Now, we consider what happens when no dominant strategy exists.</p>
+<div class="example">
+<p><strong>Example: Penalty Kicks</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Kick Left</th>
+<th>Kick Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jump Left</td>
+<td>0.5</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>Jump Right</td>
+<td>0.9</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<p>No pure-strategy equilibrium exists because each player has an incentive to deviate.</p>
 </div>
-<p>For example, if Doctor <span class="arithmatex">\(n\)</span> prefers Stanford over UCSF and Stanford prefers Doctor <span class="arithmatex">\(n\)</span> over Doctor 1, who is currently matched, then (Doctor <span class="arithmatex">\(n\)</span>, Stanford) form a blocking pair. This results in an <strong>Unstable Matching</strong>.</p>
-<p><strong>Note:</strong> Blocking pairs exist only in two-sided matching markets.</p>
+<p><strong>Solution:</strong> Mixed strategies—kicker left/right (0.6, 0.4), goalie left/right (0.7, 0.3). Expected scoring probability becomes equal (0.62), providing no incentive to deviate.</p>
 <div class="definition">
-<p><strong>Definition: Stable Matching</strong></p>
-<p>A matching <span class="arithmatex">\(M\)</span> is stable if there are no blocking pairs. Equivalently, for every unmatched pair <span class="arithmatex">\((i,j)\)</span>, either:</p>
-<ul>
-<li>Doctor <span class="arithmatex">\(i\)</span> prefers Hospital <span class="arithmatex">\(M(i)\)</span> over Hospital <span class="arithmatex">\(j\)</span>, or;</li>
-<li>Hospital <span class="arithmatex">\(j\)</span> prefers Doctor <span class="arithmatex">\(M(j)\)</span> over Doctor <span class="arithmatex">\(i\)</span>.</li>
-</ul>
+<p><strong>Definition: Mixed Strategy</strong></p>
+<p>A probability distribution over pure strategies.</p>
 </div>
-<p><strong>Key Point:</strong> Stability removes incentives to deviate from the centralized matching.</p>
-<h2 id="deferred-acceptance">Deferred Acceptance</h2>
-<p><strong>Main idea:</strong> Each doctor proposes to their favorite hospital that hasn't rejected them yet. Hospitals accept the best available candidate.</p>
 <div class="definition">
-<p><strong>Mechanism: Deferred Acceptance</strong></p>
-<p>While there's an unmatched doctor <span class="arithmatex">\(i\)</span>:</p>
-<ol>
-<li>Doctor <span class="arithmatex">\(i\)</span> proposes to their next-favorite hospital <span class="arithmatex">\(j\)</span>.</li>
-<li>If hospital <span class="arithmatex">\(j\)</span> has no match, they accept doctor <span class="arithmatex">\(i\)</span>.</li>
-<li>Else, if hospital <span class="arithmatex">\(j\)</span> prefers their current match over doctor <span class="arithmatex">\(i\)</span>, doctor <span class="arithmatex">\(i\)</span> remains unmatched.</li>
-<li>Else, hospital <span class="arithmatex">\(j\)</span> matches with doctor <span class="arithmatex">\(i\)</span>, releasing their previous match.</li>
-</ol>
-<p>The algorithm stops when everyone is matched.</p>
+<p><strong>Definition: Nash Equilibrium</strong></p>
+<p>A strategy profile where no player benefits from deviating unilaterally.</p>
+</div>
+<h2 id="equilibrium-in-2-player-zero-sum-games">Equilibrium in 2-Player Zero-Sum Games</h2>
+<p><strong>Assumptions:</strong>
+- Exactly 2 players.
+- Sum of payoffs is zero.</p>
+<p>Player one aims: <span class="arithmatex">\(\max_{s_1} \min_{s_2} u(s_1,s_2)\)</span></p>
+<p>Player two aims: <span class="arithmatex">\(\min_{s_2} \max_{s_1} -u(s_1,s_2)\)</span></p>
+<div class="theorem">
+<p><strong>Theorem: Min-Max Payoffs</strong></p>
+<p>In two-player zero-sum games, the max-min payoff equals Nash equilibrium payoff equals min-max payoff.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Game Theory Terminology</strong></p>
+<ul>
+<li><strong>Game Node</strong>: State in the game.</li>
+<li><strong>Game Tree</strong>: Graph showing reachable game nodes.</li>
+<li><strong>Information Set</strong>: Game nodes indistinguishable given player's information.</li>
+</ul>
 </div>
 <div class="example">
-<p><strong>Example</strong></p>
+<p><strong>Example: Poker</strong></p>
+<p>"Heads Up" poker has <span class="arithmatex">\(10^{161}\)</span> states. Approximate strategies (blueprints) and regret minimization algorithms enable practical computation.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem: Regret Minimization Convergence</strong></p>
+<p>In two-player zero-sum games, regret minimization converges to Nash equilibrium.</p>
+</div>
+<h2 id="nash-equilibrium-in-non-zero-sum-games">Nash Equilibrium in Non-Zero-Sum Games</h2>
+<div class="theorem">
+<p><strong>Theorem: Nash's Existence Theorem (1951)</strong></p>
+<p>Every finite game has at least one Nash equilibrium (possibly mixed strategies).</p>
+</div>
+<p><strong>Issues:</strong>
+- Equilibria not unique.
+- Hard to compute.
+- May not make practical sense.</p>
+<div class="example">
+<p><strong>Example: Grade Game</strong></p>
+<p>Two students choose grades <span class="arithmatex">\(x, y \in \{2,...,99\}\)</span>. Equilibrium: <span class="arithmatex">\(x = y = 2\)</span>.</p>
+</div>
+<div class="example">
+<p><strong>Example: Intersection Game</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Go</th>
+<th>Wait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Go</strong></td>
+<td>(-99,-99)</td>
+<td>(1,0)</td>
+</tr>
+<tr>
+<td><strong>Wait</strong></td>
+<td>(0,1)</td>
+<td>(0,0)</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Doctors:</strong> Alice (X, Y, Z), Bob (Y, X, Z), Charlie (Y, Z, X).</li>
-<li><strong>Hospitals:</strong> X (Bob, Alice, Charlie), Y (Alice, Bob, Charlie), Z (Bob, Charlie, Alice).</li>
+<li>Pure equilibria: (Go, Wait), (Wait, Go)</li>
+<li>Mixed equilibrium: small probability for simultaneous Go.</li>
+<li><strong>Correlated Equilibrium</strong>: Randomize between (Go, Wait) and (Wait, Go).</li>
 </ul>
-<p>Stable matching result: <span class="arithmatex">\((Alice, X), (Bob, Y), (Charlie, Z)\)</span>.</p>
 </div>
-<div class="theorem">
-<p><strong>Theorem: Runtime of Deferred Acceptance</strong></p>
-<p>Deferred Acceptance runs in <span class="arithmatex">\(O(n^2)\)</span> time.</p>
+<div class="definition">
+<p><strong>Definition: Correlated Equilibrium</strong></p>
+<p>Players follow a correlated distribution of recommended actions. No player benefits from deviating given the recommendation.</p>
 </div>
-<div class="proof">
-<p><strong>Proof:</strong></p>
+<p>Correlated equilibria can be efficiently computed.</p>
+<div class="definition">
+<p><strong>Definition: Stackelberg Equilibrium</strong></p>
+<p>Strategy profile with leader committing first, follower optimally responds, and leader optimally chooses commitment.</p>
+</div>
+<div class="remark">
+<p>Leader commitment can result in higher payoffs than correlated equilibria.</p>
+</div>
+<div class="example">
+<p><strong>Example: Security Games</strong></p>
 <ul>
-<li>There are at most <span class="arithmatex">\(n^2\)</span> proposals (each doctor proposes at most <span class="arithmatex">\(n\)</span> hospitals).</li>
-<li>Each proposal is <span class="arithmatex">\(O(1)\)</span>, hence total runtime is <span class="arithmatex">\(O(n^2)\)</span>.</li>
+<li>Airport security</li>
+<li>Infrastructure defense</li>
+<li>Cybersecurity</li>
+<li>Anti-poaching</li>
 </ul>
 </div>
-<div class="theorem">
-<p><strong>Theorem: Deferred Acceptance is Stable</strong></p>
-<p>Deferred Acceptance outputs a complete stable matching.</p>
-</div>
-<div class="proof">
-<p><strong>Proof (sketch):</strong> Proven by three claims:</p>
-<ol>
-<li>Current match stable at each iteration.</li>
-<li>Once matched, hospitals remain matched.</li>
-<li>At completion, everyone is matched.</li>
-</ol>
-<p>Therefore, no blocking pairs exist.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Efficiency of Stable Matchings</strong></p>
-<p>Every stable matching is Pareto-optimal.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> Any deviation from a stable matching worsens at least one participant’s outcome.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Proposing Optimality</strong></p>
-<p>Doctor-proposing Deferred Acceptance yields the doctor-optimal stable matching.</p>
-</div>
-<p><strong>Corollary:</strong> Doctor-proposing DA is strategyproof for doctors.</p>
-<div class="theorem">
-<p><strong>Theorem: Receiving Non-Optimality</strong></p>
-<p>Doctor-proposing Deferred Acceptance yields the worst stable matching for hospitals.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Receiving Non-Strategyproofness</strong></p>
-<p>Hospitals can benefit from misreporting preferences.</p>
-</div>
-<p><strong>Think-Pair-Share:</strong> How to make DA hospital-optimal? Flip roles (hospital-proposing).</p>
-<h2 id="deferred-acceptance-in-practice">Deferred Acceptance in Practice</h2>
-<p><strong>Why no DA in US undergrad admissions?</strong> Decentralized applications, holistic admission processes, larger applicant pools.</p>
-<p><strong>Historical Doctor-Hospital Matching:</strong></p>
-<ul>
-<li>1950s: DA-like algorithms initially used.</li>
-<li>1960s: Couples complicate preferences.</li>
-<li>1980s: Negative results—stable matching existence with couples is NP-complete.</li>
-<li>1990s: Extended DA for couples adopted.</li>
-</ul>
-<p><strong>Practical Doctor Ranking:</strong></p>
-<ul>
-<li>Interviews (costly)</li>
-<li>Tests (changing role due to USMLE)</li>
-<li>Safety choices (not actually safer)</li>
-</ul>
-<div class="theorem">
-<p><strong>Theorem: No Improvements from Safety Choices</strong></p>
-<p>Misranking doctors (safety choices) does not secure a better match.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> Misreporting can only worsen or have no effect on outcomes.</p>
-</div>
-<p>Hospitals use safety choices due to ignorance or prestige metrics ("number needed to fill").</p>
-<p><strong>Other DA Applications:</strong></p>
-<ul>
-<li>Routing Network Packets: Distributed, truncated preference lists.</li>
-<li>Stanford Marriage Pact: Originally DA-based, now max-weight matching; stability less critical.</li>
-</ul>
-<p><strong>Recap:</strong> DA theoretically optimal but practical challenges (evaluating preferences) remain significant.</p>
 
 
 

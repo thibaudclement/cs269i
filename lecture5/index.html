@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../lecture1/">
+        <link rel="prev" href="../lecture4/">
       
       
-        <link rel="next" href="../lecture3/">
+        <link rel="next" href="../lecture6/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Stable Two-Sided Matchings - Stanford CS269I Course Notes</title>
+        <title>P2P File-sharing Dilemma - Stanford CS269I Course Notes</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stable-two-sided-matchings" class="md-skip">
+        <a href="#p2p-file-sharing-dilemma" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stable Two-Sided Matchings
+              P2P File-sharing Dilemma
             
           </span>
         </div>
@@ -247,32 +247,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Stable Two-Sided Matchings
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lecture2/" class="md-nav__link">
         
   
   
@@ -283,53 +261,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#stable-matching" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stable Matching
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deferred-acceptance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deferred Acceptance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deferred-acceptance-in-practice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deferred Acceptance in Practice
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -404,10 +335,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lecture5/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -418,6 +371,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#repeated-games" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeated Games
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeated-games-with-discounting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeated Games with Discounting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bittorrent-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      BitTorrent Strategies
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -471,27 +471,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stable-matching" class="md-nav__link">
+  <a href="#repeated-games" class="md-nav__link">
     <span class="md-ellipsis">
-      Stable Matching
+      Repeated Games
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deferred-acceptance" class="md-nav__link">
+  <a href="#repeated-games-with-discounting" class="md-nav__link">
     <span class="md-ellipsis">
-      Deferred Acceptance
+      Repeated Games with Discounting
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deferred-acceptance-in-practice" class="md-nav__link">
+  <a href="#bittorrent-strategies" class="md-nav__link">
     <span class="md-ellipsis">
-      Deferred Acceptance in Practice
+      BitTorrent Strategies
     </span>
   </a>
   
@@ -513,125 +513,54 @@
 
 
 
-<h1 id="stable-two-sided-matchings">Stable Two-Sided Matchings</h1>
-<p>(4/2/2025)</p>
-<p>After medical school, med students start their internship called a "residency." Each (prospective) doctor has preferences over hospitals, and each hospital has preferences over doctors. How should doctors and hospitals be matched?</p>
-<p><strong>Key Nuances:</strong></p>
-<ul>
-<li>The biggest difference between doctor-residency matching and student-dorm matching is that we now have two-sided preferences (each doctor and hospital have preferences over each other).</li>
-<li>Matching students to dorms is a centralized process; matching doctors to hospitals requires incentivizing participants to use a centralized process to prevent side deals.</li>
-</ul>
-<h2 id="stable-matching">Stable Matching</h2>
+<h1 id="p2p-file-sharing-dilemma">P2P File-sharing Dilemma</h1>
+<p>(1/25/2023)</p>
+<p><strong>Historical Context:</strong> Napster (1999-2001), Gnutella (2000 onwards). Issue: Free-riding.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Upload</th>
+<th>Free-ride</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Upload</strong></td>
+<td>(2,2)</td>
+<td>(-1,3)</td>
+</tr>
+<tr>
+<td><strong>Free-ride</strong></td>
+<td>(3,-1)</td>
+<td>(0,0)</td>
+</tr>
+</tbody>
+</table>
+<p>Dominant Nash equilibrium: both free-ride (socially worst outcome).</p>
+<h2 id="repeated-games">Repeated Games</h2>
+<p>Iterating game <span class="arithmatex">\(n\)</span> times. What happens?</p>
 <div class="definition">
-<p><strong>Definition: Blocking Pair</strong></p>
-<p>Given a match <span class="arithmatex">\(M\)</span>, the pair (doctor <span class="arithmatex">\(i\)</span>, hospital <span class="arithmatex">\(j\)</span>) forms a blocking pair if they prefer each other to their current assignments in <span class="arithmatex">\(M\)</span>.</p>
+<p><strong>Definition: Subgame Perfect Nash Equilibrium (SPNE)</strong></p>
+<p>A Nash equilibrium valid in every subgame.</p>
 </div>
-<p>For example, if Doctor <span class="arithmatex">\(n\)</span> prefers Stanford over UCSF and Stanford prefers Doctor <span class="arithmatex">\(n\)</span> over Doctor 1, who is currently matched, then (Doctor <span class="arithmatex">\(n\)</span>, Stanford) form a blocking pair. This results in an <strong>Unstable Matching</strong>.</p>
-<p><strong>Note:</strong> Blocking pairs exist only in two-sided matching markets.</p>
-<div class="definition">
-<p><strong>Definition: Stable Matching</strong></p>
-<p>A matching <span class="arithmatex">\(M\)</span> is stable if there are no blocking pairs. Equivalently, for every unmatched pair <span class="arithmatex">\((i,j)\)</span>, either:</p>
+<p>Repeated free-riding emerges by backward induction.</p>
+<h2 id="repeated-games-with-discounting">Repeated Games with Discounting</h2>
+<p>Probability <span class="arithmatex">\(p\)</span> that the game stops each round (discount future payoffs).</p>
+<p><strong>Grim Trigger Strategy:</strong> Free-ride forever if opponent ever free-rides.</p>
 <ul>
-<li>Doctor <span class="arithmatex">\(i\)</span> prefers Hospital <span class="arithmatex">\(M(i)\)</span> over Hospital <span class="arithmatex">\(j\)</span>, or;</li>
-<li>Hospital <span class="arithmatex">\(j\)</span> prefers Doctor <span class="arithmatex">\(M(j)\)</span> over Doctor <span class="arithmatex">\(i\)</span>.</li>
+<li>Always uploading payoff: <span class="arithmatex">\(\frac{2}{p}\)</span></li>
+<li>Always free-riding payoff: <span class="arithmatex">\(3\)</span></li>
 </ul>
-</div>
-<p><strong>Key Point:</strong> Stability removes incentives to deviate from the centralized matching.</p>
-<h2 id="deferred-acceptance">Deferred Acceptance</h2>
-<p><strong>Main idea:</strong> Each doctor proposes to their favorite hospital that hasn't rejected them yet. Hospitals accept the best available candidate.</p>
-<div class="definition">
-<p><strong>Mechanism: Deferred Acceptance</strong></p>
-<p>While there's an unmatched doctor <span class="arithmatex">\(i\)</span>:</p>
-<ol>
-<li>Doctor <span class="arithmatex">\(i\)</span> proposes to their next-favorite hospital <span class="arithmatex">\(j\)</span>.</li>
-<li>If hospital <span class="arithmatex">\(j\)</span> has no match, they accept doctor <span class="arithmatex">\(i\)</span>.</li>
-<li>Else, if hospital <span class="arithmatex">\(j\)</span> prefers their current match over doctor <span class="arithmatex">\(i\)</span>, doctor <span class="arithmatex">\(i\)</span> remains unmatched.</li>
-<li>Else, hospital <span class="arithmatex">\(j\)</span> matches with doctor <span class="arithmatex">\(i\)</span>, releasing their previous match.</li>
-</ol>
-<p>The algorithm stops when everyone is matched.</p>
-</div>
-<div class="example">
-<p><strong>Example</strong></p>
-<ul>
-<li><strong>Doctors:</strong> Alice (X, Y, Z), Bob (Y, X, Z), Charlie (Y, Z, X).</li>
-<li><strong>Hospitals:</strong> X (Bob, Alice, Charlie), Y (Alice, Bob, Charlie), Z (Bob, Charlie, Alice).</li>
-</ul>
-<p>Stable matching result: <span class="arithmatex">\((Alice, X), (Bob, Y), (Charlie, Z)\)</span>.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Runtime of Deferred Acceptance</strong></p>
-<p>Deferred Acceptance runs in <span class="arithmatex">\(O(n^2)\)</span> time.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong></p>
-<ul>
-<li>There are at most <span class="arithmatex">\(n^2\)</span> proposals (each doctor proposes at most <span class="arithmatex">\(n\)</span> hospitals).</li>
-<li>Each proposal is <span class="arithmatex">\(O(1)\)</span>, hence total runtime is <span class="arithmatex">\(O(n^2)\)</span>.</li>
-</ul>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Deferred Acceptance is Stable</strong></p>
-<p>Deferred Acceptance outputs a complete stable matching.</p>
-</div>
-<div class="proof">
-<p><strong>Proof (sketch):</strong> Proven by three claims:</p>
-<ol>
-<li>Current match stable at each iteration.</li>
-<li>Once matched, hospitals remain matched.</li>
-<li>At completion, everyone is matched.</li>
-</ol>
-<p>Therefore, no blocking pairs exist.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Efficiency of Stable Matchings</strong></p>
-<p>Every stable matching is Pareto-optimal.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> Any deviation from a stable matching worsens at least one participant’s outcome.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Proposing Optimality</strong></p>
-<p>Doctor-proposing Deferred Acceptance yields the doctor-optimal stable matching.</p>
-</div>
-<p><strong>Corollary:</strong> Doctor-proposing DA is strategyproof for doctors.</p>
-<div class="theorem">
-<p><strong>Theorem: Receiving Non-Optimality</strong></p>
-<p>Doctor-proposing Deferred Acceptance yields the worst stable matching for hospitals.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Receiving Non-Strategyproofness</strong></p>
-<p>Hospitals can benefit from misreporting preferences.</p>
-</div>
-<p><strong>Think-Pair-Share:</strong> How to make DA hospital-optimal? Flip roles (hospital-proposing).</p>
-<h2 id="deferred-acceptance-in-practice">Deferred Acceptance in Practice</h2>
-<p><strong>Why no DA in US undergrad admissions?</strong> Decentralized applications, holistic admission processes, larger applicant pools.</p>
-<p><strong>Historical Doctor-Hospital Matching:</strong></p>
-<ul>
-<li>1950s: DA-like algorithms initially used.</li>
-<li>1960s: Couples complicate preferences.</li>
-<li>1980s: Negative results—stable matching existence with couples is NP-complete.</li>
-<li>1990s: Extended DA for couples adopted.</li>
-</ul>
-<p><strong>Practical Doctor Ranking:</strong></p>
-<ul>
-<li>Interviews (costly)</li>
-<li>Tests (changing role due to USMLE)</li>
-<li>Safety choices (not actually safer)</li>
-</ul>
-<div class="theorem">
-<p><strong>Theorem: No Improvements from Safety Choices</strong></p>
-<p>Misranking doctors (safety choices) does not secure a better match.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> Misreporting can only worsen or have no effect on outcomes.</p>
-</div>
-<p>Hospitals use safety choices due to ignorance or prestige metrics ("number needed to fill").</p>
-<p><strong>Other DA Applications:</strong></p>
-<ul>
-<li>Routing Network Packets: Distributed, truncated preference lists.</li>
-<li>Stanford Marriage Pact: Originally DA-based, now max-weight matching; stability less critical.</li>
-</ul>
-<p><strong>Recap:</strong> DA theoretically optimal but practical challenges (evaluating preferences) remain significant.</p>
+<p>Equilibrium if <span class="arithmatex">\(p &lt; 2/3\)</span>.</p>
+<p><strong>Tit-for-Tat:</strong> Initially upload, then match opponent’s previous action. Robust and stable.</p>
+<h2 id="bittorrent-strategies">BitTorrent Strategies</h2>
+<p>BitTorrent is a popular P2P protocol (~30% upload traffic).</p>
+<p><strong>Default Strategy:</strong>
+- Tracker coordinates peers.
+- Tit-for-tat-based uploads, optimistic unchoking for random peers.</p>
+<p><strong>BitThief:</strong> Never upload, frequent peer querying.</p>
+<p><strong>BitTyrant:</strong> Upload strategically to maximize future downloads (ratio-based).</p>
 
 
 
