@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../lecture5/">
+        <link rel="prev" href="../lecture6/">
       
       
-        <link rel="next" href="../lecture7/">
+        <link rel="next" href="../lecture8/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Market Equilibrium - Stanford CS269I Course Notes</title>
+        <title>Market Failures - Stanford CS269I Course Notes</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#market-equilibrium" class="md-skip">
+        <a href="#market-failures" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Market Equilibrium
+              Market Failures
             
           </span>
         </div>
@@ -357,6 +357,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -374,7 +396,7 @@
   
   
   <span class="md-ellipsis">
-    Market Equilibrium
+    Market Failures
     
   </span>
   
@@ -387,7 +409,7 @@
   
   
   <span class="md-ellipsis">
-    Market Equilibrium
+    Market Failures
     
   </span>
   
@@ -410,18 +432,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unit-demand-market-model" class="md-nav__link">
+  <a href="#externalities-and-public-goods" class="md-nav__link">
     <span class="md-ellipsis">
-      Unit-Demand Market Model
+      Externalities and Public Goods
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties-of-competitive-equilibrium" class="md-nav__link">
+  <a href="#transaction-costs" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties of Competitive Equilibrium
+      Transaction Costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-thickness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Thickness
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timing-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timing Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-asymmetries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Asymmetries
     </span>
   </a>
   
@@ -431,28 +480,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lecture7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Market Failures
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -506,18 +533,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unit-demand-market-model" class="md-nav__link">
+  <a href="#externalities-and-public-goods" class="md-nav__link">
     <span class="md-ellipsis">
-      Unit-Demand Market Model
+      Externalities and Public Goods
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties-of-competitive-equilibrium" class="md-nav__link">
+  <a href="#transaction-costs" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties of Competitive Equilibrium
+      Transaction Costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-thickness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Thickness
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timing-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timing Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-asymmetries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Asymmetries
     </span>
   </a>
   
@@ -539,115 +593,72 @@
 
 
 
-<h1 id="market-equilibrium">Market Equilibrium</h1>
-<p>(1/30/2023)</p>
-<p>Previously, we examined scenarios without monetary transfers. Introducing money changes market dynamics substantially:</p>
+<h1 id="market-failures">Market Failures</h1>
+<p>(2/1/2023)</p>
+<p>Previously, we assumed free markets converge naturally to optimal outcomes. However, markets often fail to achieve optimal outcomes—known as market failures.</p>
+<h2 id="externalities-and-public-goods">Externalities and Public Goods</h2>
+<p><strong>Externalities</strong>: Effects of transactions on third parties not directly involved.</p>
+<p><strong>Public Goods</strong>: Goods accessible to everyone and not owned individually.</p>
+<p>Examples:
+- Environmental harm from air travel (negative externality).
+- WiFi bandwidth overuse (negative externality).</p>
+<p><strong>Solutions:</strong>
+1. <strong>Pigouvian Tax</strong>: Tax transactions proportional to the externality they cause.
+2. <strong>Coasian Bargaining</strong>: Privatize public goods and let market bargaining reach social efficiency (Coase theorem).</p>
+<h2 id="transaction-costs">Transaction Costs</h2>
+<p>Costs associated with making transactions that prevent beneficial trades.</p>
+<p><strong>Examples:</strong>
+- Sales tax blocking a mutually beneficial sale.
+- Time/information costs preventing trades (hungry student looking for apples).</p>
+<p>Transaction costs can be monetary or non-monetary (time, effort, information).</p>
+<h2 id="market-thickness">Market Thickness</h2>
 <ul>
-<li>Stanford housing would differ if rooms were auctioned.</li>
-<li>Buying organs is illegal in most countries.</li>
-<li>Hospitals-student monetary matches face legal restrictions.</li>
+<li><strong>Thick Market</strong>: Many buyers/sellers, competitive prices, efficient outcomes.</li>
+<li><strong>Thin Market</strong>: Few buyers/sellers, monopoly pricing, inefficiencies.</li>
 </ul>
-<p><strong>Issues with non-monetary markets:</strong>
-1. Limited to ordinal rather than cardinal preferences.
-2. Emergence of underground markets.
-3. Potential exploitation (bots manipulating donor lists).</p>
-<div class="definition">
-<p><strong>Definition: Cardinal vs Ordinal Utilities</strong></p>
-<ul>
-<li><strong>Cardinal</strong>: Assign numeric values to preferences.</li>
-<li><strong>Ordinal</strong>: Only ranks preferences by order.</li>
-</ul>
-<p>Cardinal utilities convey richer information (ordinal can be derived from cardinal), are intuitive in economic analysis, and typically monetarily measurable.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Fungible vs Idiosyncratic Goods</strong></p>
-<ul>
-<li><strong>Fungible goods</strong>: Interchangeable units.</li>
-<li><strong>Idiosyncratic goods</strong>: Unique goods.</li>
-</ul>
-<p>Many real-world goods blend these traits (e.g., ridesharing).</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Supply and Demand Curves</strong></p>
-<ul>
-<li><strong>Demand curve</strong>: Quantity consumers buy at each price.</li>
-<li><strong>Supply curve</strong>: Quantity firms sell at each price.</li>
-</ul>
-<p>Typically:</p>
-<ul>
-<li>Price is vertical (<span class="arithmatex">\(y\)</span>-axis).</li>
-<li>Quantity is horizontal (<span class="arithmatex">\(x\)</span>-axis).</li>
-</ul>
-</div>
-<div class="remark">
-<p>Usually, demand slopes downward and supply upward. However, exceptions (monopoly markets, certain special goods) exist.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Market Clearing Price</strong></p>
-<p>The price where supply equals demand. All buyers and sellers transact, "clearing" the market.</p>
-</div>
-<h2 id="unit-demand-market-model">Unit-Demand Market Model</h2>
-<p><strong>Setup:</strong></p>
-<ul>
-<li><span class="arithmatex">\(m\)</span> idiosyncratic goods.</li>
-<li><span class="arithmatex">\(n\)</span> buyers (each buys at most one good).</li>
-<li>Buyer <span class="arithmatex">\(i\)</span> values good <span class="arithmatex">\(j\)</span> at <span class="arithmatex">\(v_{i,j}\)</span>.</li>
-<li>Buyer <span class="arithmatex">\(i\)</span>'s payoff for good <span class="arithmatex">\(j\)</span>: <span class="arithmatex">\(U_{i,j} = v_{i,j} - p_j\)</span>.</li>
-<li>Utility without buying: <span class="arithmatex">\(U_{i,\varnothing} = 0\)</span>.</li>
-</ul>
-<div class="definition">
-<p><strong>Definition: Competitive Equilibrium</strong></p>
-<p>A price vector <span class="arithmatex">\(p = (p_1,\dots,p_m)\)</span> and matching <span class="arithmatex">\(M:\{1,\dots,n\}\to\{1,\dots,m\}\)</span> satisfying:</p>
-<ol>
-<li>Buyers get their preferred good at price <span class="arithmatex">\(p\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_{i,M(i)} - p_{M(i)} \geq v_{i,j} - p_j \quad \forall i,j.\)</span>\)</span></li>
-<li>Unmatched goods have price zero.</li>
-<li>Buyers are unmatched only if <span class="arithmatex">\(v_{i,j}-p_j&lt;0\)</span> for all goods <span class="arithmatex">\(j\)</span>.</li>
-</ol>
-</div>
-<div class="remark">
-<p>This implies individual rationality, ensuring buyers never choose negatively valued outcomes.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Social Welfare</strong></p>
-<p>Sum of buyers' values:
-<span class="arithmatex">\(<span class="arithmatex">\(U(M)=\sum_i v_{i,M(i)}.\)</span>\)</span></p>
-<p>Prices excluded as buyer costs equal seller profits.</p>
-</div>
-<h2 id="properties-of-competitive-equilibrium">Properties of Competitive Equilibrium</h2>
-<div class="theorem">
-<p><strong>Theorem: First Welfare Theorem</strong></p>
-<p>Competitive equilibrium allocation maximizes social welfare:
-<span class="arithmatex">\(<span class="arithmatex">\(\sum_i v_{i,M(i)} \geq \sum_i v_{i,M'(i)} \quad \forall M'.\)</span>\)</span></p>
-</div>
+<p><strong>Why monopolies are problematic:</strong>
+- Reduced quantity sold.
+- Higher prices.
+- Lower consumer surplus.</p>
+<p>The first welfare theorem applies with cost-covering reserve prices, but these reserve prices aren't strategyproof:</p>
 <div class="proof">
-<p><strong>Proof:</strong> By competitive equilibrium definition, for any alternative matching <span class="arithmatex">\(M'\)</span>:
-<span class="arithmatex">\(<span class="arithmatex">\(\sum_i(v_{i,M(i)}-p_{M(i)})\geq \sum_i(v_{i,M'(i)}-p_{M'(i)}).\)</span>\)</span>
-Since total prices paid are equal, we get welfare optimality.</p>
+<p><strong>Proof:</strong></p>
+<p>If reserve prices are nonbinding, sellers can slightly increase them and remain profitable. If binding (equal to cost), sellers earn zero profit, thus increasing prices slightly above cost yields positive profit. This creates a profitable deviation.</p>
 </div>
-<div class="theorem">
-<p><strong>Theorem: Existence of Competitive Equilibrium</strong></p>
-<p>Competitive equilibrium always exists in finite unit-demand markets with discrete prices.</p>
-</div>
-<div class="remark">
-<p>In more complex markets, equilibrium existence isn't guaranteed.</p>
-</div>
-<div class="proof">
-<p><strong>Proof (via Deferred Acceptance with Prices):</strong></p>
-<p>Construct ranked lists of (good, price) pairs for each buyer (discarding negative options). Buyers iteratively propose to their next-best option; goods tentatively accept highest offers. Termination guaranteed (similar to deferred acceptance).</p>
-<p>Resulting allocation meets competitive equilibrium conditions:</p>
-<ul>
-<li>Buyers matched to best possible option.</li>
-<li>Unmatched goods priced zero.</li>
-</ul>
-</div>
-<div class="proposition">
-<p><strong>Proposition: Deferred Acceptance with Prices</strong></p>
-<p>The deferred acceptance with prices algorithm is strategyproof and buyer-optimal.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> Direct from standard deferred acceptance reasoning.</p>
-</div>
+<p><strong>Ways around this:</strong>
+- In large markets, deviations from strategyproofness diminish (strategyproof-in-the-large).
+- Limited seller information on buyer valuations restricts strategic price setting.</p>
+<p><strong>Thickening Markets:</strong>
+- Encourage participation and retention.
+- Merge markets (e.g., larger kidney exchanges).
+- Batch transactions to aggregate buyers and sellers.</p>
+<h2 id="timing-issues">Timing Issues</h2>
+<p><strong>Market Unraveling:</strong>
+- Matches occur prematurely (medical students matched early, creating mismatches over time).</p>
+<p><strong>Exploding Offers:</strong>
+- Offers requiring rapid responses due to competitive pressures or regulatory constraints.</p>
+<p><strong>Examples:</strong>
+- APPIC psychologist hiring (1970–1990s) faced early and premature matching despite rules.</p>
+<p><strong>Resolving Timing Issues:</strong>
+- Centralized matching mechanisms.
+- Allow reneging on exploding offers to remove incentives to rush decisions.</p>
+<h2 id="information-asymmetries">Information Asymmetries</h2>
+<p>Sellers know more about goods than buyers, causing uncertainty and inefficiency.</p>
+<p><strong>Example: Market for Lemons (used cars)</strong>
+- Good and bad cars indistinguishable by buyers.
+- Buyers pay less due to uncertainty.
+- Good cars leave market; only bad cars remain (adverse selection).</p>
+<p>Possible equilibria:
+- Bad equilibrium: only lemons sold at low prices.
+- Good equilibrium: enough good cars maintain higher average quality and price.</p>
+<p><strong>Other Examples:</strong>
+- Health insurance markets (buyer health knowledge).
+- Clickbait (creators know content quality; users do not).</p>
+<p><strong>Adverse Selection</strong>: Poor-quality products dominate markets due to asymmetry.</p>
+<p><strong>Solutions:</strong>
+- Increase transparency (mandatory disclosure, reputation systems).
+- Restrict informational use (universal healthcare, insider trading rules).
+- Filter lemons through warranties or guarantees.</p>
 
 
 

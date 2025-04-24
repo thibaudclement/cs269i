@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../lecture5/">
+        <link rel="prev" href="../lecture7/">
       
-      
-        <link rel="next" href="../lecture7/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Market Equilibrium - Stanford CS269I Course Notes</title>
+        <title>Auctions - Stanford CS269I Course Notes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#market-equilibrium" class="md-skip">
+        <a href="#single-unit-auctions" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Market Equilibrium
+              Auctions
             
           </span>
         </div>
@@ -357,32 +355,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Market Equilibrium
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lecture6/" class="md-nav__link">
         
   
   
@@ -393,44 +369,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#unit-demand-market-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unit-Demand Market Model
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties-of-competitive-equilibrium" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties of Competitive Equilibrium
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -461,10 +399,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lecture8/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -475,6 +435,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#case-of-one-buyer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case of One Buyer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-of-multiple-buyers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case of Multiple Buyers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Case of Multiple Buyers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-price-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      First-Price Auction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-pay-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      All-Pay Auction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#second-price-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Second-Price Auction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revenue-maximization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revenue Maximization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revenue Maximization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deviations-from-optimal-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deviations from Optimal Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -506,20 +561,77 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unit-demand-market-model" class="md-nav__link">
+  <a href="#case-of-one-buyer" class="md-nav__link">
     <span class="md-ellipsis">
-      Unit-Demand Market Model
+      Case of One Buyer
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties-of-competitive-equilibrium" class="md-nav__link">
+  <a href="#case-of-multiple-buyers" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties of Competitive Equilibrium
+      Case of Multiple Buyers
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Case of Multiple Buyers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-price-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      First-Price Auction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-pay-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      All-Pay Auction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#second-price-auction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Second-Price Auction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revenue-maximization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revenue Maximization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revenue Maximization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deviations-from-optimal-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deviations from Optimal Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -539,115 +651,112 @@
 
 
 
-<h1 id="market-equilibrium">Market Equilibrium</h1>
-<p>(1/30/2023)</p>
-<p>Previously, we examined scenarios without monetary transfers. Introducing money changes market dynamics substantially:</p>
+<h1 id="single-unit-auctions">Single-Unit Auctions</h1>
+<p>(2/6/2023)</p>
+<p>Auctions are valuable in settings where price discovery is needed, such as:</p>
 <ul>
-<li>Stanford housing would differ if rooms were auctioned.</li>
-<li>Buying organs is illegal in most countries.</li>
-<li>Hospitals-student monetary matches face legal restrictions.</li>
+<li><strong>Monopolies</strong>: Wireless spectrum auctions.</li>
+<li><strong>Niche products</strong>: Rare items on eBay.</li>
+<li><strong>Specialized products</strong>: Ad auctions.</li>
 </ul>
-<p><strong>Issues with non-monetary markets:</strong>
-1. Limited to ordinal rather than cardinal preferences.
-2. Emergence of underground markets.
-3. Potential exploitation (bots manipulating donor lists).</p>
-<div class="definition">
-<p><strong>Definition: Cardinal vs Ordinal Utilities</strong></p>
+<p>Auctions intersect significantly with Computer Science:</p>
 <ul>
-<li><strong>Cardinal</strong>: Assign numeric values to preferences.</li>
-<li><strong>Ordinal</strong>: Only ranks preferences by order.</li>
+<li>Ad auctions fund many CS researchers.</li>
+<li>Fast auctions necessitate algorithmic bidders.</li>
+<li>Complex auctions require algorithmic auctioneers.</li>
 </ul>
-<p>Cardinal utilities convey richer information (ordinal can be derived from cardinal), are intuitive in economic analysis, and typically monetarily measurable.</p>
+<h2 id="case-of-one-buyer">Case of One Buyer</h2>
+<p><strong>Motivation</strong>: Digital goods pricing for maximizing revenue.</p>
+<ul>
+<li>Demand curves derived from users' willingness to pay.</li>
+<li>Revenue = Price × Number of buyers willing to pay that price.</li>
+<li>Roger Myerson (1981): For a demand curve <span class="arithmatex">\(D\)</span>, a formula <span class="arithmatex">\(p(D)\)</span> exists that maximizes revenue (optimal reserve price).</li>
+</ul>
+<p><strong>Application</strong>: Ad auctions with specialized advertisers (single bidder per spot) using prior beliefs as demand curves.</p>
+<h2 id="case-of-multiple-buyers">Case of Multiple Buyers</h2>
+<p><strong>Model:</strong>
+1. Set of bidders <span class="arithmatex">\(I\)</span>, each with valuation <span class="arithmatex">\(v_i\)</span>.
+2. Seller doesn't know valuations but has prior beliefs.
+3. Bidder payoff: <span class="arithmatex">\(v_i - p_i\)</span> if they win, else <span class="arithmatex">\(-p_i\)</span>.</p>
+<h3 id="first-price-auction">First-Price Auction</h3>
+<ul>
+<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>Highest bidder wins and pays their bid.</li>
+</ul>
+<p><em>Note</em>: Equilibrium bids are below true valuations (<span class="arithmatex">\(b_i &lt; v_i\)</span>).</p>
+<h3 id="all-pay-auction">All-Pay Auction</h3>
+<ul>
+<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>Highest bidder wins the item.</li>
+<li>All bidders pay their bids.</li>
+</ul>
+<p>Used for modeling non-auction scenarios (political donations, animal contests). Equilibrium bids are lower than valuations and generally lower than in first-price auctions.</p>
+<h3 id="second-price-auction">Second-Price Auction</h3>
+<ul>
+<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>Highest bidder wins, paying the second-highest bid.</li>
+</ul>
+<div class="theorem">
+<p><strong>Theorem: Equilibrium in Second-Price Auctions</strong></p>
+<p>Second-price auctions are strategyproof: truthful bidding (<span class="arithmatex">\(b_i = v_i\)</span>) is dominant and thus an equilibrium.</p>
 </div>
-<div class="definition">
-<p><strong>Definition: Fungible vs Idiosyncratic Goods</strong></p>
-<ul>
-<li><strong>Fungible goods</strong>: Interchangeable units.</li>
-<li><strong>Idiosyncratic goods</strong>: Unique goods.</li>
-</ul>
-<p>Many real-world goods blend these traits (e.g., ridesharing).</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Supply and Demand Curves</strong></p>
-<ul>
-<li><strong>Demand curve</strong>: Quantity consumers buy at each price.</li>
-<li><strong>Supply curve</strong>: Quantity firms sell at each price.</li>
-</ul>
-<p>Typically:</p>
-<ul>
-<li>Price is vertical (<span class="arithmatex">\(y\)</span>-axis).</li>
-<li>Quantity is horizontal (<span class="arithmatex">\(x\)</span>-axis).</li>
-</ul>
-</div>
-<div class="remark">
-<p>Usually, demand slopes downward and supply upward. However, exceptions (monopoly markets, certain special goods) exist.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Market Clearing Price</strong></p>
-<p>The price where supply equals demand. All buyers and sellers transact, "clearing" the market.</p>
-</div>
-<h2 id="unit-demand-market-model">Unit-Demand Market Model</h2>
-<p><strong>Setup:</strong></p>
-<ul>
-<li><span class="arithmatex">\(m\)</span> idiosyncratic goods.</li>
-<li><span class="arithmatex">\(n\)</span> buyers (each buys at most one good).</li>
-<li>Buyer <span class="arithmatex">\(i\)</span> values good <span class="arithmatex">\(j\)</span> at <span class="arithmatex">\(v_{i,j}\)</span>.</li>
-<li>Buyer <span class="arithmatex">\(i\)</span>'s payoff for good <span class="arithmatex">\(j\)</span>: <span class="arithmatex">\(U_{i,j} = v_{i,j} - p_j\)</span>.</li>
-<li>Utility without buying: <span class="arithmatex">\(U_{i,\varnothing} = 0\)</span>.</li>
-</ul>
-<div class="definition">
-<p><strong>Definition: Competitive Equilibrium</strong></p>
-<p>A price vector <span class="arithmatex">\(p = (p_1,\dots,p_m)\)</span> and matching <span class="arithmatex">\(M:\{1,\dots,n\}\to\{1,\dots,m\}\)</span> satisfying:</p>
+<div class="proof">
+<p><strong>Proof:</strong> Fix other bids <span class="arithmatex">\(b_j\)</span>, let <span class="arithmatex">\(b^{(-i)} = \max_{j \ne i} b_j\)</span>. Two cases:</p>
 <ol>
-<li>Buyers get their preferred good at price <span class="arithmatex">\(p\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_{i,M(i)} - p_{M(i)} \geq v_{i,j} - p_j \quad \forall i,j.\)</span>\)</span></li>
-<li>Unmatched goods have price zero.</li>
-<li>Buyers are unmatched only if <span class="arithmatex">\(v_{i,j}-p_j&lt;0\)</span> for all goods <span class="arithmatex">\(j\)</span>.</li>
+<li>If <span class="arithmatex">\(v_i &lt; b^{(-i)}\)</span>, bidder <span class="arithmatex">\(i\)</span> prefers losing; bidding truthfully is optimal.</li>
+<li>If <span class="arithmatex">\(v_i &gt; b^{(-i)}\)</span>, bidder <span class="arithmatex">\(i\)</span> prefers winning; again, truthful bid is optimal.</li>
 </ol>
 </div>
-<div class="remark">
-<p>This implies individual rationality, ensuring buyers never choose negatively valued outcomes.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Social Welfare</strong></p>
-<p>Sum of buyers' values:
-<span class="arithmatex">\(<span class="arithmatex">\(U(M)=\sum_i v_{i,M(i)}.\)</span>\)</span></p>
-<p>Prices excluded as buyer costs equal seller profits.</p>
-</div>
-<h2 id="properties-of-competitive-equilibrium">Properties of Competitive Equilibrium</h2>
 <div class="theorem">
-<p><strong>Theorem: First Welfare Theorem</strong></p>
-<p>Competitive equilibrium allocation maximizes social welfare:
-<span class="arithmatex">\(<span class="arithmatex">\(\sum_i v_{i,M(i)} \geq \sum_i v_{i,M'(i)} \quad \forall M'.\)</span>\)</span></p>
+<p><strong>Theorem: Payoffs of Second-Price Auctions</strong></p>
+<p>Second-price auctions are individually rational at equilibrium: <span class="arithmatex">\(v_i - p_i \geq 0\)</span>.</p>
 </div>
 <div class="proof">
-<p><strong>Proof:</strong> By competitive equilibrium definition, for any alternative matching <span class="arithmatex">\(M'\)</span>:
-<span class="arithmatex">\(<span class="arithmatex">\(\sum_i(v_{i,M(i)}-p_{M(i)})\geq \sum_i(v_{i,M'(i)}-p_{M'(i)}).\)</span>\)</span>
-Since total prices paid are equal, we get welfare optimality.</p>
+<p><strong>Proof:</strong> If bidder doesn't win, payoff = 0. If bidder wins, pays at most their valuation, thus non-negative payoff.</p>
 </div>
 <div class="theorem">
-<p><strong>Theorem: Existence of Competitive Equilibrium</strong></p>
-<p>Competitive equilibrium always exists in finite unit-demand markets with discrete prices.</p>
-</div>
-<div class="remark">
-<p>In more complex markets, equilibrium existence isn't guaranteed.</p>
+<p><strong>Theorem: Optimality</strong></p>
+<p>In equilibrium, second-price auctions allocate the good to the highest-valued bidder.</p>
 </div>
 <div class="proof">
-<p><strong>Proof (via Deferred Acceptance with Prices):</strong></p>
-<p>Construct ranked lists of (good, price) pairs for each buyer (discarding negative options). Buyers iteratively propose to their next-best option; goods tentatively accept highest offers. Termination guaranteed (similar to deferred acceptance).</p>
-<p>Resulting allocation meets competitive equilibrium conditions:</p>
+<p><strong>Proof:</strong> In equilibrium <span class="arithmatex">\(b_i = v_i\)</span>, thus highest bidder corresponds to highest valuation.</p>
+</div>
+<h2 id="revenue-maximization">Revenue Maximization</h2>
+<div class="example">
+<p><strong>Example: Full Information Scenario</strong></p>
 <ul>
-<li>Buyers matched to best possible option.</li>
-<li>Unmatched goods priced zero.</li>
+<li><span class="arithmatex">\(A\)</span> values item at 1, <span class="arithmatex">\(B\)</span> values at 2.</li>
+<li>Second-price auction: <span class="arithmatex">\(B\)</span> wins, pays 1.</li>
+<li>First-price auction: Equilibrium bids near 1, revenue approximately 1.</li>
 </ul>
 </div>
-<div class="proposition">
-<p><strong>Proposition: Deferred Acceptance with Prices</strong></p>
-<p>The deferred acceptance with prices algorithm is strategyproof and buyer-optimal.</p>
+<p>To handle uncertainty, we define Bayesian Nash Equilibrium:</p>
+<div class="definition">
+<p><strong>Definition: Bayesian Nash Equilibrium</strong></p>
+<p>A strategy profile where each player's strategy maximizes expected payoff given beliefs about others' strategies.</p>
 </div>
-<div class="proof">
-<p><strong>Proof:</strong> Direct from standard deferred acceptance reasoning.</p>
+<div class="example">
+<p><strong>Example: Bayesian Agents</strong></p>
+<ul>
+<li><span class="arithmatex">\(A,B\)</span> values drawn uniformly from [0,1].</li>
+<li>Second-price auction expected revenue: <span class="arithmatex">\(\frac{1}{3}\)</span>.</li>
+<li>First-price auction equilibrium bids: <span class="arithmatex">\(b_i = \frac{v_i}{2}\)</span>, also yielding expected revenue <span class="arithmatex">\(\frac{1}{3}\)</span>.</li>
+</ul>
 </div>
+<div class="theorem">
+<p><strong>Theorem: Revenue Equivalence</strong></p>
+<p>At equilibrium, expected payments depend only on the auction’s allocation rule.</p>
+</div>
+<div class="corollary">
+<p><strong>Corollary:</strong> First-price, second-price, and all-pay auctions yield identical equilibrium revenue under Bayes-Nash equilibria with standard allocation rules (highest bidder wins).</p>
+</div>
+<h3 id="deviations-from-optimal-allocation">Deviations from Optimal Allocation</h3>
+<p>Auctions don't always allocate to the highest valuation bidder:</p>
+<ul>
+<li>Overbidding in second-price auctions (highest bidder might bid excessively).</li>
+<li>All-pay auctions may have equilibria not awarding highest value bidder.</li>
+<li>Reserve prices might result in no winner.</li>
+</ul>
 
 
 
