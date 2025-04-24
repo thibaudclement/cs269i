@@ -1,4 +1,4 @@
-# Welcome to the Stanford CS269I Course Notes
+# Welcome
 
 These course notes for Stanford CS269I are based on the content of Aviad Rubinstein's lectures in the Spring 2025 quarter. This site is developed by Thibaud Clement, based on Eric Gao's original course notes from the Winter 2023 quarter.
 

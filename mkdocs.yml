@@ -10,10 +10,14 @@ theme:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js
+  - javascript/katex-init.js
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css
