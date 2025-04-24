@@ -1,0 +1,55 @@
+.definition {
+  border-left: 5px solid #3b82f6;
+  background-color: #ebf5ff;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.theorem {
+  border-left: 5px solid #10b981;
+  background-color: #eafaf1;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.proof {
+  border-left: 5px solid #000000;
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.example {
+  border-left: 5px solid #ec4899;
+  background-color: #fdf2f8;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.remark {
+  border-left: 5px solid #f59e0b;
+  background-color: #fffaeb;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.think-pair-share {
+  border-left: 5px solid #eab308;
+  background-color: #fefce8;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.summary {
+  border-left: 5px solid #64748b;
+  background-color: #f1f5f9;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
