@@ -135,5 +135,5 @@ Therefore, Serial Dictatorship is Pareto Optimal.
 
 - **Definition: Mechanism.** A mechanism meaning soliciting inputs, running an algorithm, and taking actions.
 - **Definition: Strategyproof/truthful.** A mechanism is strategyproof/truthful is misreporting preferences can never make a participant better off.
-- **Defintion: Pareto-optimal.** An assignment A is Pareto-optimal if for any other assignment B, there is a participan that (strictly) prefers A over B.
+- **Defintion: Pareto-optimal.** An assignment \( A \) is Pareto-optimal if for any other assignment \( B \), there is a participan that (strictly) prefers \( A \) over \( B \).
 </div>
