@@ -304,6 +304,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -541,6 +550,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -564,7 +582,7 @@
 <li>There are <span class="arithmatex">\( n \)</span> students, each with some preference over dorms.</li>
 <li>There are <span class="arithmatex">\( m \)</span> dorms, each with some capacity (for simplicity, assume capacity is 1 for every dorm).</li>
 </ul>
-<p>We want to assign students to dorms.</p>
+<p>How can we assign students to dorms?</p>
 <h2 id="max-weight-matching">Max Weight Matching</h2>
 <p>One possible solution is to maximize total happiness:</p>
 <div class="definition">
@@ -583,60 +601,84 @@
 <p><strong>Challenge:</strong> Each student has an <em>incentive</em> to exaggerate how much they like their favorite dorm and undercut how much they like other dorms (using a "0" or "negative infinity" weight for those dorms). In other words: max-weight bipartite matching allows students to game the system.</p>
 <p>This occurs because finding the matching that maximizes total happiness is conceptually right, but this naive max-weight matching fails to take incentives into account. Another possible algorithm is Serial Dictatorship.</p>
 <h2 id="serial-dictatorship">Serial Dictatorship</h2>
+<p>This is how Stanford actually assigns dorms to students.</p>
 <div class="definition">
 <p><strong>Mechanism: Serial Dictatorship</strong></p>
 <ol>
 <li>Sort students in some fixed order (random, seniority, alphabetically, etc.).</li>
-<li>Go through the list in <em>that</em> order and allow each student to select their most preferred available dorm.</li>
+<li>Go through the list in <em>that</em> order and allow each student (the "dictator") to select their most preferred available dorm.</li>
 </ol>
 </div>
 <p>How is this better? There can still be students unhappy with their result. Indeed, a common complaint about Serial Dictatorship is unfairness: the first student chooses whichever dorm they want, while the last student gets only the last pick.</p>
 <p>When sorting is random, Serial Dictatorship guarantees <strong>ex-ante fairness</strong>: <em>before</em> the random sorting, all students have equal chances. However, <em>after</em> the sorting happens (even randomly), Serial Dictatorship loses fairness: there's no guarantee of <strong>ex-post fairness</strong>.</p>
 <div class="definition">
-<p><strong>Definition (Mechanism):</strong> A mechanism consists of three things:</p>
+<p><strong>Definition: Mechanism</strong></p>
+<p>A mechanism consists of three things:</p>
 <ol>
 <li>A method of collecting inputs from agents,</li>
 <li>An algorithm that acts on the inputs,</li>
 <li>An action taken based on the output of the algorithm.</li>
 </ol>
 </div>
-<p>In our context (Stanford Housing Problem), based on inputs (dorm preferences) and the algorithm (available dorm after each student's pick), the mechanism assigns dorms.</p>
+<p>In our context (Stanford Undergrad Housing Problem), based on inputs (dorm preferences) and the algorithm (available dorm after each student's pick), the mechanism takes actions (it assigns dorms).</p>
 <p><strong>Note:</strong> All three components matter because there's a feedback loop: how we use inputs impacts what students report as preferences. The naive bipartite matching approach encourages students to game the system by misreporting their preferences.</p>
-<p>Thus, when designing a mechanism, we must consider:
-- The algorithm itself,
-- How/where inputs come from,
-- Actions taken based on inputs,
-- How promised actions affect reported inputs.</p>
+<p>Thus, when designing a mechanism, we must consider:</p>
+<ul>
+<li>The algorithm itself,</li>
+<li>How/where inputs come from,</li>
+<li>Actions taken based on inputs,</li>
+<li>How promised actions affect reported inputs.</li>
+</ul>
 <div class="definition">
-<p><strong>Definition (Strategyproofness/Truthfulness):</strong> A mechanism is strategyproof if it's in every agent's best interest to act truthfully, i.e., to report true preferences.</p>
+<p><strong>Definition: Strategyproofness/Truthfulness</strong></p>
+<p>A mechanism is strategyproof if it's in every agent's best interest to act truthfully, i.e., to report true preferences.</p>
 </div>
+<p>Even more formally, game theorists somtimes use the term <strong>Dominant Strategy Incentive Compatible</strong>:</p>
 <div class="definition">
-<p><strong>Definition (Dominant Strategy Incentive Compatible - DSIC):</strong> <em>(Formal Game Theory concept)</em> A mechanism is dominant strategy incentive compatible if truthfulness is a dominant strategy for each participant. That is, being truthful is a best response regardless of other players' actions.</p>
+<p><strong>Definition: Dominant Strategy Incentive Compatible - DSIC</strong></p>
+<p>A mechanism is dominant strategy incentive compatible if truthfulness is a dominant strategy for each participant. That is, being truthful is a best response regardless of other players' actions.</p>
 </div>
 <div class="theorem">
 <p><strong>Theorem: You Cannot Game Serial Dictatorship</strong></p>
-<p>It is in every student's best interest to choose their favorite available dorm in their turn.</p>
+<p>It is in every student's best interest to choose their favorite available dorm in their turn. Formally, we say that Serial Dictatorship is <strong>strategyproof</strong> or <strong>truthful</strong>.</p>
 </div>
-<p><strong>Proof:</strong>
-Your room choice doesn't affect room availability before your turn. When your turn arrives, your best action is choosing your favorite available room.</p>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<ul>
+<li>Your room choice doesn't affect room availability before your turn.</li>
+<li>When your turn arrives, your best action is choosing your favorite available room.</li>
+</ul>
+</div>
+<p>Why does this prove that Serial Dictatorship is strategyproof? Until your turn comes, it is other students who are bidding, and there is nothing you can do to affect it. However, when comes your turn, you choose what you get, so you should choose the best thing for you.</p>
 <div class="definition">
-<p><strong>Definition (Pareto Optimality):</strong> An assignment <span class="arithmatex">\( A \)</span> is Pareto optimal if, for any other assignment <span class="arithmatex">\( B \)</span>, there's at least one participant strictly preferring <span class="arithmatex">\( A \)</span> over <span class="arithmatex">\( B \)</span>.</p>
+<p><strong>Definition: Pareto Optimality</strong></p>
+<p>An assignment <span class="arithmatex">\( A \)</span> is Pareto optimal if, for any other assignment <span class="arithmatex">\( B \)</span>, there's at least one participant strictly preferring <span class="arithmatex">\( A \)</span> over <span class="arithmatex">\( B \)</span>.</p>
 </div>
 <div class="theorem">
 <p><strong>Theorem: You Cannot Make Everyone Happier Without Making Someone Sadder</strong></p>
 <p>Serial Dictatorship assignments are Pareto Optimal.</p>
 </div>
-<p><strong>Proof:</strong>
-Assume, for contradiction, a different assignment exists making everyone as happy or happier. Consider the first student assigned differently: All better dorms are already assigned identically to students before them. Thus, the first differing student gets a worse dorm and becomes less happy—a contradiction. Therefore, Serial Dictatorship is Pareto Optimal.</p>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Assume, for the sake of contradiction, that a different assignment exists making everyone as happy or happier.</p>
+<p>Consider the first student assigned differently: all better dorms are already assigned identically to students before them.</p>
+<p>Thus, the first differing student gets a worse dorm and becomes less happy—we have reached a contradiction.</p>
+<p>Therefore, Serial Dictatorship is Pareto Optimal.</p>
+</div>
 <h2 id="additional-discussion">Additional Discussion</h2>
-<p><strong>Why is truthfulness good?</strong>
-It prevents corruption and ensures fairness by removing any insider advantage.</p>
-<p><strong>When is truthfulness important?</strong>
-When optimizing happiness, truthful inputs ensure correct objectives.</p>
-<p><strong>When is relaxing truthfulness acceptable?</strong> 
-In contexts with social norms where truthfulness isn't expected (e.g., poker games), strategyproofness isn't crucial.</p>
-<p><strong>Fairness/equity issues with Serial Dictatorship:</strong>
-Fairness depends on sorting order. Seniority or randomness provide fairness ex-ante but not necessarily ex-post.</p>
+<p><strong>Why is truthfulness good?</strong> It prevents corruption and ensures fairness by removing any insider advantage.</p>
+<p><strong>When is truthfulness important?</strong> When optimizing happiness, truthful inputs ensure correct objectives.</p>
+<p><strong>When is relaxing truthfulness acceptable?</strong>  In contexts with social norms where truthfulness isn't expected (e.g., poker games), strategyproofness isn't crucial.</p>
+<p><strong>Fairness/equity issues with Serial Dictatorship:</strong> Fairness depends on sorting order. Seniority or randomness provide fairness ex-ante but not necessarily ex-post.</p>
+<p><strong>Is there any other flaws in Serial Dictatorship?</strong> A dictator's seemingly insignificant decision may have huge impact on other agents. For instance, by the time my turn arrive, only my 9th and 10th choices are available. Since I am almost indifferent between them, I break ties and take my 9th choice. However, it is possible that my 9th choice was in fact someone else's top choice and they <em>really</em> wanted it. This may be even worse if their 2nd-10th choices happen to be already taken.</p>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<ul>
+<li><strong>Definition: Mechanism.</strong> A mechanism meaning soliciting inputs, running an algorithm, and taking actions.</li>
+<li><strong>Definition: Strategyproof/truthful.</strong> A mechanism is strategyproof/truthful is misreporting preferences can never make a participant better off.</li>
+<li><strong>Defintion: Pareto-optimal.</strong> An assignment A is Pareto-optimal if for any other assignment B, there is a participan that (strictly) prefers A over B.</li>
+</ul>
+</div>
 
 
 
