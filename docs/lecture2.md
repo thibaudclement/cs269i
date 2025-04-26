@@ -232,7 +232,7 @@ Hospitals also use "safety choices" after interviews: they may not rank first th
 </div>
 
 
-**Yet, hospitals still strategicall use "safety choices" when ranking doctors post interview. Why?**
+**Yet, hospitals still strategically use "safety choices" when ranking doctors post interview. Why?**
 
 - One possible explanation is ignorance of matching mechanisms and their properties (they did not take CS269I).
 - Another possible explanation is that they consider their reputation/ego. after the matching is complete, the organization that handles the matching publishes the “number needed to fill” metric, which is the lowest ranking a hospital had to go to fill their positions. This is helpful for doctors the following year to get a sense of how competitive a program is, which is therefore also a signal of how prestigious a program is. For instance, Stanford probably don’t have to be turned down by many doctors, so their number is low, while less prestigious hospitals may need to go through more doctors and have a higher number. If a hospital ranks higher doctors that they think will join them, they can reduce their “number needed to fill” metric and appear more prestigious.
