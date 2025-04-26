@@ -1,5 +1,5 @@
 # Market Failures
-(2/1/2023)
+(4/21/2025)
 
 Previously, we assumed free markets converge naturally to optimal outcomes. However, markets often fail to achieve optimal outcomes—known as market failures.
 

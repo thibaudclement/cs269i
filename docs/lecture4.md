@@ -1,5 +1,5 @@
 # Equilibria in Games
-(1/23/2023)
+(4/14/2025)
 
 Previously, agents had dominant strategies. Now, we consider what happens when no dominant strategy exists.
 
