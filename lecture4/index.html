@@ -375,9 +375,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mini-case-study-poker-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mini Case Study: Poker Algorithms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nash-equilibrium-in-non-zero-sum-games" class="md-nav__link">
     <span class="md-ellipsis">
       Nash Equilibrium in Non-Zero-Sum Games
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correlated-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coarse-correlated-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coarse Correlated Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stackelberg-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stackelberg Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
     </span>
   </a>
   
@@ -515,9 +560,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mini-case-study-poker-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mini Case Study: Poker Algorithms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nash-equilibrium-in-non-zero-sum-games" class="md-nav__link">
     <span class="md-ellipsis">
       Nash Equilibrium in Non-Zero-Sum Games
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correlated-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coarse-correlated-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coarse Correlated Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stackelberg-equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stackelberg Equilibrium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
     </span>
   </a>
   
@@ -541,9 +631,10 @@
 
 <h1 id="equilibria-in-games">Equilibria in Games</h1>
 <p>(4/14/2025)</p>
-<p>Previously, agents had dominant strategies. Now, we consider what happens when no dominant strategy exists.</p>
+<p>Last time, we explored what selfish agents should do when the mechanism is not strategyproof, and possibly not fully specified, from a single agent's perspective. Now, let's analyze systems with multiple agents. This serves as an introduction to game theory.</p>
 <div class="example">
-<p><strong>Example: Penalty Kicks</strong></p>
+<p><strong>Example: The Penalty Kick Game</strong></p>
+<p>Consider the scenario of a penalty kick between Messi (kicker) and Lloris (goalie), where the probability of goal is defined as follows:</p>
 <table>
 <thead>
 <tr>
@@ -554,69 +645,261 @@
 </thead>
 <tbody>
 <tr>
-<td>Jump Left</td>
+<td><strong>Jump Left</strong></td>
 <td>0.5</td>
 <td>0.8</td>
 </tr>
 <tr>
-<td>Jump Right</td>
+<td><strong>Jump Right</strong></td>
 <td>0.9</td>
 <td>0.2</td>
 </tr>
 </tbody>
 </table>
-<p>No pure-strategy equilibrium exists because each player has an incentive to deviate.</p>
-</div>
-<p><strong>Solution:</strong> Mixed strategies—kicker left/right (0.6, 0.4), goalie left/right (0.7, 0.3). Expected scoring probability becomes equal (0.62), providing no incentive to deviate.</p>
-<div class="definition">
-<p><strong>Definition: Mixed Strategy</strong></p>
-<p>A probability distribution over pure strategies.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Nash Equilibrium</strong></p>
-<p>A strategy profile where no player benefits from deviating unilaterally.</p>
-</div>
-<h2 id="equilibrium-in-2-player-zero-sum-games">Equilibrium in 2-Player Zero-Sum Games</h2>
-<p><strong>Assumptions:</strong>
-- Exactly 2 players.
-- Sum of payoffs is zero.</p>
-<p>Player one aims: <span class="arithmatex">\(\max_{s_1} \min_{s_2} u(s_1,s_2)\)</span></p>
-<p>Player two aims: <span class="arithmatex">\(\min_{s_2} \max_{s_1} -u(s_1,s_2)\)</span></p>
-<div class="theorem">
-<p><strong>Theorem: Min-Max Payoffs</strong></p>
-<p>In two-player zero-sum games, the max-min payoff equals Nash equilibrium payoff equals min-max payoff.</p>
-</div>
-<div class="definition">
-<p><strong>Definition: Game Theory Terminology</strong></p>
+<p><strong>Questions:</strong></p>
 <ul>
-<li><strong>Game Node</strong>: State in the game.</li>
-<li><strong>Game Tree</strong>: Graph showing reachable game nodes.</li>
-<li><strong>Information Set</strong>: Game nodes indistinguishable given player's information.</li>
+<li>Where should Messi kick?</li>
+<li>Where should Lloris jump?</li>
 </ul>
 </div>
+<p>Lloris does not know which direction Messi is going to kick—and needs to think about it. Messi does not know which direction Lloris is going to jump—and needs to think about it.</p>
+<p>The answer is not obvious, but Game Theory tells us:</p>
+<ul>
+<li>Messi should kick left with probability 0.6 and right with probability 0.4.</li>
+<li>Lloris should jump left with probability 0.7 and right with probability 0.3.</li>
+<li>The probability of goal is 0.62.</li>
+</ul>
+<p>More specifically:</p>
+<ul>
+<li>When Messi kicks left, there is a <span class="arithmatex">\(0.5 \cdot 0.7 + 0.9 \cdot 0.3 = 0.62\)</span>  probability of goal.</li>
+<li>When Messi kicks right, there is a <span class="arithmatex">\(0.8 \cdot 0.7 + 0.2 \cdot 0.3 = 0.62\)</span> probability of goal, too.</li>
+<li>When Lloris jumps left, there is a <span class="arithmatex">\(0.5 \cdot 06 + 0.8 \cdot 0.4 = 0.62\)</span> probability of goal.</li>
+<li>When Lloris jumps right, there is a <span class="arithmatex">\(0.9 \cdot 0.6 + 0.2 \cdot 0.4 = 0.62\)</span> probability of goal, too.</li>
+</ul>
+<p>This is called a Nash Equilibrium:</p>
+<ul>
+<li>If Lloris jumps with these probabilities, Messi is indifferent when kicking left or kicking right.</li>
+<li>If Mess kicks with these probabilities, Lloris is indifferent when jumping left or jumping right.</li>
+<li>When both are kicking/jumping with these probabilities, neither has an incentive to deviate from these probabilities.</li>
+</ul>
+<div class="definition">
+<p><strong>Definition: Nash Equilibrium</strong></p>
+<p>A pair of (possibly randomized) strategies, such that no player has an incentive to deviate. </p>
+</div>
+<p><strong>Question: How do we come up with these probabilities?</strong></p>
+<p>There is an algorithm that comes up with those.</p>
+<p><strong>Question: Do Messi and Lloris know each other’s probabilities?</strong></p>
+<p>No, they don’t. They are deciding in the moment.</p>
+<p><strong>Question: Are both Messi and Lloris’s decisions happening at the same time or is one reacting to the other?</strong></p>
+<p>Lloris does not have time to see what Messi does, so both are happening at the same time.</p>
+<h2 id="equilibrium-in-2-player-zero-sum-games">Equilibrium in 2-Player Zero-Sum Games</h2>
+<p>Assumptions:
+- There are 2 players (Lloris and Messi).
+- This is a Zero-sum game, meaning that their incentives are perfectly misaligned: what Lloris wants is exactly the opposite of what Messi wants.</p>
+<p>Messi wants to optimize the probability of goal, i.e. he wants to maximize over all his possible kick strategies, assuming the worst possible jumping strategy for Lloris:</p>
+<div class="arithmatex">\[
+  Messi's \; opt: \underset{kick-stratregy}{max} \underset{jump-stratregy}{min} Pr[goal]
+\]</div>
+<p>Lloris has the opposite optimization problem: he wants to figure out how to jump, he knows Messi is going to kick in the direction that makes it as hard as possible for him, and he wants to minimize the probability of goal:</p>
+<div class="arithmatex">\[
+  Lloris's \; opt: \underset{jump-stratregy}{min} \underset{kick-stratregy}{max}  Pr[goal]
+\]</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> Messi’s max-min = Nash equilibrium = Lloris’s min-max.</p>
+</div>
+<p>In other words: In a 2-player zero-sum game, even with more than 2 strategies per player, Messi’s max-min optimization problem is the same as the Nash Equilibrium (which tells us that the Nash Equilibrium is unique), which is going to be the same as Lloris’ min-max optimization problem.</p>
+<p><strong>Where did these probabilities come from?</strong></p>
+<p>One way to compute them is to use Linear Programming (LP), which generalizes the <span class="arithmatex">\(s-t \; Max-Flow\)</span>, which is the same as the <span class="arithmatex">\(s-t \; Min-Cut\)</span>, and this duality is the same reason why Messi’s problem is equivalent to Lloris’s problem. This gives us an efficient algorithm to compute these probabilities.</p>
+<h2 id="mini-case-study-poker-algorithms">Mini Case Study: Poker Algorithms</h2>
 <div class="example">
-<p><strong>Example: Poker</strong></p>
-<p>"Heads Up" poker has <span class="arithmatex">\(10^{161}\)</span> states. Approximate strategies (blueprints) and regret minimization algorithms enable practical computation.</p>
+<p><strong>Case Study: "Heads Up" (2-Player) Poker</strong></p>
+<p>Rough rules of Poker:</p>
+<ul>
+<li>Every player is dealt 2 cards (private information)</li>
+<li>Players bet during betting round</li>
+<li>There are some open cards on the table (public information)</li>
+<li>We determine which player's private cards are a better match to the cards on the table</li>
+</ul>
+<p><strong>Can we use Linear Programming to compute the Nash Equilibrium strategy?</strong></p>
+<p>Linear Programming is fast, but Poker is a <em>very</em> large game. How large? Large enough that someone write a research paper about it—actually, about an <em>algorithm</em> for <em>estimating</em> how large it is.</p>
+<p>In fact, there 56 trillion possible card combinations. However, this is not the only thing to consider: we also need to take into account how the other player is betting. Then, the number of possible combinations of what could happen becomes <span class="arithmatex">\(10^{160}\)</span>. Efficient Linear Programming algorithms are not fast enough.</p>
+</div>
+<p>Poker is an extensive-form game, because there are turns. In game theory, an extensive-form game represents a strategic interaction where players make decisions sequentially, and the order of moves is explicitly modeled using a game tree.</p>
+<div class="theorem">
+<p><strong>Definitions: Game Theory Terminology Overload</strong></p>
+<ul>
+<li><strong>Game Node:</strong> State of the game (i.e. all cards dealt, and all bets made, so far)</li>
+<li><strong>Game Tree:</strong> Graph representing which game nodes are reachable from which game node (i.e. there is an edge if we can go from <span class="arithmatex">\(A\)</span> to <span class="arithmatex">\(B\)</span> by calling another bet)</li>
+<li><strong>Information Set:</strong> All the game nodes consistent with a player's information.</li>
+</ul>
+</div>
+<p>The most important part is the <em>Information Set</em>, which represents all the games nodes consistent with a player’s information, i.e. there are different states of the game that correspond to different cards that other players could be holding.</p>
+<p><strong>Why should we worry about all the possible game states? Why can't we just solve the current state/information ste in real time?</strong></p>
+<p>What a player wants to do at a given state of the the game depends on what they know (what they see), but it also depends on what the other players are going to do, which in turns depends on what they think that original player is going to do, and what they think that player is going to do depends on the cards they have now, but also what they might do with other cards.</p>
+<div class="definition">
+<p><strong>Algorithmic Insight #1: Use the Blueprint strategy.</strong></p>
+<ol>
+<li>Blueprint solves a corase approximation of Poker ("only" <span class="arithmatex">\(10^13\)</span> states, i.e. <span class="arithmatex">\(50TB\)</span> to store 1 strategy).</li>
+<li>During live play: we can use Blueprint to solve the actual information set, i.e. to estimate what the other player thinks we would do if we had their informations set.</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Algorithmic Insight #2:</strong> Use regret-minimizing algorithms, e.g., MWU/FTRL.</p>
 </div>
 <div class="theorem">
-<p><strong>Theorem: Regret Minimization Convergence</strong></p>
-<p>In two-player zero-sum games, regret minimization converges to Nash equilibrium.</p>
+<p><strong>Theorem:</strong> If two players play a zero-sum game, and both use a regret-minimization algorithm, they will converge towards a Nash equilibrium.</p>
+</div>
+<div class="example">
+<p><strong>Case Study: "Heads Up" (2-Player) Poker (Cont'd)</strong></p>
+<p>In 2017, CMU's Poker bot beat top human Poker players for the first time.</p>
+</div>
+<div class="summary">
+<p><strong>Recap: 2-Player 0-Sum Game</strong></p>
+<p>At Nash equilibirum:</p>
+<ul>
+<li>Both players choose actions randomly</li>
+<li>Neither player can gain from changing distribution</li>
+<li>Theorem: max-min = Nash equilibrium = min-max</li>
+</ul>
+<p>Algorithms for computing Nash equilibrium:</p>
+<ul>
+<li>Linear programming</li>
+<li>Regret minimization</li>
+</ul>
 </div>
 <h2 id="nash-equilibrium-in-non-zero-sum-games">Nash Equilibrium in Non-Zero-Sum Games</h2>
+<div class="example">
+<p><strong>The Penalty Kick Game, Revisited</strong></p>
+<p>Lloris's incentives:</p>
+<ul>
+<li>Lloris wants to win the World Cup (he already did in 2018).</li>
+<li>Lloris also wants to be the goalie who stopped Messi's penalty kick (to earn more fame and sponsorship opportunities).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Pr[goal]</th>
+<th>Messi kicks Left</th>
+<th>Messi kicks Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lloris jumps Left</strong></td>
+<td>0.5</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td><strong>Lloris jumps Right</strong></td>
+<td>0.9</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Pr[save]</th>
+<th>Messi kicks Left</th>
+<th>Messi kicks Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lloris jumps Left</strong></td>
+<td>0.4</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Lloris jumps Right</strong></td>
+<td>0</td>
+<td>0.6</td>
+</tr>
+</tbody>
+</table>
+<p>Therefore: <span class="arithmatex">\(Lloris's utility = Pr[save] - Pr[goal]\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>U_{Messi}</th>
+<th>Messi kicks Left</th>
+<th>Messi kicks Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lloris jumps Left</strong></td>
+<td>0.5</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td><strong>Lloris jumps Right</strong></td>
+<td>0.9</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>U_{Lloris}</th>
+<th>Messi kicks Left</th>
+<th>Messi kicks Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lloris jumps Left</strong></td>
+<td>-0.1</td>
+<td>-0.8</td>
+</tr>
+<tr>
+<td><strong>Lloris jumps Right</strong></td>
+<td>-0.9</td>
+<td>0.4</td>
+</tr>
+</tbody>
+</table>
+<p>This is what Lloris is really maximizing (while Messi is only optimizing the probability of goal).</p>
+<p><strong>Where should Messi kick now? Where should Lloris jump now?</strong></p>
+<p>It is no longer a zero-sum game, because the incentives of Messi and Lloris are neither perfectly aligned not perfectly misaligned. Messi does not care whether he misses or Lloris saves, but Lloris does (he would rather save).</p>
+</div>
+<p><strong>How should we model this question?</strong></p>
+<p>We can use a Nash equilibrium, which always exists in a finite game, even if it is not a zero-sum game.</p>
 <div class="theorem">
 <p><strong>Theorem: Nash's Existence Theorem (1951)</strong></p>
-<p>Every finite game has at least one Nash equilibrium (possibly mixed strategies).</p>
+<p>Every finite game has at least one Nash equilibrium (possibly mixed strategies). If players play the Nash equilibrium, neither wants to deviate.</p>
 </div>
-<p><strong>Issues:</strong>
-- Equilibria not unique.
-- Hard to compute.
-- May not make practical sense.</p>
+<p><strong>Caveats:</strong> The Nash equilibrium...</p>
+<ul>
+<li>... is no longer unique.</li>
+<li>... is no longer equal to the max-min and the min-max.</li>
+<li>... is not approached by Regret Minimization.</li>
+<li>... is intractable to compute, even approximately.</li>
+<li>... sometimes does not make sense (see below).</li>
+</ul>
 <div class="example">
-<p><strong>Example: Grade Game</strong></p>
-<p>Two students choose grades <span class="arithmatex">\(x, y \in \{2,...,99\}\)</span>. Equilibrium: <span class="arithmatex">\(x = y = 2\)</span>.</p>
+<p><strong>Example: The CS269I Grade Game</strong></p>
+<p>You and your partner submitted a wonderful project, but the instructor is not sure how much each of you contributed to it. So, they will assign your grades using the following game:</p>
+<ol>
+<li>You send the instructor <span class="arithmatex">\(x \in \{2, ..., 99\}\)</span>, and your partner sends the instructor <span class="arithmatex">\(y \in \{2, ..., 99\}\)</span>.</li>
+<li>
+<p>Then the instructor assigns you grade as follows:</p>
+<ul>
+<li>If <span class="arithmatex">\(x = y\)</span>, then your grade is <span class="arithmatex">\(x\)</span>.</li>
+<li>If <span class="arithmatex">\(x &lt; y\)</span>, then your grade is <span class="arithmatex">\(min\{x,y\}+2\)</span>.</li>
+<li>If <span class="arithmatex">\(x &gt; y\)</span>, then your grade is <span class="arithmatex">\(min\{x,y\}-2\)</span>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Which grade should you send to the instructor?</strong></p>
+<p>If you know your partner is going to put 99, then you put 98 so you get 100, and your friend get 96. So, maybe, you are going to put 97 and get 99, but if your friend it doing 97, you would rather put 96 and get 98. But then your friend is doing 96, so you would rather put 95, etc. It turns out that the unique Nash equilibrium in this game is when both players play 2 (x = y = 2), which is not expected in practice with real players.</p>
 </div>
+<p>So, we have this theorem that says that a Nash equilibrium always exists, but it has all these caveats. Let's consider alternative solution concepts that have emerged in game theory which, sometimes, may be a better model for this kind of games or strategic situations.</p>
+<h2 id="correlated-equilibrium">Correlated Equilibrium</h2>
 <div class="example">
-<p><strong>Example: Intersection Game</strong></p>
+<p><strong>Example: The Intersection Game</strong></p>
+<p>This is similar to the "Chicken" and the "Hawk-Dove" games. Essentially, you arrive at an intersection, where another car arrives as well, and you need to decide what to do:</p>
 <table>
 <thead>
 <tr>
@@ -638,32 +921,141 @@
 </tr>
 </tbody>
 </table>
+<p>What does this mean?</p>
 <ul>
-<li>Pure equilibria: (Go, Wait), (Wait, Go)</li>
-<li>Mixed equilibrium: small probability for simultaneous Go.</li>
-<li><strong>Correlated Equilibrium</strong>: Randomize between (Go, Wait) and (Wait, Go).</li>
+<li>If we both wait, we both get 0, nobody is moving.</li>
+<li>If we go and other person waits, we get 1 and they get 0.</li>
+<li>If we wait and the other person goes, we get 0 and they get 1.</li>
+<li>If we both go, we are very happy, we get a very negative utility, we have an accident.</li>
+</ul>
+<p>This implies the following equilibria:</p>
+<ul>
+<li><strong>Asymmmetric equilibria:</strong> (Go, Wait), (Wait, Go), i.e. if they go, we want to wait, and vice versa.</li>
+<li><strong>Symmetric equilibria:</strong> Go with a probability of <span class="arithmatex">\(1\%\)</span> and Wait with a probability of <span class="arithmatex">\(99\%\)</span>, i.e. we each independently go with a probability of <span class="arithmatex">\(1\%\)</span> and wait with a probability of <span class="arithmatex">\(99\%\)</span>—which is not great, since there is still a <span class="arithmatex">\(1/10000\)</span> probability of colliding.</li>
+<li><strong>Correlated Equilibrium</strong>: (Go, Wait) with a probability of <span class="arithmatex">\(50\%\)</span> and (Wait, Go) with a probability of <span class="arithmatex">\(50\%\)</span>, i.e. we go and they wait with a probability of <span class="arithmatex">\(50\%\)</span>, and we wait and they go with a probability of <span class="arithmatex">\(50\%\)</span>. This is a correlated distribution: it is not independent. To implement this, we need a correlating device, i.e. something that is going to help us correlate our choices, such as a spotlight. For instance, the spotlight, with a probability of <span class="arithmatex">\(50\%\)</span> is going to show us red and show them green, or vice versa, but it is never going to show us both green (hopefully).</li>
 </ul>
 </div>
 <div class="definition">
 <p><strong>Definition: Correlated Equilibrium</strong></p>
-<p>Players follow a correlated distribution of recommended actions. No player benefits from deviating given the recommendation.</p>
+<p>A correlating device sends each player a secret recommended action ("signal") from a pubicly-known correlated distribution. No player can gain from deviating from the recommended action.</p>
 </div>
-<p>Correlated equilibria can be efficiently computed.</p>
+<p>In other words, when we have a correlated distribution over actions that gives a signal/recommended action, if the other player follows their recommended action, it is in our best interest to follow our own recommended action.</p>
+<p>For instance, if the spotlight shows us red, it is probably because someone else has green, so we don’t want to go, but if the spotlight shows us green, then we know everyone must have red, so we might as well go.</p>
+<p><strong>Note:</strong> Every Nash equilibrium is an (un)correlated equilibrium.</p>
+<p><strong>Good news:</strong></p>
+<ul>
+<li>A correlated equilibrium can be computed efficiently (e.g. with Linear Programming).</li>
+<li>If every player runs a Swap-Regret-minimizing algorithm, then the play converges towards the set of correlated equilibria. It is not really an equilibrium, though, as players will continue to cycle around the set of correlated equilibria forever.</li>
+<li>If every player runs an External-Regret-minimizing algorithm, then the play converges towards the set of coarse correlated equilibria.</li>
+</ul>
+<h2 id="coarse-correlated-equilibrium">Coarse Correlated Equilibrium</h2>
+<p>What is the difference between a correlated equilibrium and a coarse correlated equilibrium?</p>
+<p>Both types of equilibria rely on a correlating device to send each player a secret recommended action ("signal") from a publicly-known correlated distribution. However:</p>
+<ul>
+<li>In the <strong>correlated equilibrium:</strong> Players choose to follow the recommended action <em>after</em> seeing it.</li>
+<li>In the <strong>coarse correlated equilibrium:</strong> Players want to follow their average recommended action, byt may not like some recommendations.</li>
+</ul>
+<p><strong>Question: How do we know which algorithm and the equilibrium are appropriate?</strong></p>
+<p>One way to think about it is to remember that agents are going to do what is good for them. If you think players are going to use the simplest algorithm, it is probably external regret minimizing, they will like end up at the coarse correlated equilibrium. If you expect them to use a more sophisticated swap-regret algorithm (which has other game theory advantages), you expect them to end up at the correlated algorithm.</p>
+<p><strong>Bad News:</strong></p>
+<ul>
+<li>Just like the Nash equilibrium, the correlated equilibrium is not unique, and sometimes, it does not even make sense (cf. the CS269I Grade Game).</li>
+<li>Without a correlating device, we are not in an equilibrium: players have an incentive to deviate.</li>
+</ul>
+<h2 id="stackelberg-equilibrium">Stackelberg Equilibrium</h2>
+<div class="example">
+<p><strong>Example: The Intersection Game, Revisited</strong></p>
+<p>As a reminder:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Go</th>
+<th>Wait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Go</strong></td>
+<td>(-99,-99)</td>
+<td>(1,0)</td>
+</tr>
+<tr>
+<td><strong>Wait</strong></td>
+<td>(0,1)</td>
+<td>(0,0)</td>
+</tr>
+</tbody>
+</table>
+<p>However, suppose now that you are playing against a "dog driver":</p>
+<ul>
+<li>You don't trust the dog to be rational.</li>
+<li>You don't trust the dog to follow the correlating device (the spotlight signal).</li>
+<li>You wait... so the dog can go.</li>
+</ul>
+<p><strong>Conclusion:</strong> The dog is better than you at the Intersection Game. More generally, committing to a strategy gives power.</p>
+</div>
+<p>This is what we call a Stackelberg equilibrium.</p>
 <div class="definition">
 <p><strong>Definition: Stackelberg Equilibrium</strong></p>
-<p>Strategy profile with leader committing first, follower optimally responds, and leader optimally chooses commitment.</p>
+<p>A Stackelberg equilibrium is a pair of strategies (Leader's strategy, Follower's strategy) such that:</p>
+<ol>
+<li>The Follower's strategy is optimal given the Leader's strategy.</li>
+<li>The Leader's commitment is optimal, i.e. the payoff is optimal for the Leader among all pairs satisfying #1.</li>
+</ol>
 </div>
-<div class="remark">
-<p>Leader commitment can result in higher payoffs than correlated equilibria.</p>
+<p>In other words, the Follower's strategy is a best response to what the strategy chosen by the Leader, and the Leader chooses the optimal strategy for them assuming that the Follower is going to pick a best response.</p>
+<div class="theorem">
+<p>The Leader’s utility, in the optimal Stackerlberg equilibrium, is at least what they can get in any possible equilibrium.</p>
+</div>
+<p><strong>Note:</strong> If we think about the games we talked about so far, we talked about mixed strategies. For instance, Messi did not want to tell Lloris which side he was going to kick. However, in the Stackelberg equilibrium, without loss of generality, the follower is using a deterministic action, because the leader is already committed to a strategy, and the fact that the follower is using a deterministic action gives us an efficient algorithm using Linear Programming agin (it is something that we can compute efficiently).</p>
+<div class="example">
+<p><strong>Mini Case Study: Security Games</strong></p>
+<p>A Stackelberg equilibrium may be used to model how security games where:</p>
+<ul>
+<li>The goal for defense forces (i.e. security checks, patrols, etc.) is to choose the optimal strategy.</li>
+<li>The assumption is that attackers can observe the defense strategy.</li>
+</ul>
+<p>In practice, this is deployed in a variety of domains:</p>
+<ul>
+<li>Infrastructure (airport security)</li>
+<li>Nature (wildlife protection)</li>
+<li>Urban crime (LA Metro)</li>
+<li>Cybersecurity (honeypots, audits)</li>
+</ul>
+<p>Challenges in real-world applications include:</p>
+<ul>
+<li><strong>Algorithmic difficulty:</strong> How to deal with the combinatorial number of possible actions (e.g. a route in a large road network)?</li>
+<li><strong>Uncertainty:</strong> What are the attacker's payoffs? Is the attacker rational? Will the defender be able to executed their strategy as planned?</li>
+<li><strong>Collagoration with human defenders:</strong> Will patrol teams follow, or feel "micro-managed" by, the algorithm?</li>
+</ul>
+</div>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Three Solution Concepts</strong></p>
+<ul>
+<li>
+<p><strong>Nash Equilibrium:</strong> Each player samples independently from a distribution. Nobody has an incentive to deviate from the distribution.</p>
+<ul>
+<li>Cleanest game theory assumption.</li>
+<li>May not be achievable in complex environments.</li>
+</ul>
+</li>
+<li>
+<p><strong>Correlated Equilibrium:</strong> A correlated distribution of actions that every player would rather follow. This may arise when agents independently run ML algorithms.</p>
+</li>
+<li>
+<p><strong>Stackelberg Equilibrium:</strong> The Follower's strategy is optimal given the Leader's strategy, and the Leader's commitment is optimal.</p>
+<ul>
+<li>Applies when one player has commitment power.</li>
+<li>It is unclear how to generalize for more than two players.</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="example">
-<p><strong>Example: Security Games</strong></p>
-<ul>
-<li>Airport security</li>
-<li>Infrastructure defense</li>
-<li>Cybersecurity</li>
-<li>Anti-poaching</li>
-</ul>
+<p><strong>Example: The Penalty Kick Game—What Really Happened (Spoiler Alert)</strong></p>
+<p>Messi kicked left. Lloris jumped left. Messi scored.</p>
 </div>
 
 
