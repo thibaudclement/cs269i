@@ -133,6 +133,8 @@ In the short run the supply curve is therefore flat (perfectly elastic) at rough
 
 The price where demand and supply curves meet is called the market clearing price or market equilibrium.
 
+![Markeet Clearing Price](images/Markeet Clearing Price.png)
+
 </div>
 
 The vanilla assumption in classical economics is that buyers and sellers should naturally converge to the special price \(p^\star\), where the supply meets the demand. At market clearing price, the numbers of interested buyers and sellers are equal, so they can all transact (i.e. "clear the market").
