@@ -1,5 +1,5 @@
 # Market Equilibrium
-(4/16/2025)
+_April 16, 2025_
 
 Previously, we examined scenarios without monetary transfers. Introducing money changes market dynamics substantially:
 

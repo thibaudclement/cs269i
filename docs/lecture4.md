@@ -1,5 +1,5 @@
 # Equilibria in Games
-(4/14/2025)
+_April 14, 2025_
 
 Last time, we explored what selfish agents should do when the mechanism is not strategyproof, and possibly not fully specified, from a single agent's perspective. Now, let's analyze systems with multiple agents. This serves as an introduction to game theory.
 

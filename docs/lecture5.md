@@ -1,5 +1,5 @@
 # P2P File-sharing Dilemma
-(4/14/2025)
+_April 14, 2025_
 
 **Historical Context:** Napster (1999-2001), Gnutella (2000 onwards). Issue: Free-riding.
 

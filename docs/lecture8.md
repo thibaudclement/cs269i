@@ -1,5 +1,5 @@
 # Single-Unit Auctions
-(4/23/2025)
+_April 23, 2025_
 
 Auctions are valuable in settings where price discovery is needed, such as:
 

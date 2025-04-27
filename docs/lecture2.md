@@ -1,5 +1,5 @@
 # Stable Two-Sided Matchings
-(4/2/2025)
+_April 2, 2025_
 
 After medical school, med students start their internship called a "residency." Each (prospective) doctor has preferences over hospitals, and each hospital has preferences over doctors. How should doctors and hospitals be matched?
 

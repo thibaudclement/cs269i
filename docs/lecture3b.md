@@ -1,5 +1,5 @@
 # Top Trading Cycles
-(1/18/2023)
+_January 18, 2023_
 
 <div class="remark" markdown="1">
 _**Note:** This lecture was skipped during the Spring 2025 quarter. Below are notes from the Winter 2023 quarter._

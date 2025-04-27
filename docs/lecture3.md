@@ -1,5 +1,5 @@
 # Online Learning and Regret Minimization
-(4/9/2025)
+_April 9, 2025_
 
 So far in this class, agents had dominant strategies, such as doctor reporting their true preferences in DA, so we had a good guess of what they should do. However, what should agents do without dominant strategies or even knowledge of the game's rules? In other words, what should selfish agents do when the mechanism is not strategyproof, and possibly not fully specified? Let's explore this question from a single agent's perspective.
 

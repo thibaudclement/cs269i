@@ -1,5 +1,5 @@
 # One-Sided Matching and Serial Dictatorship
-(3/31/2025)
+_March 31, 2025_
 
 **The Stanford Undergrad Housing Problem:**
 
