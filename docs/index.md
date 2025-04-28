@@ -12,4 +12,4 @@ CS269I aims to teach students how to think about incentives (through lagnauge, f
 
 ## Credit
 
-These course notes for Stanford CS269I are based on the content of Aviad Rubinstein's lectures in the Spring 2025 quarter. This site is developed by Thibaud Clement, based on Eric Gao's original course notes from the Winter 2023 quarter.
+These course notes for Stanford CS269I are based on the content of Aviad Rubinstein's lectures in the Spring 2025 quarter. This site is developed by Thibaud Clement, based on Eric Gao's original course notes from the Winter 2023 quarter and Thibaud Clement's own course notes from the Spring 2025 quarter..
