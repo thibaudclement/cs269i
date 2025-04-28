@@ -1,6 +1,7 @@
 site_name: Stanford CS269I Course Notes
 theme:
   name: material
+  nav_title: Custom Sidebar Title
   palette:
     scheme: default
   features:
@@ -24,7 +25,6 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
-  - Welcome: index.md
   - One-Sided Matching and Serial Dictatorship: lecture1.md
   - Stable Two-Sided Matchings: lecture2.md
   - Online Learning and Regret Minimization: lecture3.md
@@ -33,4 +33,3 @@ nav:
   - P2P File-sharing Dilemma: lecture5.md
   - Market Equilibrium: lecture6.md
   - Market Failures: lecture7.md
-  - Auctions: lecture8.md
