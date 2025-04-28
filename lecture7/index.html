@@ -476,6 +476,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -577,6 +586,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -595,70 +613,349 @@
 
 <h1 id="market-failures">Market Failures</h1>
 <p><em>April 21, 2025</em></p>
-<p>Previously, we assumed free markets converge naturally to optimal outcomes. However, markets often fail to achieve optimal outcomes—known as market failures.</p>
-<h2 id="externalities-and-public-goods">Externalities and Public Goods</h2>
-<p><strong>Externalities</strong>: Effects of transactions on third parties not directly involved.</p>
-<p><strong>Public Goods</strong>: Goods accessible to everyone and not owned individually.</p>
-<p>Examples:
-- Environmental harm from air travel (negative externality).
-- WiFi bandwidth overuse (negative externality).</p>
-<p><strong>Solutions:</strong>
-1. <strong>Pigouvian Tax</strong>: Tax transactions proportional to the externality they cause.
-2. <strong>Coasian Bargaining</strong>: Privatize public goods and let market bargaining reach social efficiency (Coase theorem).</p>
-<h2 id="transaction-costs">Transaction Costs</h2>
-<p>Costs associated with making transactions that prevent beneficial trades.</p>
-<p><strong>Examples:</strong>
-- Sales tax blocking a mutually beneficial sale.
-- Time/information costs preventing trades (hungry student looking for apples).</p>
-<p>Transaction costs can be monetary or non-monetary (time, effort, information).</p>
-<h2 id="market-thickness">Market Thickness</h2>
-<ul>
-<li><strong>Thick Market</strong>: Many buyers/sellers, competitive prices, efficient outcomes.</li>
-<li><strong>Thin Market</strong>: Few buyers/sellers, monopoly pricing, inefficiencies.</li>
-</ul>
-<p><strong>Why monopolies are problematic:</strong>
-- Reduced quantity sold.
-- Higher prices.
-- Lower consumer surplus.</p>
-<p>The first welfare theorem applies with cost-covering reserve prices, but these reserve prices aren't strategyproof:</p>
-<div class="proof">
-<p><strong>Proof:</strong></p>
-<p>If reserve prices are nonbinding, sellers can slightly increase them and remain profitable. If binding (equal to cost), sellers earn zero profit, thus increasing prices slightly above cost yields positive profit. This creates a profitable deviation.</p>
+<p>The vanilla assumption at the foundation of classical microeconomics is that a free market ("invisible hand") naturally converges to an optimal outcome.</p>
+<div class="definition">
+<p><strong>Definition: Market Failure</strong></p>
+<p>When the market fails to converge to an optimal outcome.</p>
 </div>
-<p><strong>Ways around this:</strong>
-- In large markets, deviations from strategyproofness diminish (strategyproof-in-the-large).
-- Limited seller information on buyer valuations restricts strategic price setting.</p>
-<p><strong>Thickening Markets:</strong>
-- Encourage participation and retention.
-- Merge markets (e.g., larger kidney exchanges).
-- Batch transactions to aggregate buyers and sellers.</p>
+<p>It is important to understand what can go wrong in market design and which strategies exist for mitigating these issues. In this lecture, we focus on five types of market failures:</p>
+<ol>
+<li>Externalities and public goods</li>
+<li>Transaction costs</li>
+<li>Market thinness/monopolies</li>
+<li>Timing issues</li>
+<li>Information asymmetry</li>
+</ol>
+<h2 id="externalities-and-public-goods">Externalities and Public Goods</h2>
+<p>This is probably the most important market failure.</p>
+<div class="definition">
+<p><strong>Definition: Externality</strong></p>
+<p>A side-effect on someone other than the seller/buyer.</p>
+</div>
+<p>In other words, an externality is the net effect a transaction has on everyone else. For instance, if you are watching a lecture online, as a side-effect, your roommate's Wi-Fi is congested.</p>
+<p>An externality is a market failure when market participants don't have incentives to reduce negative externalities and increase positive externalities.</p>
+<div class="definition">
+<p><strong>Definition: Public Good</strong></p>
+<p>Something that belongs to everybody but owned by nobody.</p>
+</div>
+<p>A market failure occurs when market participants are under-incentivized to invest in public goods.</p>
+<p>Ecological damage is considered as "the biggest market failure of all time." It is a side-effect of many economic activities, from hunting, to farming, and Bitcoin mining.</p>
+<p>The environment is a public good. Whose it it? Who is vested enough to protect it? When we pollute and hurt nature, it hurts everyone (it has a lot of externality on other people, with a large total effect), and we cannot just let the free market take care of the environment.</p>
+<p>What can we do about it?</p>
+<div class="remark">
+<p><strong>Ecological Damage Mitigation Strategies</strong></p>
+<ul>
+<li><strong>Pigouvian Tax:</strong> Named after British economist Arthur Cecil Pigou, the idea is to tax proportionally to the externality. An example of this is a carbon tax: if you pollute, you have to pay for how much you pollute, which incentivizes you to pollute less. Similarly, if you smoke, there are externalities for other people (such as second-hand smoking and more expensive health care), so it makes sense to tax you.</li>
+<li><strong>Coasian bargaining:</strong> Named after British economist Ronald Coase, the idea is to auction off public goods. Everyone can throw their pollution into the air because no one owns it, but if someone owned all the air, they would charge you for polluting it. However, is it a great idea that someone owns all the air? </li>
+</ul>
+</div>
+<p><strong>Question: Is a library an example of a public good?</strong></p>
+<p>Yes, it is a great example of a public good.</p>
+<p><strong>Question: Can the government be a participant in the market, given that libraries and national parks are public goods, but on government land?</strong></p>
+<p>We usually think of those as public goods and we think of the government not as a participant in the market but like an organization that is formed to take care of those public goods.</p>
+<p><strong>Key point:</strong> Environmental impact is a huge example of market failure, even though it is a fairly simple one.</p>
+<h2 id="transaction-costs">Transaction Costs</h2>
+<p><strong>Note:</strong> Computer science really kicks in to address this market failure.</p>
+<p>Costs associated with making transactions that prevent beneficial trades.</p>
+<div class="example">
+<p><strong>Example</strong></p>
+<p>I would be willing to pay <span class="arithmatex">\(\$10,000\)</span> for a boat. You are happy at home, so you would rather have <span class="arithmatex">\(\$9,900\)</span> than your boat. Should you sell me your boat?</p>
+<ul>
+<li>In theory: Yes! Regardless of price, we would be <span class="arithmatex">\(\$100\)</span> happier in total.</li>
+<li>In practice: Probably not, considering a <span class="arithmatex">\(9\%\)</span> sales tax.</li>
+</ul>
+</div>
+<p>What can we do about it? Legally, not much: "nothing is certain except death and taxes."</p>
+<div class="example">
+<p><strong>Example</strong></p>
+<p>I am hungry and willing to pay <span class="arithmatex">\(\$10\)</span> for an apple. Someone out there would rather have <span class="arithmatex">\(\$0.99\)</span> than their apple. Should I buy the apple from them?</p>
+<ul>
+<li>In theory: Yes!</li>
+<li>In practice: How would I find them? How would I send them the money?</li>
+</ul>
+</div>
+<p>Finding someone with an apple might cost more than <span class="arithmatex">\(\$10\)</span>, even though they are out there. There is another form of transaction cost (distinct from taxes), associated with search, finding matches, and payment.</p>
+<div class="remark">
+<p><strong>Transaction Costs Mitigation Strategies</strong></p>
+<p>Facilitating transactions matters because, even if in theory I would rather than an apple, and someone would rather have <span class="arithmatex">\(\$0.99\)</span>, finding them and paying them is hard.</p>
+<p>Lots of companies facilitate transactions: dating apps, Couchsurfing, Airbnb, ride hailing apps, Craigslist, eBay, Amazon, TaskRabbit, StubHub, Mechanical Turk, etc.</p>
+</div>
+<h2 id="market-thickness">Market Thickness</h2>
+<p>Market thinness is actually one <em>reason</em> for high transaction costs.</p>
+<div class="definition">
+<p><strong>Definition: Thick Market</strong></p>
+<p>We say that a market is thick is there are many buyers and many sellers.</p>
+</div>
+<p>In a thick market:</p>
+<ul>
+<li>Sellers and buyers have a lot of options.</li>
+<li>Prices are at (or close to) market equilibrium.</li>
+<li>The outcome is welfare-maximizing.</li>
+</ul>
+<div class="example">
+<p><strong>Example of a Thick Market:</strong> A market in Lagos, Nigeria. There are lots of people with lots of options to go from, and a lot of competition, so we expect the price to be at or close to market equilibrium.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Thin Market</strong></p>
+<p>We say that a market is thin is there are few buyers and many sellers.</p>
+</div>
+<p>In a thin market:</p>
+<ul>
+<li>There are no buyers in sight.</li>
+<li>If somes buyers do come, sellers monopolize.</li>
+<li>The outcome is sub-optimal.</li>
+</ul>
+<div class="example">
+<p><strong>Example of a Thin Market:</strong> One motorcycle selling ice cream in the Faysoum Desert, Egypt. There is one seller, and zero buyer. If a buyer shows up in the middle of the desert and really wants ice cream, the seller will hike up the price and take advantage of the fact that there is only one ice cream seller in the desert.</p>
+</div>
+<p><strong>Why are monopolies a problem?</strong></p>
+<p>When we consider sellers' incentives, the First Welfare Theorem extends to good with reserve prices to cover costs. For example, an Airbnb host should never rent a room below the total of their cleaning cost, insurance, and hotel tax.</p>
+<p>However, sellers setting reserve prices is <em>not</em> strategyproof (like hospitals in DA). Moreover, sellers have simple, obvious manipulations (unlike hospitals, who had to know what other hospitals and doctors were bidding, sellers do not need that information).</p>
+<div class="example">
+<p><strong>Example: Monopoly</strong> </p>
+<p>Let's consider a scenario with 1 seller (<span class="arithmatex">\(true cost = 0\)</span>) and 1 buyer (<span class="arithmatex">\(value = 100\)</span>):</p>
+<ul>
+<li>Any price between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(100\)</span> would be a competitive equilibrium.</li>
+<li>DA-with-prices would suggest <span class="arithmatex">\(p = 0\)</span> (buyer-optimal).</li>
+<li>The seller wants to set the reserve price to <span class="arithmatex">\(100\)</span>.</li>
+</ul>
+<p>On Airbnb, hosts set prices: nobody is actually running DA-with-prices. Let's recall that DA-with-prices is buyer-strategy proof but <em>super not</em> seller-strategy proof anyway.</p>
+</div>
+<p>This is why monopolies are a real problem, especially in a thin market. However, there are ways to get around it:
+- <strong>Thick(er) market:</strong> As a market becomes very thick (it is far from a monopoly), then it approaches seller-strategy proof. We say that it is <em>strategyproof-in-the-large</em>.
+- <strong>Information limitation:</strong> Sellers still need to know the buyer’s value to set a good reserve price, so if they don’t really have a lot of information, even with a monopoly, then they cannot set a very high reserve price, so information limitation helps.</p>
+<p>What can we do about it?</p>
+<div class="remark">
+<p>** Market Thinness Mitigation Strategies**</p>
+<p>If monopolies and thin markets are a problem, then one solution is to build a thick market (or make a market thicker).</p>
+<p>Solutions include:</p>
+<ul>
+<li>Spend a lot of resources on <strong>recruiting</strong> a lot of early adopters to get a thick market, and then <strong>retaining</strong> them.</li>
+<li><strong>Scale markets</strong>, for instance by merging existing markets (see example of kidney exchange programs).</li>
+<li><strong>Batch transactions</strong>:<ul>
+<li>Every once in a while, there is a new patient and a kidney that are available for a match, and we may wonder when we should try to clear the market. In many countries, they wait 3-4 months to have a batch and try to find matches, while in the US, the frequency is much higher, i.e. around 1 week. One reason for this is that there is competition between markets, so if one market is matching every few months, and another is matching every few weeks, then you can match quicker in the latter, but it may not be an optimal match, so there is a trade-off.</li>
+<li>In the context of ride-sharing/ride-hailing, when you order an Uber ride, it might wait for a couple of minutes to pool you with other people who are ordering a car to find the best matches between drivers and riders.</li>
+</ul>
+</li>
+</ul>
+</div>
 <h2 id="timing-issues">Timing Issues</h2>
-<p><strong>Market Unraveling:</strong>
-- Matches occur prematurely (medical students matched early, creating mismatches over time).</p>
-<p><strong>Exploding Offers:</strong>
-- Offers requiring rapid responses due to competitive pressures or regulatory constraints.</p>
-<p><strong>Examples:</strong>
-- APPIC psychologist hiring (1970–1990s) faced early and premature matching despite rules.</p>
-<p><strong>Resolving Timing Issues:</strong>
-- Centralized matching mechanisms.
-- Allow reneging on exploding offers to remove incentives to rush decisions.</p>
+<div class="example">
+<p><strong>Timing Issue #1: Committing to Contracts Too Early (Market Unravelling)</strong></p>
+<p>In the medical residency (doctor-hospitals) job market pre-NRMP:
+- 1900's-1940's: The market was decentralized, and hospitals were racing to make offers earlier.
+- If other hospitals were making offers in December, then you had to make offers in November (slightly more uncertainty, but much less competition).
+- If other hospitals were making offers in Novenber, ...
+- ... by 1945, hospitals were making job offers to first-year students.</p>
+<p>This is a market failure because commitments were made too early: first-year students don’t know which speciality they want and how good they really are. There was a lot of uncertainty, it was hard to tell whether doctors were a good match, yet <em>because of</em> uncertainty, hospitals were sending offers too early.</p>
+<p>However, now, with the centralized system, offers are sent during the final year of study, so doctors know better what they want.</p>
+</div>
+<div class="example">
+<p><strong>Timing Issue #2: Exploding Offers</strong></p>
+<p>An exploding offer is like a job offer that requires a very short response.</p>
+<p>One reason why one wants to give exploding offers is that, if a job offer is turned down, an employer needs to scramble to find someone else to fill the position.</p>
+<p>This type of constraint is amplified when:</p>
+<ul>
+<li>There is a limited time window for making offers, since you don’t have more time to turn around.</li>
+<li>An employer is constrained to only hire exactly one person. If you hire 10 people, you can make 20 offers, but if you hire 1 person, you need to know very fast if they are going to accept the offer or not, so you put the pressure on the candidate.</li>
+</ul>
+</div>
+<div class="example">
+<p><strong>The de Gea transfer</strong></p>
+<ul>
+<li>24 hours is a short time window to make a goalie transfer decision worth millions of euros.</li>
+<li>The reason of this is that FIFA has a limited time window for when you are allowed to transfer soccer players.</li>
+<li>Each team has exactly one starting goalie, so they cannot make offers to three goalies (they don’t want to have 2 and they don’t want to have 0).</li>
+</ul>
+<p><em><strong>Note:</strong> David de Gea's transfer to Real Madrid from Manchester United in 2015 failed due to administrative issues, specifically the late submission of paperwork. The deal was agreed upon, including a part-exchange deal with Real Madrid's Keylor Navas. However, the paperwork was not submitted in time for the La Liga deadline, leading to the transfer collapse.</em></p>
+</div>
+<div class="example">
+<p><strong>An Extreme Case</strong></p>
+<p>According to a 2005 applicant for federal judicial clerkships:</p>
+<p><em>"I received the offer via voicemail while I was in flight to my second interview. The judge actually left 3 messages: the first to make the offer, the second to tell me that I should respond soon, and the third to rescind the offer. It was a 35-minute flight."</em></p>
+</div>
+<div class="example">
+<p><strong>Timing Issue #3: Not Waiting For The Market To Clear</strong></p>
+<p>This is related to hiring psychologists:</p>
+<ul>
+<li>Starting at 9am, employers can call psychologists to offer them a position.</li>
+<li>They may say yes, and then call back and decline because they got a better offer.</li>
+<li>Then employers had to go back to the next psychologist on their preference list.</li>
+</ul>
+<p><em>You would hope that this was an employer-optimal DA mechanism.</em></p>
+<p>In practice:</p>
+<ul>
+<li>Employers were worried that psychologists would reject them at 3:59pm, right before the 4:00pm deadline, so they asked that candidates commit to an accepted offer and do not switch.</li>
+<li>Candidates started accepting offers that may have been their safety choices rather than their favorite choice.</li>
+<li>Then, employers started making commitments earlier and earlier.</li>
+</ul>
+<p>This resulted in a suboptimal matching and it was far from being strategyproof because psychologists started to strategize and think about whether they should commit to an employer that was a safety choice even though they may like another employer better, and therefore, it was not stable.</p>
+<p>This is another example of market unraveling.</p>
+</div>
+<p>What can we do about it?</p>
+<div class="remark">
+<p><strong>Timing Issues Mitigation Strategies</strong></p>
+<p>Solutions to deal with timing issues include:</p>
+<ul>
+<li>Use <strong>centralized matching systems</strong> to prevent this type of market unraveling, like we have seen for doctors and hospitals.</li>
+<li>Set <strong>rules that do not allow agents to make offers before certain dates</strong>, but in practice, these rules tend to fail, because there are incentives to bend the rules and still make early offers and ask for early commitments</li>
+<li>In practice, what does seem to work better is to have <strong>rules that allow candidates to accept and then cancel exploding offers</strong>, because if that is the norm, then it takes the kick out of exploding offers (what is the point of exploding offers if candidates can say yes immediately and then back out?).</li>
+</ul>
+</div>
+<p><strong>Question: Why does eliminating exploding offers solve this issue?</strong></p>
+<p>For example, in the US, PhD candidates must accept or decline offers by April 15, and everyone know this is the rule. If Stanford says that candidate need to respond by April 1st, then the market unravels.</p>
+<p>But if the norm is that everyone knows that students can accept Stanford by April 1st, but then still change their mind and go to Berkeley by April 14th, then there is no point for Stanford to even ask candidates to accept by April 1st.</p>
+<p>By eliminating the ability for candidates to commit to exploding offers, it takes away the ability from universities to make exploding offers in the first place, and prevents the market from unraveling.</p>
 <h2 id="information-asymmetries">Information Asymmetries</h2>
-<p>Sellers know more about goods than buyers, causing uncertainty and inefficiency.</p>
-<p><strong>Example: Market for Lemons (used cars)</strong>
-- Good and bad cars indistinguishable by buyers.
-- Buyers pay less due to uncertainty.
-- Good cars leave market; only bad cars remain (adverse selection).</p>
-<p>Possible equilibria:
-- Bad equilibrium: only lemons sold at low prices.
-- Good equilibrium: enough good cars maintain higher average quality and price.</p>
-<p><strong>Other Examples:</strong>
-- Health insurance markets (buyer health knowledge).
-- Clickbait (creators know content quality; users do not).</p>
-<p><strong>Adverse Selection</strong>: Poor-quality products dominate markets due to asymmetry.</p>
-<p><strong>Solutions:</strong>
-- Increase transparency (mandatory disclosure, reputation systems).
-- Restrict informational use (universal healthcare, insider trading rules).
-- Filter lemons through warranties or guarantees.</p>
+<div class="example">
+<p><strong>Cr/NC vs. Letter Grade Game (In Class)</strong></p>
+<p>At LovesFun University, students can choose between Cr/NC (Pass/Fail) and a letter grade <em>after</em> seeing their final grade for a class. It always counts for their major.</p>
+<p>In this in-class game, groups were asked to pick a random mock grade and discuss whether they wanted to opt for Cr/NC or a letter grade.</p>
+<p>Then, the following discussion questions were asked:</p>
+<ol>
+<li>
+<p><strong>When you see an internship applicant with a Cr/NC on their transcript, what do you think their letter grade must have been?</strong> Answer: Probably a B or a C.</p>
+</li>
+<li>
+<p><strong>What is the equilibrium of this game?</strong> Answer: The equilibrium of this game is when only people who got a C- take the credit instead of the letter grade. One caveat though is that employers do not really read transcripts, they care about the GPA, so a credit can be more favorable than a grade that lowers the GPA.</p>
+</li>
+</ol>
+<p><strong>Question: What if a team that has a C- wants to show a letter grade?</strong></p>
+<p>In practice, it does not make sense, because they would prefer to be mixed with people who got a B or a C on average rather than show a worse grade.</p>
+</div>
+<div class="example">
+<p><strong>Example: Market for Lemons</strong></p>
+<p>Suppose that you want to buy a used car. You are willing to payer more for a car in good condition. Sellers are willing to sell bad cars for less (they are eager to replace their car).</p>
+<table>
+<thead>
+<tr>
+<th>Car Condition</th>
+<th>Buyer's Value</th>
+<th>Seller's Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Good</strong></td>
+<td>12</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Bad</strong></td>
+<td>6</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Regardless of whether a car is good or bad, there is a positive <strong>gain from trade</strong>, i.e. the seller and the buyer are happier if they transact. This is why in an optimal market, you buy some car.</p>
+<p>Here, we say that there is information asymmetry, because the seller knows the car condition, but the buyer doesn't.</p>
+<p>Let <span class="arithmatex">\(g \in \[0,1\]\)</span> be the fraction of cars in the market that are in good condition. Let <span class="arithmatex">\(h \leq g\)</span> be the fraction of cars in good condition also available for sale.</p>
+<p>What do we expect at market equilibrium?</p>
+<p><strong>Possible bad equilibrium:</strong></p>
+<ul>
+<li><span class="arithmatex">\(h = 0\)</span>, i.e. only bad cars are for sale.</li>
+<li><span class="arithmatex">\(Price \leq 6\)</span> since buyers assume that cars for sale are in bad condition (i. the price has to be between <span class="arithmatex">\(4\)</span>—how much sellers want for their bad cars—and <span class="arithmatex">\(6\)</span>—how much sellers are willing to pay for bad cars).</li>
+<li>Good sellers don't want to sell their cars (which is why <span class="arithmatex">\(h = 0\)</span> is indeed an equilibrium).</li>
+</ul>
+<p><strong>Possible good equilibrium:</strong></p>
+<ul>
+<li><span class="arithmatex">\(h = g\)</span>, i.e. all sellers are trying to sell their cars.</li>
+<li>The buyers' willingness to pay is: <span class="arithmatex">\(12g + 6 \cdot (1-g) = 6 + 6g\)</span> (i.e. <span class="arithmatex">\(12\)</span> times the fraction of good cars, plus <span class="arithmatex">\(6\)</span> times the fraction of bad cars).</li>
+<li>For good sellers to stay in the market, we need to have <span class="arithmatex">\(6 + 6g \geq 10\)</span>, i.e. <span class="arithmatex">\(g \geq \frac{2}{3}\)</span> (the value that buyers are willing to pay for a car in an unknown condition must at least be the value that sellers of good cars are expecting to create an expectation of a good deal.)</li>
+</ul>
+</div>
+<p>This is not great, but it can get worse.</p>
+<div class="example">
+<p><strong>Example: Market for Lemons (Even Worse)</strong></p>
+<p>Let's assume that the market is split <span class="arithmatex">\(\frac{1}{3}\)</span>, <span class="arithmatex">\(\frac{1}{3}\)</span>, <span class="arithmatex">\(\frac{1}{3}\)</span> between good cars, bad cars, and lemons:</p>
+<table>
+<thead>
+<tr>
+<th>Car Condition</th>
+<th>Buyer's Value</th>
+<th>Seller's Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Good</strong></td>
+<td>12</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Bad</strong></td>
+<td>6</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Lemons</strong></td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>If everyone sells, the buyer's value is at most <span class="arithmatex">\(\frac{1}{3} \cdot (12 + 6 + 0) = 6\)</span>. So, good sellers exit the market.</p>
+<p>This means that the buyer's value becomes <span class="arithmatex">\(\frac{1}{2} \cdot (6 + 0) = 3\)</span>. So, bad sellers also exit the market.</p>
+</div>
+<div class="example">
+<p><strong>Example: Market for Health Insurance</strong></p>
+<p>The <strong>good equilibrium</strong> is that everyone buys a reasonably priced health insurance and everyone who has health insurance is taken car of.</p>
+<p>The <strong>problem</strong> is that insurance companies have an incentive to sell only/mostly to healthy people. For instance, selling health insurance to college students is probably a good deal (they are younger and in better health than the average person).</p>
+<p>If companies can sell health insurance targeted at healthier individuals/demographics, then competitors are left with less healthy people who may be more expensive to insure, which drives the prices up.</p>
+<p>However, healthy people do not want to buy health insurance when the prices are high, only people who have higher health costs are going to buy when prices are high.</p>
+<p>That means that health insurance companies have to raise their prices even more. In the extreme, perhaps no one has health insurance, which is a very bad equilibrium, because only unhealthy people buy very expensive health insurance and no one else is insured because it’s too expensive.</p>
+</div>
+<div class="example">
+<p><strong>Example: Clickbait Content</strong></p>
+<p>Content creators know whether their content is actually good content or not.</p>
+<p>In the good equilibrium, we mostly have interesting content and a lot of audience.</p>
+<p>However, there is the something called moral hazard, which is that it is easier and cheaper to create bad content with a clickbait-y title.</p>
+<p>So, if the number of clicks remains the same, then creators are incentivized to resort to clickbait. As a consequence, perhaps the good creators who do not do this go bankrupt because they cannot meet the market prices (given all the clickbait creators who flood the market).</p>
+<p>This results in a bad equilibrium, where we have mostly clickbait and users are not interested in it, so they don’t click it.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Adverse Selection</strong></p>
+<p>Only lemons stay in the market due to information asymmetry.</p>
+</div>
+<p>What can we do about it?</p>
+<div class="remark">
+<p><strong>Adverse Selection Mitigation Strategies</strong></p>
+<ul>
+<li><strong>Provide more information to both sides of the market</strong><ul>
+<li>For example, if you sell your car, there are mandatory disclosures, you are required by law in many states to say if you have problems with your car.</li>
+<li>Before Obamacare, by law, you had to declare pre-existing health conditions, and that could hike up health insurance prices.</li>
+<li>You can invest in reputation systems (rating on Yelp, Amazon), which comes with lots of great incentives in CS questions.</li>
+</ul>
+</li>
+<li><strong>Disallow the use of information on both sides on both sides of the market</strong><ul>
+<li>For instance, with universal healthcare, you have to give health insurance to everyone, which does not allow health insurance companies to use information to pick and choose college students.</li>
+<li>In the stock market, there are regulations about insider trading, where if you have insider information about whether a stock is going to go up or down, you cannot use this information to invest.</li>
+</ul>
+</li>
+<li><strong>Disincentivize lemons</strong><ul>
+<li>For example, if a dealer has to give a guarantee over a car, they do not have an incentive to sell lemon cars (this is why many states disallow selling cars “as is”).</li>
+<li>In online ads, ad platforms may not only consider the price of the ads, but also the perceived quality of the ads, for instance if it is for a better product, which incentivizes advertisers to create higher quality content (ads).</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Question: Why do we prefer providing more information for cars and less information for health insurance?</strong></p>
+<p>One perspective is that, when people buy used cars, the side with the least information (the buyer) is an individual, while when people buy health insurance, the side with the most information (the buyer) is an individual, and maybe we want to side with and protect individuals, rather than larger companies.</p>
+<p>There may also be a notion of luxury (for a car) vs. necessity (for healthy insurance), all the more since, with a car, some things will break based on how you drive (so you have incentives to drive well), while you cannot prevent yourself from getting sick (even though you still have incentives to eat well and exercise).</p>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Market Failures Recap</strong></p>
+<p>A market failure occurs when a market fails to converge to an optimal outcome.</p>
+<p>We have seen five types of market failures:</p>
+<ol>
+<li>Externalities and public goods</li>
+<li>Transaction costs</li>
+<li>Market thinness</li>
+<li>Timing issues</li>
+<li>Information asymmetry</li>
+</ol>
+<p>Mitigation strategies exist for all five types of market failures.</p>
+</div>
 
 
 
