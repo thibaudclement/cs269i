@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../lecture7/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Single-Unit Auctions - Stanford CS269I Course Notes</title>
+        <title>Auctions - Stanford CS269I Course Notes</title>
       
     
     
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Single-Unit Auctions
+              Auctions
             
           </span>
         </div>
@@ -371,6 +373,115 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auctions-to-only-one-buyer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auctions To Only One Buyer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auctions-with-many-buyers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auctions With Many Buyers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sellers-revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seller's Revenue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-revenue-maximization-with-n-buyers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayesian Revenue Maximization: With \(n\) Buyers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -398,77 +509,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#case-of-one-buyer" class="md-nav__link">
+  <a href="#auctions-to-only-one-buyer" class="md-nav__link">
     <span class="md-ellipsis">
-      Case of One Buyer
+      Auctions To Only One Buyer
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#case-of-multiple-buyers" class="md-nav__link">
+  <a href="#auctions-with-many-buyers" class="md-nav__link">
     <span class="md-ellipsis">
-      Case of Multiple Buyers
+      Auctions With Many Buyers
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Case of Multiple Buyers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#first-price-auction" class="md-nav__link">
-    <span class="md-ellipsis">
-      First-Price Auction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#all-pay-auction" class="md-nav__link">
-    <span class="md-ellipsis">
-      All-Pay Auction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#second-price-auction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Second-Price Auction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#revenue-maximization" class="md-nav__link">
+  <a href="#sellers-revenue" class="md-nav__link">
     <span class="md-ellipsis">
-      Revenue Maximization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Revenue Maximization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deviations-from-optimal-allocation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deviations from Optimal Allocation
+      Seller's Revenue
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-revenue-maximization-with-n-buyers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayesian Revenue Maximization: With \(n\) Buyers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
   
 </li>
       
@@ -490,110 +571,322 @@
 
 <h1 id="single-unit-auctions">Single-Unit Auctions</h1>
 <p><em>April 23, 2025</em></p>
-<p>Auctions are valuable in settings where price discovery is needed, such as:</p>
+<p>We have seen that, when supply meets demand, we reach a market clearing price. Equilibrium prices are amazing, because each guest independently chooses their favorite room, with no conflicts, and by the First Welfare Theorem, this allocation is optimal (it maximizes total happiness).</p>
+<p>Now, we are switching from markets to auctions. We will mostly focus on auctions for selling goods, although procurement auctions to buy goods are also very important.</p>
+<div class="example">
+<p><strong>Why do we need auctions?</strong></p>
+<p>When we don’t know how to price what we sell:</p>
 <ul>
-<li><strong>Monopolies</strong>: Wireless spectrum auctions.</li>
-<li><strong>Niche products</strong>: Rare items on eBay.</li>
-<li><strong>Specialized products</strong>: Ad auctions.</li>
+<li><em>Non-example:</em> If we are selling a generic product, with lots of other sellers, and lots of buyers, and there is price discovery (the market figures out the right price), we don’t need an auction, since we already know how much our good should cost.</li>
+<li>Governments around the world, especially the US government, have a monopoly on the wireless spectrum, and they auction licenses to broadcast certain frequencies. At these auctions, the government buys some frequencies back from TV stations that don’t need as much any more, and sells them to cell phone companies. Auctions help set the price.</li>
+<li>If you have a nice product, such as a family heirloom, we may have no idea how much it should cost. An auction (such as eBay) helps discover the price.</li>
+<li>Products with specific attributes, such as ads. There is a search engine, and a user searching for pizza, at a specific time, in a specific town, so it is a very specific case, and we don’t know exactly how much it is worth to pizzerias next to this user. Ad auctions help determine the price.</li>
 </ul>
-<p>Auctions intersect significantly with Computer Science:</p>
+<p>When the buyers have the computational power and the patience to bid:</p>
 <ul>
-<li>Ad auctions fund many CS researchers.</li>
-<li>Fast auctions necessitate algorithmic bidders.</li>
-<li>Complex auctions require algorithmic auctioneers.</li>
+<li>When we we are selling something very expensive, auctions may be a good idea. For instance, in the wireless spectrum auctions, in 2021, the government auctioned $80 billion worth of spectrum, and the whole auction process took 3 months. The TV stations and cell phone companies were willing to spend this time to figure out exactly how to bid and participate in this long process, which makes sense since it is a very expensive product.</li>
+<li>Ad auctions are also a popular mechanism. These are super fast (split of a second): when you search something, by the time you get the result, there is already an auction happening behind the scenes. These are automated bids: it is all happening algorithmically, in a very short amount of time.</li>
+<li><em>Non-example:</em> If a child has some fever, their parents are not going to wait a week to win an auction on eBay (they just go to CVS and pay the price).</li>
 </ul>
-<h2 id="case-of-one-buyer">Case of One Buyer</h2>
-<p><strong>Motivation</strong>: Digital goods pricing for maximizing revenue.</p>
-<ul>
-<li>Demand curves derived from users' willingness to pay.</li>
-<li>Revenue = Price × Number of buyers willing to pay that price.</li>
-<li>Roger Myerson (1981): For a demand curve <span class="arithmatex">\(D\)</span>, a formula <span class="arithmatex">\(p(D)\)</span> exists that maximizes revenue (optimal reserve price).</li>
-</ul>
-<p><strong>Application</strong>: Ad auctions with specialized advertisers (single bidder per spot) using prior beliefs as demand curves.</p>
-<h2 id="case-of-multiple-buyers">Case of Multiple Buyers</h2>
-<p><strong>Model:</strong>
-1. Set of bidders <span class="arithmatex">\(I\)</span>, each with valuation <span class="arithmatex">\(v_i\)</span>.
-2. Seller doesn't know valuations but has prior beliefs.
-3. Bidder payoff: <span class="arithmatex">\(v_i - p_i\)</span> if they win, else <span class="arithmatex">\(-p_i\)</span>.</p>
-<h3 id="first-price-auction">First-Price Auction</h3>
-<ul>
-<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
-<li>Highest bidder wins and pays their bid.</li>
-</ul>
-<p><em>Note</em>: Equilibrium bids are below true valuations (<span class="arithmatex">\(b_i &lt; v_i\)</span>).</p>
-<h3 id="all-pay-auction">All-Pay Auction</h3>
-<ul>
-<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
-<li>Highest bidder wins the item.</li>
-<li>All bidders pay their bids.</li>
-</ul>
-<p>Used for modeling non-auction scenarios (political donations, animal contests). Equilibrium bids are lower than valuations and generally lower than in first-price auctions.</p>
-<h3 id="second-price-auction">Second-Price Auction</h3>
-<ul>
-<li>Each bidder submits a sealed bid <span class="arithmatex">\(b_i\)</span>.</li>
-<li>Highest bidder wins, paying the second-highest bid.</li>
-</ul>
-<div class="theorem">
-<p><strong>Theorem: Equilibrium in Second-Price Auctions</strong></p>
-<p>Second-price auctions are strategyproof: truthful bidding (<span class="arithmatex">\(b_i = v_i\)</span>) is dominant and thus an equilibrium.</p>
 </div>
-<div class="proof">
-<p><strong>Proof:</strong> Fix other bids <span class="arithmatex">\(b_j\)</span>, let <span class="arithmatex">\(b^{(-i)} = \max_{j \ne i} b_j\)</span>. Two cases:</p>
+<p><strong>Why do auctions matter for computer scientists?</strong></p>
+<ul>
+<li>Ad auctions fund many CS initiatives (research, product monetization, etc.).</li>
+<li>Fast auctions require algorithmic bidders (e.g., ad auctions).</li>
+<li>Complex auctions require algorithmic auctioneers (e.g., the 2017 FCC wireless spectrum auctions required solving 75,000 large-scale NP-hard problems).</li>
+</ul>
+<h2 id="auctions-to-only-one-buyer">Auctions To Only One Buyer</h2>
+<div class="example">
+<p><strong>Motivation #1: Digital Goods</strong></p>
+<p>Let's assume that we have a pool (or an "urn") of users subscribed to a free online product. We want to know how much to charge for the premium version of the product.</p>
+<p>Digital goods are goods with unlimited supply and zero/negligible marginal cost to create another copy. We can estimate the demand curve based on historical data or based on a survey, for instance.</p>
+<p>We want to determine how much to charge for this premium product, with the objective of maximizing revenue, which is the price we charge times the number of buyers. Revenue is represented by a rectangle under the curve.</p>
+<p><img alt="Digital Goods Demand Curve 1" src="../images/Digital%20Goods%20Demand%20Curve%201.png" />
+<img alt="Digital Goods Demand Curve 2" src="../images/Digital%20Goods%20Demand%20Curve%202.png" /></p>
+<p>At a price of <span class="arithmatex">\(\$8\)</span>, we lost one buyer (<span class="arithmatex">\(4\)</span> vs. <span class="arithmatex">\(5\)</span>), but the revenue is higher (<span class="arithmatex">\(\$32\)</span> vs. <span class="arithmatex">\(\$30\)</span>).</p>
+</div>
+<div class="theorem">
+<p><strong>Myerson's Theorem</strong></p>
+<p>Given a demand curve <span class="arithmatex">\(D\)</span>, Myerson's theorem provides a formula to determine the price <span class="arithmatex">\(p(D)\)</span> that maximizes revenue, i.e. the rectangle under the curve.</p>
+</div>
+<p>This is the revenue-optimal way to sell one item to one buyer: we fix the price and we charge the price from this one buyer.</p>
+<p><strong>Note:</strong> This is non-trivial. There are many extensions of this simple setting where the theorem does not hold.</p>
+<div class="example">
+<p><strong>Motivation #2: Ad Auctions</strong></p>
+<p>In ad auctions, we tend to have a lot of data and very good machine learning, which enables very accurate targeting.</p>
+<p>Let's consider the case of a user looking for pizza in a given town: there is only one possible buyer, and in the extreme case, we have only one advertiser (because there is only one pizza place in town).</p>
+<p>To figure out how much to charge this advertiser, we can take a Bayesian approach: we don’t know the user’s value (otherwise we would just charge exactly the user’s value and make as much money as we can), but we can generate a model that is like a distribution of the possible values the user is likely to have.</p>
+<p>If we have that distribution, it is like drawing a random buyer from that distribution, and for the seller, the cumulative distribution over the possible buyer values is going to be equivalent to the demand curve.</p>
+<p>This works similarly as the previous example of a digital good auction. Instead of having the Price vs. the Demand (like we had in market demand curves), here we have the Price vs. the Probability that the buyer will buy:</p>
+<p><img alt="Ad Auction Demand Curve" src="../images/Ad%20Auction%20Demand%20Curve.png" /></p>
+<p>From here, we apply Myerson’s theorem again, where the formula is going to give the best rectangle under the curve to maximize the expected revenue.</p>
+</div>
+<h2 id="auctions-with-many-buyers">Auctions With Many Buyers</h2>
+<p>In this lecture, we focus on the simplest kind of auction: <strong>single-item auction</strong>.</p>
+<div class="definition">
+<p><strong>Basic Model: Single-Item Auction</strong></p>
+<ul>
+<li>Each bidder <span class="arithmatex">\(i\)</span> has a <strong>value</strong> (i.e. their willingness to pay") <span class="arithmatex">\(v_i\)</span> for receiving the item. Bidder <span class="arithmatex">\(i\)</span> know <span class="arithmatex">\(v_i\)</span>.</li>
+<li>The seller doesn't know <span class="arithmatex">\(v_i\)</span>. This is why we need an auction mechanism.</li>
+<li>The <strong>utility</strong> of a bidder who <em>receives</em> the item and pays <span class="arithmatex">\(p_i\)</span> for it is: <span class="arithmatex">\(u = v_i - p_i\)</span>.</li>
+<li>In contrast, the utility of a bidder who <em>doesn't receive</em> the item and still pays <span class="arithmatex">\(p_i\)</span> is: <span class="arithmatex">\(u = -p_i\)</span>.</li>
+</ul>
+</div>
+<p><strong>Note:</strong> We are still auctioning only one item. Auctioning multiple items is super complicated: this is where Myerson’s theorem completely breaks, a,d there is a lot of complicated math involved.</p>
+<div class="definition">
+<p><strong>Definitions: Types of Auctions</strong></p>
+<p><em><strong>Open-Cry Auctions</strong></em></p>
+<ul>
+<li>Multi-round iterations.</li>
+<li>Ascending-price auctions (English/Japanese) vs. descending-price auctions (Dutch).</li>
+<li>The FCC spectrum was a very complicated auction: it was a mix of ascending-price and descending-price auctions, because they were both buying and selling frequencies.</li>
+<li>In this lecture, we are not discussing open-cry auctions: instead, we are focusing on...</li>
+</ul>
+<p><em><strong>Sealed-Bid Auctions</strong></em></p>
 <ol>
-<li>If <span class="arithmatex">\(v_i &lt; b^{(-i)}\)</span>, bidder <span class="arithmatex">\(i\)</span> prefers losing; bidding truthfully is optimal.</li>
-<li>If <span class="arithmatex">\(v_i &gt; b^{(-i)}\)</span>, bidder <span class="arithmatex">\(i\)</span> prefers winning; again, truthful bid is optimal.</li>
+<li>Each bidder sends a secret bid <span class="arithmatex">\(b_i\)</span> to the auctioneer (in a "sealed envelope").</li>
+<li>The auctioneer decides how to <strong>allocate</strong> the item and takes the <strong>payment</strong> from the bidder.</li>
 </ol>
 </div>
-<div class="theorem">
-<p><strong>Theorem: Payoffs of Second-Price Auctions</strong></p>
-<p>Second-price auctions are individually rational at equilibrium: <span class="arithmatex">\(v_i - p_i \geq 0\)</span>.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> If bidder doesn't win, payoff = 0. If bidder wins, pays at most their valuation, thus non-negative payoff.</p>
-</div>
-<div class="theorem">
-<p><strong>Theorem: Optimality</strong></p>
-<p>In equilibrium, second-price auctions allocate the good to the highest-valued bidder.</p>
-</div>
-<div class="proof">
-<p><strong>Proof:</strong> In equilibrium <span class="arithmatex">\(b_i = v_i\)</span>, thus highest bidder corresponds to highest valuation.</p>
-</div>
-<h2 id="revenue-maximization">Revenue Maximization</h2>
-<div class="example">
-<p><strong>Example: Full Information Scenario</strong></p>
+<div class="definition">
+<p><strong>Definition: First-Price Auction</strong></p>
 <ul>
-<li><span class="arithmatex">\(A\)</span> values item at 1, <span class="arithmatex">\(B\)</span> values at 2.</li>
-<li>Second-price auction: <span class="arithmatex">\(B\)</span> wins, pays 1.</li>
-<li>First-price auction: Equilibrium bids near 1, revenue approximately 1.</li>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>The highest bidder <span class="arithmatex">\(i\)</span> receives the item.</li>
+<li>The highest bidder pays <span class="arithmatex">\(b_i\)</span>.</li>
+</ul>
+<p><em><strong>Note:</strong> This definition is not complicated but it is <strong>important</strong>.</em></p>
+</div>
+<p><strong>Do we expect bidders to bid higher or lower than their true value <span class="arithmatex">\(v_i\)</span>?</strong></p>
+<p>We expect bidders to bid lower than their true value: if there is just one bidder, they are just going to bid <span class="arithmatex">\(0\)</span> and still get the item, so everyone wants to bid as low as they can.</p>
+<p><strong>Do we expect bids to go up or down as competition (i.e. the number of bidders) increases?</strong></p>
+<p>We expect bids to go up when competition increases: in the extreme case, if there is just one bidder, they are just going to bid <span class="arithmatex">\(0\)</span> and still get the item, but as there is more competition, the bids will approach each bidder’s true value (they cannot expect to get the item for much less than their true value).</p>
+<div class="definition">
+<p><strong>Definition: All-Pay Auction</strong></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>The highest bidder <span class="arithmatex">\(i\)</span> receives the item.</li>
+<li>Every bidder <span class="arithmatex">\(j\)</span> pays <span class="arithmatex">\(b_j\)</span>.</li>
 </ul>
 </div>
-<p>To handle uncertainty, we define Bayesian Nash Equilibrium:</p>
+<p><strong>Do we expect bidders to bid higher or lower than their true value?</strong></p>
+<p>We expect bidders to bid lower than their true value.</p>
+<p><strong>Do we expect bids to go up or down as competition (i.e. the number of bidders) increases?</strong></p>
+<p>It is not obvious whether bidders should increase or decrease their bid when competition increases: on the one hand, if there is more competition, you want to bid higher to win, but on the other hand, you don’t want to bid too high and lose to a competitor.</p>
+<p><strong>Do we expect the price to be higher or lower than wit first-price auctions?</strong></p>
+<p>Intuitively, bids should be lower than with first-price auctions.</p>
+<p><strong>What are some applications of all-pay auction in practice?</strong></p>
+<p>In practice, all-pay auctions are rarely used. They are useful for modeling sunk-cost of losers in situations like political lobbying, where players are putting a lot of money to get people to vote yes/no on a ballot, and regardless of the outcome, the money for campaigning is gone. Another example will be covered in the last lecture of the quarter.</p>
+<p><strong>Note:</strong> In general, all-pay auctions are very hard for bidders to determine how to bid. They are very not truthful.</p>
+<div class="definition">
+<p><strong>Definition: Second-Price Auction</strong></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>The highest bidder <span class="arithmatex">\(i^\star\)</span> receives the item.</li>
+<li>The highest bidder pays the second-highest bid.</li>
+</ul>
+<p><em><strong>Note:</strong> This is an important type of auction.</em></p>
+</div>
+<p><strong>Do we expect bidders to bid higher or lower than their true value?</strong></p>
+<p>We expect bidders to bid exactly their true value: this is strategy-proof.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> Second-price auction is strategyproof.</p>
+<p>Formally, truthful bidding is a dominant strategy, i.e. for any fixed bids <span class="arithmatex">\(b_j\)</span>, for all <span class="arithmatex">\(j \neq i\)</span>, bidding <span class="arithmatex">\(b_i = v_i\)</span> is optimal for bidder <span class="arithmatex">\(i\)</span>.</p>
+</div>
+<div class="proof">
+<p><strong>Proof</strong></p>
+<p>Let <span class="arithmatex">\(b^{(-i)} = \underset{j \neq i}{max} \; b_j\)</span>.</p>
+<ul>
+<li>If <span class="arithmatex">\(v_i &lt; b^{(-i)}\)</span>:<ul>
+<li>Bidder <span class="arithmatex">\(i\)</span> prefers to miss out on the item than to pay <span class="arithmatex">\(b^{(-i)}\)</span>.</li>
+<li>So, any <span class="arithmatex">\(b_i &lt; b^{(-i)}\)</span> is optimal. In particular, <span class="arithmatex">\(b_i = v_i\)</span> is an optimal bid.</li>
+</ul>
+</li>
+<li>If <span class="arithmatex">\(v_i &gt; b^{(-i)}\)</span>:<ul>
+<li>Bidder <span class="arithmatex">\(i\)</span> prefers to pay <span class="arithmatex">\(b^{(-i)}\)</span> and receive the item.</li>
+<li>So, any <span class="arithmatex">\(b_i &gt; b^{(-i)}\)</span> is optimal. In particular, <span class="arithmatex">\(b_i = v_i\)</span> is an optimal bid.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Truthful bidding is a dominant strategy: we don’t care what other bidders do (they can bid whatever they want), bidding our true value is always optimal.</p>
+<ul>
+<li>If our value is lower than the max of everyone else’s bid, we would rather pay nothing and get nothing, than pay over our value, so we might as well bid our true value.</li>
+<li>If our value is higher than the max of everyone else’s bid, we would rather pay the max and get the item, and again, we might as well bid our true value.</li>
+<li>If our value is exactly equal to the max of everyone else’s bid, then we are indifferent between getting the item or not, and we might as well bid my true value.</li>
+</ul>
+<p><strong>Extreme case:</strong> If there is no one else in the auction, the max of everyone else’s bid is <span class="arithmatex">\(0\)</span>, we could bid our true value, pay our true value, and have <span class="arithmatex">\(0\)</span> utility, or we could shade our bid, pay <span class="arithmatex">\(0\)</span>, and still get the item.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> Second-price auction is individually rational.</p>
+<p>As long as bidder <span class="arithmatex">\(i\)</span> bids <span class="arithmatex">\(b_i = v_i\)</span>, the utility <span class="arithmatex">\((u = v_i - p)\)</span> is non-negative.</p>
+</div>
+<p>In other words, as long as we bid our true value, we are never going to pay more than our true value. The utility is non-negative, unlike with all-pay auction where we can have negative utility.</p>
+<div class="proof">
+<p><strong>Proof</strong></p>
+<p>Let <span class="arithmatex">\(b^{(-i)} = \underset{j \neq i}{max} \; b_j\)</span>.</p>
+<ul>
+<li>If <span class="arithmatex">\(v_i &lt; b^{(-i)}\)</span>: <span class="arithmatex">\(b_i = v_i\)</span> isn't maximal. No payment occurs, no item is received, so <span class="arithmatex">\(u = 0\)</span>.</li>
+<li>If <span class="arithmatex">\(v_i &gt; b^{(-i)}\)</span>: <span class="arithmatex">\(u = v_i - b^{(-i)} \geq 0\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> Second-price auction maximizes the social welfare (where social welfare is the total utility of all bidders and the seller).</p>
+</div>
+<p>When everyone bids their true value (which we expect, since it is a truthful auction), then second-price auction maximizes social welfare, i.e. the total happiness of the bidders and the seller, because the bidder with the bidder with the highest value gets the item.</p>
+<p><strong>This type of auction sounds fantastic: why don't we use it all the time?</strong></p>
+<p>Second-price auction it is not optimal for the seller, and usually, the seller sets the rules for the auction.</p>
+<h2 id="sellers-revenue">Seller's Revenue</h2>
+<p>Which type of auction maximizes the seller's revenue: first-price auction, second-price auction, or all-pay auction?</p>
+<ul>
+<li>Maybe first-price auction because we charge the full bid?</li>
+<li>Maybe all-pay auction because we charge everyone?</li>
+<li>Maybe second-price auction because there is no incentives the shade bids?</li>
+</ul>
+<div class="example">
+<p><strong>Example 1:</strong> Full Information</p>
+<p>Consider the case of a second-price auction, which is strategyproof, with two bidders:</p>
+<ul>
+<li>Alice: <span class="arithmatex">\(b_A = v_A = 1\)</span>.</li>
+<li>Bob: <span class="arithmatex">\(b_B = v_B = 2\)</span>.</li>
+</ul>
+<p>Let’s pretend that everyone knows everyone else’s value. Alice bids <span class="arithmatex">\(1\)</span> and Bob bids <span class="arithmatex">\(2\)</span>. Bob wins the auction: he pays Alice’s bid, so the revenue is <span class="arithmatex">\(1\)</span>.</p>
+</div>
+<p>Let's now look at the same example, but with first-price auction instead of second-price auction.</p>
+<div class="example">
+<p><strong>Example 1:</strong> Full Information</p>
+<p>Consider the case of a first-price auction, with the same two bidders:</p>
+<ul>
+<li>Alice: <span class="arithmatex">\(b_A = 0.99\)</span> and <span class="arithmatex">\(v_A = 1\)</span>.</li>
+<li>Bob: <span class="arithmatex">\(b_B = 1\)</span> and <span class="arithmatex">\(v_B = 2\)</span>.</li>
+</ul>
+<p>Assume bids in increments of <span class="arithmatex">\(0.01\)</span>, and random tie-breaking.</p>
+<p>Alice bids <span class="arithmatex">\(0.99\)</span>, and Bob bids <span class="arithmatex">\(1\)</span>. Alice does not have incentives to increase her bid, because she does not want to pay more than <span class="arithmatex">\(1\)</span>. Bob neither wants to increase his bid (he would have to pay more) nor decrease his bid (otherwise he would not get the item). This is the unique<span class="arithmatex">\(^\star\)</span> Nash equilibrium, and the revenue is <span class="arithmatex">\(1\)</span>.</p>
+<p><em><span class="arithmatex">\(^\star\)</span>A bid of <span class="arithmatex">\(1\)</span> from Alice and a bid of <span class="arithmatex">\(1.01\)</span> from Bob would also be a Nash equilibrium, and the revenue would be <span class="arithmatex">\(1.01\)</span> instead of <span class="arithmatex">\(1\)</span>. The above solution is essentially the unique Nash equilibrium if we ignore this type of increments and tie-breaking (if both Alice and Bob bid <span class="arithmatex">\(0.99\)</span>, this is also an equilibrium).</em></p>
+</div>
+<div class="example">
+<p><strong>Example 2:</strong> Bayesian</p>
+<p>Consider the case of a second-price auction, which is strategyproof, with two bidders:</p>
+<ul>
+<li>Alice: <span class="arithmatex">\(v_A \approx Uni[0,1]\)</span>.</li>
+<li>Bob: <span class="arithmatex">\(v_B \approx Uni[0,1]\)</span>.</li>
+</ul>
+<p><span class="arithmatex">\(b_A = v_A\)</span> and <span class="arithmatex">\(b_B = v_B\)</span> are dominant strategies.</p>
+<p>So, in expectation, <span class="arithmatex">\(Revenue = E[min \; \{v_A,v_B\}] = \frac{1}{3} \)</span></p>
+</div>
+<p>This is a Bayesian example: Alice does not know Bob’s value, Bob does not know Alice’s value, and the auctioneer does not know any of their values.</p>
+<p>We assume that we draw both Alice and Bob's values, respectively (independently), uniformly at random between 0 and 1. Because this is strategyproof, regardless of what Alice bids, Bob wants to bid their true value, and by symmetry, the same is true for Alice: we expect their bids to be their true values.</p>
+<p>So, in expectation, the revenue is the expectation over the minimum of their true values, since the higher bid is going to win and pay the lower bid.</p>
+<p><strong>Note:</strong> The expectation of the minimum of two independent random variables drawn uniformly between zero and one is <span class="arithmatex">\(\frac{1}{3}\)</span>, hence the result.</p>
+<div class="example">
+<p><strong>Example 2:</strong> Bayesian</p>
+<p>Consider the case of a first-price auction, with the same two bidders:</p>
+<ul>
+<li>Alice: <span class="arithmatex">\(v_A \approx Uni[0,1]\)</span>.</li>
+<li>Bob: <span class="arithmatex">\(v_B \approx Uni[0,1]\)</span>.</li>
+</ul>
+<p>The challenge is that Alice doesn't know "which" Bob she is bidding against. How should we model this situation?</p>
+</div>
 <div class="definition">
 <p><strong>Definition: Bayesian Nash Equilibrium</strong></p>
-<p>A strategy profile where each player's strategy maximizes expected payoff given beliefs about others' strategies.</p>
-</div>
-<div class="example">
-<p><strong>Example: Bayesian Agents</strong></p>
 <ul>
-<li><span class="arithmatex">\(A,B\)</span> values drawn uniformly from [0,1].</li>
-<li>Second-price auction expected revenue: <span class="arithmatex">\(\frac{1}{3}\)</span>.</li>
-<li>First-price auction equilibrium bids: <span class="arithmatex">\(b_i = \frac{v_i}{2}\)</span>, also yielding expected revenue <span class="arithmatex">\(\frac{1}{3}\)</span>.</li>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> is the strategy for each Alice.</li>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> is the strategy for each Bob.</li>
 </ul>
+<p>Alice and Bob are drawn at random from their distributions.</p>
+<p>For each Alice, her strategy is optimal in expectation over the Bobs and their strategies.</p>
+</div>
+<p>Every possible Alice has some possibly mixed strategy and every possible Bob has some possibly mixed strategy.</p>
+<p>We draw one Alice and one Bob from their distributions, and the Alice and the Bob that we draw play their respective strategies.</p>
+<p>Why is this an equilibrium? Because no possible Alice that we can draw, given the strategy of all the possible Bobs, wants to deviate from their strategy.</p>
+<div class="example">
+<p><strong>Example 2:</strong> Bayesian (Cont'd)</p>
+<p>Claim: In equilibrium, <span class="arithmatex">\(b_A = \frac{v_A}{2}\)</span> and <span class="arithmatex">\(b_B = \frac{v_B}{2}\)</span>.</p>
+<p>So, in expectation, <span class="arithmatex">\(Revenue = E[max \; \{b_A,b_B\}] = \frac{E[max \; \{v_A,v_B\}]}{2} =  \frac{1}{3}\)</span>.</p>
+</div>
+<p>The max of two random variable drawn uniformly between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(1\)</span> is <span class="arithmatex">\(\frac{2}{3}\)</span>. Indeed, if the expectation of the min is <span class="arithmatex">\(\frac{1}{3}\)</span>, we know that the expectation must be <span class="arithmatex">\(1\)</span>, so we see that expectation of the max is <span class="arithmatex">\(\frac{2}{3}\)</span>. Therefore, we have <span class="arithmatex">\(\frac{2}{3}\)</span> divided by <span class="arithmatex">\(2\)</span>, which is equal to <span class="arithmatex">\(\frac{1}{3}\)</span>.</p>
+<div class="remark">
+<p>Interestingly:</p>
+<ul>
+<li>In Example 1: Full Information, where <span class="arithmatex">\(v_A = 1\)</span> and <span class="arithmatex">\(v_B = 2\)</span>, first-price auction and second-price auction both had <span class="arithmatex">\(Revenue = 1\)</span>.</li>
+<li>In Example 2: Bayesian, where <span class="arithmatex">\(v_A = Uni[0,1]\)</span> and <span class="arithmatex">\(v_B = Uni[0,1]\)</span>, first-price auction and second-price auction (as well as all-pay auction) had <span class="arithmatex">\(Revenue = \frac{1}{3}\)</span>.</li>
+</ul>
+<p>This is not a coincidence.</p>
 </div>
 <div class="theorem">
-<p><strong>Theorem: Revenue Equivalence</strong></p>
-<p>At equilibrium, expected payments depend only on the auction’s allocation rule.</p>
+<p><strong>Theorem: Revenue Equivalence Theorem</strong></p>
+<p>At equilibrium, expected payments are fully determined by the auction's allocation rule.</p>
 </div>
-<div class="corollary">
-<p><strong>Corollary:</strong> First-price, second-price, and all-pay auctions yield identical equilibrium revenue under Bayes-Nash equilibria with standard allocation rules (highest bidder wins).</p>
-</div>
-<h3 id="deviations-from-optimal-allocation">Deviations from Optimal Allocation</h3>
-<p>Auctions don't always allocate to the highest valuation bidder:</p>
+<p>In other words, in any auction that always gives the good to the max-value buyer, in expectation every buyer pays the same, and in particular, revenue is the same.</p>
+<p>In all auction types seen so far, the allocation rule was that the bidder with the highest true true always got the item, which is why they all have the same revenue.</p>
+<p>However, this is not always satisfied in real life, for example in the following cases:</p>
 <ul>
-<li>Overbidding in second-price auctions (highest bidder might bid excessively).</li>
-<li>All-pay auctions may have equilibria not awarding highest value bidder.</li>
-<li>Reserve prices might result in no winner.</li>
+<li>When a bidder overbids in a second-price auction: if Alice bids <span class="arithmatex">\(100\)</span> and Bib bids <span class="arithmatex">\(0\)</span>, then Alice pays <span class="arithmatex">\(0\)</span> and gets the item. This is an equilibrium, although not a stable one.</li>
+<li>If we do the math for the all-pay auction, Alice and Bob want to use randomized strategies at equilibrium, and it is not always true that Bob gets the item, even though Bob’s true value is higher.</li>
+<li>A seller may get more revenue by deciding to not allocate the item, so they set a reserve price accordingly.</li>
 </ul>
+<h2 id="bayesian-revenue-maximization-with-n-buyers">Bayesian Revenue Maximization: With <span class="arithmatex">\(n\)</span> Buyers</h2>
+<div class="theorem">
+<p><strong>Theorem: Myerson's Theorem</strong></p>
+<p>Given a distribution <span class="arithmatex">\(D\)</span>, where <span class="arithmatex">\(p(D)\)</span> is given by the formula that maximizes the area under the curve and gives the revenue-optimal way to sell one item to one buyer, with <span class="arithmatex">\(n\)</span> buyers, each drawing value from <span class="arithmatex">\(D\)</span> independently (iid), the revenue-optimal auction is a second-price auction where the reserve price is <span class="arithmatex">\(p(D)\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Second-Price Auction With Reserve Price</strong></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.<ul>
+<li>Let <span class="arithmatex">\(i^\star\)</span> be the bidder with the highest bid <span class="arithmatex">\(b_{i^\star}\)</span>.</li>
+<li>Let <span class="arithmatex">\(b^{(-i)} = \underset{j \neq i^\star}{max}\)</span> be the second-highest bid.</li>
+</ul>
+</li>
+<li>If <span class="arithmatex">\(b_{i^\star} \geq p(D)\)</span>, then <span class="arithmatex">\(i^\star\)</span> receives the items and pays <span class="arithmatex">\(max{b^{(-i)}, p(D)}\)</span>.</li>
+<li>If <span class="arithmatex">\(b_{i^\star} &lt; p(D)\)</span>, then the seller keeps the item and no payment occurs.</li>
+</ul>
+</div>
+<p>What is a second-price auction with reserve price?</p>
+<ul>
+<li>Every bidder is still submitting a sealed bid (this is a sealed-bid auction).</li>
+<li>We start from the highest bid, and the second highest bid receives the item, if they beat the reserve price: what the bidder is paying is the max of the second bid and the reserve price.</li>
+<li>If the second highest bid does not beat the reserve price, then the seller keeps the item.</li>
+</ul>
+<p>This generalizes the optimal auction for single buyers for n buyers. This also generalizes the second-price auction if we set the reserve price, i.e. <span class="arithmatex">\(p(D)\)</span>, to <span class="arithmatex">\(0\)</span> or negative infinity. This is equivalent to the seller also participating in the auction, with the seller’s bid being the reserve price, i.e. <span class="arithmatex">\(p(D)\)</span>.</p>
+<p>This means that it is strategyproof for the buyers, but it is not exactly strategyproof for the seller, because they have to figure out the optimal reserve price.</p>
+<p><strong>Question: Do buyers know the reserve price?</strong></p>
+<p>Since we usually analyze this in equilibrium, it is always a dominant strategy for the buyers to bid their true values.</p>
+<p><strong>How does the seller determines the optimal reserve price?</strong></p>
+<p>It is the same reserve price as with <span class="arithmatex">\(1\)</span> buyer: even when there are <span class="arithmatex">\(n\)</span> buyers, we still want to look at the area under the curve to set the reserve price and maximize revenue.</p>
+<p>Interestingly, as the competition increases, the chance that the reserve price is relevant goes down, because the chance that there are two buyers with bids over the reserve price increases.</p>
+<div class="theorem">
+<p><strong>Theorem: Bulow-Klemperer Theorem</strong></p>
+<p><span class="arithmatex">\(Revenue(Second-Price \; Auction \; with \; n+1 \; buyers) \geq Revenue(Second-Price \; Auction \; with \; Reserve \; Price \; and \; n \; buyers)\)</span> </p>
+</div>
+<p>Another way of formalizing this intuition (that as competition increases, we don’t need a reserve price) is this: the revenue with vanilla second-price auction (without a reserve price) but with one more bidder (i.e. <span class="arithmatex">\(n+1\)</span> bidders) is at least the revenue with the optimal reserve price with <span class="arithmatex">\(n\)</span> buyers.</p>
+<p>In other words, with <span class="arithmatex">\(4\)</span> buyers, we can maximize revenue if we set the right reserve price rather than without a reserve price at all. However, with <span class="arithmatex">\(5\)</span> buyers without a reserve price, we will have at least as much revenue as if we set the right reserve price with <span class="arithmatex">\(4\)</span> buyers.</p>
+<p>In practice, we can either invest in the Machine Learning department to set the right reserve price, or invest in the recruiting department to get one more buyer, and the revenue from the latter will be at least the revenue from the former.</p>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Auctions Recap</strong></p>
+<p><em><strong>First-Price Auction</strong></em></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>The highest bidder <span class="arithmatex">\(i\)</span> receives the item.</li>
+<li>The highest bidder pays <span class="arithmatex">\(b_i\)</span>.</li>
+</ul>
+<p><em><strong>Second-Price Auction</strong></em></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.</li>
+<li>The highest bidder <span class="arithmatex">\(i^\star\)</span> receives the item.</li>
+<li>The highest bidder pays the second-highest bid.</li>
+</ul>
+<p>Secont-price auction is strategyproof, individually rational, and maximizes social welfare.</p>
+<p><em><strong>Revenue Equivalence Theorem</strong></em></p>
+<p>At equilibrium, expected payments are fully determined by the auction's allocation rule. In other words, in any auction that always gives the good to the max-value buyer, in expectation every buyer pays the same, and in particular, revenue is the same.</p>
+</div>
+<div class="summary">
+<p><strong>Revenue Maximizing Auctions Recap</strong></p>
+<p><em><strong>Theorem: Myerson's Theorem</strong></em></p>
+<p>Given a distribution <span class="arithmatex">\(D\)</span>, where <span class="arithmatex">\(p(D)\)</span> is given by the formula that maximizes the area under the curve and gives the revenue-optimal way to sell one item to one buyer, with <span class="arithmatex">\(n\)</span> buyers, each drawing value from <span class="arithmatex">\(D\)</span> independently (iid), the revenue-optimal auction is a second-price auction where the reserve price is <span class="arithmatex">\(p(D)\)</span>.</p>
+<p><em><strong>Theorem: Bulow-Klemperer Theorem</strong></em></p>
+<p><span class="arithmatex">\(Revenue(Second-Price \; Auction \; with \; n+1 \; buyers) \geq Revenue(Second-Price \; Auction \; with \; Reserve \; Price \; and \; n \; buyers)\)</span> </p>
+</div>
 
 
 
