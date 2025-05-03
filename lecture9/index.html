@@ -1,0 +1,945 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lecture8/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Prediction Markets and Information Cascades - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wisdom-of-the-crowd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prediction Markets and Information Cascades
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture3b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wisdom-of-the-crowd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wisdom of The Crowd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prediction-markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prediction Markets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liquidity-and-no-trade-theorems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liquidity and No-Trade Theorems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-cascades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Cascades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-stories-of-information-cascades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Stories of Information Cascades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wisdom-of-the-crowd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wisdom of The Crowd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prediction-markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prediction Markets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liquidity-and-no-trade-theorems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liquidity and No-Trade Theorems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-cascades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Cascades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-stories-of-information-cascades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Stories of Information Cascades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Prediction Markets and Information Cascades</h1>
+
+<p>In the past few lectures, we discussed markets and auctions. Now, we are going to start talking about learning from the wisdom of the crowd and decentralization systems, as well as how to reason about who knows what and when. Today, in particular, we are discussing prediction markets and wisdom of the crowd.</p>
+<h2 id="wisdom-of-the-crowd">Wisdom of The Crowd</h2>
+<div class="example">
+<p><strong>Example: Wisdom of The Crowd</strong></p>
+<p>What is the weight of this ox?</p>
+<p><img alt="What Is The Weight of This Ox" src="../images/What%20Is%20The%20Weight%20of%20This%20Ox.png" />
+<em><strong>Note:</strong> This is not the original ox from the 1903 county fair. This is an Arctic Musk ox.</em></p>
+<p>Imagine that we are at a county fair, and everyone is taking a guess:</p>
+<ul>
+<li>1903: The average of the guesses by the crowd fair fell only 1 Lb away from the true weight.</li>
+<li>1907: Sir Galton publishes a paper about it. He actually advocated using the median instead of the mean to aggregate information from the crowd. The idea remains that crowds sometimes have better information that each individual person.</li>
+<li>2004: Surowiecki publishes popular <em>The Wisdom of Crowds: Why the Many Are Smarter Than the Few and How Collective Wisdom Shapes Business, Economies, Societies and Nations</em> book on this topic.</li>
+<li>2014: Galton's calculations are proven wrong: the average of the crowd was not 1 Lb away from the weight, but was in fact exactly right.</li>
+</ul>
+</div>
+<p>If we have an ox, we can just ask the crowd what they think the weight of the ox is—or we can just weigh the ox. However, often, we want to know what will happen in the future.</p>
+<p>There are a lot of questions we do not have an answer for. The nice advantage about using the wisdom of the crowd to predict the future is that, eventually, we will learn the answer.</p>
+<p>This helps us set incentives. If we ask people about specific things, but have no way of paying them, they can say whatever they want. However, if we want to know what will happen in the future, and we pay them about how good their guess was, they have an incentive to guess as right as possible.</p>
+<div class="example">
+<p><strong>Examples:</strong> Applications of The Wisdom of The Crowd</p>
+<p>Which questions is the crowd likely to have good answers for?</p>
+<ul>
+<li>Elections: We are actually trying to predict the crowd's behavior.</li>
+<li>The state of a big corporate project: We are aggregating distributed information.</li>
+</ul>
+</div>
+<div class="remark">
+<p><strong>Setting incentives matters</strong></p>
+<p>In 1982, Tom Bradley was the Mayor of Los Angeles, and lost the race to become the California Governor even though he was ahead in the polls. The theory is that people said they would vote for him because they did not want to appear racist, but they actually voted for the other candidate.</p>
+<p>This is called the <strong>Bradley Effect</strong>, the <strong>Shy Torry Effect</strong>, or the <strong>Social Desirability Bias</strong>.</p>
+</div>
+<h2 id="prediction-markets">Prediction Markets</h2>
+<blockquote>
+<p>"If only HP knew what HP knows, we would be three times more productive." — Lew Platt</p>
+</blockquote>
+<p>Prediction markets are a very popular way to aggregate information, for instance in big corporations such as HP, Ford, Firm X, Google, Ely Lily. Prediction markets help circumbent hierarchical organization structure, and it tends to outperform experts <em>despite</em> optimism bias (prediction markets tend to be overly optimistic).</p>
+<div class="example">
+<p><strong>Example of Prediction Market:</strong> Iowa Electronic Market (IEM)</p>
+<p>IEM is an academic research prediction market hosted by the University of Iowa. It is sometimes used to predict things outside of academia, such as elections.</p>
+<p>Consider a winner-takes-all presidential elections market, with the following rules:</p>
+<ul>
+<li>D-contract pays <span class="arithmatex">\(\$1\)</span> if the Democratic candidate wins.</li>
+<li>R-contract pays <span class="arithmatex">\(\$1\)</span> if the Republican candidate wins.</li>
+<li>Zero-sum trade with the house: buy/sell a <strong>contract bundle</strong> (1 contract of each type) for <span class="arithmatex">\(\$1\)</span>. You pay <span class="arithmatex">\(\$1\)</span> and you eventually get <span class="arithmatex">\(\$1\)</span>. Since you have a D-contract and an R-contract, you can trade them with other predictors. So, if you think that the Democratic is more likely to win, you can buy more D-contract and sell some R-contract.</li>
+</ul>
+<p>Once a lot of predictors have contracts, they can buy and sell them, so we have a market, and we can see what happens to the prices. The way this is operated in the IEM is using something called the <strong>continuous limit order book</strong>.</p>
+</div>
+<div class="definition">
+<p><strong>Definitions:</strong> Continuous Limit Order Book</p>
+<p>This is <strong>continuous</strong> because time is continuous and orders can arrive over time.</p>
+<p>For example: </p>
+<ul>
+<li>A buyer wants to buy a contract, and they are willing to pay <span class="arithmatex">\(\$1\)</span> for it. This is called the <strong>bid</strong>: the bid is the highest buy order currently on the book.</li>
+<li>A seller wants to sell that contract, and they are willing to sell it for <span class="arithmatex">\(\$3\)</span>. This is called the <strong>ask</strong>: the ask is the lowest sell order currently on the book.</li>
+<li>Since the ask is higher than the bid, the buyer and the seller do not want to transact.</li>
+<li>However, buy and sell orders can arrive at any time: as soon as a trade is feasible, orders trade and they leave the book.</li>
+<li>A new buyer now wants to buy a contract for <span class="arithmatex">\(\$4\)</span>. So, the bid goes up, to <span class="arithmatex">\(\$4\)</span>, since the bid is the highest buy order.</li>
+<li>Given that the bid is higher than the ask, this new buyer and the seller are happy to trade with each other. We match them, they leave the marker, and the bid is again <span class="arithmatex">\(\$1\)</span>.</li>
+<li>Perhaps, later, a new seller wants to sell the contract for <span class="arithmatex">\(\$2\)</span>. So, the ask becomes <span class="arithmatex">\(\$2\)</span>.</li>
+<li>The buyer who previous bought the contract for <span class="arithmatex">\(\$3\)</span> would have been better off trading with this new seller, but when they placed their buy order for <span class="arithmatex">\(\$4\)</span>, the seller with the ask order of <span class="arithmatex">\(\$2\)</span> was not there, so they traded with the seller with the ask order of <span class="arithmatex">\(\$3\)</span>.</li>
+<li>After we clear out all the orders that can trade with each other, the ask is higher than the bid, and the difference is called the <strong>spread</strong>.</li>
+</ul>
+<p>There are two kinds of orders in this book:</p>
+<ul>
+<li><strong>Marketable orders:</strong> We already have a match in the book, so they can transact immediately, e.g., a buyer places a buy order for <span class="arithmatex">\(\$4\)</span> when there is already a sell order for <span class="arithmatex">\(\$3\)</span> on the market.</li>
+<li><strong>Resting (non-marketable) orders:</strong> We are waiting to match , e.g., a buyer places a buy order for <span class="arithmatex">\(\$1\)</span>, but there is no sell order at all in the book, so it is resting in the book.</li>
+</ul>
+<p><em><strong>Note:</strong> This is not very complicated, but these are a very useful definitions (which will come back later in the quarter).</em></p>
+</div>
+<div class="example">
+<p><strong>Example of Prediction Market:</strong> Iowa Electronic Market (IEM) (Cont'd)</p>
+<p>All predictors have D-contracts and R-contracts. They look at the order book, and they see that R-contracts are trading for <span class="arithmatex">\(\$0.60\)</span>. If they think that there is less than a 60% probability that the Republican candidate is going to win, they should sell their R-contracts or buy more D-contracts.</p>
+</div>
+<p>There are some legal issues with prediction markets in the US (and beyond):</p>
+<ul>
+<li>Trading in prediction markets is essentially gambling, which is mostly illegal in the US, except in Las Vegas, Nevada.</li>
+<li>IEM was granted an exception ("no action letter") by the CFTC, but it is limited to 1,000 traders and <span class="arithmatex">\(\$500\)</span> per trader (i.e. no one person can dominate the market.)</li>
+<li>Intrade operated from Ireland for a while but was shut down in 2012 by the CFTC.</li>
+<li>PredictIt, which is also operated by a university since 2014, namely Victoria University of Wellington, and has a similar status to IEM. The CFTC ordered it to shut down in 2022/2023, but PredictIt sued and won, so it is still operating.</li>
+<li>Some decentralized prediction markets exist, such as AUgur and Polymarket, but they are probably illegal to use for US residents.</li>
+</ul>
+<p>Interestingly, meanwhile on Wall St, we can legally buy "naked shorts" for billions of dollars:</p>
+<ul>
+<li>A short is when someone believes a stock is going to go down, so they borrow some shares of it, and sell them immediately, with the intention of buying them back after the price has gone down.</li>
+<li>A "naked short" is when someone sells some shares of stock without first borrowing them (or without ensuring that they can be borrowed). This is done in the hopes that the price of the stock will fall, allowing the seller to buy back the shares at a lower price and profit from the difference. <em><strong>Important Note:</strong> It is a type of securities fraud</em>.</li>
+</ul>
+<div class="example">
+<p><strong>Example of Prediction Market:</strong> Iowa Electronic Market (IEM) (Cont'd)</p>
+<p>Given the rules of the market, we can interpret the price as a probability, aggregating the market's beliefs:</p>
+<p><img alt="Prediction Markets Price as a Probability" src="../images/Prediction%20Markets%20Price%20as%20a%20Probability.png" /></p>
+<p>In theory (assuming the <span class="arithmatex">\(\$500\)</span>-per-trader restriction), at equilibrium prices <span class="arithmatex">\((p_D, p_R)\)</span>: <span class="arithmatex">\(Number \; of \; D-contracts = Number \; of \; D-contracts\)</span>.</p>
+<p>In other words: The total budget of the predictors who think that the Democratic candidate has a probability of winning greater than <span class="arithmatex">\(p_D\)</span>, divided by <span class="arithmatex">\(p_D\)</span>, is equal to the total budget of the predictors who think that the Republican candidate has a probability of winning greater than <span class="arithmatex">\(p_R\)</span>, divided by <span class="arithmatex">\(p_R\)</span>.</p>
+<p>Although this has a sense of aggregate probability, it tends to be skewed towards making the seem a little more balanced than it really is, because each time we are dividing the total budget by the price per contract. So, if the price per contract is small (e.g., this is the contract for the underdog, i.e. the candidate least likely to win), then we are dividing by a smaller number, so we are giving it a higher weight. </p>
+</div>
+<h2 id="liquidity-and-no-trade-theorems">Liquidity and No-Trade Theorems</h2>
+<p>In prediction markets, if there is a <strong>large spread</strong>, it reveals poor information aggregation.</p>
+<div class="example">
+<p><strong>Example of Large Spread:</strong> Will Lebron James Sign With The Chicago Bulls?</p>
+<p>The bid for <em>Yes</em> was <span class="arithmatex">\(5\%\)</span>, while the ask ask for <em>No</em> was almost <span class="arithmatex">\(40\%\)</span>. This means that there was a large gap between the market aggregate belief in the Yes and the No. This was not very helpful to use this prediction market to predict what is going to happen, because it does not provide a very precise prediction.</p>
+<p>Why was the spread so large?</p>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Liquidity Providers</p>
+<p>Liquidity providers buy low now and sell high later (or sell high now and buy low later). In other words, liquidity providers leave bid/ask <strong>resting orders</strong> on the book.</p>
+<p>Other investors can buy/sell at any time by trading with liquity providers. When an investor buys from the resting order, and another investor sells from the resting order, the liquidity providers earn the spread, i.e. the gap between the sell order and the buyer order left in the book.</p>
+<p>As competition between liquidity providers increases, the spread decreases. As liquidity providers have a great business model (they buy low and sell high), they tend to outbid each other, so more competition brings the ask and the bid closer to each other.</p>
+<p>Providing liquidity sounds like a great deal, but what is the catch? Three is some risk involved.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> Public Information No-Trade Theorem</p>
+<p>If the market already aggregated all available public information, there is no point in trading.</p>
+</div>
+<p>If we already thought of all the possible information, and we all agree that the probability that the Republican candidate will win is 60%, which means that it is worth <span class="arithmatex">\(\$0.60\)</span> for everyone, why should anybody trade?</p>
+<p>How would this be different if some investors have some private information?</p>
+<div class="example">
+<p><strong>Examples of Private Information</strong> </p>
+<ul>
+<li>Alice know that the delivery of component X for product Y is delayed.</li>
+<li>Alice used the largest, deepest neural network and discovered a trend towards candidate Z.</li>
+</ul>
+</div>
+<p>If we believe that the Republican candidate has a very high probability of winning, we can buy a lot of R-contracts and make a lot of money. Is there any catch?</p>
+<ul>
+<li>Earning the profits actually depends on how reliable the private information is. If it is just a rumor, maybe there is some risk, but if it is correct most of the time, then on average, you will be better off.</li>
+<li>On a prediction market, even if a predictor has private information, they may only be able to sway the price by a <span class="arithmatex">\(\$500\)</span> difference. In contrast, on the stock market, traders have more leverage options to trade stocks with more capital than they really have.</li>
+<li>When someone reveals their intention to make a trade for a different price, they are revealing that they may have some information, and <em>that</em> may change the price. This is why, on the stock market, when large companies want to sell a big amount of stock, they have a lot of mechanisms to hide that fact to prevent the price from going down.</li>
+</ul>
+<p>Yet, there is something even more surprising.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> Public <em>and Private</em> Information No-Trade Theorem</p>
+<p>Alice will only want to buy at the current price if she has private information.</p>
+</div>
+<p>In other words, we know that if there is no private information, no one wants to buy or sale. So, if Alice wants to buy at the current price, she must know something that Bob doesn't know. However, if Alice wants to buy (from Bob), then Bob does not want to sell (to Alice). Thus, even if Alice has some private information, she cannot use it, because Bob (i.e. no one) wants to trade with he—because she is too excited to trade based on the public information alone.</p>
+<p>In prediction markets, if everyone is rational:</p>
+<ul>
+<li>No one should be trading. If no one is trading, then we don't know what the aggregate belief is.</li>
+<li>If a liquidity provider has some resting order on the book, and Alice wants to buy from them, they should be wary. There is a big risk for liquidity providers.</li>
+<li>If there is more risk for liquidity providers, there are fewer liquidity providers on the market, so we expect the spread to be large, and we cannot make a good prediction based on the prediction market.</li>
+</ul>
+<div class="example">
+<p><strong>Example of Large Spread:</strong> Will Lebron James Sign With The Chicago Bulls? (Cont'd)</p>
+<p>This is the reason why the spread was so large to predict whether Lebron James would sign with the Chicago Bulls.</p>
+</div>
+<p>In practice, not everyone is rational, and not everyone thinks that everyone else is rational. This is why prediction markets work pretty well.</p>
+<div class="example">
+<p><strong>Example of Prediction Market:</strong> Iowa Electronic Market (IEM) (Cont'd)</p>
+<p>Findings from research (2004) on IEM logs suggest that IEM predicted elections outcomes better than polls.</p>
+<blockquote>
+<p>"Traders are not a representative sample of likely voters. They are overwhelmingly male, well-educated, high-income, and young.</p>
+</blockquote>
+<p>Women are also less likely to be liquidity providers.</p>
+<p>So, most traders are highly biased, and they make irrational choices, but prices are mostly set by a core group of sophisticated liquidity providers, who on average have more capital, are more active, and generate more profits.</p>
+</div>
+<div class="summary">
+<p><strong>Prediction Markets Recap</strong></p>
+<p>Prediction markets:</p>
+<ul>
+<li>Allow participants to trade contracts, where the payout is based on the outcome of a predicted event.</li>
+<li>Incentivize participants to aggregate information and tend to outperform experts (corporations) and polls (IEM).</li>
+</ul>
+<p>We can interpret the <em><strong>price as a (biased) proability</strong></em>, aggregating the market's beliefs.</p>
+<p>The No-trade theorems tell us that, even if some traders have more information, it is irrational to trade.</p>
+</div>
+<h2 id="information-cascades">Information Cascades</h2>
+<p>Information cascades are different from prediction markets, but they are also about aggregating information.</p>
+<div class="definition">
+<p><strong>Information Aggregation Dynamics</strong></p>
+<p>Information aggregation is a dynamic process. Agents learn what other agents think, and <em>that</em> changes their own opinion.</p>
+<p>What information is revealed in the pricess is very important, e.g., IEM traders see the last prices traded, but not the quantities.</p>
+</div>
+<p>In the rest of this lecture, we will focus on examples where information cascades go wrong.</p>
+<div class="example">
+<p><strong>Wram-Up:</strong> The Sky Experiment</p>
+<p>You are walking down the street. Do you stop to look at the sky? Probably not.</p>
+<p>Now, you keep looking down the street, and you see other people looking at the sky: do you also look at the sky?</p>
+<p>Here is the model of this experiment:</p>
+<ul>
+<li>Each person makes a decision (to look up or not).</li>
+<li>Decisions are made sequentially: each person sees decisions made before them, and then they decide what to do.</li>
+<li>Before making a decision, each person leanrs:<ul>
+<li>A private signal (e.g., did something fall on their head or not?),</li>
+<li>Other people's actions so far (did they look up or not?),</li>
+</ul>
+</li>
+<li>However, before making a decision, no person learns other people's signals (e.g., did something fall on <em>their</em> head or not?).</li>
+</ul>
+</div>
+<div class="example">
+<p><strong>Example</strong> The Urn Experiment</p>
+<p>This is an in-class experiment, with the following rules:</p>
+<ul>
+<li>Aviad printed many "balls" in an urn, either with <span class="arithmatex">\((66\% \; Blue, 33\% \; Red)\)</span> or <span class="arithmatex">\((33\% \; Blue, 66\% \; Red)\)</span>.</li>
+<li>The goal is to decide if there are more blue balls or red balls in the urn.</li>
+</ul>
+<p>The model of the experiment is similar to the Sky Experiment:</p>
+<ul>
+<li>Each person makes a guess (more blue or red balls).</li>
+<li>Decisions are made sequentially: each group sees guesses made before them, and then they make a guess themselves.</li>
+<li>Before making a guess, each group leanrs:<ul>
+<li>A private signal, i.e. they can see one random ball from the urn,</li>
+<li>Previous groups' guesses so far (more blue or red balls),</li>
+</ul>
+</li>
+<li>However, before making a guess, no group learns other groups' signals (e.g., the color of the random ball they saw).</li>
+</ul>
+<p>Here are the guesses of the groups in class: Red, Red, Red, Red, Red, Blue.</p>
+<p><strong>How does this work?</strong></p>
+<ul>
+<li>Player 1: Guesses the color of the ball they see. Let's assume it is Blue.</li>
+<li>Player 2: Guesses the color of the ball they see. Let's assume it is Blue again.</li>
+<li>Player 3: Guesses Blue—even if they see Red.</li>
+<li>Player 4: Guesses Blue—even if they see Red.</li>
+<li>Player 5: Guesses Blue—even if they see Red.</li>
+</ul>
+<p>In other words, players 3, 4, 5, ... ignore the color of the ball they see and blindly trust players 1 and 2: this is an information cascade.</p>
+<p><em><strong>Conclusion:</strong> Even when we have a lot of information, we may not be aggregating well.</em></p>
+<p><strong>How to model this?</strong></p>
+<p>Assume the urn contains two red balls:</p>
+<ul>
+<li>Correct cascade: <span class="arithmatex">\(Pr[Players \; 1+2 \; both \; see \; Red] = \frac{2}{3} \cdot \frac{2}{3} = \frac{4}{9}\)</span>.</li>
+<li>Wrong cascade: <span class="arithmatex">\(Pr[Players \; 1+2 \; both \; see \; Blue] = \frac{1}{3} \cdot \frac{1}{3} = \frac{1}{9}\)</span>.</li>
+<li>No cascade (yet): <span class="arithmatex">\(Pr[Players \; 1+2 \; see \; Blue \; and \; Red] = \frac{1}{3} \cdot \frac{2}{3} + \frac{2}{3} \cdot \frac{1}{3} = \frac{4}{9}\)</span>.</li>
+</ul>
+<p>This means that, after two players:</p>
+<ul>
+<li>Correct cascade with <span class="arithmatex">\([Pr = \frac{4}{9}]\)</span> <span class="arithmatex">\(\rightarrow\)</span> All remaining players guess correctly.</li>
+<li>Wrong cascade with <span class="arithmatex">\([Pr = \frac{1}{9}]\)</span> <span class="arithmatex">\(\rightarrow\)</span> All remaining players guess incorrectly.</li>
+<li>No cascade (yet) with <span class="arithmatex">\([Pr = \frac{4}{9}]\)</span> <span class="arithmatex">\(\rightarrow\)</span> So far, Red and Blue are even: this is equivalent to restarting the experiment over.</li>
+</ul>
+<p>More generally, after <span class="arithmatex">\(2t\)</span> iterations:</p>
+<ul>
+<li>The correct cascade is four times more likely than the wrong cascade (<span class="arithmatex">\([Pr = \frac{4}{9}]\)</span> vs. <span class="arithmatex">\([Pr = \frac{1}{9}]\)</span>).</li>
+<li>A cascade will eventually happen, because the probability that a cascade has not happened yet decays exponentially: <span class="arithmatex">\(Pr[No \; cascade \; yet] = (\frac{4}{9})^t\)</span>.</li>
+</ul>
+<p>This means that <span class="arithmatex">\(Pr[Correct \; cascade] = 80\%\)</span> and <span class="arithmatex">\(Pr[Wrong \; cascade] = 20\%\)</span>. This is not <em>terrible</em>, but given that we have infinitely many samples, this is really bad information aggregation, because we still have a <span class="arithmatex">\(20\%\)</span> chance of being completely wrong <em>even when we have infinitely many samples</em>.</p>
+</div>
+<h2 id="two-stories-of-information-cascades">Two Stories of Information Cascades</h2>
+<div class="example">
+<p><strong>Stroy #1</strong> Price Bubble</p>
+<p>Why would a biology textbook be offered for over <span class="arithmatex">\(\$18M\)</span> on Amazon?</p>
+<p><img alt="Information Cascades Story 1 Price Bubble" src="../images/Information%20Cascades%20Story%201%20Price%20Bubble.png" /></p>
+<p>Two pricing algorithms were mis-informing each other and updating their respective price every day based on the competitor's price the previous day. One algorithm was trying to be slightly lower than the other (to be cheaper), but the other was trying to be slightly (to be more prestigious). This spiraled into very big prices.</p>
+<p><em><strong>Moral:</strong> Information cascades are even worse with algorithms that don't perform Bayesian reasoning very well.</em></p>
+</div>
+<div class="example">
+<p><strong>Stroy #2</strong> 2010 Flash Crash</p>
+<p>On May 6, 2010, stock values lost <span class="arithmatex">\(\approx \$1T\)</span>... and then recovered within 36 minutes.</p>
+<p>Why? There were several competing theories. In April 2015? a trader in London was arrested for allegedly causing a crash via a cascade of trading algorithms panic.</p>
+</div>
+<div class="summary">
+<p><strong>Information Cascades Recap</strong></p>
+<ul>
+<li>Information cascades happen when agents are acting solely based on public information and are not contributing their private information, which causes information aggregation to fail.</li>
+<li>The agent action space (e.g., "red/blue" vs. <span class="arithmatex">\(Pr[Blue]\)</span>) is important.</li>
+<li>Examples of information cascades: the Sky Experiment, the Urn experiment, the Price Bubble, and the Flash Crash.</li>
+</ul>
+</div>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Wisdom of The Crowd Recap</strong></p>
+<p>Crowd often possess collective wisdwoms about:</p>
+<ul>
+<li>The crowd's opinions (election predictions).</li>
+<li>Large complicated processes (corporate projects).</li>
+</ul>
+<p>We need to think carefully about incentives to extract these wisdoms, in particular to avoid:</p>
+<ul>
+<li>Information cascades.</li>
+<li>Biased polls.</li>
+</ul>
+<p>Prediction markets are one popular option for learning from the crowds:</p>
+<ul>
+<li>Equilibrium price as a (biased) predicted probability.</li>
+<li>No-trade theorems: if everyone is rational, no one wants to trade.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
