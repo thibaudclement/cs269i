@@ -1,0 +1,1193 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lecture9/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Mid-Quarter Review Party - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#letting-the-market-allocate-goods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mid-Quarter Review Party
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture3b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#letting-the-market-allocate-goods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Letting The Market Allocate Goods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Failures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-mechanisms-to-allocate-goods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Mechanisms To Allocate Goods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coming Up Next
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#letting-the-market-allocate-goods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Letting The Market Allocate Goods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Failures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-mechanisms-to-allocate-goods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Mechanisms To Allocate Goods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coming Up Next
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Mid-Quarter Review Party</h1>
+
+<p>An important meta question in CS269I is: "How do we allocate stuff?" One answer is to let the market figure it out.</p>
+<h2 id="letting-the-market-allocate-goods">Letting The Market Allocate Goods</h2>
+<div class="definition">
+<p><strong>Definition: Competitive Equilibrium</strong></p>
+<p>A competitive equilibrium is the combination of a price vector <span class="arithmatex">\(\overrightarrow{p} = (p_1, ..., p_n)\)</span> and a matching <span class="arithmatex">\(M\)</span> of buyers to goods, such that:</p>
+<ul>
+<li>Each buyer is matched to their favorite good (given prices).</li>
+<li>If no buyer is matched to good <span class="arithmatex">\(j\)</span>, then <span class="arithmatex">\(p_j = 0\)</span>.</li>
+</ul>
+</div>
+<p>A competitive equilibrium:</p>
+<ul>
+<li>Maximizes social welfare <span class="arithmatex">\(\underset{i}{\sum} v_{i,M(i)}\)</span>.</li>
+<li>Always exists, and can be found efficiently with DA-with-prices.</li>
+</ul>
+<div class="summary">
+<p><strong>Deferred Acceptance With Prices Recap</strong></p>
+<ul>
+<li><strong>Assumption:</strong> Prices are always in some finite range (e.g., <span class="arithmatex">\(\$0-\$1,000\)</span>), with finite increments (e.g., <span class="arithmatex">\(\$1\)</span>).</li>
+<li><strong>Ordinal Preferences:</strong> For each buyer, we construct a list of all the <span class="arithmatex">\((good,price)\)</span> options, ordered by utility. We can truncate the list a the <span class="arithmatex">\((receive \;nothing, pay \; nothing)\)</span> option.</li>
+<li>
+<p><strong>At each iteration of the algorithm</strong>:</p>
+<ul>
+<li>The unmatched buyer whose next-favorite option is <span class="arithmatex">\((j,p)\)</span> proposes price <span class="arithmatex">\(p\)</span> to good <span class="arithmatex">\(j\)</span>.</li>
+<li>Good <span class="arithmatex">\(j\)</span> tentatively accepts if price <span class="arithmatex">\(p\)</span> is higher than the prices it was offered so far.</li>
+</ul>
+</li>
+<li>
+<p>The <strong>running time</strong> of DA with prices is in the order of <span class="arithmatex">\(O(n \cdot m \cdot i)\)</span>, where <span class="arithmatex">\(i\)</span> is the number of increments.</p>
+</li>
+<li>
+<p>DA-with-prices <strong>always terminates</strong>, and finds a competitive equilibrium, because every buyer is either matched to a good or they reach a point where they prefer to pay nothing and buy nothing.</p>
+</li>
+</ul>
+</div>
+<p>Sometimes, letting the market allocate goods is a great answers. Somestimes, not so much. For instance:</p>
+<ul>
+<li>When we don't want to use money, such as in the case of a kidney exchange program or college dorm assignment. There is indeed a fundamental caveat when measuring welfare with money: one's value for something (i.e. how much they are willing to pay for it) also depends on how much money they have.</li>
+<li>When the market fails to converge to an optimal equilibrium.</li>
+</ul>
+<h2 id="market-failures">Market Failures</h2>
+<div class="summary">
+<p><strong>Market Failures Recap</strong></p>
+<p>A market failure occurs when a market fails to converge to an optimal outcome.</p>
+<p>We have seen five types of market failures:</p>
+<ol>
+<li>
+<p><strong>Externalities and public goods</strong></p>
+<ul>
+<li>An externality is a side-effect on someone other than the seller/buyer.</li>
+<li>A public good is something that belongs to everybody but owned by nobody.</li>
+<li>Examples: ecological damage, traffic congestion, underinvestment in public goods.</li>
+<li>What can we do about it? Pigouvian Tax (tax proportionally to the externality) and Coasian bargaining (auction off public goods).</li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction costs</strong></p>
+<ul>
+<li>Transaction costs are market frictions.</li>
+<li>Examples: taxes, search costs.</li>
+<li>What can we do about it? Use algorithms for matching buyers and sellers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Market thinness</strong></p>
+<ul>
+<li>The market is thin when the flow of buyers and sellers is too small.</li>
+<li>Examples: "failed" social networks, P2P platforms, marketsplaces.</li>
+<li>Monopolies create incentive issues.</li>
+<li>What can we do about it? Encourage more participants to join, merge markets, and batch transactions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Timing issues</strong></p>
+<ul>
+<li>Examples: committing too early, exploding offers.</li>
+<li>What can we do about it? Use a centralized matching mechanism, allow to accept and then renege exploding offers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Information asymmetry</strong></p>
+<ul>
+<li>Example: adverse selection for lemons.</li>
+<li>What can we do about it? Provide more information to both sides of the market or disallow the use of asymmetric information.</li>
+</ul>
+</li>
+</ol>
+</div>
+<p>Given that the market may fail to converge to an optimal equilibrium, we want to know how to design mechanisms to allocate goods.</p>
+<h2 id="designing-mechanisms-to-allocate-goods">Designing Mechanisms To Allocate Goods</h2>
+<div class="definition">
+<p><strong>Definition: Mechanism</strong></p>
+<p>A mechanism consists of three things:</p>
+<ol>
+<li>A method of collecting inputs from agents,</li>
+<li>An algorithm that acts on the inputs,</li>
+<li>An action taken based on the output of the algorithm.</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Definition: Strategyproofness/Truthfulness</strong></p>
+<p>A mechanism is strategyproof if it's in every agent's best interest to act truthfully, i.e., to report true preferences. In other words, an agent can never be worse off reporting their true preferences, regardless of what every other agent is doing.</p>
+</div>
+<div class="definition">
+<p><strong>Mechanism: Serial Dictatorship</strong></p>
+<ol>
+<li>Sort students in some fixed order (random, seniority, alphabetically, etc.).</li>
+<li>Go through the list in <em>that</em> order and allow each student (the "dictator") to select their most preferred available dorm.</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Mechanism: Deferred Acceptance</strong></p>
+<p>While there's an unmatched doctor <span class="arithmatex">\(i\)</span>:</p>
+<ul>
+<li>Doctor <span class="arithmatex">\(i\)</span> proposes to their next-favorite hospital <span class="arithmatex">\(j\)</span>.</li>
+<li>If hospital <span class="arithmatex">\(j\)</span> has no match, they accept doctor <span class="arithmatex">\(i\)</span>.</li>
+<li>Else, if hospital <span class="arithmatex">\(j\)</span> prefers their current match over doctor <span class="arithmatex">\(i\)</span>, doctor <span class="arithmatex">\(i\)</span> remains unmatched.</li>
+<li>Else, hospital <span class="arithmatex">\(j\)</span> matches with doctor <span class="arithmatex">\(i\)</span>, releasing their previous match.</li>
+</ul>
+<p>The algorithm stops when everyone is matched: it is strategyproof for buyers, but not for hospitals.</p>
+</div>
+<p>Some mechanisms are strategyproof, but some aren't (e.g., first-price auctions, prediction markets). What should we expect strategic agents to do in non-strategyproof mechanisms?</p>
+<p>So, what should agents do when the mechanism isn't strategyproof, and possibly not even fully specified? From a <strong>single agent perspective</strong>, agents can learn good strategies by trial and error. Regret minimization is a good framework for doing that.</p>
+<div class="remark">
+<p><strong>Key Ideas</strong></p>
+<ul>
+<li><strong>Key Idea #1:</strong> Use historical performance to forecast the future.</li>
+<li><strong>Key Idea #2:</strong> Use regret to measure the success of algorithms.</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>Regret Recap</strong></p>
+<ul>
+<li>
+<p><strong>External Regret</strong> is the difference between the algorithm's total reward and the reward from the single best-in-hindsight action, i.e. Regret = <span class="arithmatex">\( \underset{i}{\max} \underset{t}{\sum} r_{i,t} - \underset{t}{\sum} r_{ALG(t),t} \)</span>.</p>
+</li>
+<li>
+<p><strong>Swap-Regret</strong> is the difference between the algorithm's total reward and the reward and the best-in-hindsight "swap function \Phi of the algorithm's choice, i.e. Regret = <span class="arithmatex">\( \underset{\Phi : [n] \to [n]}{\max} \underset{t}{\sum} (r_{\Phi(ALG(t)),t} - r_{ALG(t),t}) \)</span>.</p>
+</li>
+</ul>
+</div>
+<p>How can we minimize regret?</p>
+<div class="remark">
+<p><strong>Key Ideas</strong></p>
+<ul>
+<li><strong>Key Idea #3:</strong> Use randomness as safety against adversarial inputs.</li>
+<li><strong>Key Idea #4:</strong> Balance randomness and optimization.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Algorithm: Follow The Regularized Leader (FTRL)</strong></p>
+<p>On day <span class="arithmatex">\(t\)</span>, choose distribution <span class="arithmatex">\(x\)</span> maximizing <span class="arithmatex">\(\underset{t}{\sum} (r_{x,t} - \frac{1}{\eta}\varphi(x))\)</span> where:</p>
+<ul>
+<li><span class="arithmatex">\(r_{x,t}\)</span> provides the historical performance,</li>
+<li><span class="arithmatex">\(\eta\)</span> balances randomness and history,</li>
+<li><span class="arithmatex">\(\varphi\)</span> is the regularizer, which penalizes unbalanced distributions.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Algorithm: Multiplicative Weight Update (MWU)</strong></p>
+<ul>
+<li>Initialize weights <span class="arithmatex">\(z_{i,0} = 1\)</span> for all <span class="arithmatex">\(i\)</span>.</li>
+<li>At day <span class="arithmatex">\(t\)</span>:<ul>
+<li>Choose action <span class="arithmatex">\(i\)</span> with probability <span class="arithmatex">\(\frac{z_{i,t}}{\underset{j}{\sum} z_{j,t}}\)</span>.</li>
+<li>Update weights: <span class="arithmatex">\(z_{i,t+1} \leftarrow z_{i,t} e^{\eta r_{i,t}}\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Claim:</strong> MWU = FTRL with entropy regularizer <span class="arithmatex">\(\varphi(x) = - \sum x_i \log(x_i) \)</span>.</p>
+</div>
+<p>How can we minimize regret when we can't see the rewards?</p>
+<div class="remark">
+<p><strong>Key Ideas</strong></p>
+<ul>
+<li><strong>Key Idea #5:</strong> Balance exploration and exploitation.</li>
+<li><strong>Key Idea #6:</strong> Use unbiased estimates of rewards.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Mechanism: Exp3 Algorithm</strong></p>
+<p>On day <span class="arithmatex">\(t\)</span>:</p>
+<ul>
+<li>MWU selects an arm.</li>
+<li>Define pseudo-rewards:<ul>
+<li>If arm <span class="arithmatex">\(i\)</span> is not selected: <span class="arithmatex">\(\hat{r}_{i,t} = 0\)</span>.</li>
+<li>If arm <span class="arithmatex">\(i\)</span> is selected: <span class="arithmatex">\(\hat{r}_{i,t} = \frac{r_{i,t}}{Pr[\text{selecting } i]}\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>What should agents do when the mechanism isn't strategyproof, and possibly not even fully specified? From a <strong>game theoretic perspective</strong>, agents can leverage equilibrium solution concepts, such as Nash and Stackelberg equilibria to reason about other players, and (coarse) correlated equilibria to minimize regret.</p>
+<div class="summary">
+<p><strong>Nash Equilibrium Recap</strong></p>
+<p>Each player samples independently from distribution, and nobody has an incentive to deviate from the distribution.</p>
+<p><strong>The Good:</strong></p>
+<ul>
+<li>Theorem: A Nash equilibrium exists in every finite game.</li>
+<li>If the players play the Nash equilibrium, none of them want to deviate.</li>
+</ul>
+<p><strong>The Bad:</strong></p>
+<p>The Nash equilibrium...</p>
+<ul>
+<li>... is not unique.</li>
+<li>... is not equal to the max-min and the min-max.</li>
+<li>... is not approached by Regret Minimization.</li>
+<li>... is intractable to compute, even approximately.</li>
+<li>... sometimes does not make sense (see below).</li>
+</ul>
+<p><strong>The Ugly:</strong></p>
+<p>Aviad wrote a 300+ page thesis on this topic, so we may get some long answers if we ask questions ;)</p>
+</div>
+<div class="summary">
+<p><strong>Correlated Equilibrium Recap</strong></p>
+<p>A correlated equilibrium is a distributuon of actions that every player would rather follow.</p>
+<p><strong>Good News:</strong></p>
+<ul>
+<li>A correlated equilibrium can be computed efficiently (via both Linear Programming and Regret Minimization*).</li>
+<li>If every player runs a Regret Minimization aglorithm*, the play converges to the <em>set</em> of correlated equilibria. <em>Note: The game cannot converge to a correlated equilibrium without a correlating device.</em></li>
+</ul>
+<p><em>*Depdending on the details of the Regret Minimization algorithm, agents may only converge to a Coarse correlated equilibrium." We will ignore this distinction in lecture.</em></p>
+<p><strong>Bad News:</strong></p>
+<ul>
+<li>Just like a Nash equilibrium, a correlated equilibrium is not unique, and sometimes does not make sense (e.g., the CS269I grade game played in class).</li>
+<li>Without a correlating device, this is not an equilibrium, and players have an incentive to deviate.</li>
+</ul>
+<p><strong>Observation:</strong> Every Nash equilibrium is an (un)correlated equilibrium.</p>
+</div>
+<div class="summary">
+<p><strong>Stackelberg Equilibrium Recap</strong></p>
+<p>In a Stackelberg equilibrium, the Follower's strategy is optimal given the Leader's strategy, and the Leader's <em>commitment</em> is optimal.</p>
+<p><strong>Good:</strong></p>
+<ul>
+<li>The Leader's utility is no worse than in any correlated equilibrium.</li>
+<li>Without loss of generality, the Follower's strategy is deterministic. This implies an efficient algorithm using Linear Programming.</li>
+</ul>
+<p><strong>Catch:</strong></p>
+<p>The Leader's strategy may be a <em>sub-optimal</em> response to the Follower's strategy. The Leader needs to be able to <em>commit</em> to this sub-optimal stragegy.</p>
+</div>
+<div class="example">
+<p><strong>Pessimistic Rock–Paper–Scissors (PRPS)</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>R</th>
+<th>P</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R</strong></td>
+<td>(0,0)</td>
+<td>(-2,1)</td>
+<td>(1,-2)</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>(1,-2)</td>
+<td>(0,0)</td>
+<td>(-2,1)</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>(-2,1)</td>
+<td>(1,-2)</td>
+<td>(0,0)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Coarse Correlated Equilibrium (CCE)</strong></p>
+<p>The signal is approximately uniform <em>on</em> the diagonal.</p>
+<p>The expected utility is:</p>
+<ul>
+<li><span class="arithmatex">\(0\)</span> for following the signal.</li>
+<li><span class="arithmatex">\(-\frac{1}{3}\)</span> for ignoring the signal.</li>
+<li><span class="arithmatex">\(1\)</span> for playing <span class="arithmatex">\(P\)</span> whenever the signal is <span class="arithmatex">\(R\)</span>.</li>
+</ul>
+<p>Following the signal is better than following it: this is why this is a CCE. However, this is not a correlated equilibrium (due to the last bullet point).</p>
+</div>
+<div class="remark">
+<p><strong>What Is The Stackelberg Equilibrium In The Pessimistic Rock-Paper-Scissors (PRPS) Game?</strong></p>
+<p>We want to compute the Stackelberg equilibrium in the Pessimistic Rock-Paper-Scissors (PRPS) game, which means that the Leader is going to commit to some strategy (some probability of Rock, Paper, Scissors, respectively), and then the Follower will have some best response.</p>
+<p>Without loss of generality, we can think of the Follower’s best response as deterministic, i.e. one action. Since the game is symmetric, without loss of generality, we want the Follower to play Rock (<span class="arithmatex">\(R\)</span>).</p>
+<p>So, if we want the follower to play <span class="arithmatex">\(R\)</span>, we need to make sure that they don’t want to play Paper (<span class="arithmatex">\(P\)</span>) instead, for example. Let <span class="arithmatex">\(L_R\)</span>, <span class="arithmatex">\(L_P\)</span>, <span class="arithmatex">\(L_S\)</span> be the probabilities that the leader plays <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(P\)</span>, <span class="arithmatex">\(S\)</span>. With these probabilities, what is the Follower’s utility from playing <span class="arithmatex">\(R\)</span>?</p>
+<ul>
+<li>If the follower plays <span class="arithmatex">\(R\)</span>, they get: <span class="arithmatex">\(0 \cdot L_R - 2 \cdot L_P + 1 \cdot L_S\)</span> <span class="arithmatex">\((1)\)</span></li>
+<li>If the follower plays <span class="arithmatex">\(P\)</span>, they get: <span class="arithmatex">\(1 \cdot L_R + 0 \cdot L_P - 2 \cdot L_S\)</span> <span class="arithmatex">\((2)\)</span></li>
+<li>If the follower plays <span class="arithmatex">\(S\)</span>, they get: <span class="arithmatex">\(-2 \cdot L_R + 1 \cdot L_P + 0 \cdot L_S\)</span> <span class="arithmatex">\((3)\)</span></li>
+</ul>
+<p>Since we want to force the follower to play <span class="arithmatex">\(R\)</span>, we want:</p>
+<ul>
+<li><span class="arithmatex">\((1) \geq (2)\)</span>, i.e. <span class="arithmatex">\(- 2 \cdot L_P + 1 \cdot L_S \geq 1 \cdot L_R - 2 \cdot L_S\)</span> (this is the first constraint that we have).</li>
+<li><span class="arithmatex">\((3) \leq (1)\)</span>, i.e. <span class="arithmatex">\(-2 \cdot L_R + 1 \cdot L_P  \leq - 2 \cdot L_P + 1 \cdot L_S\)</span> (this is the second constraint that we have).</li>
+</ul>
+<p>With these constraints together, we want to make sure that the follower is going to play <span class="arithmatex">\(R\)</span>, i.e. that the probability that the follower is going to play <span class="arithmatex">\(R\)</span> is higher than anything else.</p>
+<p>Now, given that the Follower is going to play <span class="arithmatex">\(R\)</span>, what is the optimal/best strategy for the Leader (to get the Follower to play <span class="arithmatex">\(R\)</span>)?</p>
+<p>Well, given that the follower is playing <span class="arithmatex">\(R\)</span>, the Leader wants to maximize their utility.
+So, what is the Leader’s utility if the Follower is playing <span class="arithmatex">\(R\)</span>?</p>
+<p>The leader is getting <span class="arithmatex">\(0 \cdot L_R + 1 \cdot L_P - 2 \cdot LS\)</span> , which we want to maximize, i.e. <span class="arithmatex">\(max (0 \cdot L_R + 1 \cdot L_P - 2 \cdot LS)\)</span>.</p>
+<p>In other words, we want to find <span class="arithmatex">\(max (0 \cdto L_R + 1 \cdot L_P - 2 \cdot LS)\)</span> <em>given</em>:</p>
+<ul>
+<li><span class="arithmatex">\((1) \geq (2)\)</span>, i.e. <span class="arithmatex">\(- 2 \cdot L_P + 1 \cdot L_S \geq 1 \cdot L_R - 2 \cdot L_S\)</span> (first constraint),</li>
+<li><span class="arithmatex">\((3) \leq (1)\)</span>, i.e. <span class="arithmatex">\(-2 \cdot L_R + 1 \cdot L_P  \leq - 2 \cdot L_P + 1 \cdot L_S\)</span> (second constraint), and</li>
+<li><span class="arithmatex">\(L_R + L_P + L_S = 1\)</span> (by definition).</li>
+</ul>
+<p>Given <span class="arithmatex">\(L_R + L_P + L_S = 1\)</span>, let’s say that <span class="arithmatex">\(L_S = 1 - L_P - L_R\)</span>. So:</p>
+<ul>
+<li><span class="arithmatex">\(max (0 \cdot L_R + 1 \cdot L_P - 2 \cdot LS) = max(L_P - 2 \cdot (1 - L_P - L_R))\)</span> </li>
+<li><span class="arithmatex">\(-2 \cdot L_P + 1 \cdot (1 - L_P - L_R) \geq 1 \cdot L_R - 2 \cdot (1 - L_P - L_R)\)</span></li>
+<li><span class="arithmatex">\(-2 \cdot L_R + 1 \cdot L_P \leq -2 \cdot L_P + (1 - L_P - L_R)\)</span></li>
+</ul>
+<p>Let’s simplify things to solve this, and we get:</p>
+<ul>
+<li><span class="arithmatex">\(max(L_P - 2(1 - L_P - L_R) = max 3 \cdot L_P + 2 \cdot L_R - 2\)</span> (this is going to be the Leader’s utility, and since we want to find the best one, we can ignore the “<span class="arithmatex">\(-2\)</span>”, because there is nothing the Leader can do about this “<span class="arithmatex">\(-2\)</span>”).</li>
+<li><span class="arithmatex">\(-2 \cdot L_P + 1 \cdot (1 - L_P - L_R) \geq 1 \cdot L_R - 2 \cdot (1 - L_P - L_R) \Leftrightarrow -5 \cdot L_P -4 \cdot L_R \geq -3\)</span></li>
+<li><span class="arithmatex">\(-2 \cdot L_R + 1 \cdot L_P \leq -2 \cdot L_P + (1 - L_P - L_R) \Leftrightarrow L_R - 4 \cdot L_P \geq -1\)</span>.</li>
+</ul>
+<p>Assuming we have simplified everything correctly, we want to maximize the <span class="arithmatex">\(3 \cdot L_P + 2 \cdot L_R - 2\)</span> subject to the <span class="arithmatex">\(-5 \cdot L_P -4 \cdot L_R \geq -3\)</span> and <span class="arithmatex">\(L_R - 4 \cdot L_P \geq -1\)</span> constraints.</p>
+<p>Since this is a problem with two variables, we can plot it:</p>
+<p><img alt="PRPS Game Proof Plot" src="../images/PRPS%20Game%20Proof%20Plot.png" /></p>
+<p>We also have the constraint that all the probabilities are non-negative, so the feasible region is the green-shaded quadrilateral. And in this feasible region we want the feasible point that maximizes the objective function (Leader's utility), i.e. as far as possible in the direction of the purple arrow. </p>
+<p>This optimum for any linear program is always at some vertex of the polygon, and in this case in 2D we can eyeball and see that it's the <span class="arithmatex">\((\frac{1}{3},\frac{1}{3})\)</span> vertex where the blue and brown constraints intersect.</p>
+<p>So the Stackelberg equilibrium is basically the same as the Nash equilibrium: the Leader plays uniformly over all Rock, Paper, and Scissors, and the Follower could play Rock. But more generally any strategy of the Follower is best response, and the Leader is indifferent between them.</p>
+</div>
+<div class="example">
+<p><strong>Crazy Rock–Paper–Scissors (CRPS)</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>R</th>
+<th>P</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R</strong></td>
+<td>(0,0)</td>
+<td>(2,1)</td>
+<td>(1,2)</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>(1,2)</td>
+<td>(0,0)</td>
+<td>(2,1)</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>(2,1)</td>
+<td>(1,2)</td>
+<td>(0,0)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Correlated Equilibrium (CE)</strong></p>
+<p>The signal is approximately uniform <em>off</em> the diagonal.</p>
+<p>The expected utility is:</p>
+<ul>
+<li><span class="arithmatex">\(\frac{3}{2}\)</span> for following the signal.</li>
+<li><span class="arithmatex">\(1\)</span> for playing <span class="arithmatex">\(P\)</span> instead of <span class="arithmatex">\(R\)</span>.</li>
+<li><span class="arithmatex">\(\frac{1}{2}\)</span> for playing <span class="arithmatex">\(S\)</span> instead of <span class="arithmatex">\(R\)</span>.</li>
+</ul>
+</div>
+<p>Solution concepts can be even more complicated, such as the Subgame Perfect Equilibrium (SPE) and the Bayesian Nash Equilibrium.</p>
+<div class="definition">
+<p><strong>Definition: Subgame Perfect Equilibrium (SPE)</strong></p>
+<ul>
+<li>On day <span class="arithmatex">\(n\)</span>, the agents play a Nash equilibrium.</li>
+<li>On day <span class="arithmatex">\(n-1\)</span>, the agents evaluate their actions assuming that they will play a Nash equilibrium on day <span class="arithmatex">\(n\)</span>. Then, they play a Nash equilibrium for this particular game.</li>
+<li>On day <span class="arithmatex">\(n-2\)</span>, we assume the agents will play an SPE in the future.</li>
+<li>Etc.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Bayesian Nash Equilibrium</strong></p>
+<ul>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> is the strategy for each Alice.</li>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> is the strategy for each Bob.</li>
+</ul>
+<p>Alice and Bob are drawn at random from their distributions.</p>
+<p>For each Alice, her strategy is optimal in expectation over the Bobs and their strategies.</p>
+</div>
+<p>We can use these solution concepts to analyze strategic agents.</p>
+<div class="theorem">
+<p><strong>Theorem: Revenue Equivalence Theorem</strong></p>
+<p>At equilibrium, expected payments are fully determined by the auction's allocation rule.</p>
+</div>
+<p>In other words, in any auction that always gives the good to the max-value buyer, in expectation every buyer pays the same, and in particular, revenue is the same.</p>
+<p>However, beware: sometimes, equilibria are not great predictors.</p>
+<div class="example">
+<p><strong>Example: The CS269I Grade Game</strong></p>
+<p>You and your partner submitted a wonderful project, but the instructor is not sure how much each of you contributed to it. So, they will assign your grades using the following game:</p>
+<ol>
+<li>You send the instructor <span class="arithmatex">\(x \in \{2, ..., 99\}\)</span>, and your partner sends the instructor <span class="arithmatex">\(y \in \{2, ..., 99\}\)</span>.</li>
+<li>
+<p>Then the instructor assigns you grade as follows:</p>
+<ul>
+<li>If <span class="arithmatex">\(x = y\)</span>, then your grade is <span class="arithmatex">\(x\)</span>.</li>
+<li>If <span class="arithmatex">\(x &lt; y\)</span>, then your grade is <span class="arithmatex">\(min\{x,y\}+2\)</span>.</li>
+<li>If <span class="arithmatex">\(x &gt; y\)</span>, then your grade is <span class="arithmatex">\(min\{x,y\}-2\)</span>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Which grade should you send to the instructor?</strong></p>
+<p>The unique Nash equilibrium in this game is when both players play 2 (x = y = 2), which is not expected in practice with real players.</p>
+</div>
+<div class="example">
+<p><strong>Experiment: Axelrod Games</strong></p>
+<p>Around 1980, Professor Robert Axelrod invited friends to write computer programs for a tournament of iterated file-sharing dilemma with a fixed number of round <span class="arithmatex">\(n = 200\)</span>.</p>
+<p>Out of 15 submissions, Tit-for-Tat won first place.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Tit-for-Tat can never win a head-to-head match, but encouraging cooperating leads to a higher score on average.</li>
+<li>You can always do better than Tit-for-Tat: you can play Tit-for-Tat during <span class="arithmatex">\(199\)</span> rounds, and not upload in the last round, but in practice, no participant tried this strategy.</li>
+</ul>
+<p>Later on, Professor Axelrod invited his friends to play again. Out of 62 submissions, Tit-for-Tat won first place again.</p>
+</div>
+<div class="example">
+<p><strong>Top Strategy in CS269I Iterated File-Sharing Tournament:</strong> The "Forgive, Don't Forget" Strategy</p>
+<p><strong>Overview:</strong> We will normally respond Tit-for-Tat, but add in a "forgiveness mechanism" to make sure we aren't killing our scores if we are playing a Tit-for-Tat agent. On the first run, we cooperate, to prevent the Grim Trigger and "defection detection" strategies from lowering our average score. We take advantage of agents with "always" types of actions.</p>
+<div class="highlight"><pre><span></span><code>If this is the last turn: defect.
+
+If the user NEVER cooperates: defect.
+If the user ALWAYS cooperates: defect.
+
+If the user cooperated with us last time:
+  If hasCooperated != TRUE, set hasCooperated = TRUE.
+  Reset forgiveness counter to 3.
+
+If the user defected last time:
+  Is hasCooperated:
+    If forgiveness counter &gt; 0:
+      Subtract one from the forgiveness counter
+    If forgiveness counter == 0:
+      Forgive them, and cooperate this once. Reset counter to 3.
+
+Otherwise, play Tit-for-Tat!
+</code></pre></div>
+</div>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Mid-Quarter Review Recap</strong></p>
+<p>How Do We Allocate Goods?</p>
+<ul>
+<li>Let the market figure it out.</li>
+<li>Design mechanisms.</li>
+</ul>
+<p>How do we evaluate these answers?</p>
+<ul>
+<li>Social welfare: The "sum of happiness."</li>
+<li>Revenue: The "mechanism designer's happiness."</li>
+<li>Pareto Optimality: "No other allocation can make everyone happier."</li>
+<li>Individual Rationality: "Nobody is sadder than they were before participating in the mechanism."</li>
+<li>Stability: "No pair/subset could be Pareto-better by matching outside." <em>Note: This generalizes individual rationality and Pareto optimality.</em></li>
+</ul>
+</div>
+<h2 id="coming-up-next">Coming Up Next</h2>
+<p>We will address questions such as "Who knows what and when?" and "How does that impact incentives?".</p>
+<p>We have already started talking about this in Lecture 9, when we discussed things that, empirically, "the crowd" seems to know well, including public opinion, progress on big projects, and the weight of an ox.</p>
+<p>We also saw that we needed to exercise caution and set incentives properly, via the No-trade theorems, and examples of information cascades, including the 2010 stock market flash crash.</p>
+<p>In upcoming lectures, we will welcome guest speakers, and discuss topics such as:</p>
+<ul>
+<li>Proper scoring rules.</li>
+<li>Blockchains: Proof-of-Work and Proof-of-Stake.</li>
+<li>Stock exchanges (centralized and decentralized).</li>
+<li>Fair allocation.</li>
+</ul>
+<h2 id="questions">Questions</h2>
+<p>Below are questions asked by some of the students who attended the lecture in person.</p>
+<p><strong>How does regret converge to coarse correlated equilibrium?</strong></p>
+<p>Reminder: In a coarse correlated equilibrium, I would rather follow the signal than ignore the signal. The regret is the sum, over time, of the difference between the reward of the overall best action and the reward from my algorithm.</p>
+<p>If we use a regret-minimization algorithm, we expect this regret to approach or approximately approach zero.
+In a candidate coarse correlated equilibrium CCE:
+- Draw <span class="arithmatex">\(t\)</span> at random.
+- The signal is <span class="arithmatex">\(ALG(t)\)</span>.</p>
+<p>So, each player is getting the action they took on day <span class="arithmatex">\(t\)</span>. Therefore, the expected utility from following the signal is the sum of the rewards the actual algorithm got. The utility from ignoring the signal is the sum of the rewards the best action got. The regret going to zero means that following the signal is almost as good as ignoring the signal and playing the overall best action.</p>
+<p><strong>How does swap-regret converge to correlated equilibrium?</strong></p>
+<p>Reminder: the definition of correlated equilibrium is that I am looking at the signal, and still after seeing the signal, I cannot do better than the signal. Swap-regret is harder to minimize, but if you get to minimize, it is better.</p>
+<p><strong>Can we talk about Myerson’s theorem?</strong></p>
+<p>Here is what Myerson’s theorem is saying:
+- The first part is just that we have an auction selling one item to one buyer. In this case, how should we sell one item to one buyer? We can set the reserve price and ask the buyer if they want to buy the item for the price or not. The Myerson’s theorem also gives us a formula to calculate the best price, by looking at the area under the curve.
+- The second part says that this is the best way to sell one item. It is not trivial but it is true: you can do a lot of complicated things, but none of this helps, you might as well just set one price.
+- The third part says that if we have some fixed number of buyers <span class="arithmatex">\(n\)</span>, and we don’t know their values, but we assume that they are iid, they come from the same distribution <span class="arithmatex">\(D\)</span>. It turns out that the revenue-optimal auction to sell one item to these <span class="arithmatex">\(n\)</span> buyers it to do a second-price with reserve price <span class="arithmatex">\(p(D)\)</span> auction (where the reserve price is the same whether we have <span class="arithmatex">\(1\)</span> buyer or <span class="arithmatex">\(100\)</span> buyers).</p>
+<p>Reminder: in a second-price auction, everyone submits their sealed bid, but to win the auction, you don’t need to only beat everyone else, but also the reserve price, and then you pay the maximum of everyone else and the reserve price.</p>
+<p>As the competition increases, it becomes more likely that we have two buyers whose value exceed the reserve price, and as soon as that happens, we don’t need the reserve price anymore, because to win the auction, we don’t need to beat the reserve price, we need to beat the second highest bid.</p>
+<p><strong>If the reserve price becomes irrelevant as the number of bidders increases, and the revenue equivalence holds, why is the second price auction revenue optimal and not also the first price auction?</strong></p>
+<p>As competition increases, it does not matter whether we are doing second-price or first-price, because we are reaching this point where the market is setting the price. The advantage of second-price auction is that it is strategyproof, so it is easier to analyze, while first price auction is not.</p>
+<p>The revenue equivalence theorem says that the different types of auctions are all going to get the same revenue, but it is assuming that we are always giving the good to the buyer with the maximum value and there are two complications here:
+- When we have a reserve price, maybe we do not give the item at all.
+- First-price auction is not truthful bidding, so buyers are going to shade their bid in a possibly-mixed strategy way, which makes it harder to keep track of who is going to get the item, but (Aviad thinks that) it is still true that if we run first-price with reserve price and the distribution of values is continuous, first-price and second-price are going to make the same allocation and they will get the same revenue.</p>
+<p><strong>Why does the Bulow-Klemperer theorem hold?</strong></p>
+<p>This theorem says that the revenue of second price with n+1 buyers is at least as great as the revenue of second price with reserve price with n buyers.
+We can imagine two cases:
+- One case when it is n+1 real buyers: the seller always makes money.
+- Another case when it is n buyers and the seller that set the reserve price: sometimes, the seller does not make money (because the reserve price is not beat, and the seller keeps the item).</p>
+<p><strong>Why is it a dangerous practice to learn the reserve price from historical bids?</strong></p>
+<p>Let’s say that you are bidding to display ads on my website, and you know that next year I am going to set the reserve price based on what you do this year: what would you this year? You are going to start shading your bids this year, and I have no idea about what your real value is. Instead, what it better is to find another bidder with similar characteristics and try to use their bid to set the reserve price.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
