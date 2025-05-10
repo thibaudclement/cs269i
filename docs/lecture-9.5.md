@@ -1,9 +1,9 @@
 
+_April 30, 2025_
+
 An important meta question in CS269I is: "How do we allocate stuff?" One answer is to let the market figure it out.
 
 ## Letting The Market Allocate Goods
-
-
 
 <div class="definition" markdown="1">
 **Definition: Competitive Equilibrium**
@@ -499,6 +499,7 @@ Reminder: In a coarse correlated equilibrium, I would rather follow the signal t
 
 If we use a regret-minimization algorithm, we expect this regret to approach or approximately approach zero.
 In a candidate coarse correlated equilibrium CCE:
+
 - Draw \(t\) at random.
 - The signal is \(ALG(t)\).
 
@@ -511,6 +512,7 @@ Reminder: the definition of correlated equilibrium is that I am looking at the s
 **Can we talk about Myerson’s theorem?**
 
 Here is what Myerson’s theorem is saying:
+
 - The first part is just that we have an auction selling one item to one buyer. In this case, how should we sell one item to one buyer? We can set the reserve price and ask the buyer if they want to buy the item for the price or not. The Myerson’s theorem also gives us a formula to calculate the best price, by looking at the area under the curve.
 - The second part says that this is the best way to sell one item. It is not trivial but it is true: you can do a lot of complicated things, but none of this helps, you might as well just set one price.
 - The third part says that if we have some fixed number of buyers \(n\), and we don’t know their values, but we assume that they are iid, they come from the same distribution \(D\). It turns out that the revenue-optimal auction to sell one item to these \(n\) buyers it to do a second-price with reserve price \(p(D)\) auction (where the reserve price is the same whether we have \(1\) buyer or \(100\) buyers).
@@ -524,6 +526,7 @@ As the competition increases, it becomes more likely that we have two buyers who
 As competition increases, it does not matter whether we are doing second-price or first-price, because we are reaching this point where the market is setting the price. The advantage of second-price auction is that it is strategyproof, so it is easier to analyze, while first price auction is not.
 
 The revenue equivalence theorem says that the different types of auctions are all going to get the same revenue, but it is assuming that we are always giving the good to the buyer with the maximum value and there are two complications here:
+
 - When we have a reserve price, maybe we do not give the item at all.
 - First-price auction is not truthful bidding, so buyers are going to shade their bid in a possibly-mixed strategy way, which makes it harder to keep track of who is going to get the item, but (Aviad thinks that) it is still true that if we run first-price with reserve price and the distribution of values is continuous, first-price and second-price are going to make the same allocation and they will get the same revenue.
 
@@ -531,6 +534,7 @@ The revenue equivalence theorem says that the different types of auctions are al
 
 This theorem says that the revenue of second price with n+1 buyers is at least as great as the revenue of second price with reserve price with n buyers.
 We can imagine two cases:
+
 - One case when it is n+1 real buyers: the seller always makes money.
 - Another case when it is n buyers and the seller that set the reserve price: sometimes, the seller does not make money (because the reserve price is not beat, and the seller keeps the item).
 

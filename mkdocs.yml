@@ -25,14 +25,14 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
-  - One-Sided Matching and Serial Dictatorship: lecture1.md
-  - Stable Two-Sided Matchings: lecture2.md
-  - Online Learning and Regret Minimization: lecture3.md
-  - Top Trading Cycles: lecture3b.md
-  - Equilibria in Games: lecture4.md
-  - P2P File-sharing Dilemma: lecture5.md
-  - Market Equilibrium: lecture6.md
-  - Market Failures: lecture7.md
-  - Auctions: lecture8.md
-  - Prediction Markets and Information Cascades: lecture9.md
-  - Mid-Quarter Review Party: lecture10.md
+  - One-Sided Matching and Serial Dictatorship: lecture-1.md
+  - Stable Two-Sided Matchings: lecture-2.md
+  - Online Learning and Regret Minimization: lecture-3.md
+  - Top Trading Cycles: lecture-3-2023.md
+  - Equilibria in Games: lecture-4.md
+  - P2P File-sharing Dilemma: lecture-5.md
+  - Market Equilibrium: lecture-6.md
+  - Market Failures: lecture-7.md
+  - Auctions: lecture-8.md
+  - Prediction Markets and Information Cascades: lecture-9.md
+  - Mid-Quarter Review Party: lecture-9.5.md
