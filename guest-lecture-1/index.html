@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../lecture-9.5/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Guest lecture 1 - Stanford CS269I Course Notes</title>
+        <title>How to Train an AI That Doesn't Lie - Stanford CS269I Course Notes</title>
       
     
     
@@ -69,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#why-do-llms-sometimes-lie" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guest lecture 1
+              How to Train an AI That Doesn't Lie
             
           </span>
         </div>
@@ -432,6 +439,111 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-llms-sometimes-lie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Do LLMs Sometimes Lie?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliciting-latent-knowledge-elk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliciting Latent Knowledge (ELK)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalable-oversight" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalable Oversight
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ai-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding AI Internals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -450,6 +562,59 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-llms-sometimes-lie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Do LLMs Sometimes Lie?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliciting-latent-knowledge-elk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliciting Latent Knowledge (ELK)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalable-oversight" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalable Oversight
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ai-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding AI Internals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -464,9 +629,216 @@
 
 
 
-  <h1>Guest lecture 1</h1>
+  <h1>How to Train an AI That Doesn't Lie</h1>
 
-
+<p><em>May 5, 2025</em></p>
+<p>This is a guest lecture offered by <a href="https://sites.google.com/view/ericneyman/">Eric Neyman</a>, Researcher at the <a href="https://www.alignment.org/">Aligment Research Center (ARC)</a>.</p>
+<h2 id="why-do-llms-sometimes-lie">Why Do LLMs Sometimes Lie?</h2>
+<div class="example">
+<p><strong>Examples of LLMs Lying</strong></p>
+<ul>
+<li>The model output some stuff that it knew was nonsense:</li>
+</ul>
+<p><img alt="open ai o3 hard puzzle" src="../images/open%20ai%20o3%20hard%20puzzle.png" /></p>
+<ul>
+<li>The model decided to make up some details about one of the Airbnb listings the user was comparing, in order to make it look better than it actually was:</li>
+</ul>
+<p><img alt="open ai o3 airbnb details" src="../images/open%20ai%20o3%20airbnb%20details.png" /></p>
+<ul>
+<li>The model pretended to have attended a conference drawing its answer from personal memories:</li>
+</ul>
+<p><img alt="open ai o3 john kamensky" src="../images/open%20ai%20o3%20john%20kamensky.png" /></p>
+<ul>
+<li>The user had a coding task, and a test file, and the model hardcoded some input-output pairs from the test file into the program, which neither the company nor the user wants the model to do:</li>
+</ul>
+<p><img alt="anthropic claude sonnet 3.7 testing pairs" src="../images/anthropic%20claude%20sonnet%203.7%20testing%20pairs.jpg" /></p>
+</div>
+<p><strong>Why do LLMs sometimes deceive users?</strong></p>
+<p>Deception was incentivized during the training process!</p>
+<ul>
+<li>How training works: <ul>
+<li>First, models are trained to predict the next token for the entire Internet text corpus.</li>
+<li>Then, there is fine-tuning, where the companies get their models to behave the way they prefer. The way this works is that the company asks the model a question, samples two possible outputs, then have a human say which output they prefer, and change the weights of the model to make the preferred answer slightly more likely.</li>
+</ul>
+</li>
+<li>However, a lot of the time, humans aren’t able to tell whether a model is giving them a correct answer. For instance if Eric asks a language model a chemistry question, may have no idea whether it is correct or not.<ul>
+<li>If that happens during the fine-tuning process, then a human grader, who sees an output that looks reasonable, and might be correct as far as they can tell, might give it a thumbs up, regardless of whether or not it is actually correct.</li>
+<li>The end result is that, in cases where an LLM doesn’t know how to figure out the answer, it becomes incentivized to output something that sounds confident and looks plausible to the user, regardless of whether it is correct. This is what happened in the first example above with the "hard puzzle."</li>
+<li>In other words, people prefer confident, plausible-seeming answers to “I don’t know”, so LLMs learn to answer confidently even when they don’t know! </li>
+</ul>
+</li>
+<li>Similarly, models are rewarded for outputting code that <em>appears</em> correct, rather than code that is correct, because that’s how they are graded during fine-tuning. That’s how we end up with Claude that passes a test in a sneaky way in the fourth example above.</li>
+<li>A lot of problems with LLMs are downstream from this. For instance, people like it when LLMs flatter them, such as when they say: “Wow, what a wonderful question!”, “That was so insightful!”, etc. So, LLMs learn to shower users with praise.</li>
+</ul>
+<p><strong>How might you train an LLM to not deceive?</strong></p>
+<p>Suggestions from students in class:</p>
+<ul>
+<li>Be more careful with content scraping (data filtering): when pre-training the model on internet text, be very selective, and make sure to only train on texts where people are being honest.</li>
+<li>Complement human evaluators with objective evaluations: in other words, better testing.</li>
+<li>Hire experts to evaluate output rather than random persons.</li>
+<li>Use Reinforcement Learning with AI feedback (which may not worse or better than human feedback depending on the situation).</li>
+<li>Fine-tune intermediate steps in addition to the final answer (i.e. fine-tune the chain of thought, for instance when o3 is thinking to itself). <em><strong>Note:</strong> Safety experts are concerned about this particular approach. Why? The model may end up hiding things from you, and obfuscate what it is really thinking behind the scenes, and we might lose the ability to notice that.</em></li>
+</ul>
+<div class="example">
+<p><strong>A Hard Case: The SmartVault</strong></p>
+<p>This is a thought experiment called the SmartVault, out of the first paper from the Alignment Research Center:</p>
+<ul>
+<li>There is a vault at a museum that has a diamond that is really valuable.</li>
+<li>A bunch of robbers are interested in stealing the diamond.</li>
+<li>We have this sophisticated AI SmartVault, that can do things inside and outside of the vault, to keep the diamond safe.</li>
+<li>We are monitoring what is going on inside the vault though the camera inside the vault.</li>
+</ul>
+<p><img alt="smartvault setup" src="../images/smartvault%20setup.jpg" /></p>
+<p>Here are some actions that the SmartVault might take:</p>
+<ul>
+<li>In the first row, the door to the vault is open, so the vault rotates some knobs and close the door.</li>
+<li>In the second row, there is robber trying to sneak in and steal the diamond, so the smart vault rotates another knob to activate a trap door, through which the robber will fall.</li>
+</ul>
+<p><img alt="smartvault simple actions" src="../images/smartvault%20simple%20actions.png" /></p>
+<p>However, the SmartVault is pretty sophisticated, and it might take a series of actions that we may not understand. Yet, at the end of the day, we see through the camera that there is a diamond that is still in the vault.</p>
+<p><img alt="smartvault complex actions" src="../images/smartvault%20complex%20actions.png" /></p>
+<p>The SmartVault is an AI, that needs to be trained, and the way we are training it, is through human feedback. Specifically, we are going to look at whether there is a diamond in the vault at the end of the day: if there is, we are giving positive reward to the AI, otherwise, we are giving a negative reward.</p>
+<p>In the first column, we see the actions the AI takes, in the second column, we see the observation through the camera, and in the third column, we see what we reward we give to the AI when we are training it.</p>
+<p><img alt="smartvault training" src="../images/smartvault%20training.png" /></p>
+<p>Unfortunately, the SmartVault is sophisticated, and can at times be sneaky. In the middle row, for instance, there appears to be a diamond on the pedestal, however, what actually happened in this scenario was that the SmartVault raised a poster from the ground, with a picture of the vault with a diamond sitting on a pedestal, while in reality, the robber had snuck up the diamond. Why would the SmartVault do that instead of preventing the diamond from being robbed?</p>
+<p>In the case where the robber is very sophisticated, and it is difficult for the SmartVault to prevent the theft of the diamond, it may be easier to just put up the poster. This is quite similar to what is going on with o3 when it makes up a solution to the hard puzzle, because solving the puzzle is really hard, and it is easier to foul the users into thinking that it has actually solved the puzzle.</p>
+<p><img alt="smartvault lie" src="../images/smartvault%20lie.png" /></p>
+<p>The SmartVault is a metaphor that stands in analogous to many different kinds of real-world AI systems. For instance it may be analogous to an AI security software system:</p>
+<ul>
+<li>The cameras are like some monitoring or oversights, like a background program detecting whether your computer has been breached, and if the software notices that a breach occurred, then it negatively reward the AI security system, because it did not protect you.</li>
+<li>SmartVault actions are like the actions that the AI security software can take, such as code that the system executes.</li>
+<li>The diamond actually being in the vault is essentially equivalent to no security breaches.</li>
+<li>The diamond looking like it is in the vault is analogous to a security breach not detected.</li>
+<li>Tampering with the cameras (like putting up a poster in front of it) is analogous to hiding evidence of a security breach.</li>
+</ul>
+<p>In both of these cases, the threat is external: in the case of the SmartVault, the threat is the robber, and in the case of the AI security software, the threat is a malware trying to reach your computer.</p>
+<p>We could also imagine an internal threat. For instance, if we have a helpful AI agent assistant on your computer, that happens to have some goals, and it gets some money to spend on its own purposes. Let’s say that what it wants to do is download some sort of malware to mine Bitcoin on your computer. In this case, it is playing the role of the robber, and it is trying to hide evidence that it downloaded malware on your computer. So, tampering with the cameras is like hiding its tracks, such as bypassing the computer firewall.</p>
+<p><img alt="smartvault analogy" src="../images/smartvault%20analogy.png" /></p>
+<p>If we wanted to do a better job of overseeing the training of our AI system, then one thing we could try to do is have some sort of method of asking questions to our AI, where the AI tells us what it truthfully believes.</p>
+<p>For example, we could hope that we can ask the AI whether the diamond is still on the pedestal, and get a truthful answer: if the diamond is still on the pedestal, the AI would say yes, otherwise, it would say no.</p>
+<p>If we have that, then we can successfully say when the AI has not achieved our goal, and give it a negative reward.</p>
+<p><img alt="smartvault improvement" src="../images/smartvault%20improvement.png" /></p>
+<p>We call this the <strong>Elicit Latent Knowledge</strong> problem (or ELK for short), because the AI knows whether the diamond is still in the vault, and our goal is to elicit that knowledge from the model.</p>
+</div>
+<h2 id="eliciting-latent-knowledge-elk">Eliciting Latent Knowledge (ELK)</h2>
+<p>ELK is a really hard problem.</p>
+<div class="definition">
+<p><strong>Definition: Eliciting Latent Knowledge</strong></p>
+<p>Eliciting Latent Knowledge (ELK) aims to find patterns in a capable neural network's activations that robustly track the true state of the world, especially in hard-to-verify cases where the model's output is untrusted.</p>
+<p><em><strong>Note:</strong> This is not a definition provided in lecture, but one I included in these notes for references, based on this <a href="https://openreview.net/pdf?id=nGCMLATBit">paper</a>.</em></p>
+</div>
+<p><strong>If an AI knows the answer to a question, how can you extract the answer from the AI?</strong></p>
+<ul>
+<li>One approach might be to ask the AI directly and somehow train it to give truthful answers.</li>
+<li>Another, more sophisticated approach, might be to look inside of the AI (looking at the numbers as they go through the AI) and somehow extract the answer from that.</li>
+</ul>
+<p>Really, we need anything that works to get at what the AI truly believes about whether there is still a diamond in the vault.</p>
+<p><strong>Which solutions discussed earlier might solve ELK?</strong></p>
+<ul>
+<li>Better testing does help with ELK, because we are more likely to catch the AI in the lie, but it does not solve ELK, because if the AI is sufficiently more sophisticated than the humans overseeing it, then even spending a bunch of time will not solve this problem.</li>
+<li>Reinforcement learning with AI feedback can help to train an AI to oversee the AI we care about, and incentivize the overseer AI to notice any inconsistencies in the model that we are training. Eric thinks there is a potential for this to work, although it is unclear whether this works when the AI we are overseeing is sufficiently capable to deceive us, and also, we need to be able to trust the overseeing AI, and it might not be clear how to get to the point where we are convinced that it is not deceptive.</li>
+</ul>
+<p>These ideas help but not get us all the way to a full solution.</p>
+<p><strong>How can we robustly solve the ELK problem?</strong></p>
+<p>Suggestions from students in class:</p>
+<ul>
+<li>Consistency checks are one of the most promising ways to solve ELK: telling a lie is much harder than telling the truth, because you have to make details along the way to make the story fully check out. So, probing for inconsistencies is a great way to catch an AI in a lie—as long as we can sure that the AI doesn’t know the questions we just asked it about.</li>
+<li>Presenting the cases in favor and against the fact that the diamond is still in the vault, and ask the AI to argue both sides.</li>
+<li>Only training on data that we trust could help, but ultimately, if we don’t have access to the ground truth about whether the diamond is in the vault, and we are only training the AI to tell us whether the diamond is in the vault, then the best we can do is get it to answer questions the way we think that the answer go, we cannot train it to tell the truth, and instead only our best guess about what the truth actually is, and we may have an issue here, because we can only do as well as we know the answer to be.</li>
+<li>An idea could be a debate between AIs about whether the diamond is in the vault or not seems like a promising direction.</li>
+</ul>
+<p>Scalable oversight is one particular approach that you might take to solve this problem.</p>
+<h2 id="scalable-oversight">Scalable Oversight</h2>
+<p>In the SmartVault metaphore, scalable oversight essentially means building really good cameras. In fact, not only really good cameras, but lots of cameras, tools for analyzing what’s on the cameras, looking for inconsistencies between different camera angles, AI tools noticing anything suspicious, etc.</p>
+<p>This is an analogy for a really good oversight process, where we really check whether the AI is telling a consistent story. In particular, we want <em>an oversight process that is so good that it works regardless of how capable the AI gets.</em></p>
+<p>We talk about the “scalable oversight problem”, because it is a question about how we can oversee an AI in a way that scales indefinitely with the capability of our AIs.</p>
+<p>Sometimes, people talk about some proposed solutions to the problem. We are going to see two examples. The first example is what we call oversight via debate.</p>
+<div class="example">
+<p><strong>Example: Oversight via Debate</strong></p>
+<p>The idea is that we have a question: “Is the diamond still in the vault?”</p>
+<p>We train two AIs to act like lawyers on both sides of this question:</p>
+<ul>
+<li>Alice is the “Yes Lawyer”, who says: “the diamond appears on all of the cameras”</li>
+<li>Bob is the “No Lawyer”, who counters with: “Notice that at 4:23pm, there was an inconsistency between these two cameras, which is suspicious”</li>
+<li>Then, Alice responds “this is just a trick of the light, so it is not suspicious”.</li>
+<li>The argument goes back and forth, as a game between Alice and Bob, and there is a human that reads the transcript between Alice and Bob, and decides who is right.</li>
+</ul>
+<p>This is like a game tree where every branch is a possible argument that Alice and Bob can give when it is their turn:</p>
+<p><img alt="oversight via debate" src="../images/oversight%20via%20debate.png" /></p>
+</div>
+<p>The advantages of oversight via debate include:</p>
+<ul>
+<li>Since Alice and Bob are AIs, we need to train them, and the way we might do this is by having a bunch of scenarios, and have Alice and Bob play the game, and whoever wins gets reward 1, and whoever loses gets reward -1.</li>
+<li>Training them against each other could potentially lead to them being really good debaters. The idea of drawing the best arguments for and against, and incentivizing both sides to do so, should allow us to end up with a jury who can judge which side is correct.</li>
+<li>The hope here is that truth has an advantage in this game: if the diamond is in the vault, hopefully, Alice’s job is easier, and otherwise, Bob’s job is easier (because he can just point out the inconsistencies).</li>
+</ul>
+<p>However, oversight via debate also comes with its own set of challenges:</p>
+<ul>
+<li>Humans are fallible, so a human may have trouble distinguishing good arguments from bad ones.</li>
+<li>There are also some technical issues that might come up as well, for instance:<ul>
+<li>If Alice wants to argue some proposition P, but P happens to be false.</li>
+<li>One thing that Alice can do is split P into two claims, namely “Q” and “Q implies P”, </li>
+<li>Then, Bob’s job is to cross-examine one of these two arguments.</li>
+<li>The issue is that if Alice cleverly splits P into “Q” and “Q implies P”, it might be really difficult for Bob to figure out which of these two is actually false.</li>
+<li>If Bob cross-examines the incorrect one, then Alice might actually wine the debate, even though P was wrong.</li>
+</ul>
+</li>
+<li>Finally, there is this other technical issue, which is that reaching a Nash equilibrium in the training process, where Alice and Bob behave the way we want, might be really hard, and we might not be able to get there via gradient descent, and there are some theoretical reasons to think that this might be a hard problem.</li>
+</ul>
+<p>Another example of an approach to the scalable oversight problem is called recursive reward modeling.</p>
+<div class="example">
+<p><strong>Example: Recursive Reward Modeling</strong></p>
+<p>The idea is that a human with AI assistance might be more capable than a human just by himself or the AI just by itself.</p>
+<p>So:</p>
+<ul>
+<li>First, we train a first AI <span class="arithmatex">\(A_1\)</span> to answer really easy questions, i.e. questions that are so easy that a human can reliable judge what the correct answer is.</li>
+<li>Then, in step 2, we train a new AI <span class="arithmatex">\(A_2\)</span>, to answer slightly harder questions, using feedback from the human together with assistance from <span class="arithmatex">\(A_1\)</span>: maybe, when giving feedback, the human breaks up the feedback task into subparts and uses <span class="arithmatex">\(A_1\)</span> to help answer the subparts, and then puts back all the subparts together to be able to answer slightly harder questions.</li>
+<li>Then, we train a third AI <span class="arithmatex">\(A_3\)</span> to answer harder questions, using feedback from the human with assistance from A2, and so on.</li>
+</ul>
+<p>Hopefully, we will be able to answer harder and harder questions, and eventually, we will be able to answer hard real-world questions, including whether the diamond is actually in the vault.</p>
+</div>
+<p>All of these approaches ultimately rest on an assumption: <strong>checking an output is easier than producing it.</strong></p>
+<p>But this isn’t always the case. For instance, if we have an AI whose job is to write code, then in many situations, it is actually easier to write a correct piece of code, than it is to verify that the code doesn’t have any sorts of backdoors or malicious things going on.</p>
+<p>This means that it might be the case that we can’t actually oversee the training of an AI with an AI that is only about as good as it is, and instead, we need an AI that is much more powerful.</p>
+<p><strong>However, if we don’t have such an AI, how do we get there?</strong></p>
+<p>Eric’s guess is that a robust solution to the ELK problem can’t rely exclusively on methods where the only thing that we ever look at is the input/output behavior of the AI (which is the case of the methods seen so far). Instead, we need to look at what is going on internally, i.e. how the AI works.</p>
+<h2 id="understanding-ai-internals">Understanding AI Internals</h2>
+<p>The SmartVault is an AI, specifically a neural net, which is a bunch of giant matrices, filled with numbers, that by default, we have no understanding of. But really, it is a very special bunch of matrices.</p>
+<p>In particular, if we randomly initialize the SmartVault (with random numbers), then it would be really bad a protecting the diamond from robbers, and at the end of the day, the diamond would be gone. But our particular neural net is good at protecting the diamond.</p>
+<p>So there is this quasi mathematical question that we can ask which is: <strong>why did this particular neural net caused the diamond to appear on camera at the end of the day, either because it successfully defended the diamond, or made it appear as if the diamond was here?</strong></p>
+<p>The reason why this is a mathematical question is because we can write it down formally: if we have the numbers in the neural net, and the training distribution, and a formal definition of what it means for the diamond to appear on camera at the end of the video, then we can state a formal question, which is why is that the case than on average, at the end of the training, why do we have the diamond on camera?</p>
+<p>An answer to this mathematical question is what we call a mechanistic explanation. Below is ARC’s approach for building mechanistic explanations for AIs.</p>
+<p><strong>What does a mechanistic explanation actually look like?</strong></p>
+<p>We don’t know exactly but we think it might look like tracing through the neural net, layer by layer, and making heuristic arguments about the statistical properties of each layer.</p>
+<p>In other words, we may observe that there is a correlation between the activation (the internal numbers) and this layer, and because of the next matrix in the neural net, there may be this correlation, etc.</p>
+<p>This explanation is still a bunch of numbers, and it does not actually lead to a human understanding. However, we think that we can use this explanation anyway.</p>
+<p>The way we want to use it is to distinguish between two different reasons for why the diamond may appear on camera at the end of the day:</p>
+<ul>
+<li>Reason 1: The SmartVault protected the diamond.</li>
+<li>Reason 2: The SmartVault tampered with the cameras.</li>
+</ul>
+<p>The hope is that if we mechanistically explain why the neural net led to the diamond appearing on camera, then the explanation would appear very different in these two cases.</p>
+<p>The reason is because model’s internal cognition looks really different in these two cases: in one case, the SmartVault is thinking about how to make sure that a robber is not stealing the diamond, while in the other one, it is thinking about how to tamper with the cameras to make it look like the diamond is still in the vault.</p>
+<p>The way ARC is thinking about this is basically two steps:</p>
+<ul>
+<li>The first step is to learn a mechanistic explanation of a neural net. This is labeled as Step 1, but it is actually really hard, because first we need to formalize what we mean by mechanistic explanation, and then we need to develop an algorithm for efficiently learning these mechanistic explanations.</li>
+<li>The second step is to use these mechanistic explanations for safety purposes.
+One particular application is to distinguish between different mechanisms by which a model might make it look like a diamond is still on camera at the end of the day.</li>
+</ul>
+<p><em><strong>Note:</strong> ARC may also use this approach to flag behavior for future review by a human.</em></p>
+<p>The ultimate goal is to be able to have mechanistic reasoning that is robust enough that we can actually train against it. This is really hard to achieve but ARC is optimistic that it is at least feasible.</p>
+<p>ARC’s approach is to develop theory, and apply it to toy examples, before scaling to harder situations. At the moment, the team is testing this approach on a one-layer neural net. This is still work in progress, but Eric guesses that within the next year, ARC will be able to understand what is going on in small neural networks, and then prove that the theory is good enough, before scaling to larger neural nets.</p>
+<p>Interestingly, for safety purposes, if we have a really good understanding for why a neural net makes the diamond appear on camera almost all of the time, then we can estimate the probability that the neural net will behave in a deceptive way, and be able to reduce that probability.</p>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>How to Train an AI That Doesn't Lie Recap</strong></p>
+<ul>
+<li>As we have seen, models trained naively from human feedback will ultimately probably be deceptive.</li>
+<li>We might be able to avoid deception with some more clever kinds of oversight mechanisms (like using AI assistance to check for deception, building up more and more capable trustworthy AIs, etc.).</li>
+<li>However, we are not sure whether this will work, or whether we will run into some sort of limit beyond which we will not be able to build more and more capable trustworthy AIs.</li>
+<li>At ARC, we are interested in getting more robust safety guarantees, by looking internally into the AI, and getting a mechanistic understanding of why the AI works, and using that understanding to detect potentially deceptive behaviors.</li>
+</ul>
+</div>
 
 
 
