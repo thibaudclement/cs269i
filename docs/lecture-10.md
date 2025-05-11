@@ -363,10 +363,171 @@ There is a public no-trade theorem, because if all the public information has be
 <div class="definition" markdown="1">
 **Definition: Bounded Market Maker's Loss**
 
-To be written.
+The total payout to forecasters is:
+
+\[
+  \underset{t=1}{\sum^T} S(q^t,i) - S(q^{t-1},i) = S(q^T,i) - S(q^0,i)
+\]
+
+You may have to pay forecasters (unlike prediction markets):
+
+- Paying is reasonable in exchange for useful information
+- Positive payment (in expectation) is necessary to avoid no-trade theorems
+- You actually make a profit if your original forecast was better
+
+The total payout is bounded–it doesn’t scale with number of forecasters. For instance, it is at most \(log(O)\) when using the logarithmic scoring rule with \(q^O\) is the uniform distribution.
+
+</div>
+
+Said otherwise, the total payout is bounded by the difference between the score of the original forecast and the final forecast. Regardless of the number of forecaster, the total payout is bounded, because the most it can go to is someone exactly predicting the right outcome. So, even with an unbounded number of forecasters, the total payout remains bounded.
+
+<div class="theorem" markdown="1">
+
+**Lemma:** For any fixed order of forecasters, reporting true beliefs is the unique optimal strategy for every forecaster.
+
+</div>
+
+<div class="proof" markdown="1">
+
+**Proof:** The \(t\)-th forecaster chooses \(q^t\) that maximizes \(S(q^t,i)-S(q^{t-1},i)\).
+
+Since \(S(q^{t-1},i)\) does **_not_** depend on \(q\), the optimality of the true forecast follows from the strategyproofness of the scoring rule.
+
+</div>
+
+In other words, since every forecaster has no control over the score of the pervious forecast(s), they just want to maximize the score of the new forecast, which means just maximizing their own profits, and this is strategyproof.
+
+The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades)=
+
+- In theory, your forecast now can strategically throw off the market.
+- The “more wrong” the market is, the more opportunity to profit.
+- But this requires a reliable model of how your forecast affects others.
+
+<div class="summary" markdown="1">
+
+**Market Scoring Rules Recap**
+
+- Market scoring rules apply to any number of forecasters. This is useful for markets of moderate size, which is common in corporate forecasts.
+- Marker scoring rules are also strategyproof with a fixed order, but their dynamic strategic manipulation is hard to implement.
+- The payout is bounded and does not depend on the number of forecasters.
 
 </div>
 
 ## Automated Prediction Market Makers
 
+In simple prediction markets like IEM, one problem is that liquidity providers risk unfavorable trades with more informed traders:
+
+- Large bid-ask spread to cover risk (low liquidity) 
+- Poor information aggregation, e.g. anywhere between 5%-40% (in the example of LeBron James potentially joining the Chicago Bulls).
+
+One solution to this problem is called automated market makers (AMM).
+
+<div class="definition" markdown="1">
+
+**Definition: Automated Market Makers (AMM)**
+
+- The market maker ( “bookie”) posts zero (or low) spread buy/sell prices.
+- Forecasters can always trade with the market maker.
+
+</div>
+
+In a prediction market with AMM:
+
+- There are contracts, like in IEM, for instance:
+    - D-contract that pays $1 if Democratic candidate wins
+    - R-contract that pays $1 if Republican candidate wins
+- The AMM (“house”) offers: buy/sell D-contract for price \(P_D\) (respectively R-contract for price \(P_R\)).
+
+How should the AMM set prices? Using market scoring rules! Actually, this is one answer, and we will discuss more answers later in the quarter.
+
+_**Note:** AMM knows nothing about the actual event we are trying to predict!_
+
+<div class="definition" markdown="1">
+
+In a market scoring rule-based automated market maker (MSR-AMM), buy/sell prices should be dynamic to ensure bounded total payout. As more forecasters buy D-contracts, market “expects” the Democratic candidate to win, which only incentivizes next D-contract purchase if a forecaster is even more confident than market.
+
+</div>
+
+The concrete goals of an MSR-AMM are to:
+
+- Look and feel of a prediction market, where:
+    - Forecasters trade D-contracts and R-contracts (although now forecasters can also trade with the market maker).
+    - After elections: each D-contract pays $1 if the Democratic candidate wins (ditto for R-contracts).
+- Make payments (contract cost + payout) exactly as in market scoring rule (forecasters incentives are also exactly the same).
+
+<div class="example" markdown="1">
+
+Let's consider an MSR-AMM with two outcomes (\(D\) and \(R\)) and an initial market belief \(q^O = 50/50\).
+
+Bundles of (D-contract + R-contract) are worth exactly \(\$1\). Buying/selling a bunch of such bundles doesn’t indicate change in market belief, since the belief only depends on the _difference_ between the number of D-contracts and R-contracts sold.
+
+At the beginning of market, given that \(q^O = \frac{1}{2}\), prices of D-contracts and R-contracts are equal (50¢ each).
+
+As the difference between the number of D-contracts and the number of R-contracts approaches \(\infty\), the market belief approaches 100% probability that the Democratic candidate wins. So, the price of D-contracts should approach \(\$1\), while the price of R-contract should approach \(\$0\).
+
+The market belief is derived from prices: If prices \(P_D + P_R = 1\), are an equilibrium (at time \(t\)) for the market, then the market’s current belief is that the Republican candidate will win with probability \(q_R^t = P_R\). Otherwise, forecasters want to buy more/less R-contracts.
+
+Now, fix some (strictly proper) scoring rule \(S\), and consider that no contracts are sold yet. If buying \(x_D\) D-contracts moves the market belief from \(q^O\) to \(q^t\), their their cost (i.e. the cumulative price forecasters pay the market maker) should satisfy:
+
+\[
+C(x_D,O) - x_D = S(q^t,i_D) - S(q^O,i_D)
+\]
+          
+where:
+
+- \(x_D\) is the contract payout if the Democratic candidate wins, and
+- \(S(q^t,i_D) - S(q^O,i_D)\) is the market scoring rule payment if the Democratic candidate wins.
+
+If buying \(x_D\) D-contracts moves the market belief from \(q^O\) to \(q^t\), their their cost should also satisfy:
+
+\[
+C(x_D,O) = S(q^t,i_R) - S(q^O,i_R)
+\]
+
+This means that the price from cost of 1 R-contract is:
+
+\[
+C(x_D,x_R +1)-C(x_D,x_R) \approx \frac{\partial C(x_D,x_R)}{\partial x_R} 
+\]
+
+In other words, the costs should statisfy:
+
+\[
+C(x_D,O) - x_D = S(q^t,i_D) - S(q^O,i_D)
+\]
+
+and 
+
+\[
+C(x_R,O) - x_R = S(q^t,i_R) - S(q^O,i_R)
+\]
+
+With a logarithmic rule AMM, we have:
+
+\[
+C(x_D,x_R)=ln(e^{x_D}+e^{x_R})-ln(2)
+\]
+
+and the price of a marginal D-contract is:
+
+\[
+q_D(x_D,x_R) = \frac{e^{x_D}}{e^{x_D}+e^{x_R}}
+\]
+
+With this formula, if we do the right math, it looks and feel like a prediction market, but it has the same properties (strategy-proof-ishness and sybil-proof-ishness) and the same expected payout as a market scoring rule (the payout is bonded: we may lose money to trader, but not too much money).
+
+</div>
+
+<div class="remark" markdown="1">
+
+**Important Takeaway:** With an AMM, traders always have someone to trade with, and one way to determine the prices is using a market scoring rule.
+
+</div>
+
 ## Recap
+
+<div class="summary" markdown="1">
+
+To be written.
+
+</div>
