@@ -16,7 +16,7 @@ In other words: how can we evaluate this forecast of 40% chance of rain?
 For a given input, including:
 
 - A realized event \(i\) in the outcome space \(O\), i.e. "rain/no rain."
-- A probability distribution \(q\ over) \(O\), i.e. "\(40\%/60\%\)."
+- A probability distribution \(q\) over \(O\), i.e. "\(40\%/60\%\)."
 
 A scoring outputs a score \(S(q,i)\), i.e. how much we are paying weather.com.
 
@@ -527,7 +527,24 @@ With this formula, if we do the right math, it looks and feel like a prediction 
 ## Recap
 
 <div class="summary" markdown="1">
+**Scoring Rules, Market Scoring Rules, and Automated Prediction Market Makers Recap**
 
-To be written.
+- One caveat with prediction markets is that they may have low liquidity, due to:
+
+    - No-trade theorems.
+    - Questions that require special knowledge/classified information (e.g., in corporates or government agencies).
+    - A Catch-22, where poor liquidity leads to a thin market, which leads to even worse liquidity, etc.
+
+- In the extreme case of a single forecaster, proper scoring rules provide the incentives. More generally, we can have an automated market maker based on a proper scoring rule.
+
+- For a given input, including a realized event \(i\) in the outcome space \(O\), i.e. "rain/no rain", and a probability distribution \(q\) over \(O\), i.e. "\(40\%/60\%\)", a scoring outputs a score \(S(q,i)\), i.e. how much we are paying weather.com.
+
+- A scoring rule \(S\) is proper if it is _strictly strategyproof_, i.e. the true distribution is the unique argmax of the expected score.
+
+- The quadratic scoring rule \(S_{quadratic} = q_i - \frac{1}{2} \sum q_j^2\), and the logarithmic scoring rule \(S_{log}(q,i) = log (q_i)\), are strictly proper.
+
+- The market scoring rule payment to each forecaster is \(S(q^t,i) - S(q^{t-1}\).
+
+- In a logarithmic rule AMM, the price of a marginal \(i\)-contract is \(\frac{e^{x_i}}{\sum e^{x_j}}\).
 
 </div>
