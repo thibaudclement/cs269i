@@ -1,0 +1,1080 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../guest-lecture-1/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Scoring Rules - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scoring-rules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scoring Rules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scoring Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Scoring Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-prediction-market-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Prediction Market Makers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scoring Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Market Scoring Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-prediction-market-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Prediction Market Makers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Scoring Rules</h1>
+
+<p><em>May 7, 2025</em></p>
+<p>Say that weather.com predicts a 40% chance of rain:</p>
+<ul>
+<li>If it rains, will we say that the forecast was wrong?</li>
+<li>What if it doesn't rain?</li>
+<li>Is weather.com more accurate than other weather websites?</li>
+</ul>
+<p>In other words: how can we evaluate this forecast of 40% chance of rain?</p>
+<h2 id="scoring-rules">Scoring Rules</h2>
+<div class="definition">
+<p><strong>Definition: Scoring Rule</strong></p>
+<p>For a given input, including:</p>
+<ul>
+<li>A realized event <span class="arithmatex">\(i\)</span> in the outcome space <span class="arithmatex">\(O\)</span>, i.e. "rain/no rain."</li>
+<li>A probability distribution <span class="arithmatex">\(q\)</span> over <span class="arithmatex">\(O\)</span>, i.e. "<span class="arithmatex">\(40\%/60\%\)</span>."</li>
+</ul>
+<p>A scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying weather.com.</p>
+<p>In other words, a scoring rule takes the function of a probabilistic forecast and quantifies how good it was.</p>
+</div>
+<div class="example">
+<p><strong>Example: Linear Scoring Rule</strong></p>
+<p>Imagine that we pay Weather.com based on the outcome vs. the forecast:</p>
+<ul>
+<li>If it rains, we are going to pay them how much probability they put on “rain.”</li>
+<li>If it doesn’t rain, we are going to them how much probability they put on “doesn’t rain.”</li>
+</ul>
+<p>Let <span class="arithmatex">\(q_i\)</span> be the probability that <span class="arithmatex">\(q\)</span> assigned to event <span class="arithmatex">\(i\)</span>.</p>
+<p>Intuitively, if Weather.com gives a higher probability to “rain” and it actually “rains”, the score should be higher.</p>
+<p>Example TBC.</p>
+</div>
+<p>What does it mean to get it right when Weather.com forecasts 40% “rain” and it rains? It would be helpful if there was a definitive answer, like “It is going to rain tomorrow.” However, the forecast is not perfect, and it is helpful that Weather.com says there is a 40% chance of rain, to determine whether we should take an umbrella or not.</p>
+<p>Eric also showed an example on Monday where an LLM makes up stuff they don’t know to seem like they have confidence in something even though they have no idea.</p>
+<p>So, we want to encourage the forecaster to honestly report the probability of the event.</p>
+<div class="example">
+<p><strong>Example: Linear Scoring Rule (Cont'd)</strong></p>
+<p>If the model predict a 40% chance of rain, how can we maximize the (expected) score?</p>
+<p>The score is calculated as the probability forecast that it rains times the payment if it rains, plus the probability forecast that it doesn’t rain times the payment if it doesn’t rain:</p>
+<ul>
+<li>If the forecast is 40% chance of rain, the expected score is <span class="arithmatex">\(0.4 \cdot 0.4 + 0.6 \cdot 0.6 = 0.52\)</span>.</li>
+<li>However, if the forecast is 0% chance of rain, then the expected score becomes <span class="arithmatex">\(0 \cdot 0.4 + 1 \cdot 0.6 = 0.6\)</span>.</li>
+</ul>
+<p>In other words, the forecaster has an incentive to <em>not</em> report the probability truthfully, and deviate to the optimal forecast that says there is 0% chance of rain (since the expected score is greater).</p>
+</div>
+<p>With a linear scoring rule, the model is incentivized to tell us 1 or 0, even when it has a lot of uncertainty (it really doesn’t know in the case of 40%/60%).</p>
+<p>For instance, here, since 40% is less than 50%, so the model will say that it will not rain (probability 0%). So, this is not a proper scoring rule.</p>
+<div class="theorem">
+<p><strong>Lemma:</strong> With <span class="arithmatex">\(S_{linear}\)</span>, extreme reports (0% or 100%) are always optimal.</p>
+</div>
+<p>Again, this is like the problem Eric described with LLMs, where the after-training is done by humans who give thumbs up and thumbs down, which encourages overconfidence.</p>
+<div class="definition">
+<p><strong>Definition: Proper Scoring Rule</strong></p>
+<p>A scoring rule <span class="arithmatex">\(S\)</span> is proper if it is <em>strategyproof</em>, i.e. the true distribution maximizes the expected score.</p>
+</div>
+<p>What we want, in the context of this lecture, is proper scoring rules, i.e. scorings that are strategy proof, where truthful reporting of the probability forecast that you learn is the best response.</p>
+<div class="definition">
+<p><strong>Definition: Strictly Proper Scoring Rule</strong></p>
+<p>A scoring rule <span class="arithmatex">\(S\)</span> is proper if it is <em>strictly strategyproof</em>, i.e. the true distribution is the unique argmax of the expected score.</p>
+</div>
+<p>What is the difference between a proper scoring rule and a strictly proper scoring rule?</p>
+<ul>
+<li>Proper scoring rule: If everything you do gives you a score of 0, then reporting truthfully gives you a score of 0, but it is not the only strategy that gives a score of 0, so this is a proper scoring rule, but not a strictly proper scoring rule.</li>
+<li>Strictly proper scoring rule: There is a unique best response.</li>
+</ul>
+<div class="example">
+<p><strong>Example: Quadratic Scoring Rule</strong></p>
+<p><em><strong>Note:</strong> The quadractic scoring rule is also called the Brier scoring rule.</em></p>
+<p>Consider <span class="arithmatex">\(S_{quadratic} = q_i - \frac{1}{2} \sum q_j^2\)</span>.</p>
+</div>
+<div class="remark">
+<p><strong>Intuition:</strong> <span class="arithmatex">\(S_{quadratic}\)</span> is the same as the <span class="arithmatex">\(S_{linear}\)</span> with a "regularizer" term to penalize extreme forecasts.</p>
+<p>This encourages the forecaster to assign higher probability to more likely events, while penalizing extreme forecasts (the regularizer is the sum of all probabilities, squared).</p>
+<p>For instance:</p>
+<ul>
+<li>If we have an extreme report of <span class="arithmatex">\(1\)</span>, the sum is going to be <span class="arithmatex">\(1\)</span>, so we are going to subtract <span class="arithmatex">\(\frac{1}{2}\)</span>.</li>
+<li>However, if we have equal reports of <span class="arithmatex">\(50/50\)</span>, then the sum is going to <span class="arithmatex">\(0.25 + 0.25 = 0.5\)</span>, and we are subtracting half of that, which is <span class="arithmatex">\(0.25\)</span>.</li>
+</ul>
+<p>In other words, we are subtracting <em>less</em> when the forecast is <em>more even</em>.</p>
+</div>
+<div class="example">
+<p><strong>Example: Quadratic Scoring Rule (Cont'd)</strong></p>
+<p>Back to our weather forecast example:</p>
+<ul>
+<li>If the forecast is 40% chance of rain, the expected score is <span class="arithmatex">\(0.4^2 + 0.6^2 - \frac{1}{2}(0.4^2 + 0.6^2) = 0.26\)</span>.</li>
+<li>However, if the forecast is 0% chance of rain, then the expected score becomes <span class="arithmatex">\(0.6 - \frac{1}{2}(0^2 + 1^2) = 0.1\)</span>.</li>
+</ul>
+<p>Here, we see that we get a better expected score if we report the true forecast rather than the extreme forecast.</p>
+</div>
+<div class="theorem">
+<p><strong>Lemma:</strong> The quadratic scoring rule is strictly proper.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Say <span class="arithmatex">\(p\)</span> is the true probability distribution (i.e. the forecaster's belief).</p>
+<p>The expected score <span class="arithmatex">\(E_{i \approx p} [S(i,q)] = \sum p_j q_j - \frac{1}{2} \sum q_j^2\)</span> is a strictly concave function in <span class="arithmatex">\(q\)</span>.</p>
+<p>Therefore, this function has a unique maximizer, which we can find by setting the derivative with respect to <span class="arithmatex">\(q_j\)</span> to 0:</p>
+<p><span class="arithmatex">\(0 = \frac{\partial}{\partial{_{q_j}}} E_{i \approx p} [S(i,q)] = p_j - q_j\)</span>.</p>
+<p>We see that <span class="arithmatex">\(p_j - q_j = 0\)</span>, which means that <span class="arithmatex">\(p_j = q_j\)</span>.</p>
+<p>In other words, the optimal response to the quadratic scoring rule is indeed to predict the true probabilities.</p>
+</div>
+<div class="example">
+<p><strong>Example: Logarithmic Scoring Rule</strong></p>
+<p>Consider <span class="arithmatex">\(S_{log}(q,i) = log (q_i)\)</span>.</p>
+<p><em><strong>Note:</strong> The logarithmic scoring rule is also called the Good scoring rule, after I. J. Good, a British statistician, logician, and computer scientist. It is indeed a good scoring rule, but that is not the reason why it is called the Good scoring rule.</em></p>
+</div>
+<div class="remark">
+<p><strong>Intuition:</strong> The log function is an increasing function, so if we bet higher on the realized outcome (with a higher q_i), then we get a higher score.</p>
+<p>However, this still disincentives overconfident reports, because in the extreme case, if we say that an event never happens (it has a probability of 0), and it does happen, then we get a score of negative infinity.</p>
+</div>
+<div class="example">
+<p><strong>Example: Logarithmic Scoring Rule (Cont'd)</strong></p>
+<p>Back to our weather forecast example:</p>
+<ul>
+<li>If the forecast is 40% chance of rain, the expected score is <span class="arithmatex">\(0.4 \cdot log(0.4) + 0.6 \cdot log(0.6) = -0.29\)</span>.</li>
+<li>However, if the forecast is 0% chance of rain, then the expected score becomes <span class="arithmatex">\(0.4 \cdot log(0) = - \infty \)</span>.</li>
+</ul>
+<p>Here, we see that with a true report, the expected score here is <span class="arithmatex">\(-0.29\)</span>. If we report 0% when there is still a 40% chance of rain, then the expected score is negative infinity, which is a very bad prediction to make.</p>
+</div>
+<div class="theorem">
+<p><strong>Lemma:</strong> The logarithmic scoring rule is proper.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Say <span class="arithmatex">\(p\)</span> is the true probability distribution (i.e. the forecaster's belief).</p>
+<p>Then, here again, we differentiate the expected score function with respect to <span class="arithmatex">\(q_j\)</span> and set it to 0:</p>
+<p><span class="arithmatex">\(0 = \frac{\partial}{\partial{_{q_j}}} E_{i \approx p} [S(i,q)] = \frac{\partial}{\partial{_{q_j}}} [p_j \cdot log(q_j)] = \frac{p_j}{q_j}\)</span>.</p>
+<p>Oops! <span class="arithmatex">\(\frac{p_j}{q_j}\)</span> is never equal to <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="example">
+<p><strong>Example: <em>Normalized</em> Logarithmic Scoring Rule</strong></p>
+<p>Just for the purposes of the proof, let's consider  <span class="arithmatex">\(S_{log}(q,i) = log (q_i) - \sum q_j\)</span>.</p>
+</div>
+<div class="theorem">
+<p><strong>Claim 1:</strong> The <em>normalize</em> logarithmic scoring rule is proper.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Again, say <span class="arithmatex">\(p\)</span> is the true probability distribution (i.e. the forecaster's belief).</p>
+<p>Then, we differentiate the expected score function with respect to <span class="arithmatex">\(q_j\)</span> and set it to 0:</p>
+<p><span class="arithmatex">\(0 = \frac{\partial}{\partial{_{q_j}}} E_{i \approx p} [S(i,q)] = \frac{\partial}{\partial{_{q_j}}} [p_j \cdot log(q_j) - q_j] = \frac{p_j}{q_j} - 1\)</span>.</p>
+<p><em><strong>Note:</strong> <span class="arithmatex">\(\sum q_j = 1\)</span> because <span class="arithmatex">\(\sum q_j\)</span> is the sum of all probabilities, which is always equal to <span class="arithmatex">\(1\)</span>.</em></p>
+<p>This time, we see that the partial derivative is zero exactly for <span class="arithmatex">\(p_j = q_j\)</span>.</p>
+</div>
+<div class="theorem">
+<p><strong>Claim 2:</strong> If <span class="arithmatex">\(S\)</span> is a proper scoring rule, then <span class="arithmatex">\(S' = S + c\)</span> for any constant <span class="arithmatex">\(c\)</span> is also proper.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>We add the same constant <span class="arithmatex">\(c\)</span> to the score of any <span class="arithmatex">\(q\)</span>, so the optimal <span class="arithmatex">\(q\)</span> doesn't change.</p>
+</div>
+<div class="proof">
+<p><strong>Proof (Cont'd):</strong></p>
+<p>By Claim 1 and Claim 2, the logarithmic scoring rule is proper.</p>
+</div>
+<div class="summary">
+<p><strong>Scoring Rules Recap</strong></p>
+<ul>
+<li>The idea of a scoring rule is to look at the probability distribution of a given forecast, as well as the actual outcome, and we want to give some score about whether the forecast was good or not, and this is the way to quantify how good the forecast was.</li>
+<li>When we quantify how good the forecast was, we want to think about ways to quantify it that make truthful reporting strategy proof, i.e. we want to incentivize truthful reporting, i.e. we want (ideally strictly) proper scoring rules.</li>
+<li>The linear scoring rule is not proper, while the quadratic and logarithmic scoring rules are.</li>
+</ul>
+</div>
+<div class="example">
+<p>Although this is not our main focus in this lecture, proper scoring rules are super important for training language models, in particular because language models predict distributions. On that note, here is a slide from last year's lecture on AI alignment:</p>
+<p><img alt="Proper scoring rules for LLM training" src="../images/Proper%20scoring%20rules%20for%20LLM%20training.png" /></p>
+</div>
+<h2 id="market-scoring-rules">Market Scoring Rules</h2>
+<p>So far, we have seen two extreme alternatives:</p>
+<ul>
+<li>Scoring rules, on the one hand, apply with a single forecaster, are strategyproof, and usually require to pay the forecaster.</li>
+<li>Prediction markets, on the other hand, apply when we want to benefit from the wisdom of the crowd (they actually completely fail with a single forecaster), are subject to the no-trade theorem, and tend to operate on zero-sum trades of contract bundles (some prediction markets actually make a profit from fees).</li>
+</ul>
+<p>Now, we want to cosnider something in the middle, in the hope of getting the best of both worlds: <strong>market scoring rules</strong>.</p>
+<div class="definition">
+<p><strong>Definition: Market Scoring Rules</strong></p>
+<ul>
+<li>Fix a strictly proper scoring rule <span class="arithmatex">\(S\)</span>.</li>
+<li>Initialize <span class="arithmatex">\(q^O\)</span> as some probability distribution over the outcome space <span class="arithmatex">\(O\)</span>. For instance, <span class="arithmatex">\(q^O\)</span> may be the uniform distribution (in contrast, if you can look at the history, you can initialize with some prior distribution based on history).</li>
+<li>At each time step <span class="arithmatex">\(t\)</span>, anyone can update the distribution for <span class="arithmatex">\(q^{t-1}\)</span> to <span class="arithmatex">\(q^t\)</span>. For instance, a forecaster may be new to the market or have learnt new information.</li>
+<li>At the end of the market, some outcome <span class="arithmatex">\(i \in O\)</span> is realized: we pay <span class="arithmatex">\(S(q^t,i)-S(q^{t-1},i)\)</span> to the forecaster who made the <span class="arithmatex">\(t\)</span>-th update.</li>
+</ul>
+</div>
+<div class="example">
+<ul>
+<li>Let <span class="arithmatex">\(S_{log}(q,i) = log(q_i)\)</span>.</li>
+<li>Initialize <span class="arithmatex">\(q^O\)</span> as the probability that it will rain with a chance of 50%.</li>
+<li>At each time step <span class="arithmatex">\(t\)</span>, anyone can update the distribution for <span class="arithmatex">\(q^{t-1}\)</span> to <span class="arithmatex">\(q^t\)</span>. For instance, a forecaster may be new to the market or have learnt new information.</li>
+<li>Once outcome <span class="arithmatex">\(i \in O\)</span> is realized: we pay <span class="arithmatex">\(S(q^t,i)-S(q^{t-1},i)\)</span> to the forecaster who made the <span class="arithmatex">\(t\)</span>-th update.</li>
+</ul>
+<p>Here is what happens:</p>
+<ul>
+<li>Before Alice arrives, the (initial) probability of rain is <span class="arithmatex">\(0.5\)</span>.</li>
+<li>Alice says that it is already May, so she thinks that the probability of rain is in fact only <span class="arithmatex">\(0.25\)</span>.</li>
+<li>Then, Bob comes, and he saw what Alice said, but there are many clouds in the sky, so he moves the probability to <span class="arithmatex">\(0.75\)</span>.</li>
+<li>Finally, Carlos arrives, and he is even more confident that it is going to rain, so he moves the probability to <span class="arithmatex">\(0.9\)</span>.</li>
+</ul>
+<p>How should we pay the forecaster?</p>
+<ul>
+<li>If it rains, Alice has to pay <span class="arithmatex">\(1\)</span> for making a worse prediction, Bob receives <span class="arithmatex">\(1.6\)</span> and Carlos gets <span class="arithmatex">\(0.3\)</span>.</li>
+<li>If it does not rain, then Alice receives <span class="arithmatex">\(0.6\)</span>, while Bob needs to pay <span class="arithmatex">\(1.6\)</span> and Carlos needs to pay <span class="arithmatex">\(1.3\)</span>.</li>
+</ul>
+<p><em><strong>Note:</strong> The order in which we go matters, timing is important, or if something happens and changes what everyone thinks, then the first person to move the market has an advantage.</em></p>
+<p>If there was no Bob, but just Alice moving <span class="arithmatex">\(0.25\)</span> in one direction, and then Carlos moving to<span class="arithmatex">\(0.9\)</span> in the other direction, then the payments for Carlos are just the sum of what the payments for Bob and Carlos were above.</p>
+</div>
+<p>Each person can shift the market a lot, but they are exposing themselves to losing a lot of money (the bigger the shift, the bigger the risk and the reward).</p>
+<p><strong>Quesiton: What happens to incentives if other forecasters change their minds based on what you did?</strong></p>
+<p>Here, we are going to analyze incentives assuming that each forecaster makes a prediction, and their turn is done. However, in practice, people practice what is called the “pump and dump” trick, where they buy a lot of stocks, make sure everyone knows about it, which increases the price when everyone jumps on the wagon, and then the person who is doing the “pump and dump” sells the stocks for a profit. We do not have a good mathematical model for how forecasters react to how one forecaster updates the forecast.</p>
+<div class="definition">
+<p><strong>Definition: Sybil-Attack</strong></p>
+<p>Exploiting a mechanism by pretending to participate as many agents.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Sybil-Proof</strong></p>
+<p>Robust to Sybil-attacks.</p>
+</div>
+<div class="theorem">
+<p><strong>Claim:</strong> Market scoring rules are sybil-proof-ish.</p>
+<p>Specifically, market scoring rules are robust to sybil-attacks as long as all copies forecast immediately after each other.</p>
+</div>
+<p>An agent may run a Sybil-attack by making copies of themselves (with bots) to pretend they are more than one person.</p>
+<p>The reason why market scoring rules are sybil-proof-ish is because, if one agent is taking one order, and breaking it down into a series of consecutive orders, then it is exactly the same as if it still was exactly one order.</p>
+<p>More generally, forecasters will receive the same payoff for moving the market belief in one shot vs. consecutive increments.</p>
+<div class="remark">
+<p>The market scoring rule is really a market that is using a scoring rule (so maybe it should have been called the scoring rule market), rather than a rule for scoring the market.</p>
+</div>
+<p><strong>Question: Is there a rule for scoring the market?</strong></p>
+<p>Yes, but one problem is that those rules tend to be really not sybil-proof. For instance, in blockchain, there are a lot of websites that keep track of activity that happen in some blockchains, and so the blockchain operators figured it out, and they started generating a lot of fake activity to appear like up-and-coming blockchains.</p>
+<p><strong>Question: Can each forecaster can observe the predictions of the forecasters before them?</strong></p>
+<p>Yes, and that is very important, because they are paying the difference between the forecast and what they are updating the forecast to.</p>
+<p><strong>Question: Should we be getting closer to the truth as more forecasters join?</strong></p>
+<p>The big questions is how do we aggregate the fact that some forecasts were made all over the place, in no specific order. So, in theory, all together, the forecasters should be getting closer to the truth, but there is not a good model to aggregate what happens.</p>
+<p>There is a public no-trade theorem, because if all the public information has been aggregated, then the forecast is already reflecting that, but if a forecaster has private information, then they are trading with the house, who is “paying them” to bring in the new information.</p>
+<div class="definition">
+<p><strong>Definition: Bounded Market Maker's Loss</strong></p>
+<p>The total payout to forecasters is:</p>
+<div class="arithmatex">\[
+  \underset{t=1}{\sum^T} S(q^t,i) - S(q^{t-1},i) = S(q^T,i) - S(q^0,i)
+\]</div>
+<p>You may have to pay forecasters (unlike prediction markets):</p>
+<ul>
+<li>Paying is reasonable in exchange for useful information</li>
+<li>Positive payment (in expectation) is necessary to avoid no-trade theorems</li>
+<li>You actually make a profit if your original forecast was better</li>
+</ul>
+<p>The total payout is bounded–it doesn’t scale with number of forecasters. For instance, it is at most <span class="arithmatex">\(log(O)\)</span> when using the logarithmic scoring rule with <span class="arithmatex">\(q^O\)</span> is the uniform distribution.</p>
+</div>
+<p>Said otherwise, the total payout is bounded by the difference between the score of the original forecast and the final forecast. Regardless of the number of forecaster, the total payout is bounded, because the most it can go to is someone exactly predicting the right outcome. So, even with an unbounded number of forecasters, the total payout remains bounded.</p>
+<div class="theorem">
+<p><strong>Lemma:</strong> For any fixed order of forecasters, reporting true beliefs is the unique optimal strategy for every forecaster.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong> The <span class="arithmatex">\(t\)</span>-th forecaster chooses <span class="arithmatex">\(q^t\)</span> that maximizes <span class="arithmatex">\(S(q^t,i)-S(q^{t-1},i)\)</span>.</p>
+<p>Since <span class="arithmatex">\(S(q^{t-1},i)\)</span> does <strong><em>not</em></strong> depend on <span class="arithmatex">\(q\)</span>, the optimality of the true forecast follows from the strategyproofness of the scoring rule.</p>
+</div>
+<p>In other words, since every forecaster has no control over the score of the pervious forecast(s), they just want to maximize the score of the new forecast, which means just maximizing their own profits, and this is strategyproof.</p>
+<p>The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades)=</p>
+<ul>
+<li>In theory, your forecast now can strategically throw off the market.</li>
+<li>The “more wrong” the market is, the more opportunity to profit.</li>
+<li>But this requires a reliable model of how your forecast affects others.</li>
+</ul>
+<div class="summary">
+<p><strong>Market Scoring Rules Recap</strong></p>
+<ul>
+<li>Market scoring rules apply to any number of forecasters. This is useful for markets of moderate size, which is common in corporate forecasts.</li>
+<li>Marker scoring rules are also strategyproof with a fixed order, but their dynamic strategic manipulation is hard to implement.</li>
+<li>The payout is bounded and does not depend on the number of forecasters.</li>
+</ul>
+</div>
+<h2 id="automated-prediction-market-makers">Automated Prediction Market Makers</h2>
+<p>In simple prediction markets like IEM, one problem is that liquidity providers risk unfavorable trades with more informed traders:</p>
+<ul>
+<li>Large bid-ask spread to cover risk (low liquidity) </li>
+<li>Poor information aggregation, e.g. anywhere between 5%-40% (in the example of LeBron James potentially joining the Chicago Bulls).</li>
+</ul>
+<p>One solution to this problem is called automated market makers (AMM).</p>
+<div class="definition">
+<p><strong>Definition: Automated Market Makers (AMM)</strong></p>
+<ul>
+<li>The market maker ( “bookie”) posts zero (or low) spread buy/sell prices.</li>
+<li>Forecasters can always trade with the market maker.</li>
+</ul>
+</div>
+<p>In a prediction market with AMM:</p>
+<ul>
+<li>There are contracts, like in IEM, for instance:<ul>
+<li>D-contract that pays $1 if Democratic candidate wins</li>
+<li>R-contract that pays $1 if Republican candidate wins</li>
+</ul>
+</li>
+<li>The AMM (“house”) offers: buy/sell D-contract for price <span class="arithmatex">\(P_D\)</span> (respectively R-contract for price <span class="arithmatex">\(P_R\)</span>).</li>
+</ul>
+<p>How should the AMM set prices? Using market scoring rules! Actually, this is one answer, and we will discuss more answers later in the quarter.</p>
+<p><em><strong>Note:</strong> AMM knows nothing about the actual event we are trying to predict!</em></p>
+<div class="definition">
+<p>In a market scoring rule-based automated market maker (MSR-AMM), buy/sell prices should be dynamic to ensure bounded total payout. As more forecasters buy D-contracts, market “expects” the Democratic candidate to win, which only incentivizes next D-contract purchase if a forecaster is even more confident than market.</p>
+</div>
+<p>The concrete goals of an MSR-AMM are to:</p>
+<ul>
+<li>Look and feel of a prediction market, where:<ul>
+<li>Forecasters trade D-contracts and R-contracts (although now forecasters can also trade with the market maker).</li>
+<li>After elections: each D-contract pays $1 if the Democratic candidate wins (ditto for R-contracts).</li>
+</ul>
+</li>
+<li>Make payments (contract cost + payout) exactly as in market scoring rule (forecasters incentives are also exactly the same).</li>
+</ul>
+<div class="example">
+<p>Let's consider an MSR-AMM with two outcomes (<span class="arithmatex">\(D\)</span> and <span class="arithmatex">\(R\)</span>) and an initial market belief <span class="arithmatex">\(q^O = 50/50\)</span>.</p>
+<p>Bundles of (D-contract + R-contract) are worth exactly <span class="arithmatex">\(\$1\)</span>. Buying/selling a bunch of such bundles doesn’t indicate change in market belief, since the belief only depends on the <em>difference</em> between the number of D-contracts and R-contracts sold.</p>
+<p>At the beginning of market, given that <span class="arithmatex">\(q^O = \frac{1}{2}\)</span>, prices of D-contracts and R-contracts are equal (50¢ each).</p>
+<p>As the difference between the number of D-contracts and the number of R-contracts approaches <span class="arithmatex">\(\infty\)</span>, the market belief approaches 100% probability that the Democratic candidate wins. So, the price of D-contracts should approach <span class="arithmatex">\(\$1\)</span>, while the price of R-contract should approach <span class="arithmatex">\(\$0\)</span>.</p>
+<p>The market belief is derived from prices: If prices <span class="arithmatex">\(P_D + P_R = 1\)</span>, are an equilibrium (at time <span class="arithmatex">\(t\)</span>) for the market, then the market’s current belief is that the Republican candidate will win with probability <span class="arithmatex">\(q_R^t = P_R\)</span>. Otherwise, forecasters want to buy more/less R-contracts.</p>
+<p>Now, fix some (strictly proper) scoring rule <span class="arithmatex">\(S\)</span>, and consider that no contracts are sold yet. If buying <span class="arithmatex">\(x_D\)</span> D-contracts moves the market belief from <span class="arithmatex">\(q^O\)</span> to <span class="arithmatex">\(q^t\)</span>, their their cost (i.e. the cumulative price forecasters pay the market maker) should satisfy:</p>
+<div class="arithmatex">\[
+C(x_D,O) - x_D = S(q^t,i_D) - S(q^O,i_D)
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(x_D\)</span> is the contract payout if the Democratic candidate wins, and</li>
+<li><span class="arithmatex">\(S(q^t,i_D) - S(q^O,i_D)\)</span> is the market scoring rule payment if the Democratic candidate wins.</li>
+</ul>
+<p>If buying <span class="arithmatex">\(x_D\)</span> D-contracts moves the market belief from <span class="arithmatex">\(q^O\)</span> to <span class="arithmatex">\(q^t\)</span>, their their cost should also satisfy:</p>
+<div class="arithmatex">\[
+C(x_D,O) = S(q^t,i_R) - S(q^O,i_R)
+\]</div>
+<p>This means that the price from cost of 1 R-contract is:</p>
+<div class="arithmatex">\[
+C(x_D,x_R +1)-C(x_D,x_R) \approx \frac{\partial C(x_D,x_R)}{\partial x_R} 
+\]</div>
+<p>In other words, the costs should statisfy:</p>
+<div class="arithmatex">\[
+C(x_D,O) - x_D = S(q^t,i_D) - S(q^O,i_D)
+\]</div>
+<p>and </p>
+<div class="arithmatex">\[
+C(x_R,O) - x_R = S(q^t,i_R) - S(q^O,i_R)
+\]</div>
+<p>With a logarithmic rule AMM, we have:</p>
+<div class="arithmatex">\[
+C(x_D,x_R)=ln(e^{x_D}+e^{x_R})-ln(2)
+\]</div>
+<p>and the price of a marginal D-contract is:</p>
+<div class="arithmatex">\[
+q_D(x_D,x_R) = \frac{e^{x_D}}{e^{x_D}+e^{x_R}}
+\]</div>
+<p>With this formula, if we do the right math, it looks and feel like a prediction market, but it has the same properties (strategy-proof-ishness and sybil-proof-ishness) and the same expected payout as a market scoring rule (the payout is bonded: we may lose money to trader, but not too much money).</p>
+</div>
+<div class="remark">
+<p><strong>Important Takeaway:</strong> With an AMM, traders always have someone to trade with, and one way to determine the prices is using a market scoring rule.</p>
+</div>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Scoring Rules, Market Scoring Rules, and Automated Prediction Market Makers Recap</strong></p>
+<ul>
+<li>
+<p>One caveat with prediction markets is that they may have low liquidity, due to:</p>
+<ul>
+<li>No-trade theorems.</li>
+<li>Questions that require special knowledge/classified information (e.g., in corporates or government agencies).</li>
+<li>A Catch-22, where poor liquidity leads to a thin market, which leads to even worse liquidity, etc.</li>
+</ul>
+</li>
+<li>
+<p>In the extreme case of a single forecaster, proper scoring rules provide the incentives. More generally, we can have an automated market maker based on a proper scoring rule.</p>
+</li>
+<li>
+<p>For a given input, including a realized event <span class="arithmatex">\(i\)</span> in the outcome space <span class="arithmatex">\(O\)</span>, i.e. "rain/no rain", and a probability distribution <span class="arithmatex">\(q\)</span> over <span class="arithmatex">\(O\)</span>, i.e. "<span class="arithmatex">\(40\%/60\%\)</span>", a scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying weather.com.</p>
+</li>
+<li>
+<p>A scoring rule <span class="arithmatex">\(S\)</span> is proper if it is <em>strictly strategyproof</em>, i.e. the true distribution is the unique argmax of the expected score.</p>
+</li>
+<li>
+<p>The quadratic scoring rule <span class="arithmatex">\(S_{quadratic} = q_i - \frac{1}{2} \sum q_j^2\)</span>, and the logarithmic scoring rule <span class="arithmatex">\(S_{log}(q,i) = log (q_i)\)</span>, are strictly proper.</p>
+</li>
+<li>
+<p>The market scoring rule payment to each forecaster is <span class="arithmatex">\(S(q^t,i) - S(q^{t-1}\)</span>.</p>
+</li>
+<li>
+<p>In a logarithmic rule AMM, the price of a marginal <span class="arithmatex">\(i\)</span>-contract is <span class="arithmatex">\(\frac{e^{x_i}}{\sum e^{x_j}}\)</span>.</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
