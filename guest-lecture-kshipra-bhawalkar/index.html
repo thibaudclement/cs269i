@@ -1,0 +1,1322 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lecture-10/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Incentives in Sponsored Search Auctions - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#motivation-optimizing-sponsored-search-ads" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Incentives in Sponsored Search Auctions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-eric-neyman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Incentives in Sponsored Search Auctions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentives in Sponsored Search Auctions
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation-optimizing-sponsored-search-ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation: Optimizing Sponsored Search Ads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#past-position-auctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Past: Position Auctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#present-rich-ad-auctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Present: Rich Ad Auctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-auctions-for-llm-generated-ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future: Auctions for LLM generated ads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation-optimizing-sponsored-search-ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation: Optimizing Sponsored Search Ads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#past-position-auctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Past: Position Auctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#present-rich-ad-auctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Present: Rich Ad Auctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-auctions-for-llm-generated-ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future: Auctions for LLM generated ads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Incentives in Sponsored Search Auctions</h1>
+
+<p><em>May 12, 2025</em></p>
+<h2 id="motivation-optimizing-sponsored-search-ads">Motivation: Optimizing Sponsored Search Ads</h2>
+<p>If you do a Google search, you will find different elements on the results page:</p>
+<ul>
+<li>Knowledge Panel: wikipedia-level information about what you are searching for.</li>
+<li>Local Results: to help you find stores to go buy the products.</li>
+<li>Web Search Results: for places that will tell you more about what you are looking for.</li>
+</ul>
+<p><img alt="Google Search Engine Result Page" src="../images/Google%20Search%20Engine%20Result%20Page.png" /></p>
+<p>Most prominently, there are a few text ads, that are placed there to fund the rest of the page: this is 3-digit billion dollar a year business that allows us to access free search results. In particular, our ability to search for the most esoteric queries that nobody would advertise for is funded by commercial queries.</p>
+<p><strong>How does Google (or other companies) select the ads that go along with the sponsored search results?</strong></p>
+<p>These ads have actually gone through a few different versions as people's browsing habits, and the way the organic search results were displayed, changed.</p>
+<ul>
+<li>In the 2000s, these ads used to be a bunch of blue links: just a headline URL and some text.</li>
+<li>Nowadays if you go to Google.com, you see ads that are richer.</li>
+<li>In the future, as LLMs enable more and more innovation, there might be other kinds of ads that might show up as the search page itself changes.</li>
+</ul>
+<p><img alt="Evolution of Sponsored Search Ads" src="../images/Evolution%20of%20Sponsored%20Search%20Ads.png" /></p>
+<p><strong>How do the algorithms and auctions for selecting ads evolve with changing presentation?</strong></p>
+<h2 id="past-position-auctions">Past: Position Auctions</h2>
+<p>Let's start with position auctions, which is the simplest model of search ads that had existed for many years.</p>
+<p><img alt="Google in 2000s" src="../images/Google%20in%202000s.png" /></p>
+<p>If you went to Google.com in 2000, what you used to get is what is known as "ten blue links." All of the search results looked very similar, with a headline, a URL, and 1-2 lines of text describing the pages to you. Then, you could read the description to decide if you wanted to click on a specific page or not.</p>
+<p>At the top, the first couple of links might be ads. These ads always went in fixed positions, and the format of these ads always matched what the search results were shown with it. The main parameter was the fixed positions in which the ads could show.</p>
+<p>We can think of it as an optimization problem, where we want to show at most <span class="arithmatex">\(k\)</span> ads, where <span class="arithmatex">\(k\)</span> might be equal to <span class="arithmatex">\(3\)</span> or <span class="arithmatex">\(4\)</span>, and our goal is to show ads that best match the intent of the user:</p>
+<ol>
+<li>The search engine asks the advertiser how much they value the user clicking on their website.</li>
+<li>The advertiser reports a value <span class="arithmatex">\(v_i\)</span> per click for the user.</li>
+<li>The search engine estimates the probability <span class="arithmatex">\(pCTR_{i,j}\)</span> of the user clicking on the ad in position <span class="arithmatex">\(j\)</span>.</li>
+<li>The search engine maximizes the social welfare <span class="arithmatex">\(\displaystyle \sum_{i} v_i \; pCTR_{i,j}\)</span>, i.e. the value that both advertisers and user get out of this match.</li>
+</ol>
+<p>So, how do we decide? How much should the advertiser want to pay to match the user?</p>
+<p>This is like a weighted matching problem. But if we assume that the click through rates are separable, which means that for every advertiser, their click-through rate in a particular position is a function of the advertiser's specific click-through rate and a position effect, which we'll call the position normalizer, then this problem becomes much simpler and we can solve it using a simple algorithm.</p>
+<div class="definition">
+<p><strong>Optimization Problem</strong></p>
+<ul>
+<li>Assume: Separable <span class="arithmatex">\(pCTR\)</span>: <span class="arithmatex">\(pCTR_{i,j} = pCTR_i \cdot pos \text{-} norm_j\)</span>.</li>
+<li>Goal: Maximize <span class="arithmatex">\(\displaystyle \sum_{i} v_i \; pCTR_{i,j}\)</span>.</li>
+<li>Algorithm:<ul>
+<li>Rank ads by <span class="arithmatex">\(eCPM_i = v_i \cdot pCTR_i\)</span>.</li>
+<li>Show <span class="arithmatex">\(j\)</span>-th ad in position <span class="arithmatex">\(j\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>What is that simple algorithm? We just rank the ads by their <span class="arithmatex">\(eCPM\)</span>, which is a product of their value and clic-through rate, and then just show each ad in the corresponding position. So, at least in the position option case, under a fairly reasonable assumption, we could decide which ad goes there fairly efficiently by just sorting the ads and showing them in that order.</p>
+<p>However, there is another challenge here: we are asking the advertisers how much they want their ad to be shown. If we were not charging any payments, then everybody would say "$1M dollars!" Each advertiser always wants their ad to be always be shown, because they value all users equally, and Google is just giving them traffic for free. Thus, Google has to charge the advertiser for the value they report, to align incentives, otherwise they will just report ridiculous values.</p>
+<div class="example">
+<p><strong>Example: Goto.com/Overture Auction (1997-2003)</strong></p>
+<p>When Internet ads were coming up, there was a company called Goto.com, which later became Overture and then was acquired by Yahoo! They started with a First Price auction format, which has some obvious issues.</p>
+<table>
+<thead>
+<tr>
+<th>Ad</th>
+<th>Bid</th>
+<th>Position</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>$10</td>
+<td>1</td>
+<td>$10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$8</td>
+<td>2</td>
+<td>$8</td>
+</tr>
+</tbody>
+</table>
+<p>In this example we have two advertisers. They have bids of <span class="arithmatex">\(\$10\)</span> and <span class="arithmatex">\(\$8\)</span>. With the First Price auction, everyone pays what they bid. So the first one will pay <span class="arithmatex">\(\$10\)</span>, and the second one will pay <span class="arithmatex">\(\$8\)</span>. But there is an obvious manipulation for any one of them.</p>
+<table>
+<thead>
+<tr>
+<th>Ad</th>
+<th>Bid</th>
+<th>Position</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>$8.01</td>
+<td>1</td>
+<td>$8.01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$8</td>
+<td>2</td>
+<td>$8</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose the first advertiser instead lowers their bid to a little bit above <span class="arithmatex">\(\$8\)</span>, such as <span class="arithmatex">\(\$8.01\)</span>. They are still in the same position, but now their payment is a lot lower. This is definitely a win for the advertiser and they should always try to do this.</p>
+</div>
+<p>When Google came along, it was kind of known that there was this obvious manipulation opportunity for the advertisers, and advertisers were exploiting this. That led to a lot of system instability for Overture, because their advertisers would keep constantly trying to keep changing their bid.</p>
+<p>Google engineers wanted to do something different to fix this issue. They started charging the second price, which is the minimum bid at which a given ad still wins the same position. This actually extends the Second Price auction format or the VCG mechanism to multiple positions, even though the people who were around at that time report that they came at it from first principles.</p>
+<div class="example">
+<p><strong>Example: Generalized Second Price (GSP) Auction</strong></p>
+<p>Suppose we are now running an auction and we are going to rank these ads by click-through rate. For simplicity, in this example, we are assuming that all the click-through rates are equal to <span class="arithmatex">\(1\)</span>, so we are just ranking ads by bids.  There is still a position effect: if you show an ad in the higher position, it gets more click. That is represented by the position normalizer column.</p>
+<p>Suppose we have four advertisers A, B, C, and D, bidding <span class="arithmatex">\(\$10\)</span>, <span class="arithmatex">\(\$8\)</span>, <span class="arithmatex">\(\$2\)</span>, and <span class="arithmatex">\(\$0.01\)</span> respectively. Then, A will win the three positions, and each one of them will pay the next highest bid: A pays <span class="arithmatex">\(\$8\)</span>, B pays <span class="arithmatex">\(\$2\)</span>, and C pays <span class="arithmatex">\(\$0.01\)</span>. That is already the most obvious incentive to lower your bid to find the best threshold where you can still win.</p>
+<table>
+<thead>
+<tr>
+<th>Pos</th>
+<th>pos-norm</th>
+<th>Winner</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.8</td>
+<td>A</td>
+<td>$8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.5</td>
+<td>B</td>
+<td>$2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.1</td>
+<td>C</td>
+<td>$0.01</td>
+</tr>
+</tbody>
+</table>
+<p>Are we done yet? Is there any more reason for an advertiser to manipulate their bid, or is this auction truthful?</p>
+<p>We have to set some parameters here to think through this. Let's focus on advertiser A, and suppose their value per click is <span class="arithmatex">\(\$10\)</span>. What they are optimizing is a quasi-linear utility which is the click-through rate times value-per-click minus cost-per-click. Right now, with the current bids, A is winning position <span class="arithmatex">\(1\)</span>, and their utility would be: <span class="arithmatex">\(0.8 \cdot (10 - 8) = 1.6\)</span>. Is there a way for a to do better, i.e. is there a different way for A to get a better utility?</p>
+<p>If A bids anything less than <span class="arithmatex">\(\$10\)</span> dollar, they end in position 2, and their utility <span class="arithmatex">\(0.5 \cdot (10 - 2) = 4\)</span>, which is definitely better. This happens more generally in GSP where there's an incentive to lower your bid to find the place where you get a good trade off.</p>
+</div>
+<p><strong>Question: Is the value of A constantly 10, or can it hypothetically move down for position 2 or 3?</strong></p>
+<p>Their value-per-click is the same, but because their click-through rate is changing, their utility will change. That is based on the <span class="arithmatex">\(pos-norm\)</span> regularizer, which is changing the actual value.</p>
+<p>Now that we have seen an example, let’s unravel the theory on how to design good auctions. Economists have thought hard about general auction design and how to make design auctions that are truthful, where the participants are incentivized to report their true preferences for goods. So in the position auction bidding, we want to design an auction where the advertisers report their true value for click.</p>
+<p>A mega giant hammer in economics is the VCG auction. This is a very general result that allows us to come up with a truthful auction in lots of different settings. It is also very simple to discuss.</p>
+<div class="definition">
+<p><strong>VCG Auction</strong></p>
+<p>We want to choose the best of ads to show to maximize social welfare.</p>
+<p><strong>Payment Rule:</strong> For each ad <span class="arithmatex">\(i\)</span> show, charge the externality.</p>
+<p>In other words:</p>
+<p><span class="arithmatex">\(Payment(i) = (best \; efficiency \; without \; i) - (Efficiency \; of \; ads \; other \; than\; i \; in \; selection)\)</span>.</p>
+</div>
+<p>Technically, this is the exact formula we saw earlier. The payment we charge for each participant is their externality, which is how much they are taking away from others by winning. The way we calculate this externality is by asking what would have happened if this advertiser was not there, and then subtract from that what everybody else is getting when they are actually there.</p>
+<p>VCG <em>in general</em> might not be easy to implement, but <em>in the case of position auctions</em>, because of the algorithm we described earlier, where we just rank ads and select the best ones, it is actually very easy to implement. Let's see what happens in our example.</p>
+<div class="example">
+<p><strong>Example: VCG Position Auction</strong></p>
+<p>Assume the same advertisers and bids as in the previous example:</p>
+<table>
+<thead>
+<tr>
+<th>Pos</th>
+<th>pos-norm</th>
+<th>Winner</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.8</td>
+<td>A</td>
+<td>$8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.5</td>
+<td>B</td>
+<td>$2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.1</td>
+<td>C</td>
+<td>$0.01</td>
+</tr>
+</tbody>
+</table>
+<p>To calculate the payment for A:</p>
+<ol>
+<li>We find the best allocation without A: if A goes away, all the other advertisers move up, so B goes in position <span class="arithmatex">\(1\)</span>, C goes in position <span class="arithmatex">\(2\)</span>, and D goes in position <span class="arithmatex">\(3\)</span>. That gives the first term in the formula, i.e. the social welfare of showing B, C, and D in positions <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, and <span class="arithmatex">\(3\)</span>.</li>
+<li>We subtract from it what B and C were getting in the original allocation:  B in position <span class="arithmatex">\(2\)</span> and C in position <span class="arithmatex">\(3\)</span>.</li>
+<li>We can rearrange to make it look right in terms of individual advertisers bids, i.e. how much are they gaining or losing relative to when A is present or not.</li>
+</ol>
+<p>This gives us:</p>
+<p><span class="arithmatex">\(Paymen(A) = (0.8 \cdot 8 + 0.5 \cdot 0.2 + 0.1 \cdot 0.01) - (0.5 \cdot 8 + 0.1 \cdot 2) = (0.8 - 0.5) \cdot 8 + (0.5 - 0.1) \cdot 2 + 0.1 \cdot 0.01 = 2.301\)</span>.</p>
+</div>
+<p>There is actually another way of coming up with auctions, which is a classic result from Myerson, i.e. a general characterization for designing truthful auctions.</p>
+<div class="theorem">
+<p><strong>Myerson (1981):</strong></p>
+<p>For single parameter settings, an auction is truthful if and only if the allocation <span class="arithmatex">\(x_i\)</span> is monotone and the payment has a specific form:</p>
+<p><span class="arithmatex">\(p_i(b_i, b_{-i}) = b_i x_i (b_i, b_{-i}) - \int_0^{b_i} x_i(z, b_{-i})dz\)</span></p>
+<p><img alt="Myerson result 1981" src="../images/Myerson%20result%201981.png" /></p>
+</div>
+<p>A single parameter setting that the participants only have one-dimensional preferences, and a monotone allocation rule means that when somebody reports a higher preference, i.e. they place a higher bid, they get a higher position and more clicks. Then, the payment is given by an integral (Myerson derives this by using some inequalities that we need to satisfy to make sure that nobody would want to game this system).</p>
+<p>This rule is charging the area above the curve, so we can draw a curve which plots how the allocation is changing as the bids goes up. The curve is a step function, because in position auctions, you go from winning position <span class="arithmatex">\(3\)</span> to <span class="arithmatex">\(2\)</span> to <span class="arithmatex">\(1\)</span>: as you bid higher and higher you go to higher and higher positions. So, you get more click-through rate.</p>
+<p>Let's go back to our example:</p>
+<div class="example">
+<p>Once again, assume the same advertisers and bids as in the previous example:</p>
+<table>
+<thead>
+<tr>
+<th>Pos</th>
+<th>pos-norm</th>
+<th>Winner</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.8</td>
+<td>A</td>
+<td>$8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.5</td>
+<td>B</td>
+<td>$2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.1</td>
+<td>C</td>
+<td>$0.01</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Myerson allocation example" src="../images/Myerson%20allocation%20example.png" /></p>
+<p><span class="arithmatex">\(Paymen(A) = (0.8 - 0.5) \cdot 8 + (0.5 - 0.1) \cdot 2 + (0.1 - 0) \cdot 0.01 = 2.301\)</span>.</p>
+<p>This is the same result as with VCG.</p>
+</div>
+<div class="remark">
+<p><strong>GSP is <em>not</em> truthful</strong></p>
+<p>We saw that Myerson and VCG are two different ways of getting truthful auctions We even verified, at least on one example, that these two do the same thing.</p>
+<p>Below, the picture on the left is what Myerson does, and the picture on the right is what GSP does.</p>
+<p><img alt="GSP is not truthful" src="../images/GSP%20is%20not%20truthful.png" /></p>
+<p>Instead of charging this area above the curve, GSP is greedy and charges the big rectangle. Even though, by lowering the bid, the advertiser would get fewer clicks, we disregard that and charge them a very high price for all of their clicks. That is why the prices are much higher with GSP than they would be with Myerson/VCG.</p>
+</div>
+<p>Meta/Facebook decided to use VCG and that is the right thing to do. It is definitely easier to start using VCG from scratch, because switching from GSP to VCG is hard, as it causes revenue to go down.</p>
+<p>Then on the other end of the spectrum, display ads, which are ads that show up on websites when you visit them, use First Price auctions, for historical reasons, given the complexity of the display ad ecosystem.</p>
+<div class="summary">
+<p><strong>Position Auction Conclusion</strong></p>
+<p>Historically:</p>
+<ul>
+<li>Goto.com/Overture/Yahoo used First Price auctions.</li>
+<li>Google introduced GSP auctions.</li>
+<li>Others, including Meta, have implemented a VCG-ish auctions.</li>
+<li>Display ads tend to use First Price auctions.</li>
+</ul>
+<p>Some research papers on this topic:</p>
+<ul>
+<li>Edelman, Ostrovsky, Schwartz (2007)</li>
+<li>Aggarwal et al. (2007)</li>
+<li>Varian (2007)</li>
+<li>The Economics of Internet Search (Varian, 2006)</li>
+</ul>
+</div>
+<p><strong>Question: How important is truthfulness for these auctions?</strong></p>
+<p>There are layers here. First Price can be obviously bad, because advertisers can experiment with their bids, and they can lower their bids to get the same thing but cheaper, so there is an obvious manipulation opportunity to game. With GSP-like auctions, it is not obvious how to manipulate the bids, and the participants need to think about the margins that they need to tolerate, so the click-cost trade-off is still there, but the advertisers still need to estimate how much value they put on the clicks, and that might change.</p>
+<p><strong>Question (follow-up): Who is estimating that?</strong></p>
+<p>There are some manual advertisers who are doing it themselves, they look at the Adwords interface, and they try to find the sweet spot by looking at plots in the interface.</p>
+<p>There are also fancier products, like auto bidders, where advertisers can just input their average cost, and the outbidding system (which is run by Google), will try to optimize for them. Truthfulness remains helpful, because the autobidder can do a uniform bid and get the best value.</p>
+<p><strong>Question: Are platforms incentivized to model each user’s behavior and intent to optimize click-through rate, so that the platform can charge the most?</strong></p>
+<p>The better we can estimate the probability of click, the better we are matching the advertiser to the user, even though it does not always translate into more revenue.</p>
+<p>For instance, if there are two advertisers, like Nike and Adidas, but the user likes Nike and not Adidas, then there is no pricing pressure to charge more to Nike, which is why revenue does not always follow. That said, definitely, the more accurately we can estimate the click-through rate, the greater the efficiency.</p>
+<h2 id="present-rich-ad-auctions">Present: Rich Ad Auctions</h2>
+<p>These days, if you go to Google.com, you get more complicated layouts of ads, which can show ad extensions, site links, seller ratings, promotions, which can change the probability of the user clicking on the ad. It is also a better value for the advertiser because the user might actually go buy the product. </p>
+<p><img alt="Google richer ads" src="../images/Google%20richer%20ads.png" /></p>
+<p>However, these extensions also take more space, and we want to make the best use of all the space that the user looks at on Google.com.</p>
+<p><img alt="Rich ads optimization problem" src="../images/Rich%20ads%20optimization%20problem.png" /></p>
+<p>We bound the total amount of space that we control to find the best set of ads that fit within that space. For instance, we may need to decide what to do, when, for the same advertiser, we can either show a small or a large ad.</p>
+<div class="definition">
+<p><strong>Optimization Problem</strong></p>
+<p>Constraints:</p>
+<ul>
+<li>Only one ad <span class="arithmatex">\(j(i)\)</span> per selected advertiser.</li>
+<li>Total space bounded by <span class="arithmatex">\(\displaystyle \sum_i h_{j(i)} \leq H\)</span>.</li>
+</ul>
+<p>Goal: Choose the set of rich ads to maximize the social welfare <span class="arithmatex">\(\displaystyle \sum_i v_i \; clicks_{j(i)}\)</span></p>
+</div>
+<p>We can extract the theoretical question that we are trying to solve here from the setting:</p>
+<ul>
+<li>We have a number of advertisers.</li>
+<li>Each advertiser has a few different ads that they have provided us.</li>
+<li>We are required to show only one ad per advertiser because we don't want to show two ads for, say, flowers.com, in the same view (that would not be a good user experience).</li>
+<li>The total amount of space occupied by these ads has to be bounded.</li>
+<li>Our goal is to still to maximize social welfare, to maximize the value of matching these advertisers to the users.</li>
+</ul>
+<p>This problem is actually hard to solve optimally: it is known as a <strong>Multiple-Choice Knapsack Problem</strong>, and it is NP-hard.</p>
+<div class="remark">
+<p>Computer scientists have spent a lot of time trying to understand which problems are hard to solve, and they came up with a class called NP, which are problems that we don't know if they are hard to solve, but we don't know how to solve them either. There is a conjecture <span class="arithmatex">\(P=NP\)</span> (or not), which is <span class="arithmatex">\(\$1\)</span> million problem.</p>
+</div>
+<p>As long as we don't know where this conjecture goes, we don't know how to solve this problem in a reasonable amount of time, especially as the instance grows large. In this case, the number of ads per advertiser can go on the order of thousands, and, because we can do many combinations of these ad extensions, the number of ads that show up to an auction in the worst case can also be on the order of thousands.</p>
+<p>One more practical constraint for showing these ads is that we cannot do anything worse than <span class="arithmatex">\(n \cdot \log(n)\)</span>. A polynomial n-fourth <span class="arithmatex">\(O(n^4)\)</span> algorithm is not practical, because whenever you go to Google.com, we need return the result at the worst in 200 milliseconds. That is including the time to retrieve old ads from various systems and run the auction. So, the auction itself gets less than 10 milliseconds to run.</p>
+<p>In other words, this problem is theoretically and practically hard to solve. So, how should we solve this problem?</p>
+<p>Let's take a little diversion and consider a simpler problem: the Knapsack Problem.</p>
+<div class="definition">
+<p><strong>The Knapsack Problem</strong></p>
+<ul>
+<li>You have a snack budget and you are going on a road trip.</li>
+<li>You go to a convenience store and you want to buy as many snacks as possible. - Each snack has some value (how happy it makes you).</li>
+<li>There is a cost for purchasing each snack.</li>
+</ul>
+<p>You want to find a set of snacks that maximize the total value you get for this, subject to the constraint that the total cost of your snacks that you're purchasing is less than your budget, say, $100.
+This problem is still in NP hard, but over the next few slides, we'll look at a simple algorithm for solving this problem.</p>
+</div>
+<p>A problem may be NP-hard, and yet, we still have to solve it because we are building something in real life. This Knapsack Problem needs to be solved, and an approach is to use an approximation algorithm.</p>
+<p>What is approximation algorithm? It is a heuristic/an algorithm that gives us a solution that might not be optimal, but that we can accept if we can prove some approximation guarantee, such as that we will get at least half of the best solution possible. That is a really good guarantee to have because, no matter what instance shows up tomorrow, you're at least getting a reasonable amount of value. Of course, the closer we can make this approximation to <span class="arithmatex">\(1\)</span>, the better, but sometimes it is not possible.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> We can solve the Knapsack Problem in polynomial time to obtain a 2-approximation, i.e. <span class="arithmatex">\(Value(ALG) \geq \frac{Value(OPT)}{2}\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Knapsack Approximation Algorithm</strong></p>
+<ol>
+<li>Sort items in the bang-per-buck = value/cost order.</li>
+<li>Select items until knapsack is almost full (i.e. the next item will overflow).</li>
+<li>Consider the last item by itself.</li>
+<li>Pick the higher of steps 2 and 3.</li>
+</ol>
+</div>
+<p>The algorithm is very simple. It basically sorts the items by bang-per-buck: you're not just going to greedily pick by value, but instead, take the ratio of the value and cost, and pick in that order. We'll keep doing this until the knapsack is almost full, and once the next item cannot fit in the bag anymore, it will overflow. We will consider this last item by itself, and we are going to pick the better of this bang-per-buck order, or this last item by itself.</p>
+<p>Note that Step 3 here is required because sometimes there might be a single item, that is very large but doesn't have a good bang-for-buck (i.e. a very large item with a very high value), and we want to make sure we don't miss it.</p>
+<p>Let's look at an example.</p>
+<div class="example">
+<p><strong>Example: Knapsack Approximation</strong></p>
+<p>We have <span class="arithmatex">\(3\)</span> items and the knapsack capacity is <span class="arithmatex">\(2\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Cost</th>
+<th>Bang-per-buck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18</td>
+<td>1</td>
+<td>18</td>
+</tr>
+<tr>
+<td>21</td>
+<td>1.2</td>
+<td>17.5</td>
+</tr>
+<tr>
+<td>30</td>
+<td>2</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>The optimal solution in this case is to pick the last item which has a lot of value.</p>
+<p>What does the algorithm do?</p>
+<ul>
+<li>It considers the ratio of value divided by cost, which is the order the item are shown here.</li>
+<li>It adds the items one at a time until the knapsack is full. It turns out that we have to stop just after the first item, because the next item would overflow the knapsack.</li>
+<li>It considers that last item by itself, which is the <span class="arithmatex">\((21, 1.2)\)</span> item.</li>
+<li>It picks whichever is the highest, i.e. the <span class="arithmatex">\((21, 1.2)\)</span>.</li>
+</ul>
+<p>We see that <span class="arithmatex">\(21 \geq \frac{30}{2}\)</span>, to this result satisfies our guarantee of achieving half of the optimal solution.</p>
+</div>
+<p>How can we prove that this algorithm is actually a good one? We can capture what the optimal solution looks like—we are not going to solve it, but we can mathematically represent it using an integer program.</p>
+<div class="proof">
+<p><strong>2-Approximation of The Knapsack Problem</strong></p>
+<p>Let <span class="arithmatex">\(v_i\)</span> be the value of item <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(c_i\)</span> be the cost of item <span class="arithmatex">\(i\)</span>, and <span class="arithmatex">\(x_i\)</span> denote whether we selected item <span class="arithmatex">\(i\)</span> or not.</p>
+<p>We want to maximize our value, which is <span class="arithmatex">\(\displaystyle \sum_{items} v_i \cdot x_i\)</span>.</p>
+<p>We also know that the sume of the costs of the items cannot exceed our budget <span class="arithmatex">\(B\)</span>, so <span class="arithmatex">\(\displaystyle \sum_{items} c_i \cdot x_i \leq B\)</span>.</p>
+<p>In addition, any item can only be selected at most once, and we cannot select fractional items in the original problem, but we can relax it into a linear program, such that <span class="arithmatex">\(0 \leq x_i \leq 1\)</span>.</p>
+<p>This program selects all items with <span class="arithmatex">\(\frac{v_i}{c_i} \geq \lambda\)</span> for some <span class="arithmatex">\(\lambda \geq 0\)</span>, and only the last item is added fractionally.</p>
+<p>We see that:</p>
+<p><span class="arithmatex">\(Value(ALG)\)</span></p>
+<p><span class="arithmatex">\(= max \; \{Value(bang \text{-} for \text{-} buck \; solution), Value(last \; item)\} \)</span></p>
+<p><span class="arithmatex">\(\geq \frac{Value(bang \text{-} for \text{-} buck \; solution) + Value(last \; item)}{2}\)</span></p>
+<p><span class="arithmatex">\(\geq \frac{Value(linear \; program)}{2}\)</span></p>
+<p><span class="arithmatex">\(\geq \frac{Value(OPT)}{2}\)</span></p>
+</div>
+<p>*<em>Note:</em> Linear programs in general can be solved in polynomial time, so we can solve them pretty fast, even though they might give us a fractional result. However, for proving approximation guarantees for these algorithms we should always use them. They can be a good tool for being able to reason about what the optimal solution looks like, and thinking about how we can approach it.</p>
+<p>So, that was for the Knapsack Problem, but the rich ad problem is a bit more complicated: it is <em>Multiple-Choice Knapsack Problem</em>. In addition to the knapsack constraint of packing these ads, we also have the constraint that we are only allowed to choose one ad per advertiser.</p>
+<p>There is in fact a similar result, which comes from Sinha and Zoltners's paper from 1978, where they again characterize the optimal solution for the linear program. It does allocation using incremental bang-for-buck, and then they can show that that kind of algorithm will give you a 2-approximation.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> Sinha, Zoltners '78</p>
+<p>We can optimize social welfare within a factor of <span class="arithmatex">\(2\)</span>, i.e. <span class="arithmatex">\(Value(ALG) \geq \frac{Value(OPT)}{2}\)</span>.</p>
+</div>
+<p><strong>Key takeaway:</strong> We cannot solve the Multiple-Choice Knapsack Problem optimally.</p>
+<div class="remark">
+<p><strong>Can we solve the Rich Ad Auction problem with VCG?</strong></p>
+<p>Recall that VCG solves the same optimization problem many times. First, it solves the optimization problem to find the best set of ads to show, and then, for each of the ads that you have selected, it solves the optimization problem one more time without this advertiser to calculate the payment. In other words, VCG requires us to solve the same optimization problem again and again. However, as we have seen, this particular optimization problem is hard to solve. Therefore, we cannot use to solve the Rich Ad Auction problem.</p>
+</div>
+<p>One of the lessons from reality is that advertisers are strategic along many different domains, rather than a single paramter. For instance, advertisers can be strategic about which ads they give to us to show, especially if it helps them.</p>
+<p>Suppose an advertiser has a small, a medium and a large ad, but for whatever reason, they say I don't have the medium ad anymore; so we can either show the small ad or the large ad, and if that can somehow give them a better outcome,
+maybe the large and gets shown. Thus, they get a lot more space by withholding the medium ad than by providing it to us, and that is also something we want to guard against.</p>
+<div class="example">
+<p><strong>Example:</strong> Is there a way for the advertiser that owns the <span class="arithmatex">\(21\)</span> and the <span class="arithmatex">\(70\)</span> value ads to force the auctioneer to choose the outcome on the right?</p>
+<p><img alt="Rich ad problem example" src="../images/Rich%20ad%20problem%20example.png" /></p>
+<p>If the advertiser just removes the small ad, then the auctioneer will be forced to choose between the other two ads and the one large ad, and they will actually choose the one larger. This is the simplest example where we can start seeing that this strategic dimension of which ads to provide starts to matter.</p>
+</div>
+<p>Generally, the more the advertiser gives us, the more flexibility for us to make the best use of their assets to show to the user. So, we want to incentivize advertisers to give us as many assets as possible. If we are running an auction that incentivizes advertisers to remove some of their assets because they are hurting some other assets that are more promising than that, that is bad auction design. This is another reason why truthfulness matters.</p>
+<p>One of the tricks we can use to solve the Rich Ad Auction problem is to leverage Myerson's Lemma.</p>
+<div class="theorem">
+<p><strong>Myerson's Lemma</strong></p>
+<p>If we can design allocation rules that are monotone over the values <span class="arithmatex">\(v_i\)</span>, and the advertisers provide a set of ads <span class="arithmatex">\(A_i\)</span>, we can design payment rules that will make the auction truthful.</p>
+</div>
+<p>Note that neither the integer optimization algorithm and nor the Sinha-Zoltner'76 algorithm are monotone over a set of rich ads. So, is there a monotone algorithm to solve this problem?</p>
+<div class="theorem">
+<p><strong>Lemma:</strong> Allocating in bang-per-buck order is monotone. </p>
+</div>
+<p>Allocating in bang-per-buck order is independent of which ads are present, so doesn't change based on the subset of ads.</p>
+<p>We can find another approximation algorithm for the Multiple-Choice Knapsack Problem, which uses randomization to preserve monotonicity.</p>
+<div class="theorem">
+<p><strong>Theorem</strong></p>
+<p>The following randomized monotone algorithm that allocates in bang-per-buck order with probability <span class="arithmatex">\(\frac{2}{3}\)</span>, and otherwise picks the single highest-value ad, provides a 3-approximation to the fractional optimal solution and is monotone.</p>
+</div>
+<div class="summary">
+<p><strong>Rich Ad Auctions Recap</strong></p>
+<ul>
+<li>New auctions with different layouts of ads create computational challenges.</li>
+<li>Advertisers have time to be strategic about which assets to provide, which creates a new strategic dimension to consider.</li>
+<li>In practice, we rely on more involved heuristics used to get as close to optimal as possible.</li>
+</ul>
+<p>Some research papers on this topic:</p>
+<ul>
+<li>Aggarwal et al. '22</li>
+<li>Harris et al'17, </li>
+<li>Hartline et al'18</li>
+</ul>
+</div>
+<h2 id="future-auctions-for-llm-generated-ads">Future: Auctions for LLM generated ads</h2>
+<p>Let's speculate a bit about what the future of search ad auctions on Google.comcom might look like. We all have heard that large language models are changing everything, and we might wonder how will search ads change with them?</p>
+<p><img alt="LLM generated ad example" src="../images/LLM%20generated%20ad%20example.png" /></p>
+<p>One way they might change is we can use large language models to generate ads on the fly. So we could just have the models themselves, summarize different advertisers, uh, content and choose the space that's available effectively and also tailor the format of the ads to match whatever summary organic content we are showing to the user.</p>
+<p>In a paper published last year, some of Kshipra Bhawalkar's colleagues looked at how can we use LLMs to generate these ads that better align with the context, and and how we should we run auctions for these ads.</p>
+<p>The key inspiration here is Retrieval-Augmented Generation (RAG). LLMs in general can hallucinate (they might make up things), and RAG has been a way to make sure that they are grounded.</p>
+<p><img alt="Retrieval-Augmented Generation RAG" src="../images/Retrieval-Augmented%20Generation%20RAG.png" /></p>
+<p>RAG usually works by retrieving a bunch of documents, such as web pages, and then asking the LLM to summarize those documents instead of outputting something from its memory. In that way, it stays true to the ground sources and answers the user's queries.</p>
+<p>You can see this in action when you go to Google.com Nowadays, you get this AI overview, which generates a summary of some of the top results that is generated using RAG.</p>
+<p><img alt="RAG in action" src="../images/RAG%20in%20action.png" /></p>
+<p>Can we do the same with ads? Can we take the advertisers' assets and their bids, and let the LLM generate an ad summary that tells the user what the best products are for whatever they are searching for?</p>
+<p>It is more complicated because we want the advertiser to be able to specify how much they value being shown to the user. So, they will use their bids to influence how much space they are given  or how their content is presented. We also want use payments to make sure that advertisers are incentivized to report their true value for being shown to the user.</p>
+<p><img alt="RAG with ads" src="../images/RAG%20with%20ads.png" /></p>
+<p><strong>Can't we just let the LLM do it all, i.e. take the advertisers bids, figure out who gets how much space, and how much to charge them?</strong></p>
+<p>That is actually hard:</p>
+<ul>
+<li>We don't know how to do this.</li>
+<li>LLMs are neither interpretable nor controllable, and there are alignment issues (we cannot make sure that they are staying true to the best way of presenting the information to the user).</li>
+<li>LLMs cannot provide good monotonicity guarantees or incentive guarantees to the auctioneer.</li>
+</ul>
+<p>Instead, we generalize position auctions and rich ad auctions, to design auctions with large language models: this is called the Factorized Auction Model.</p>
+<p><img alt="Factorized Auction Model" src="../images/Factorized%20Auction%20Model.png" /></p>
+<p>We are factorizing the auction: modules are divided into different parts, where each part will be easier to understand, so we can make sure we can provide good guarantees for it.</p>
+<p>There is:</p>
+<ul>
+<li>An <strong>auction module</strong> that takes the bids from the advertisers and decides who gets how much space, and then also decide to what prices they should be charged.</li>
+<li>An <strong>LLM module</strong> that takes this space considerations, and adds the description and URL of the ad to content from the advertisers' website, and then generates the summary.</li>
+<li>A <strong>feedback loop</strong> in the form of click-through rate, where we learn from showing these ads to the user how they are liking it, how much prominence is useful for a given advertiser, and feed that back for running their auctions.</li>
+</ul>
+<p>The nice thing about breaking everything up into pieces is:</p>
+<ul>
+<li>The auction part is a classic auction: it maps the bids and visitors to prominences, which is just a scalar number, and it also calculates CPCs (Cost Per Clicks). We can provide good guarantees for this because this is not a black box anymore we know exactly what is going on. </li>
+<li>The LLM part is still non-trivial because we need to fine-tune the lLLM's output to make sure that it respects the prominences that we specify, and that it makes the best use of that space for convincing the user to click on this ad. It might not work out of the box, but we can train the model to do that.</li>
+<li>The feedback loop is all about learning the model as a function of prominence as opposed to as a function of “This is the exact ad that was shown to the user.” And so there is a little bit of indirection there.</li>
+</ul>
+<p>With all the above, we could have an auction for LLM-generated ads that comes with good guarantees about its optimization and incentive compatibility.</p>
+<div class="definition">
+<p><strong>Factorized Approach: Properties</strong></p>
+<ul>
+<li>Separates out the work between auction and LLM through prominences.<ul>
+<li>Auction does not know the summary, LLM does not know the bids.</li>
+<li>Product/Business can choose what kinds of summaries are useful for the users.</li>
+</ul>
+</li>
+<li>Strictly generalizes the current position (or rich-ad) auction.<ul>
+<li>Prominences: Permutations, i.e. the winning ads, their order (and potentially their formats).</li>
+<li>“LLM”:  Place winning ads (with allocated formats) in the given order.</li>
+<li>pCTR model: predict position-aware CTR.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Theorem: Incentive Compatibility</strong></p>
+<p>If the auction allocation function is monotone and the LLM is monotone (it converts higher prominence to higher clicks), then the combination is monotonic and can be made truthful.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem: Welfare Maximization</strong></p>
+<p>If also, the pCTR_Model function is unbiased, then the auction can choose a welfare-maximizing outcome.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem: Universality</strong></p>
+<p>Any combined ML+auction model can be represented in the factorized model.</p>
+</div>
+<div class="example">
+<p><strong>Example: Dynamic Word-length Summary</strong></p>
+<p><img alt="Dynamic Word-Length Summary" src="../images/Dynamic%20Word-Length%20Summary.png" /></p>
+<p>Suppose we ran an auction with three advertisers who could show ads for "golf instruction for beginners."</p>
+<p>We are allowing them to have different space or different positions on the page:</p>
+<ul>
+<li>The summary on the left is showing all three advertisers with similar amounts of space allocated to all of them.</li>
+<li>The summary on the right is showing only the top two advertisers, and the top one in particular is getting the lot of space.</li>
+</ul>
+<p>Depending on what the bids were for these three advertisers, we might allocate the summary on the left or the summary on the right. Then, the LLM will generate something.</p>
+<p>This is where the business side comes in: if you look at this and think that nobody is going to click on the ads, then we can make sure that the LLM does a retune to do as good a job as possible with that. Then, the auction can be optimized separately to come up with good mapping of bids to prominences.</p>
+</div>
+<p>As mentioned, we can provide incentive compatibility and welfare maximization guarantees. That requires knowing about how the prominences will map through click-through rates, because the social welfare cares about click-through rate (and not so much about prominence). However, if the factors have some specific format, like we assumed earlier—there is a advertiser component, a condition component, a prominence component—it is reasonable to assume that that is a concave function. So, as you get more and more space, you are not able to get more value it: maybe it is like a polynomial-exponential function of some sort prominence raised to <span class="arithmatex">\(\beta\)</span>.</p>
+<div class="definition">
+<p><strong>Optimization with Continuous Ads</strong></p>
+<p>Factorized CTR model:</p>
+<p><span class="arithmatex">\(pctr_i^{final} = pctr_i \cdot pos_norm_i \cdot f(Prom_i)\)</span></p>
+<p>where</p>
+<p><span class="arithmatex">\(f(Prom_i) = Prom_i^{\beta} \; for \beta \in (0,1]\)</span>.</p>
+</div>
+<p>If it is this format, or a general concave format with nice differentiability, we can actually obtain a closed-form solution for what is the right way to allocate these ads.</p>
+<div class="example">
+<p><strong>Case Study: Dynamic Word-length Summary</strong></p>
+<p>Auction component: Generalized Proportional Allocation (GPA), where the relative prominence is proportional to the power of:</p>
+<p><span class="arithmatex">\(ecpm \approx bid \cdot base \_ pctr \cdot position \_ normalizer\)</span>.</p>
+<p>The formula is simple: we just give each ad a location that is proportional to their eCPM, which is the bid times the pCTR and a position optimizer. Indeed, we want to sort the ads in the same order as we did with position auctions. Then, we can show that if the pCTR has a nice format, then this kind of allocation is welfare-maximizing.</p>
+</div>
+<div class="remark">
+<p><strong>Optimization Perspective: The “LLM advantage”</strong></p>
+<p>LLMs can aim for the best ad allocation under total space constraint:</p>
+<table>
+<thead>
+<tr>
+<th>Current (Rich Ads)</th>
+<th>Future? (LLM-Generated Ads)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predefined set of fixed formats (sizes)</td>
+<td>LLM summarized ads, Dynamically generated prominences (sizes)</td>
+</tr>
+<tr>
+<td>Combinatorial optimization &amp; auction design</td>
+<td>Continuous optimization</td>
+</tr>
+</tbody>
+</table>
+<p>Previously, we talked about rich ad auctions: we spent a lot of time figuring out how to optimize them because they had some fixed sizes, so we had a packing problem that we were trying to solve.</p>
+<p>With LLM-generated ads, some of these challenges go away, because now we can think of it as like a fractional problem: no matter how much space is available, we will find the best ad to go into that space. With this extra freedom, maybe our optimization problem might become easier.</p>
+<ul>
+<li>We are solving a linear program instead of an integer program.</li>
+<li>From an auction design perspective, if we can get closer to the optimal allocations, then a lot of our auctions considerations become simpler : maybe we can run VCG, and no longer need Myerson-like auctions.</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>LLM-Generated Ads Recap</strong></p>
+<ul>
+<li>LLMs unlock new opportunities for flexible ads (generated on the fly).</li>
+<li>How to accomplish that is an interesting problem: challenges around alignment, optimization, incentives remain.</li>
+</ul>
+<p>Some research papers on this topic:</p>
+<ul>
+<li>Dubey et al' 24</li>
+<li>Duetting et al' 23</li>
+<li>Hajiaghayi et al' 24</li>
+<li>Mordo et al' 24</li>
+</ul>
+</div>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Incentives in Sponsored Search Auctions Recap</strong></p>
+<p>Internet Advertising brings together:</p>
+<ul>
+<li>Economics (Vickrey Auction, VCG, Myerson Lemma).</li>
+<li>Computer Science (Approximation algorithms, Approximate Auction, Price of Anarchy)</li>
+</ul>
+<p>The evolving Internet creates many opportunities/challenges for Computer Science, Economics, and Mathematics.</p>
+</div>
+<p><strong>Question: We talked a little bit about how we can incorporate ads into our lives. For people who are using Claude or ChatGPT via the chat interface, how do you think that might be? How do you think that might change?</strong></p>
+<p>Right now you have subscription tiers where you get more access. So, subscription is definitely one model. It might be that that could be sufficient.However, for folks who don't want to invest that money or commit to paying, ads have a nice property that allows them to pay with their attention  to get access to those results. If the AI chatbots that exist right now and are not showing any ads want to reach all the people in the world, then it is conceivable that providing an ad-supported tier might be the way to go at some point.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
