@@ -365,7 +365,7 @@ Yes. \(12+9\) are the prices that Mario and Luigi pay. The welfare is the value 
 Yes, because these are the prices it takes to price Yoshi out (since there is one more buyer than room, we need to price out one buyer).
 
 <div class="theorem" markdown="1">
-**Claim:** Da with prices always terminates.
+**Claim:** DA-with-prices always terminates.
 </div>
 
 The algorithm always terminates because every buyer is either matched to a good or they reach a point where they prefer to pay nothing and buy nothing.

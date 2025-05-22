@@ -1,3 +1,5 @@
+_April 28, 2025_
+
 In the past few lectures, we discussed markets and auctions. Now, we are going to start talking about learning from the wisdom of the crowd and decentralization systems, as well as how to reason about who knows what and when. Today, in particular, we are discussing prediction markets and wisdom of the crowd.
 
 ## Wisdom of The Crowd
