@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../guest-lecture-kshipra-bhawalkar/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Lecture 11 - Stanford CS269I Course Notes</title>
+        <title>Proof-of-Work Blockchains - Stanford CS269I Course Notes</title>
       
     
     
@@ -69,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#cryptographic-preliminaries" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lecture 11
+              Proof-of-Work Blockchains
             
           </span>
         </div>
@@ -498,6 +505,120 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Work Blockchains
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Work Blockchains
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cryptographic-preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cryptographic Preliminaries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decentralized-permissionless-crypto-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decentralized, Permissionless Crypto-Money
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bitcoin-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Bitcoin Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-with-big-miners" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues With Big Miners
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-miners-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Big Miners in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -516,6 +637,68 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cryptographic-preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cryptographic Preliminaries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decentralized-permissionless-crypto-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decentralized, Permissionless Crypto-Money
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bitcoin-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Bitcoin Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-with-big-miners" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues With Big Miners
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-miners-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Big Miners in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -530,9 +713,232 @@
 
 
 
-  <h1>Lecture 11</h1>
+  <h1>Proof-of-Work Blockchains</h1>
 
-
+<p><em>May 14, 2025</em></p>
+<div class="remark">
+<p><strong>Note:</strong> The goal of this lecture is <strong><em>not</em></strong> to offer investment advice.</p>
+</div>
+<h2 id="cryptographic-preliminaries">Cryptographic Preliminaries</h2>
+<p>Today, we will need some very minimal crytography concepts (primitives).</p>
+<div class="definition">
+<p><strong>Definition: Digital Signatures <span class="arithmatex">\((public \_ key, secret \_ key)\)</span></strong></p>
+<p>To show that I agree with statement <span class="arithmatex">\(x\)</span>, I can <span class="arithmatex">\(y \leftarrow sign(x, secret \_ key)\)</span>.
+Anyone who has my <span class="arithmatex">\(public \_ key\)</span> can <span class="arithmatex">\(verify(x, y, public \_ key)\)</span> to make sure it was really me who signed <span class="arithmatex">\(x\)</span>.</p>
+<p>(Formally: Whoever signed <span class="arithmatex">\(x\)</span> had <span class="arithmatex">\(secret \_ key\)</span>).</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Cryptographic Hash Function <span class="arithmatex">\(H\)</span></strong></p>
+<ul>
+<li>Given <span class="arithmatex">\(a\)</span>, it is easy to compute <span class="arithmatex">\(H(a) = b\)</span>.</li>
+<li>Given <span class="arithmatex">\(b\)</span>, the fastest way to find <span class="arithmatex">\(a\)</span> is by trying every/random inputs.<ul>
+<li>Even if you know some bits of <span class="arithmatex">\(a\)</span>, the only way to find the missing bits is by trying every combination.</li>
+<li>If you want something that agrees with <span class="arithmatex">\(b\)</span> on the first <span class="arithmatex">\(k\)</span> bits, you need <span class="arithmatex">\(2k\)</span> tries in expectation. (Aka random is still the fastest way.)</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="decentralized-permissionless-crypto-money">Decentralized, Permissionless Crypto-Money</h2>
+<div class="remark">
+<p>Per the lecture slides: "This is intended to be a slow introduction for those of you who have never seen blockchains."</p>
+</div>
+<div class="example">
+<p><strong>Example:</strong> Alice pays Bob <span class="arithmatex">\(\$1\)</span>.</p>
+<p>With a wire transfer from her bank account:</p>
+<ul>
+<li>Alice’s bank verifies that she has <span class="arithmatex">\(\$1\)</span> in her account.</li>
+<li>After the transfer, the bank <span class="arithmatex">\(-\$1\)</span> off her account.</li>
+</ul>
+<p>Do we really need a bank for that? In particular, without a bank, how can we be sure that Alice ever had <span class="arithmatex">\(\$1\)</span>?</p>
+<ul>
+<li>
+<p>Alice can tell Bob the entire history of her <span class="arithmatex">\(\$1\)</span>:</p>
+<blockquote>
+<p>“<span class="arithmatex">\(\$1\)</span> was minted, then paid to <span class="arithmatex">\(02847\)</span>, who paid it to <span class="arithmatex">\(42975\)</span>, who paid me”</p>
+</blockquote>
+</li>
+<li>
+<p>Alice can use cryptographic proofs (digital signatures) to show that this story is true.</p>
+</li>
+</ul>
+<p>How can we be sure that Alice hasn’t already spent this <span class="arithmatex">\(\$1\)</span>?</p>
+<p><strong>Key point:</strong> It is much easier to prove that something happened than didn’t happen!</p>
+<p>So, the way to solve this is that, when Alice spends money, she tells the whole world about it. Next time she spends money, we can check the entire history of payments, and make sure Alice didn’t already spend this money.</p>
+</div>
+<p>This brings us to the concept of a ledger.</p>
+<div class="definition">
+<p><strong>Definition: Ledger</strong></p>
+<p>An ordered history of transactions.</p>
+</div>
+<p>Why do we need a ledger? So that when Alice pays Bob <span class="arithmatex">\(\$1\)</span>, we can verify that she hasn’t already paid the same <span class="arithmatex">\(\$1\)</span> to someone else.</p>
+<div class="definition">
+<p><strong>Desiderata: Decentralized Ledger</strong></p>
+<p>The ideal ledger meets the following requirements:</p>
+<ul>
+<li><strong>Decentralized:</strong> Not controlled by any single entity (it continues to work even if a bank is hacked, no entity can halt trades, e.g., when Citadel asked Robin Hood to halt trades of GameStop stocks).</li>
+<li><strong>Consensus:</strong> Either everyone believes that Alice payd Bob, or everyone believes that she didn’t.</li>
+<li><strong>Permissionless:</strong> Anyone can join (or leave) at any time<ul>
+<li>This is a major source of technical difficulty (for instance due to adversarial participants trying to hack the system).</li>
+<li>What are the motivations? Extreme decentralization, and permissionless success stories (content on the Internet, i.e. Wikipedia, YouTube, FB).</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>In a permissionless system, a “majority of the users” is meaningless, because I can always create more copies of myself (i.e. launch a Sybil attack). Some alternatives that are harder to copy in a digital world include:</p>
+<ul>
+<li>Proof-of-Work: “1 CPU = 1 vote”</li>
+<li>Proof-of-Stake: “1 coin = 1 vote”</li>
+<li>Proof-of-Space: “1 bit (storage) = 1 vote”</li>
+</ul>
+<p><em><strong>Note:</strong> There is a lot of research going on into how to come up with a "Proof-of-Humanity."</em></p>
+<h2 id="the-bitcoin-protocol">The Bitcoin Protocol</h2>
+<div class="definition">
+<p><strong>Definition: Blocks</strong></p>
+<p>The ledger is constructed as a chain of blocks (aka a blockchain!).</p>
+<p>Each block contains:</p>
+<ul>
+<li>Some (digitally-signed) payments/transactions,</li>
+<li>A (cryptographic) hash of the previous block,</li>
+<li>A nonce (for now, we consider this to be just a padding string–more coming soon).</li>
+</ul>
+</div>
+<p><strong>Question: If the blockchain is decentralized, who owns the storage?</strong></p>
+<p>Everyone who participates keeps a copy of the blockchain on their own machine, i.e. everyone who participates needs to have enough space to keep track of everything that ever happened in the history of the blockchain.</p>
+<div class="example">
+<p><strong>Example: Blockchain</strong></p>
+<p><img alt="Blockchain example" src="../images/Blockchain%20example.png" /></p>
+<p>In order to verify the <span class="arithmatex">\((Alice \rightarrow Bob, \$1)\)</span> payment in block <span class="arithmatex">\(b_t\)</span>:</p>
+<ul>
+<li>Verify that Alice signed the payment (using <code>Alice.public_key</code>),</li>
+<li>Verify that Alice received this $1 in some previous block,</li>
+<li>Verify that Alice hasn’t spent it.</li>
+</ul>
+<p>In order to verify block <span class="arithmatex">\(b_t\)</span>:</p>
+<ul>
+<li>Verify all the transactions,</li>
+<li>Verify that it correctly hashes block <span class="arithmatex">\(b_t - 1\)</span>,</li>
+<li>Verify the nonce (see below).</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Proof-of-Work (PoW)</strong></p>
+<p>A nonce is valid if the hash of the entire new block (including all payments, the hash of previous block, and the nonce) has <span class="arithmatex">\(k\)</span> leading zeros.</p>
+<p>The probability to find to find a valid nonce is: <span class="arithmatex">\(Pr[valid \; nonce] = \frac{Number \; of \; hashes \; tried}{2^k}\)</span>.</p>
+<p><strong>Proof-of-Work:</strong> If you find a valid nonce, it proves that you tried a lot of hashes and got lucky.</p>
+<p>Miners compete to find the first valid nonce and create (mine) the new block. The winner gets a reward (encoded as a transaction in the new block). <span class="arithmatex">\(k\)</span> is adjusted dynamically, so that it takes all the miners in the world about <span class="arithmatex">\(10\)</span>
+minutes in expectation to find the next valid nonce.</p>
+</div>
+<p>When Alice wants to pay Bob, she sends the signed transaction to all miners.
+Then Alice (and Bob) wait for a miner to include this transaction in a new block.</p>
+<p><strong>Question: What does Proof-of-Work actually offer?</strong></p>
+<p>You always want to create a new block because you get a reward (a lot of money) for creating that block. The point of PoW is to show that the miner who wins tried really hard to find the nonce. Why do we want them to try really hard? Because without the PoW, miners could just write a million new blocks.</p>
+<p>We want to have a sense of majority, that people agree that we have consensus. Pointing to a block means that we agree with the content of that block, and finding a valid nonce is a puzzle that slows you down.</p>
+<p>In the case of a digital world record, a “majority of people” does not make sense (because people can duplicate themselves to have an outsize influence), so instead, we ask for a majority of compute power, i.e. a majority of hash rate. So, when a majority of compute belongs to people who agree with a block, they will point to something that extends that block.</p>
+<p><strong>Question: If it takes 10 minutes to write a new block, and there are a million transactions that need to be verified in that time, how is there enough block to validate them?</strong></p>
+<p>Bitcoin has a severe limitation of the rate of transactions it can process. So, will Bitcoin ever replace credit cards? No, because Visa can process so many millions of transactions per second, while Bitcoin can only have so many bytes per block to include transactions. Other protocols are working really hard to scale a process that can process a lot more transactions.</p>
+<p><em><strong>Note:</strong></em></p>
+<ul>
+<li><em>The <strong>mempool</strong> is essentially a temporary storage area for unconfirmed transactions on the Bitcoin blockchain network. When a user initiates a cryptocurrency transaction, such as sending bitcoin to another user, the transaction is broadcast to the network and temporarily held in the mempool.</em></li>
+<li><em>To get into the mempool, you need to make sure that a transaction is digitally signed correctly. Maybe Alice wants to pay Bob and wants to pay Charlie, but she has only <span class="arithmatex">\(\$1\)</span>, so each of those transactions individually is valid, and they can both go into the mempool, but which one is going to go into the block is something that the miner chooses.</em></li>
+</ul>
+<div class="definition">
+<p><strong>Definition: Fork</strong></p>
+<p>Occasionally, two miners find valid nonces at (essentially) the same time. They create two different blocks, so we no longer have consensus. This is a fork.</p>
+<p><img alt="Blockchain fork" src="../images/Blockchain%20fork.png" /></p>
+</div>
+<div class="definition">
+<p><strong>Definition: Longest Chain Rule</strong></p>
+<p><img alt="Longest Chain Rule" src="../images/Longest%20Chain%20Rule.png" /></p>
+<p>Miners have a protocol for deciding which branch the next block should extend (hash), i.e. <span class="arithmatex">\(b_t\)</span> or <span class="arithmatex">\(\hat b_t\)</span>. Famously, they should try to extend the longest-chain available, i.e. above they should prioritize <span class="arithmatex">\(b_{t+1}\)</span> or <span class="arithmatex">\(\hat b_t\)</span>.</p>
+</div>
+<p><strong>Question: What happens if two miners find a valid nonce at the same time?</strong></p>
+<p>Branches are called forks, they happen sometimes, potentially due to a network delay (so the two miners do not hear about each other), and they are a headache, because we want to be in consensus, with everyone agreeing.</p>
+<p><strong>Question: How do you recover from a fork?</strong></p>
+<p>By taking the longest chain, this is the longest chain rule, so we take the branch of the fork that has the longest chain.</p>
+<p><strong>Question: What happens to all the transactions in the branch that is not chosen?</strong></p>
+<p>It is like they never happened.</p>
+<p><strong>Question: What if you pay someone, they give you a new Tesla, and then the block goes out?</strong></p>
+<p>Usually, we wait some time, such as 6 blocks in Bitcoin (this is a rule of thumb), which is about an hour, since we create one block every 10 minutes, and then it is very unlikely that someone has a different view of the chain.</p>
+<p><strong>Question: Why are people incentivized the extend the longest chain?</strong></p>
+<p>Because if everyone else is extending the longest chain, they are more likely to agree with you. If you mine a block and it does not extend the longest chain, then you do not get the reward for the miner.</p>
+<p><strong>Question: What if there are two equal length chains?</strong></p>
+<p>The rule says that you should extend whichever one you heard of first. Probably there is a tie for one or two blocks, but after a while, there will be a block that everyone sees and wants to extend.</p>
+<p><strong>Question: What if miners are just wrong and do not verify transactions correctly?</strong></p>
+<p>Then, you won’t extend their block, and they are going to lose a lot of money, so there is some kind of equilibrium where they want to run the same algorithm as everyone else.</p>
+<div class="summary">
+<p><strong>Attack Recap</strong></p>
+<p>The blockchain is secure against the following attacks:</p>
+<ul>
+<li>Steal money attack: Nobody can create a payment from my account without the account’s <code>secret_key</code>.</li>
+<li>Double-spend attack: Alice can’t send the same <span class="arithmatex">\(\$1\)</span> to both Bob and Charlie because a transaction is added to the ledger only after it is verified with respect to entire history of transactions.</li>
+<li>Sybil attack: No one miner can take control by creating many accounts–a majority of compute power is necessary.</li>
+</ul>
+</div>
+<h2 id="issues-with-big-miners">Issues With Big Miners</h2>
+<p>When Bitcoin started in the 2000’s, everyone had a computer in their home, so each individual miner could represent a fraction of the total computer of the network. Hence the original utopic idea of increasingly distributing compute power to "the people."</p>
+<p>Since then, it has been less and less of that, partially because a lot of computers have moved to the cloud, so it is still decentralized, but most miners are on AWS (if AWS goes down, the blockchain collapses).</p>
+<p>In addition, solving hash functions is hard, but we can create special hardware that is really energy efficient to reduce the electricity you need to try all the nonces. So, professional miners makes it less worth it to run on your own computer, because you would not cover your electricity bill.</p>
+<p>Some miners also own a power plant, or operate in a country where electricity is cheap.</p>
+<p>All of this makes blockchains less and less decentralized. But the really big thing that happened is something called mining pools.</p>
+<div class="definition">
+<p><strong>Definition: Mining Pool</strong></p>
+<p>Professional miners organize together to reduce variance in gains from mining rewards (and also to influence crypto-politics).</p>
+</div>
+<p>A mining pool is like an organization that pools a bunch of miners together.
+Since there is only a new block every 10 minutes, you can go years without mining a new block, spending all this money, so it is not a safe investment. Therefore, miners started to get together in pools, and some of those pools are very large.</p>
+<div class="example">
+<p><strong>Examples: Mining Pools</strong></p>
+<p>According to <a href="https://www.blockchain.com/explorer/charts/pools">blockchain.info/pools</a>:</p>
+<ul>
+<li>In 2021, the biggest four pools represented half of Bitcoin:</li>
+</ul>
+<p><img alt="Big miners 2021" src="../images/Big%20miners%202021.png" /></p>
+<ul>
+<li>In 2024, the biggest two pools represented half of Bitcoin:</li>
+</ul>
+<p><img alt="Big miners 2024" src="../images/Big%20miners%202024.png" /></p>
+</div>
+<div class="example">
+<p><strong>Example: 51%-Attack</strong></p>
+<p>If Alice has over 51% of all mining resources (hashrate), she can pay Bob, write it in the blockchain, and then fork a new chain suffix that doesn’t include that block.</p>
+<p><img alt="51 percent attack" src="../images/51%20percent%20attack.png" /></p>
+<p>More generally:</p>
+<p><img alt="51 percent attack general" src="../images/51%20percent%20attack%20general.png" /></p>
+</div>
+<div class="example">
+<p><strong>Example: Double-Spend Attack <em>without</em> 51% of Hashrate</strong></p>
+<p>Imagine that Alice has <span class="arithmatex">\(\alpha &lt; 0.5\)</span> of the hashrate. She can still try to do the double-spend attack, and hope she gets lucky:</p>
+<p><img alt="Double spend without 51 percent" src="../images/Double%20spend%20without%2051%20percent.png" /></p>
+<p>In practice, it is recommended that Bob waits <span class="arithmatex">\(d &gt; 1\)</span> blocks before accepting a payment.</p>
+<p>The attack succeeds if Alice mines <span class="arithmatex">\(d+1\)</span> blocks without the payment to Bob before anyone else can mine 1 block extending <span class="arithmatex">\(d\)</span> blocks with the payment to Bob.</p>
+<p>Thus: <span class="arithmatex">\(Pr⁡["Attack \; succeeds" ] = \alpha^{(𝒅+𝟏)}\)</span></p>
+</div>
+<h2 id="big-miners-in-practice">Big Miners in Practice</h2>
+<p>In 2014, the GHash.io mining pool exceeded 51% of the Bitcoin hashrate. Instead of executing a 51% attack, they encouraged miners to leave the pool. Why? In order to prevent (actually to stop) a drop in the value of Bitcoin.</p>
+<p>For smaller coins (with a lower total hashrate), this is a bigger issue. If there is a lower barrier to reach 51% of the hashrate, and attackers do not care about a drop in value of a small coin, they can divert a lot of mining power for a short time period. Allegedly, 51% attacks happened (multiple times) to “Ethereum Classic.”</p>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Blockchain:</strong></p>
+<ul>
+<li>The <strong>ledger</strong> stores all transactions to prevent <strong>double-spending</strong>.</li>
+<li>It is implemented as a <strong>chain</strong> of <strong>blocks</strong> created by <strong>miners</strong>.</li>
+<li>Miners need <strong>Proof-of-Work</strong> to write blocks to avoid <strong>Sybil attacks</strong>.</li>
+<li>The <strong>ongest chain rule</strong> disambiguates inconsistent blocks (<strong>forks</strong>).</li>
+</ul>
+<p><img alt="Longest Chain Rule" src="../images/Longest%20Chain%20Rule.png" /></p>
+<p><strong>Big Miners</strong></p>
+<ul>
+<li>The original, decentralized utopian vision contrasts with the current, concentrated power of mining pools.</li>
+<li>Causes for this change include specialized hardware, electricity costs, cloud computing, and reward variance.</li>
+<li>Mining pools are groups of miners organizing together to pool revenue.</li>
+<li>Attacks only require a large hashrate for some period of time.</li>
+</ul>
+<p><strong>Attacks</strong></p>
+<ul>
+<li>A <strong>51%-attack</strong> allows double spending, and freezing accounts, but not stealing money.</li>
+<li>An <span class="arithmatex">\(\alpha\)</span>-fraction <strong>double-spend</strong> attack succeeds with probability (\alpha^{k+1}.</li>
+</ul>
+</div>
 
 
 
