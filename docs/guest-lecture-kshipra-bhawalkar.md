@@ -1,5 +1,8 @@
 _May 12, 2025_
 
+This is a guest lecture offered by Kshipra Bhawalkar (Lane), Research Scientist
+Market Algorithms, Google Research.
+
 ## Motivation: Optimizing Sponsored Search Ads
 
 If you do a Google search, you will find different elements on the results page:
