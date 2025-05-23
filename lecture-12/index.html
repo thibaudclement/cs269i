@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../lecture-11/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Lecture 12 - Stanford CS269I Course Notes</title>
+        <title>Proof-of-Stake Blockchains - Stanford CS269I Course Notes</title>
       
     
     
@@ -69,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#context" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lecture 12
+              Proof-of-Stake Blockchains
             
           </span>
         </div>
@@ -520,6 +527,111 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Stake Blockchains
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Stake Blockchains
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-proof-of-stake-so-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Is Proof-of-Stake So Hard?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-to-proof-of-stake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches to Proof-of-Stake
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-few-thoughts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last Few Thoughts…
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -538,6 +650,59 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-proof-of-stake-so-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Is Proof-of-Stake So Hard?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-to-proof-of-stake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches to Proof-of-Stake
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-few-thoughts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last Few Thoughts…
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -552,9 +717,285 @@
 
 
 
-  <h1>Lecture 12</h1>
+  <h1>Proof-of-Stake Blockchains</h1>
 
 <p><em>May 21, 2025</em></p>
+<div class="remark">
+<p><strong>Note:</strong> Throughout this lecture, we talk about “miners” who create new blocks. In Ethereum’s Proof-of-Stake, there are “proposers” and “validators” (there are also “builders”), and neither are called “miners”.</p>
+</div>
+<h2 id="context">Context</h2>
+<div class="summary">
+<p><strong>Big Miners Recap</strong></p>
+<p>In theory, big miners (e.g. miners whose hash power exceeds 50% or 33%) can have serious incentive issues with the Proof-of-Work protocol, including, notably 51%-attacks.</p>
+<p>In practice:</p>
+<ul>
+<li>Bad News: It is relatively cheap to attack smaller blockchains by temporarily diverting a large amount of compute resources.</li>
+<li>Good News: When the GHash.io mining pool passed 50%, it encouraged miners to leave instead of misusing its power. Why? Because pool leaders and miners were invested in the success of Bitcoin.</li>
+</ul>
+</div>
+<p>Continuing this train of thought:</p>
+<ul>
+<li>With big miners, Proof-of-Work/longest chain rule incentives are fragile.</li>
+<li>So far, everything has been mostly OK because mining pools and miners were invested in the success of Bitcoin.</li>
+<li>In other words, in Proof-of-Work, a miner’s hash power is just a proxy for how much they care about the success of the cryptocurrency.</li>
+<li>This is not a very robust proxy if mining tech can be repurposed.</li>
+<li>Even more so with smaller blockchains.</li>
+</ul>
+<p>Thus, why use a proxy? Why not directly sample miners based on their stake in the cryptocurrency?</p>
+<p>This is the idea behind the Proof-of-Stake (PoS) protocol.</p>
+<div class="definition">
+<p><strong>Definition: (Vanilla) Proof-of-Stake Protocol</strong></p>
+<p>At each iteration:</p>
+<ol>
+<li>Sample a random coin.</li>
+<li>Ask its owner to create the next block.</li>
+</ol>
+</div>
+<p>The intuition behind the (vanilla) Proof-of-Stake protocol is this:
+- If someone has a lot of coins, they want the cryptocurrency value to go up.
+- If they don’t (have a lot of coins), they are unlikely to be sampled to mine the next block.</p>
+<p>The upside is that PoS miners are directly invested in the success of the blockchain:
+- PoW miners’ stake are fragile when mining resources can be repurposed.
+- PoW miners’ incentives are somewhat misaligned (e.g. probably want higher mining rewards).</p>
+<p>The downisdes include:
+- PoW is bad for the environment (e.g. a larger carbon footprint than Argentina).
+- It is much harder to get PoS right (details coming up).</p>
+<div class="remark">
+<p>After many delays, on September 15, 2022, Ethereum switched from PoW to PoS (i.e. “The Merge”). It is harder to switch from PoW to PoS Bitcoin because Bitcoin doesn’t have a “governance” mechanism for changing the protocol.</p>
+</div>
+<p>In addition to the cryptographic preliminaries from <a href="https://thibaudclement.github.io/cs269i/lecture-11/">last lecture</a>, here are some new minimal crytography concepts we need to understand PoS.</p>
+<div class="definition">
+<p><strong>Definition: Pseudo-Random Function</strong></p>
+<p>A pseudo-random function is a deterministic function for which you can share the code, that "looks" like a random function (to computationally bounded algorithms).</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Verifiable Delay Function <span class="arithmatex">\(f\)</span></strong></p>
+<p>Similar to hash functions, with a verifiable delay function, given <span class="arithmatex">\(a\)</span>, it is easy to verify that <span class="arithmatex">\(f(a) = b\)</span>.</p>
+<p>Unlike hash functions, parallelizations does <strong><em>not</em></strong> speed-up finding <span class="arithmatex">\(a\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Cryptographic Commitment Scheme</strong></p>
+<ul>
+<li>Input: a secret <span class="arithmatex">\(x\)</span> and a random string <span class="arithmatex">\(r\)</span>.</li>
+<li>Protocol:<ul>
+<li>Today: Alice sends <span class="arithmatex">\(c = Commit(x,r)\)</span>.</li>
+<li>Tomorrow: Alice sends <span class="arithmatex">\(x,r\)</span>.</li>
+</ul>
+</li>
+<li>Guarantees:<ul>
+<li>Bob can verify that <span class="arithmatex">\(c = Commit(x,r)\)</span>.</li>
+<li>It is computationally intractable to find <span class="arithmatex">\(x',r'\)</span> such that <span class="arithmatex">\(c = Commit(x',r')\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Given these cryptographic magic at our disposal, how do we generate randomness in a decentralized, permissionless, strategyproof, consensus protocol?</p>
+<p>Here are some naïve ideas and why they fail:</p>
+<ul>
+<li><strong>Ask <span class="arithmatex">\(t\)</span>-th miner to choose <span class="arithmatex">\((𝑡+1)\)</span>-th miner “at random:"</strong> This is not strategyproof at all, because a miner can choose themselves.</li>
+<li><strong>Use a pseudo-random function of entire <span class="arithmatex">\(t\)</span>-th block:</strong> This is not strategyproof either, because the <span class="arithmatex">\(t\)</span>-th miner can manipulate some aspects of the block (including transactions).</li>
+<li><strong>Rely on external random events like stock prices or weather:</strong> This is not decentralized, since the final decision needs to be channeled through the stock market/a weather reporter. It is not (really) strategyproof either, because for enough, someone can manipulate the stock market—and even the weather.</li>
+<li><strong>Leverage existing decentralized coin-flipping protocols from cryptography:</strong> This is not permissionless—but still potentially useful (more coming up).</li>
+</ul>
+<h2 id="why-is-proof-of-stake-so-hard">Why Is Proof-of-Stake So Hard?</h2>
+<p>We will now explain subtle but serious problems that have plagued a lot of the early candidates of PoS.</p>
+<p>How long should we wait if the coin owner sampled to generate the next block has a network delay?</p>
+<p>What if...</p>
+<ul>
+<li>They are rebooting their machine?</li>
+<li>They lost their secret key?</li>
+<li>They are maliciously trying to slow down the network?</li>
+</ul>
+<p>One approach is to offer each owner a timeslot when they can submit their next block. If they snooze they lose. Note that this can lead to forks: for instance, Alice submitted a block, but Bob didn’t see it. In turn, this raises the question of how we handle forks in PoS.</p>
+<div class="definition">
+<p><strong>Definition: Nothing-at-Stake</strong></p>
+<p>In PoW, miners are (hopefully) incentivized to only extend the longest chain. However, in PoS, miners can try, for free, to extend every block: this is the idea of Nothing-at-Stake.</p>
+<p><img alt="Nothing-at-Stake" src="../images/Nothing-at-Stake.png" /></p>
+</div>
+<div class="definition">
+<p><strong>Definition: Predictability Attacks</strong></p>
+<p>One plausible way to generate (pseudo)-randomness is to select the <span class="arithmatex">\((t+1)\)</span>-th miner based on a pseudo-random function of <span class="arithmatex">\((Genesis \; block, t+1)\)</span>.</p>
+<p><img alt="Predictability Attacks" src="../images/Predictability%20Attacks.png" /></p>
+<p>This generates some <strong>predictability</strong>, because Miners know in advance when it will be their turn to create blocks.</p>
+<p>Why is predictability a problem?</p>
+<ul>
+<li>In unpredictable blockchains (e.g. PoW), each small miner has a small probability of launching a successful double-spending attack, so they are unlikely to try to double-spend.</li>
+<li>In predictable blockchains, there is some miner who knows that they can double-spend.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Long Range Attacks</strong></p>
+<ul>
+<li>An attacker buys (almost) <em>all</em> the coins at time <span class="arithmatex">\(t\)</span>, which is registered on block <span class="arithmatex">\(b_t\)</span>.</li>
+<li>Then, the attacker sells their coins at time <span class="arithmatex">\(t+1\)</span>.</li>
+<li>By <span class="arithmatex">\(t+k\)</span>, the buyer(s) of the coins are satisfied and pay the attacker off chain. At that point, the attacker is no longer "staked" in the value of the coin.</li>
+<li>The attacker can then fork a new chain from <span class="arithmatex">\(b_t\)</span>: in this view of the world, they still own the coins, so they can mine much faster.</li>
+</ul>
+<p><img alt="Long Range Attacks" src="../images/Long%20Range%20Attacks.png" /></p>
+</div>
+<p>In other words:</p>
+<ul>
+<li><strong>Nothing-at-Stake:</strong> Miners are incentivized to try to extend every chain, not only the longest chain. This makes it harder to resolve forks.</li>
+<li><strong>Predictability Attacks:</strong> If we know who the next miner is, it is easier to collude with them/attack them/bribe them/etc.</li>
+<li><strong>Long Range attackS:</strong> The attacker starts mining from an old block where they owned coins. A variantconsists in buying/hacking old cryptographic keys of people who used to own coins.</li>
+</ul>
+<p>These attacks don’t apply to Proof-of-Work: why?</p>
+<ul>
+<li><strong>Nothing-at-Stake:</strong> Miners use their computational power to hash different nonces–together with the hash of the block they want to point to. They can't try pointing to different blocks with the same compute resources.</li>
+<li><strong>Predictability Attacks:</strong> Finding who will mine the next block requires finding a nonce that works with that miner’s key, which is at least as hard as mining the next block itself. In fact, it is even harder because we don’t know which nonces miners will try. Hence PoW blocks are very hard to predict.</li>
+<li><strong>Long Range attackS:</strong> Rewriting the history of the blockchain doesn’t change how much compute resources a miner actually has/had.</li>
+</ul>
+<h2 id="approaches-to-proof-of-stake">Approaches to Proof-of-Stake</h2>
+<div class="remark">
+<p>In this section, the intention is to offer a taste of some high-level ideas. This is not a recipe for PoS blockchains, because functioning PoS protocols tend to use a complicated combination of these.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Slashing</strong></p>
+<p>Slashing means “slashing away” coins from miners who misbehave, as a form of fine.</p>
+</div>
+<div class="example">
+<p><strong>Example:</strong> We may consider mitigating the Nothing-at-Stake problem by slashing miners who produce blocks pointing to conflicting blocks.</p>
+</div>
+<p>Some caveats with slashing include:</p>
+<ul>
+<li>We need other miners to vote on who is misbehaving.</li>
+<li>Apparent misbehaviors could be caused by network issues—maybe that is acceptable, since network issues also cause miners to lose blocks in PoW.</li>
+<li>Miners need to place slash-able coins in escrow.</li>
+</ul>
+<div class="definition">
+<p><strong>Definition: RANDAO</strong></p>
+<p>An over-simplified RANDAO protocol may look like this:</p>
+<ul>
+<li>Alice and Bob each select a secret random bit, and  send each other <em>cryptographic commitments</em> of these bits.</li>
+<li>Alice and Bob send the actual bits and verify them against the commitment <span class="arithmatex">\(Output = XOR(Alice’s \; bit, Bob’s \; bit)\)</span>.</li>
+</ul>
+<p>Note that, for any fixed Alice’s bit, if Bob’s bit is random, the output is random. This very efficient, because it requires only 1 truly random party. However, a challenge is that, when Bob sees Alice’s bit, he can decide to abort, which can bias the output.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Verifiable Delay Functions (VDF)</strong></p>
+<p>In a Verifiable Delay Function:</p>
+<ul>
+<li>The “Delay” requires a long time to compute and parallelization doesn’t help.</li>
+<li>“Verifiable” means that it is easy to verify that the function was computed correctly.</li>
+</ul>
+</div>
+<div class="example">
+<p><strong>Examples:</strong></p>
+<ol>
+<li>
+<p>Let's say that we choose tomorrow’s miners using a VDF of today’s closing stock prices. Because of the delay, we don’t know how to manipulate the stock prices until trade closes.</p>
+</li>
+<li>
+<p>We may combine a VDF with a RANDAO: We may require that Bob sends his true random bit before he has time to compute the VDF and decide if he should abort.</p>
+</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Definition: Byzantine Coin-Flipping Protocols</strong></p>
+<p>Conisder the Byzantine Generals Problem:</p>
+<ul>
+<li><span class="arithmatex">\(n\)</span> Byzantine generals try to coordinate an attack on a defended city.</li>
+<li><span class="arithmatex">\(t\)</span> of the generals are traitors and send adversarially confusing messages.</li>
+<li>Goal: <span class="arithmatex">\(n-t\)</span> generals need to agree on the timing of the attack. Ideally, we sample the time at random so the enemy can’t prepare to defend.</li>
+</ul>
+<p>In the context of a PoS protocol, we may apply a similar idea to select a random coin instead of a random attack time. A lot of research has been done in this direction since the early 80’s.</p>
+<p>Byzantine Fault-Tolerant (BFT) protocols can reach consensus on random bits. They require a fraction of the parties to honestly participate in the protocol, such as <span class="arithmatex">\(\frac{2}{3}\)</span>.</p>
+<ul>
+<li>By definition, BFT protocols are <em>not</em> permissionless (since they require a “<span class="arithmatex">\(\frac{2}{3}\)</span>-fraction of parties” to participate honestly). Note that, in some sense, PoS is not really permissionless anyway (given that a coin is a form of permission).</li>
+<li>This type of interactive protocols may be challenging to scale:<ul>
+<li>We may randomly select a small committee (“sortition”) of active Byzantine generals: The committee then selects the next committee to replace it using a Byzantine protocol.</li>
+<li>This requires participants to continuously be online: We need to slash them if they go offline for too long.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Important consideration: When can we truly consider a block <strong>final</strong>? This brings us to the notion of "finality" and "checkpoints."</p>
+<div class="definition">
+<p><strong>Definition: Subjectivity</strong></p>
+<p>In pure permissionless, longest chain rule-based protocols, we are never 100% sure that the chain we see is really the longest one out there.</p>
+</div>
+<p>Perhaps it is acceptable to wait <span class="arithmatex">\(1\)</span> hour to ensure a block is final before selling a Tesla for Bitcoins. However, it may not be acceptable to wait <span class="arithmatex">\(1\)</span> hour to buy pizzas with Bitcoins (there may be a long line of Pizza-hungry customers).</p>
+<p>If <span class="arithmatex">\(\frac{2}{3}\)</span> of holders of coins agree (using a BFT protocol) on a block, we may consider it final—and, now, we can sell pizza on the blockchain again!</p>
+<p>Here is how we may mitigate long-range attacks using finality:</p>
+<ul>
+<li>We set up parameters so that an attacker selling their stake (“unstaking”) takes longer than the gap between checkpoints. (Currently in Ethereum, unstaking takes a few days, sometimes longer).</li>
+<li>We treat finalized checkpoints as “new genesis blocks”–and we ignore earlier forks.</li>
+</ul>
+<h2 id="last-few-thoughts">Last Few Thoughts…</h2>
+<div class="definition">
+<p><strong>Definition: Staking</strong></p>
+<p>Although exact details vary, staking usually involves the following:</p>
+<ul>
+<li>Network participants lock a “stake” (<span class="arithmatex">\(X\)</span> cryptocurrency coins).</li>
+<li>They are chosen to create the next block with a probability proportional to their stake <span class="arithmatex">\(X\)</span>.</li>
+<li>They receive fees for each time they create a block.</li>
+</ul>
+</div>
+<div class="example">
+<p><strong>What is staking good for?</strong></p>
+<ol>
+<li>Aligning incentives of miners (i.e. proposers and validators) with cryptocurrency.</li>
+<li>Preventing Sybil attacks: A participant can make many clones of their computer program, but they can’t change the total amount of money those clones have.</li>
+<li>Slashing: If miners misbehave, we can “slash” their stake, i.e. give them a fine.</li>
+<li>Raising money for a blockchain: Staking may be considered equivalent to buying stocks (this is a hot legal question).</li>
+</ol>
+</div>
+<p>On a separate note, “mining” for Proof-of-Stake is computationally cheap, but requires robust servers with a reliable internet connection. If PoS occures mainly on the cloud, is it still “decentralized”?</p>
+<p><img alt="PoS Mining Segments" src="../images/PoS%20Mining%20Segments.png" />
+<img alt="PoS Mining Cloud Providers" src="../images/PoS%20Mining%20Cloud%20Providers.png" /></p>
+<p>Alternatively, participants may consider <strong>stake delegation</strong>: Instead of running their own miner on AWS, they may lend someone their coins and let them mine for them:</p>
+<ul>
+<li>Coin holders receive rewards proportional to the number of coins they (the <em>delegee</em> takes a small fee).</li>
+<li>This is convenient, as this does not require a CS degree from Stanford.</li>
+<li>This is liquid, since coin holders can stake small amounts and withdraw anytime.</li>
+</ul>
+<p>Some questions to ponder include:</p>
+<ul>
+<li>What are the incentives of delegee?</li>
+<li>Do they care if a coin holder get slashed?</li>
+<li>Do they care if the coin value drops?</li>
+</ul>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Proof-of-Stake Recap</strong></p>
+<p><strong><em>Protocol</em></strong></p>
+<p>At each iteration:</p>
+<ol>
+<li>Sample a random coin.</li>
+<li>Ask its owner to create the next block.</li>
+</ol>
+<p><strong><em>PoS vs. PoW</em></strong></p>
+<ul>
+<li>
+<p>Upsides:</p>
+<ul>
+<li>PoS miners are directly invested in the success of the blockchain</li>
+<li>PoW miners’ stake are fragile when mining resources can be repurposed, and PoW miners’ incentives are somewhat misaligned (e.g. probably want higher mining rewards).</li>
+</ul>
+</li>
+<li>
+<p>Downisdes:</p>
+<ul>
+<li>PoW is bad for the environment (e.g. a larger carbon footprint than Argentina).</li>
+<li>It is much harder to get PoS right (details coming up).</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>PoS Attacks</em></strong></p>
+<ul>
+<li><strong>Nothing-at-Stake:</strong> Miners are incentivized to try to extend every chain, not only the longest chain. This makes it harder to resolve forks.</li>
+<li><strong>Predictability Attacks:</strong> If we know who the next miner is, it is easier to collude with them/attack them/bribe them/etc.</li>
+<li><strong>Long Range attackS:</strong> The attacker starts mining from an old block where they owned coins. A variantconsists in buying/hacking old cryptographic keys of people who used to own coins.</li>
+</ul>
+<p><strong><em>PoS Techniques</em></strong></p>
+<ul>
+<li><strong>Slashing</strong>: Taking away coins from miners who misbehave (Incentivize following the protocol, staying online, etc.).</li>
+<li><strong>RANDAO</strong>: Protocol for generating randomness together (Let’s have a coin flipping party?).</li>
+<li><strong>Verifiable Delay Function (VDF)</strong>: Slow even with parallelization (Mitigate manipulating sources of randomness).</li>
+<li><strong>Byzantine Protocols</strong>: <span class="arithmatex">\(\frac{2}{3}\)</span> of miners (weighted by stake) agree on the new block (Then we are really sure about this block–we can call it “finalized”).</li>
+<li><strong>Finalized blocks</strong> / <strong>Checkpoints</strong>: Mitigate long-range attacks.</li>
+</ul>
+</div>
 
 
 
