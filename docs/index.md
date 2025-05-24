@@ -4,7 +4,7 @@ Computers/algorithms control a lot of economic processes, including online retai
 
 ## Motivation
     
-When it comes to incentives, leveraging more GPUs is not the solution. Computer scientists often need to build systems that interact with other agents, such as users, algorithms, Large Language Models, and even other systems. It is crucial to consider that these other agents are going to behave selfishly to predict how they are going to interact with the system, and design an implement said accordingly.
+When it comes to incentives, leveraging more GPUs is not the solution. Computer scientists often need to build systems that interact with other agents, such as users, algorithms, Large Language Models, and even other systems. It is crucial to consider that these other agents are going to behave selfishly to predict how they are going to interact with the system, and design an implementation accordingly.
 
 ## Goals
 
@@ -12,4 +12,4 @@ CS269I aims to teach students how to think about incentives (through lagnauge, f
 
 ## Credit
 
-These course notes for Stanford CS269I are based on the content of Aviad Rubinstein's lectures in the Spring 2025 quarter. This site is developed by Thibaud Clement, based on Eric Gao's original course notes from the Winter 2023 quarter and Thibaud Clement's own course notes from the Spring 2025 quarter..
+These course notes for Stanford CS269I are based on the content of Aviad Rubinstein's lectures in the Spring 2025 quarter. This site is inspired by Eric Gao's course notes from the Winter 2023 quarter, and developed by Thibaud Clement.
