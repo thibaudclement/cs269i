@@ -105,7 +105,7 @@ Market thinness is actually one _reason_ for high transaction costs.
 <div class="definition" markdown="1">
 **Definition: Thick Market**
 
-We say that a market is thick is there are many buyers and many sellers.
+We say that a market is thick if there are many buyers and many sellers.
 </div>
 
 In a thick market:
@@ -121,7 +121,7 @@ In a thick market:
 <div class="definition" markdown="1">
 **Definition: Thin Market**
 
-We say that a market is thin is there are few buyers and many sellers.
+We say that a market is thin if there are few buyers and not many sellers.
 </div>
 
 In a thin market:
@@ -159,7 +159,7 @@ This is why monopolies are a real problem, especially in a thin market. However,
 What can we do about it?
 
 <div class="remark" markdown="1">
-** Market Thinness Mitigation Strategies**
+**Market Thinness Mitigation Strategies**
 
 If monopolies and thin markets are a problem, then one solution is to build a thick market (or make a market thicker).
 
