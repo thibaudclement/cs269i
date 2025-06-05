@@ -1,0 +1,1233 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lecture-13/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Envy and Fairness - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i-cut-you-choose-mechanism" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Envy and Fairness
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-eric-neyman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-kshipra-bhawalkar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentives in Sponsored Search Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Work Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Stake Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Markets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Envy and Fairness
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Envy and Fairness
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-cut-you-choose-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Cut-You-Choose Mechanism
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fairness-criteria-and-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fairness Criteria and Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dominant-resource-fairness-drf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dominant Resource Fairness (DRF)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-drf-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Beyond) DRF in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-cut-you-choose-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-Cut-You-Choose Mechanism
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fairness-criteria-and-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fairness Criteria and Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dominant-resource-fairness-drf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dominant Resource Fairness (DRF)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-drf-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Beyond) DRF in Practice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Envy and Fairness</h1>
+
+<p><em>May 28, 2025</em></p>
+<p>In week 1, we discussed matching problems modeled with ordinal utilities. In most lectures since, we looked into markets/auctions with money.</p>
+<p>The basic assumption for mechanism design with money is "How much I want something = how much I’m willing to pay for it." However, an obvious caveat to keep in mind is that "How much I’m willing to pay also depends on how much money I have."</p>
+<p>Today, we are going to discuss fair allocation without monetary transfers (w/ cardinal utilities).</p>
+<h2 id="i-cut-you-choose-mechanism">I-Cut-You-Choose Mechanism</h2>
+<p>Alice and Bob want to split a cake. Each has different preferences over strawberries, blueberries, cheese, etc. </p>
+<div class="definition">
+<p><strong>Definition: I-Cut-You-Choose mechanism</strong></p>
+<ol>
+<li>Alice cuts the cake into two equal-for-her pieces.</li>
+<li>Bob chooses his favorite of the two pieces</li>
+</ol>
+</div>
+<p>This mechanism is a long-time favorite, even used to divide land in the Bible:</p>
+<blockquote>
+<p>“And Abram said unto Lot, "Let there be no strife, I pray thee, between me and between thee and between my herdmen and between thy herdmen, for we be brethren. Is not the whole land before thee? Separate thyself, I pray thee; if thou wilt take the left hand, then I will go to the right; or if thou depart to the right hand, I will go to the left.“ – Genesis 13:8-9</p>
+</blockquote>
+<p>This mechanism is also very simple: Aviad uses it often at home with his kids.</p>
+<p>Yet, is I-cut-you-choose strategyproof?</p>
+<div class="theorem">
+<p><strong>Claim:</strong> I-cut-you-choose is not strategyproof.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Suppose Alice just wants to get as much cake as possible:</p>
+<ul>
+<li>If Bob really likes blueberries, Alice could cut a small piece of cake with 51% of blueberries. Bob would choose it, and Alice gets the rest of the cake.</li>
+<li>If Bob really likes strawberries, small piece with 51% of strawberries…</li>
+</ul>
+<p>To cut optimally, Alice wants to know Bob’s preferences—and Bob probably doesn’t want to tell her in advance.</p>
+</div>
+<p>In other words, I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).</p>
+<div class="definition">
+<p><strong>Definition:</strong> Envy-Freeness (1/2).</p>
+<p>An allocation is envy-free if no agent envies another agent’s allocation (i.e. no agent would rather have the other’s allocation over their own).</p>
+</div>
+<div class="theorem">
+<p><strong>Claim:</strong> If Alice cuts the cake into 2 pieces that are equal for her (and Bob picks his favorite), the resulting allocation is envy-free.</p>
+</div>
+<p>Note that envy-freeness is a stronger property than stability: for example, giving the entire cake to Alice is stable (because Alice wouldn’t want to switch allocation), but not envy-free (because Bob would).</p>
+<p>It’s pretty satisfying that I-cut-you-choose is envy-free! However, maybe some envy-free allocations still seem unfair (e.g. think of Bob getting a small piece with 51% of blueberries).</p>
+<p>How can we analyze mechanisms from a fairness perspective?</p>
+<h2 id="fairness-criteria-and-objectives">Fairness Criteria and Objectives</h2>
+<div class="remark">
+<p>We’re about to see a lot of definitions. Aviad doesn't expect us to remember all of them by the end of lecture. The point is to give us (a) a sense of the complexity of this question, and (b) a taste of major approaches to tackling it.</p>
+</div>
+<p>Formalizing fair allocations:</p>
+<ul>
+<li>Our goal is to choose an allocation <span class="arithmatex">\(A = (A_1, ..., A_n)\)</span> to <span class="arithmatex">\(n\)</span> agents.</li>
+<li>Each agent <span class="arithmatex">\(i\)</span> has a valuation function <span class="arithmatex">\(v_i()\)</span>.</li>
+</ul>
+<p>For this part of lecture, we can just think about additive valuations: If <span class="arithmatex">\(x,y\)</span> are disjoint, then <span class="arithmatex">\(v_i(x \cup y) = v(x) + v(y)\)</span>.</p>
+<div class="definition">
+<p><strong>Definition:</strong> Envy-Freeness (2/2).</p>
+<p>We may re-define envy-free allocations as:</p>
+<div class="arithmatex">\[
+  \forall i,j \; v_i(A_i) \geq v_i(A_j).
+\]</div>
+</div>
+<p>There exists a lot of ways to define fair allocations.</p>
+<div class="definition">
+<p><strong>Definition:</strong> Proportional.</p>
+<p>We may define proportional allocations as:</p>
+<div class="arithmatex">\[
+  \forall i \; v_i(A_i) \geq \frac{v_i(A)}{n}.
+\]</div>
+<p>In other words: my happiness guarantee doesn’t depend on others’ allocation.</p>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Perfect.</p>
+<p>We may define perfect allocations as:</p>
+<div class="arithmatex">\[
+  \forall i \; v_i(A_i) = \frac{v_i(A)}{n}.
+\]</div>
+<p>This is similar to proportional, but also making sure that no one is too happy (we may want to think about why this may be helpful).</p>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Equitable.</p>
+<p>We may define equitable allocations as:</p>
+<div class="arithmatex">\[
+  \forall i,j \; v_i(A_i) = v_j(A_j).
+\]</div>
+<p>This a little funny because we have to compare <span class="arithmatex">\(i\)</span>’s happiness to <span class="arithmatex">\(j\)</span>’s happiness (we may want to think about how to achieve this).</p>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Competitive equilibrium from equal incomes (CEEI)</p>
+<ul>
+<li>Give each agent a budget of 1 (fake money).</li>
+<li>Find prices (for pieces of cake) and an allocation such that:<ul>
+<li>The entire cake is allocated (unless there is a zero-priced unwanted leftover piece).</li>
+<li>Every agent is allocated the favorite piece they can afford given their budget constraint.</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>Note:</strong> With fake money, agents maximize value subject to budget constraint. This is different from Lecture 6 where they maximized utility based on value-price.</em></p>
+</div>
+<p>With indivisible goods, often none of these can be satisfied! For example, if we want to allocate 1 hat, then both Alice and Bob want it.</p>
+<p>Notice that for this example we would have a competitive equilibrium with real money: Alice gets the hat and pays for it, Bob gets nothing and keeps his money. But with fake money Bob isn’t satisfied with keeping his fake money.</p>
+<div class="definition">
+<p><strong>Definition:</strong> Maximin Share (MMS)</p>
+<p>Each agent <span class="arithmatex">\(i\)</span> proposes (cuts) allocation <span class="arithmatex">\(A^i\)</span> to <span class="arithmatex">\(n\)</span> agents.</p>
+<p>(<span class="arithmatex">\(A\)</span> still denotes the real allocation.)</p>
+<p>MMS condition:</p>
+<div class="arithmatex">\[
+  v_i(A_i) \geq \underset{A^i}{max} \; \underset{j}{min} \; v_i(A_j^i)
+\]</div>
+</div>
+<p>Some unfairness is inevitable (for instance if we think of the hat example). MMS tries to capture the minimal necessary unfairness. It is a little bit like saying to agent <span class="arithmatex">\(i\)</span>, “Even if you cut the cake any way you wanted to, you wouldn’t guarantee more than you got in this allocation”. This is why we say that MMS is “no worse than worst-case I-cut-you-choose."</p>
+<p>Surprisingly, sometimes, even MMS cannot be satisfied.</p>
+<p>One idea is to approximately-fairly dividing indivisible items.</p>
+<div class="definition">
+<p><strong>Definition:</strong> Envy-Free-Up-to-1-Item (EF1)</p>
+<div class="arithmatex">\[
+  v_i(A_i) \geq v_i(\frac{A_j}{"best" \; item}).
+\]</div>
+<p>EF1 in equations:</p>
+<div class="arithmatex">\[
+  \forall i,j \; \exists g \in A_j \; v_i(A_i) \geq v_i (\frac{A_j}{g}).
+\]</div>
+<p>EF1 in words: </p>
+<ul>
+<li><span class="arithmatex">\(v_i(A_j)\)</span> = the value agent <span class="arithmatex">\(i\)</span> would have for agent <span class="arithmatex">\(j\)</span>’s allocation <span class="arithmatex">\((A_j\)</span>.</li>
+<li>A weaker benchmark is: <span class="arithmatex">\(v_i(\frac{A_j}{"best" \; item})\)</span> = the same as <span class="arithmatex">\(v_i(A_j)\)</span>, but we discard <span class="arithmatex">\(i\)</span>’s favorite item.</li>
+</ul>
+</div>
+<p>EF1 can always be satisfied, e.g., agents taking turns selecting one item at a time (“round robin”). However, EF1 is sometimes not very fair. For example, Alice and Bob are splitting 2 cars and 10 chairs:</p>
+<ul>
+<li>Fair allocation: each gets one car + 5 chairs.</li>
+<li>Also EF1: each gets one car, and Alice gets all the chairs.</li>
+</ul>
+<div class="definition">
+<p><strong>Definition:</strong> Envy-Free-Up-to-Any-Item (EFX)</p>
+<div class="arithmatex">\[
+  v_i(A_i) \geq v_i(\frac{A_j}{"worst" \; item}).
+\]</div>
+</div>
+<p>Can EFX always be satisfied? This is an open problem.</p>
+<div class="definition">
+<p><strong>Definition:</strong> <span class="arithmatex">\(\alpha\)</span>-Maximin Share (MMS)</p>
+<p>“Only a bit (\alpha) worse than worst-case I-cut-you-choose.”</p>
+<p><span class="arithmatex">\(\alpha\)</span>-MMS condition:</p>
+<div class="arithmatex">\[
+  v_i(A_i) \geq \alpha \; \underset{A^i}{max} \; \underset{j}{min} \; v_i(A_j^i)
+\]</div>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> A <span class="arithmatex">\(\frac{3}{4}\)</span>-MMS allocation always exists.</p>
+</div>
+<p>Is more-than-<span class="arithmatex">\(\frac{3}{4}\)</span>-MMS always impossible? This is another open problem.</p>
+<div class="definition">
+<p><strong>Definition:</strong> <em>Approximate</em> Competitive equilibrium from equal incomes (A-CEEI)</p>
+<ul>
+<li>Give each agent a budget of <em>approximately</em> 1 (fake money).</li>
+<li>The allocation is only required to <em>approximately</em> clear markets.</li>
+</ul>
+</div>
+<p>An A-CEEI always exists, although with some tradeoff in approximations of equal incomes vs. market clearing.</p>
+<p>However, this is computationally intractable: the computational complexity of finding an A-CEEI was one of Aviad's first research projects in PhD, and he still works on it.</p>
+<p>What do we mean by approximately market clearing? We have to allocate non-existing goods.</p>
+<p>Another approach is to look for an allocation that maximizes <strong>fair objective functions</strong>.</p>
+<div class="definition">
+<p><strong>Definition:</strong> Utilitarian/Social Welfare</p>
+<p>“Maximum total happiness”</p>
+<div class="arithmatex">\[
+  \underset{A_1, ..., A_n}{max} \sum_i v_i(A_i)
+\]</div>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Egalitarian/Maximin</p>
+<p>“Maximum happiness of the saddest person”</p>
+<div class="arithmatex">\[
+  \underset{A_1, ..., A_n}{max} \; \underset{j}{min} \; v_i(A_i)
+\]</div>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Nash Social Welfare</p>
+<p>Middle ground between utilitarian and egalitarian:</p>
+<ul>
+<li>Emphasis on increasing lower <span class="arithmatex">\(𝑣_𝑖\)</span> (we can think of the extreme case where one <span class="arithmatex">\(v_i\)</span> is close to zero).</li>
+<li>Yet, it doesn’t completely ignore higher <span class="arithmatex">\(v_i\)</span> like egalitarian.</li>
+</ul>
+<div class="arithmatex">\[
+  \underset{A_1, ..., A_n}{max} \; \prod_i \; v_i(A_i)
+\]</div>
+</div>
+<p>The Nash Social Welfare is scale-invariant, which makes it easier to compare different agents without money.</p>
+<div class="theorem">
+<p><strong>Theorem:</strong> CEEI allocation maximizes Nash Social Welfare.</p>
+</div>
+<div class="example">
+<p><strong>Examples:</strong> Some fair allocations in practice.</p>
+<ul>
+<li>Allocating goods:<ul>
+<li>Spliddit used to maximize social welfare subject to MMS/proportionality/EF. </li>
+<li>They decided that NSW is better.</li>
+</ul>
+</li>
+<li>Allocating classes:<ul>
+<li>Approximate-CEEI</li>
+<li>Combinatorial demand</li>
+<li>The number of students must significantly exceed the number of classes</li>
+</ul>
+</li>
+<li>Allocating chores:<ul>
+<li>Spliddit used to assign chores by assuming they’re divisible (we can use randomized rounding to assign fractional chores) and drawing new chores each week to guarantee approximate “ex-post” fairness.</li>
+<li>Then they looked for an equitable solution, and optimized over all equitable solutions using Linear Programming.</li>
+</ul>
+</li>
+<li>Allocating computing (see upcoming example from Databricks).</li>
+</ul>
+</div>
+<h2 id="dominant-resource-fairness-drf">Dominant Resource Fairness (DRF)</h2>
+<div class="definition">
+<p><strong>Definition:</strong> Leontieff Utility</p>
+<p>I want to make as much cake as possible, so I need fixed ratios of <span class="arithmatex">\(flour : oil : sugar\)</span>.</p>
+</div>
+<div class="example">
+<p><strong>Example</strong></p>
+<p>Consider the following computational resource sharing model:</p>
+<ul>
+<li>We have <span class="arithmatex">\(m\)</span> resources (CPU, memory, I/O, …) with fixed capacities.</li>
+<li>There are <span class="arithmatex">\(n\)</span> users:<ul>
+<li>Each user wants to run as many identical tasks as possible.</li>
+<li>Each task demands a fixed vector of resources (2 GPU, 3 TB RAM).</li>
+<li>For now, tasks are infinitesimally small (2<span class="arithmatex">\(\epsilon\)</span> GPU, 3<span class="arithmatex">\(\epsilon\)</span> TB RAM).</li>
+</ul>
+</li>
+</ul>
+<p>How can we allocate these resources to these users? In particular, we want to
+- Ensure fairness, efficiency.
+- Avoid monetary transfers (e.g. allocation inside a given organization).</p>
+</div>
+<p>Incentives are important in compute allocation:</p>
+<ul>
+<li>“For example, one of Yahoo!’s Hadoop MapReduce datacenters has different numbers of slots for map and reduce tasks. A user discovered that the map slots were contended, and therefore launched all his jobs as long reduce phases, which would manually do the work that MapReduce does in its map phase.”</li>
+<li>“A big search company provided dedicated machines for jobs only if the users could guarantee high utilization. The company soon found that users would sprinkle their code with infinite loops to artificially inflate utilization levels.”</li>
+</ul>
+<div class="definition">
+<p><strong>Definition:</strong> Dominant Resource Fairness</p>
+<p>Fix an allocation of resources to users:</p>
+<ul>
+<li>User <span class="arithmatex">\(i\)</span> has some share (fraction) of the total capacity of each resource.</li>
+<li>User <span class="arithmatex">\(i\)</span>’s dominant resource is the resource with the largest share.</li>
+</ul>
+<p><strong>Dominant resource fairness means</strong> equal shares of dominant resources across users.</p>
+</div>
+<div class="example">
+<p><strong>Example:</strong> <em>Not</em> Dominant Resource Fairness</p>
+<p>Consider the following scenario:</p>
+<ul>
+<li>Total capacity = 10 GPU, 20 TB</li>
+<li>Ali received 4 GPU, 16 TB</li>
+<li>Ali’s GPU share <span class="arithmatex">\(= \frac{2}{5}\)</span></li>
+<li>Ali’s memory share <span class="arithmatex">\(= \frac{4}{5}\)</span></li>
+<li>Beth’s GPU share <span class="arithmatex">\(\leq \frac{3}{5}\)</span></li>
+<li>Beth’s memory share <span class="arithmatex">\(\leq \frac{1}{5}\)</span></li>
+</ul>
+<p>Ali’s dominant resource is memory: this is <em>not</em> DRF.</p>
+</div>
+<div class="example">
+<p><strong>Example:</strong> Dominant Resource Fairness</p>
+<p>Consider the following scenario:</p>
+<ul>
+<li>Total capacity = 10 GPU, 20 TB</li>
+<li>Ali received 2 GPU, 16 TB</li>
+<li>Ali’s GPU share <span class="arithmatex">\(= \frac{1}{5}\)</span></li>
+<li>Ali’s memory share <span class="arithmatex">\(= \frac{4}{5}\)</span></li>
+<li>Beth’s GPU share <span class="arithmatex">\(= \frac{4}{5}\)</span></li>
+<li>Beth’s memory share <span class="arithmatex">\(= \frac{1}{10}\)</span></li>
+<li><span class="arithmatex">\(\frac{1}{10}\)</span> of memory remains unused</li>
+</ul>
+<p>Ali’s dominant resource is memory and Beth's dominant resource is GPU: this is DRF.</p>
+</div>
+<div class="definition">
+<p><strong>Definition:</strong> Dominant Resource Fairness Mechanism</p>
+<ul>
+<li>Every user submits their ratio of demands (e.g. 2 GPU : 1 TB).</li>
+<li>The algorithm computes the (unique) maximal allocation subject to DRF.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> Every user prefers the DRF allocation to <span class="arithmatex">\(\frac{1}{n}\)</span> of each resource.</p>
+</div>
+<p>In other words, every user prefers DRF over naïve resource allocation. This property is called sharing incentives and it is related to individual rationality.</p>
+<div class="proof">
+<p><strong>Proof:</strong> Allocation is maximal</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Some resource <span class="arithmatex">\(j^\star\)</span> is exhausted.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Some user <span class="arithmatex">\(i^\star\)</span> gets <span class="arithmatex">\(\geq \frac{1}{n}\)</span> of <span class="arithmatex">\(j^\star\)</span>.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(i^\star\)</span> has <span class="arithmatex">\(\geq \frac{1}{n}\)</span> of her dominant resource.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> every user has <span class="arithmatex">\(\geq \frac{1}{n}\)</span> of their dominant resource.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> The DRF allocation is envy-free.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong> Assume by contradiction that Ali envies Beth.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Beth has more of every resource–including Ali’s dominant resource.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> This is a contradiction to DRF.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> DRF is Pareto-optimal.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong> Allocation is maximal</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Some resource <span class="arithmatex">\(j^\star\)</span> is exhausted.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> By simplifying assumption, we can’t make someone happier without taking some <span class="arithmatex">\(j^\star\)</span> from someone else.</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> The DRF mechanism is strategyproof</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong> Let <span class="arithmatex">\(A_T\)</span> denote the allocation of DRF with true preferences.</p>
+<p>Assume by contradiction that Ali can misreport to get a better allocation <span class="arithmatex">\(\widehat{A}\)</span>.</p>
+<p>By Pareto-optimality of <span class="arithmatex">\(A_T\)</span>, Beth has a smaller allocation in <span class="arithmatex">\(\widehat{A}\)</span> than in <span class="arithmatex">\(A_T\)</span>.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Beth receives less of her dominant resource in <span class="arithmatex">\(\widehat{A}\)</span>.</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> Ali receives less of his dominant resource in <span class="arithmatex">\(\widehat{A}\)</span>-this is a contradiction.</p>
+</div>
+<h2 id="beyond-drf-in-practice">(Beyond) DRF in Practice</h2>
+<p>Let's revisit our example from earlier:</p>
+<div class="example">
+<p><strong>Example</strong></p>
+<p>Recall the following vanilla assumptions:</p>
+<ul>
+<li>We have <span class="arithmatex">\(m\)</span> resources (CPU, memory, I/O, …) with fixed capacities.</li>
+<li>There are <span class="arithmatex">\(n\)</span> users:<ul>
+<li>Each user wants to run as many identical tasks as possible.</li>
+<li>Each task demands a fixed vector of resources (2 GPU, 3 TB RAM).</li>
+<li>Simplifying assumption: demand <span class="arithmatex">\(&gt;0\)</span> for every resource.</li>
+<li>For now, tasks are infinitesimally small (2<span class="arithmatex">\(\epsilon\)</span> GPU, 3<span class="arithmatex">\(\epsilon\)</span> TB RAM).</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>In practice:</p>
+<ul>
+<li>Tasks are not identical, and they arrive and depart over time <span class="arithmatex">\(\rightarrow\)</span> This is a hard problem, both in theory and in practice, which requires <strong>Practical DRF</strong> (While resources are not exhausted, select user <span class="arithmatex">\(i\)</span> with the minimum dominant share, and add their next feasible task).</li>
+<li>Some tasks have flexibility in resource use (e.g., map vs. reduce manipulation example).</li>
+<li>Some tasks have more specific desiderata (e.g., specific hardware, specific location).</li>
+<li>Tasks are not infinitesimally small <span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(\rightarrow\)</span> This is a hard problem, both in theory and in practice, which requires <strong>Practical DRF</strong> (While resources are not exhausted, select user <span class="arithmatex">\(i\)</span> with the minimum dominant share, and add their next feasible task).</li>
+<li>Some users have higher priority <span class="arithmatex">\(\rightarrow\)</span> This requires <strong>Weighted DRF</strong>.</li>
+<li>Some tasks have zero demand for some resource <span class="arithmatex">\(\rightarrow\)</span> This requires <strong>Extended DRF</strong> (Find the maximal DRF allocation, and then recurse on remaining feasible tasks).</li>
+</ul>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>Envy and Fairness Recap</strong></p>
+<ul>
+<li>
+<p>Envy-free Cake Cutting</p>
+<ul>
+<li>I-cut-you-choose mechanism: 1. Alice cuts the cake into two equal-for-her pieces, and then 2. Bob chooses his favorite of the two pieces.</li>
+<li>I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).</li>
+<li>Definition: An allocation is envy-free if no agent envies another agent’s allocation (i.e. no agent would rather have the other’s allocation over their own).</li>
+<li>Claim: If Alice cuts the cake into 2 pieces that are equal for her (and Bob picks his favorite), the resulting allocation is envy-free.</li>
+</ul>
+</li>
+<li>
+<p>A lot of different ways to define fair allocations:</p>
+<ul>
+<li>Envy-Free (EF1/EFX): <span class="arithmatex">\(v_i(A_i) \geq v_i(A_j)\)</span>.</li>
+<li>Proportional: <span class="arithmatex">\(v_i(A_i) \geq \frac{v_i(A)}{n}\)</span>.</li>
+<li>Equitable: <span class="arithmatex">\(v_i(A_i) = v_j(A_j)\)</span>.</li>
+<li>Perfect: <span class="arithmatex">\(v_i(A_i) = \frac{v_i(A)}{n}\)</span>.</li>
+<li><span class="arithmatex">\(\alpha\)</span>-Maximin Share (MMS): <span class="arithmatex">\(v_i(A_i) \geq \alpha \; \underset{A^i}{max} \; \underset{j}{min} \; v_i(A_j^i)\)</span>.</li>
+<li>(Approximate) Competitive equilibrium from equal incomes (A-CEEI).</li>
+<li>Utilitarian/Social Welfare: <span class="arithmatex">\(\underset{A_1, ..., A_n}{max} \sum_i v_i(A_i)\)</span>.</li>
+<li>Nash Social Welfare: <span class="arithmatex">\(\underset{A_1, ..., A_n}{max} \; \prod_i \; v_i(A_i)\)</span>.</li>
+<li>Egalitarian/Maximin: <span class="arithmatex">\(\underset{A_1, ..., A_n}{max} \; \underset{j}{min} \; v_i(A_i)\)</span>.</li>
+</ul>
+</li>
+<li>
+<p>Which definition to use depends on the application:</p>
+<ul>
+<li>Allocating goods:<ul>
+<li>Spliddit used to maximize social welfare subject to MMS/proportionality/EF. </li>
+<li>They decided that NSW is better.</li>
+</ul>
+</li>
+<li>Allocating classes:<ul>
+<li>Approximate-CEEI</li>
+<li>Combinatorial demand</li>
+<li>The number of students must significantly exceed the number of classes</li>
+</ul>
+</li>
+<li>Allocating chores:<ul>
+<li>Spliddit used to assign chores by assuming they’re divisible (we can use randomized rounding to assign fractional chores) and drawing new chores each week to guarantee approximate “ex-post” fairness.</li>
+<li>Then they looked for an equitable solution, and optimized over all equitable solutions using Linear Programming.</li>
+</ul>
+</li>
+<li>Allocating computing (see example from Databrick).</li>
+</ul>
+</li>
+<li>
+<p>Dominant Resource Fairness:</p>
+<ul>
+<li>Fix an allocation of resources to users:<ul>
+<li>User <span class="arithmatex">\(i\)</span> has some share (fraction) of the total capacity of each resource.</li>
+<li>User <span class="arithmatex">\(i\)</span>’s dominant resource is the resource with the largest share.</li>
+</ul>
+</li>
+<li>Theorems: DRF satisfies sharing incentives, envy-free, Pareto-optimal, strategyproof.</li>
+<li>Extended DRF: Find the maximal DRF allocation, and recurse on the remaining feasible tasks.</li>
+<li>Practical DRF: While resources are not exhausted, select user <span class="arithmatex">\(i\)</span> with the minimum dominant share, and add their next feasible task.    </li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
