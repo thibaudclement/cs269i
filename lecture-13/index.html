@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lecture-12/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Security Markets - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flashboys-10" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security Markets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-eric-neyman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-kshipra-bhawalkar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentives in Sponsored Search Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Work Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Stake Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Security Markets
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Markets
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashboys 1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-stock-market-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Stock Market Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes-for-these-market-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixes for These Market Failures?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashboys 2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sniping-on-defi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sniping++ on DeFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miners-extractable-value-mev" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miners’ Extractable Value (MEV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fee-sniping-selfish-tie-breaking-and-undercutting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fee sniping, selfish tie-breaking, and undercutting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-00" class="md-nav__link">
+    <span class="md-ellipsis">
+      “Flashboys 0.0”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashboys 1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-stock-market-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Stock Market Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes-for-these-market-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixes for These Market Failures?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashboys 2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sniping-on-defi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sniping++ on DeFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miners-extractable-value-mev" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miners’ Extractable Value (MEV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fee-sniping-selfish-tie-breaking-and-undercutting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fee sniping, selfish tie-breaking, and undercutting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashboys-00" class="md-nav__link">
+    <span class="md-ellipsis">
+      “Flashboys 0.0”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Security Markets</h1>
+
+<p><em>May 26, 2025</em></p>
+<div class="summary">
+<p><strong>Blockchain Recap (So Far)</strong></p>
+<p>Main goal: Maintain a ledger (i.e. a history of events that we all/mostly agree on) that is:</p>
+<ul>
+<li>Decentralized: Messages are delayed/dropped (no uniform time)</li>
+<li>Permissionless: Users join, leave, come back at any time</li>
+</ul>
+<p>Risks of Sybil attacks require alternatives to “majority”:</p>
+<ul>
+<li>Vanilla Proof-of-Stake (PoS) protocol: At each iteration:<ul>
+<li>(1) Sample a random coin;</li>
+<li>(2) Ask its owner to create the next block.</li>
+</ul>
+</li>
+<li>Proof-of-Work (PoW): At each iteration:<ul>
+<li>(1) Miners compete to invert a hash function;</li>
+<li>(2) First miner to succeed creates new block</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>Market Failures Recap</strong></p>
+<p>A <strong>market failure</strong> occurs when a market fails to converge to an optimal outcome.</p>
+<p>We have seen five types of market failures:</p>
+<ol>
+<li>Externalities (side effects on other parties)</li>
+<li>Transaction costs</li>
+<li>Thinness (flow of buyers/sellers too small)</li>
+<li>Timing issues</li>
+<li>Information asymmetry</li>
+</ol>
+</div>
+<div class="summary">
+<p><strong>No-Trade Theorems Recap</strong></p>
+<p><strong>Public information no-trade theorem:</strong> If the market already aggregated all available public information, there is no point in trading.</p>
+<p><strong>Public+Private information no-trade theorem:</strong> Alice will only want to buy at current price if she has private information:</p>
+<ul>
+<li>If Alice wants to buy, she probably has private information.</li>
+<li>Bob doesn’t want to sell Alice.</li>
+<li>Even if Alice learns private information, she can’t use it.</li>
+</ul>
+</div>
+<h2 id="flashboys-10">Flashboys 1.0</h2>
+<div class="example">
+<p><strong>Example: The High-Frequency Trading (HFT) Speed Arms Race</strong></p>
+<p>In 2010, Spread Networks opened new $300M fiber optics from NY to Chicago. Why? Because it is (almost) a straight line, which brings latency down from 16ms to 13ms.</p>
+<p>Who needs 3ms saving in latency? In comparison, a blink of the eye is less than 100ms. Answer: Low latency High Frequency Traders (HFT) race to beat each other.</p>
+<p>There was a joke at the time saying that Spread Networks's fiber optics would soon be obsolete, when someone digs a tunnel, thus “avoiding the pesky curvature of the earth.”</p>
+<p>Ironically, in 2011, latency time down to 10ms using microwaves! It turns out that air refracts slightly better than glass.</p>
+</div>
+<p><strong>Is Spread Networks a market failure?</strong></p>
+<p>A hypothesis may be that investing <span class="arithmatex">\(\$300\)</span>M for saving 3ms (for only one year) represents social waste, because someone is paying this <span class="arithmatex">\(\$300\)</span>M, yet no one is much happier.</p>
+<p>Maybe Spread Networks made so much money that they were happy, but they would have been happier to take the same money from HFTs without paying <span class="arithmatex">\(\$300\)</span>M for new fiber optics.</p>
+<p>Here are some externalities to consider:</p>
+<ul>
+<li>When the first HFT buys bandwidth from Spread Networks, they’re happy because they expect to make a lot of money by being faster than their competitors. Spread Networks is also happy because they sold bandwidth.</li>
+<li>However, the other HFTs are sad because they’re now slower than 1st HFT.</li>
+<li>We reach a market equilibrium when all HFTs buy bandwidth.</li>
+<li>As a result, none of them are happy.</li>
+<li>The total negative externality is greater than or equal to <span class="arithmatex">\(\$300\)</span>M.</li>
+</ul>
+<p><strong>Should we consider an even larger market failure?</strong></p>
+<p>HFTs make a lot more than $300M a year. Yet, they just buy and sell stocks (securities) and make money out of it! Does anyone else benefit from having them?</p>
+<h2 id="a-stock-market-model">A Stock Market Model</h2>
+<div class="remark">
+<p>We will slowly build up an increasingly elaborate model. Yet, even at the end of this lecture, we will still abstract out many important aspects.</p>
+</div>
+<div class="definition">
+<p>Let's model a market for fungible (i.e. interchangeable) shares of one company.</p>
+<p>Main model points:</p>
+<ul>
+<li>Stock exchange rules: continuous limit order book.</li>
+<li>Players:<ul>
+<li>Naïve investors</li>
+<li>Liquidity providers</li>
+<li>Snipers</li>
+</ul>
+</li>
+<li>Stock “value” (and how it changes)</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>Continuous Limit Order Book Recap</strong></p>
+<p>Definitions:</p>
+<ul>
+<li>Bid: highest buy order</li>
+<li>Ask: lowest sell order</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Buy/sell orders can arrive at any time.</li>
+<li>Trading happens whenever a new buy order is greater than the ask (or a new sell order less than the bid).</li>
+</ul>
+<p>Two kinds of orders:</p>
+<ul>
+<li>Marketable orders already have a match in the book.</li>
+<li>Resting (non-marketable) orders are waiting to be matched.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Naïve Investors</strong></p>
+<p>Homer just received his paycheck. He wants to buy 1 stock to save for retirement.
+Abe is retired. He wants to sell 1 stock to pay for health insurance.
+Homer can buy 1 stock from Abe!</p>
+<p>Problem (Market thinness): Homer gets his paycheck on the 10th, while Abe’s insurance fees due on the 1st.</p>
+<p>we need liquidity providers!</p>
+<p><em><strong>Note:</strong> No-trade theorems don’t apply with naïve investors (Investing for retirement doesn’t make sense for prediction markets).</em></p>
+</div>
+<div class="summary">
+<p><strong>Liquidity Providers Recap</strong></p>
+<p>Liquidity providers buy low now and sell high later (or: sell high now and buy low later).</p>
+<p>Liquidity providers leave bid/ask resting orders on the order book.</p>
+</div>
+<p>Naïve investors can buy/sell at any time by trading with liquidity providers. When they buy+sell, liquidity providers earn the spread. That means that the naïve investors lose this spread. Spread is the part of naïve investors transaction costs.</p>
+<div class="definition">
+<p><strong>Definition: Stock Value</strong></p>
+<p>The “true” value of the stock represents investors’ aggregate belief of how much it would pay in the future, e.g., how much dividends it will ever pay, discounting for risk and time.</p>
+<p>At equilibrium, the true value is between the bid and the ask. Otherwise, investors could buy/sell more stocks.</p>
+</div>
+<p>Various events can change the stock’s value (i.e. change investors’ aggregate belief):</p>
+<ol>
+<li><strong>Correlated stocks (securities):</strong><ul>
+<li>If someone buys gold in Chicago, the price of gold in NYC goes up.</li>
+<li>ES and SPY are two ways to invest in S&amp;P 500.</li>
+</ul>
+</li>
+<li><strong>The 2013 Fed Robbery:</strong> The Federal Reserve frequently announces changes in monetary policy. On 2013, September 18th, 2:00:00 PM, when the Fed made an exciting announcement, more than <span class="arithmatex">\(\$5\)</span> billion traded within 100 milliseconds. This was controversial, as it means that markets in NYC and Chicago reacted faster than speed of light.</li>
+<li><strong>Twitter (now X):</strong> The timing of tweets is much less regulated than Fed Reserve's announcements. For instance, the stock market moved when Trump tweeted "covfefe" in 2017. Are NLP models robust enough to make this kind of call in a few microseconds?</li>
+<li><strong>Reddit:</strong> The timing of posts is also much less regulated than Fed Reserve's announcements, as suggested by the impact of <code>r/wallstreetbets</code> on the GameStop stock price in 2021.</li>
+<li><strong>Hacks:</strong> In 2024, The @SECGov X account was compromised, and an unauthorized tweet was posted, falsely announing that the SEC had approved the listing and trading of spot Bitcoin exchange-traded products, which moved the price of Bitcoin.</li>
+</ol>
+<div class="definition">
+<p><strong>Definition: Snipers</strong></p>
+<p>Snipers wait for a change in a stock value and rush to trade with liquidity providers’ resting orders.</p>
+<p>When a stock value changes, liquidity providers rush to cancel (or update) their resting orders before getting sniped.</p>
+<p>Being slightly faster than a competitor is worth a lot of money. Many races are won by a margin of less than 10 μs.</p>
+<p>Luck also helps: sometimes, a slower order is accepted due to randomness in the stock exchange’s computer!</p>
+</div>
+<div class="summary">
+<p>Putting it all together:</p>
+<ul>
+<li>Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).</li>
+<li>When a stock value changes, snipers and liquidity providers race to update/snipe resting orders. This is risky and costly for liquidity providers.</li>
+<li>Liquidity providers increase the spread to make up for sniping risk.</li>
+<li>An increased spread means increased transaction costs for naïve investors.</li>
+</ul>
+</div>
+<h2 id="fixes-for-these-market-failures">Fixes for These Market Failures?</h2>
+<p>Can the following speed bumps resolve speed arm races and reduce risk for liquidity providers?</p>
+<p>Naïve attempts do not work:</p>
+<ul>
+<li>Symmetric speed bumps (i.e. all orders get delayed by the same amount):<ul>
+<li>Don’t solve speed arm races.</li>
+<li>Don’t solve sniping risk for liquidity providers.</li>
+</ul>
+</li>
+<li>Random speed bumps (i.e. each order gets delayed by some random amount):<ul>
+<li>Mostly solve speed arm races (when the random delay is greater than the speed difference).</li>
+<li>Make sniping risk worse, as one liquidity provider may compete with many snipe attempts.</li>
+</ul>
+</li>
+</ul>
+<p>Better proposals exist:</p>
+<ul>
+<li>Sniper-only speed bumps (i.e. only delay sniping orders, which is technically a speed bonus to cancelling resting orders):<ul>
+<li>Give liquidity providers time to react to value-changing events.</li>
+<li>Solve speed arm races.</li>
+<li>Solve liquidity providers’ sniping risk.<ul>
+<li>Reduce their expected cost.</li>
+<li>Liquidity providers can afford a smaller spread.</li>
+<li>Reduce transaction costs for naïve investors.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Frequent batch auctions:<ul>
+<li>We batch orders for some short interval (e.g. 100 ms).</li>
+<li>For each batch, we find the market clearing price.</li>
+<li>Advantage: everyone has time to react to value-changing-events.</li>
+<li>Orders are prioritized by price instead of arrival time.    </li>
+</ul>
+</li>
+</ul>
+<h2 id="flashboys-20">Flashboys 2.0</h2>
+<p>Things get even wackier on the blockchain.</p>
+<div class="definition">
+<p><strong>Definition: Smart Contracts</strong></p>
+<p>So far we talked about blockchains that record payments (“transactions”).Ethereum and other blockchains (but not Bitcoin) support smart contracts:</p>
+<ul>
+<li>Smart: Can run complex computer code (ideally Turing-complete).</li>
+<li>Contract: Both parties agree to terms (and sign).</li>
+</ul>
+</div>
+<div class="example">
+<p><strong>Example: Loan</strong></p>
+<ol>
+<li>Alice pays Bob <span class="arithmatex">\(\$1\)</span>.</li>
+<li>300 blocks from now, Bob will pay Alice <span class="arithmatex">\(\$1.1\)</span>.</li>
+</ol>
+</div>
+<div class="example">
+<p><strong>Example: Collateralized Loan</strong></p>
+<p>This is more realistic:</p>
+<ol>
+<li>Alice pays Bob <span class="arithmatex">\(\$1\)</span> and Bob sends the contract a collateral.</li>
+<li>300 blocks from now, if Bob hasn’t paid yet, Alice can take the collateral.</li>
+</ol>
+</div>
+<p>In practice, some concreate instances of smart contracts include:</p>
+<ul>
+<li>Non-Fungible Tokens (NFTs).</li>
+<li>Shareholders votes: Once a month, every stock owner can cast a vote to decide on the next dividend.</li>
+<li>Gambling.</li>
+<li>Games (e.g., CryptoKitties).</li>
+</ul>
+<p>In the collateralized loan example, it is crucial that "Alice pays Bob <span class="arithmatex">\(\$1\)</span>" and "Bob sends the contract a collateral" happen simultaneously. Otherwise, Bob could abort after receiving the money. These are atomic transactions.</p>
+<div class="definition">
+<p><strong>Definition: Atomic Transactions</strong></p>
+<p>Either all steps of the transaction are executed successfully, or all steps are cancelled.</p>
+</div>
+<div class="example">
+<p><strong>Example: Flash Loan</strong></p>
+<p>No collateral is needed when:</p>
+<ol>
+<li>Alice pays Bob <span class="arithmatex">\(\$1\)</span>.</li>
+<li>Bob pays Alice <span class="arithmatex">\(\$1.1\)</span> back in the same block.</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Definition: Decentralized Finance (DeFi)</strong>:</p>
+<ul>
+<li>Supports trading of cryptocurrencies, stocks, contracts, derivatives, etc.</li>
+<li>Is a popular application of smart contracts</li>
+</ul>
+</div>
+<p>Some variants, such as limit order book (IDEX, Paradex, Etherdelta, ...) and Automated market makers (Uniswap, Bancor) can be automated as decentralized smart contracts.</p>
+<p><strong>Punchline:</strong> Extreme sniping opportunities exist in decentralized finance.</p>
+<h2 id="sniping-on-defi">Sniping++ on DeFi</h2>
+<div class="definition">
+<p><strong>Definition: Arbitrage</strong>:</p>
+<p>Simultaneously buying low in market L and selling high on market H.</p>
+</div>
+<p>In centralized finance (e.g. NYSE), the arbitrageur takes some risk: if they buy low first, the price on market H may drop by the time they sell.</p>
+<p>In contrast, DeFi allows for risk-free atomic arbitrage by bundling "buy low on market L" and "sell high on market H" into a single atomic transaction. The transaction will execute only if both transactions go through!</p>
+<p>Additional arbitrage opportunities in DeFi include:</p>
+<ul>
+<li>Cryptocurrency prices are highly volatile (some markets update slower/faster).</li>
+<li>More information is broadcast to everyone (including arbitrageur): the full code and state of smart contract automated market makers is available, which makes it easier to discover exploitable bugs.</li>
+<li>It is easy to amplify arbitrage using huge collateral-free flash loans.</li>
+</ul>
+<div class="example">
+<p><strong>(Extreme) Example: bZx attacks</strong>:</p>
+<p>3 times in 2020, hackers/arbitrageurs found bugs in DeFi lending platform bZx.
+They stole about <span class="arithmatex">\(\$350K\)</span>, <span class="arithmatex">\(\$600K\)</span>, and <span class="arithmatex">\(\$8M\)</span> (the last sum has allegedly been recovered by bZx).</p>
+<p><img alt="bZx attacks" src="../images/bZx%20attacks.png" /></p>
+<p>In short: bZx used the wrong ETH-sUSD price when computing the collateral, so the borrower was better off just walking away with the borrowed ETH. </p>
+<p>Notice that this complex chain of trades was all executed in a single block because the borrower had to return the flash loan!</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Front-Running</strong>:</p>
+<p>Alice sees that Bob is on his way to buy a lot of shares of Stock XYZ. This transaction will increase the price of XYZ. So, Alice runs in front of Bob to by the available shares before the price increase (or, even better: Alice sells XYZ to Bob at a higher price).</p>
+</div>
+<p>Front-running is generally illegal in centralized finance, but in DeFi, everyone sees Bob’s order when it’s broadcast to miners.</p>
+<p>An extreme form of front-running is when miners are also traders:</p>
+<ul>
+<li>Suppose an arbitrageur finds a highly profitable risk-free trade. The arbitrageur broadcasts this transaction to miners. Then a miner can execute same trade from their own account instead.</li>
+<li>The miner still includes the arbitrageur’s transaction in their block (for a high fee), but after the miner’s transaction. The miner’s transaction uses up the liquidity on the profitable trade.</li>
+</ul>
+<h2 id="miners-extractable-value-mev">Miners’ Extractable Value (MEV)</h2>
+<p>In centralized finance, speed arms race to get to the top of the order book. In DeFi, arbitrageurs compete to have the highest transaction fee to get to the top of the next block. We run auctions for “gas” (space in block), because transaction ordering influences MEV.</p>
+<p><strong>Punchline:</strong> Miners can extract a lot of value.</p>
+<div class="remark">
+<p><strong>Miners’ Rewards Structure</strong>:</p>
+<ul>
+<li>Miners (PoW or PoS) can receive a flat reward for each block they “mine”.</li>
+<li>Miners also earn custom tips (“transaction fees”), or more generally MEV</li>
+</ul>
+<p>Originally, block rewards were greater than MEV, but important trends are changing this:</p>
+<ul>
+<li>Block rewards are decreasing:<ul>
+<li>On Bitcoin: built-in block rewards are halving every ~4 years</li>
+<li>On Ethereum: historically, block rewards have generally been decreasing (more complicated)</li>
+</ul>
+</li>
+<li>MEV is increasing: <ul>
+<li>There is more competition to be included in limited block space</li>
+<li>More sophisticated DeFi means more sophisticated front running, etc.</li>
+<li>Flashbots, etc: special networks that auction space in MEV-optimized blocks</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Flashbots" src="../images/flashbots.png" /></p>
+<p>In September 2020, fees surpaased block rewards on Ethereum for the first time. Due to transaction fees and MEV, not all blocks are the same.</p>
+</div>
+<h2 id="fee-sniping-selfish-tie-breaking-and-undercutting">Fee sniping, selfish tie-breaking, and undercutting</h2>
+<div class="definition">
+<p><strong>Definition: Fee-Sniping Attack</strong></p>
+<p>Miners prefer to mine an alternative <span class="arithmatex">\(\widehat{b_t}\)</span> that includes the large MEV</p>
+<p><img alt="Fee Sniping Attack" src="../images/Fee%20Sniping%20Attack.png" /></p>
+<p>With <span class="arithmatex">\(\alpha\)</span>-fraction of hash power, we have:</p>
+<div class="arithmatex">\[
+Pr[2 \; blocks \; to \; make \; new \; chain \; longest] = \alpha^2.
+\]</div>
+<p>The attack pays off whenever:</p>
+<div class="arithmatex">\[
+  \alpha^2 \cdot "largeFees" &gt; \alpha \cdot"smallFees"
+\]</div>
+<p>The success probability is even higher if other miners try to attack instead of extending <span class="arithmatex">\(b_t\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Selfish Tie-Breaking</strong></p>
+<p>Given equal-length chains (<span class="arithmatex">\(b_t\)</span>, <span class="arithmatex">\(\widehat{b_t}\)</span>):</p>
+<ul>
+<li>In the default blockchain protocol, we tie-break in favor of the block we saw first.</li>
+<li>However, strategic miners favor the block that leaves more MEV on the table. Note: this deviation is strategic even for small miners!</li>
+</ul>
+<p><img alt="Selfish Tie-Breaking" src="../images/Selfish%20Tie-Breaking.png" /></p>
+</div>
+<div class="definition">
+<p><strong>Definition: Undercutting</strong></p>
+<p>Undercutting is essentially fee sniping + selfish tie-breaking:</p>
+<ul>
+<li>The <span class="arithmatex">\(\widehat{b_t}\)</span> block steals most large MEV, but leaves some for extension <span class="arithmatex">\(\widehat{b_{t+1}}\)</span>.</li>
+<li>Miners use selfish tie-breaking to incent other miners to join their fee sniping attack.</li>
+</ul>
+<p><img alt="Undercutting" src="../images/Undercutting.png" /></p>
+</div>
+<p>Some ideas that have been considered to mitigate these issues:</p>
+<ul>
+<li>Transaction fees distributed between the miners of the next <span class="arithmatex">\(k\)</span> blocks (e.g. <span class="arithmatex">\(k=100\)</span>).</li>
+<li>Capped transaction fees.</li>
+<li>“Burn” transaction fees (instead of allocating them to miners).</li>
+</ul>
+<p><strong>What is a fundamental problem that all these proposed mitigation have?</strong></p>
+<p>Users with high-priority transactions can incent miners with side payments (or miners directly extract MEV).</p>
+<h2 id="flashboys-00">“Flashboys 0.0”</h2>
+<div class="example">
+<p><strong>Example: 19th Century Speed Arms Race</strong></p>
+<p><img alt="19th Century Speed Arms Race 1" src="../images/19th%20Century%20Speed%20Arms%20Race%201.png" /></p>
+<ul>
+<li>1816: Israel Beer Josaphat born in Kassel (present Germany). </li>
+<li>1830’s: He moves to Goettingen, hangs out with Gauss who was inventing the telegraph.</li>
+<li>1845: He converts to Christianity (Protesant), changes name to Paul Julius Reuter.</li>
+<li>1850: He uses Aachen-Brussels pigeon carrier to communicate stock prices between Berlin and Paris (pigeons were faster than trains).</li>
+<li>1851: A Aachen-Brussels telegraph line is built, so Reuter moves to London.</li>
+</ul>
+<p><img alt="19th Century Speed Arms Race 2" src="../images/19th%20Century%20Speed%20Arms%20Race%202.png" /></p>
+<ul>
+<li>1863: Reuter constructs a private telegraph link from Cork to Crookhaven (current population: 59). Why? Because it is the first place to catch news traveling from new world by steam boats.</li>
+<li>1865: Reuter is the first in Europe to learn about Lincoln’s assassination. His contacts in the stock markets knew about it hours before anyone else!</li>
+</ul>
+</div>
+<p>Considering Reuters vs Spread Networks:</p>
+<ul>
+<li>The Reuters News Agency quickly became a leading source for news to the general public (in 1865, there were “only” 12 days of latency to learn about Lincoln’s assassination).</li>
+<li>Will Spread Networks cables eventually find uses outside financial markets speed race?</li>
+</ul>
+<h2 id="recap">Recap</h2>
+<div class="summary">
+<p><strong>High-Frequency Trading Recap</strong></p>
+<ul>
+<li>Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).</li>
+<li>When value changes, snipers and liquidity providers race to update/snipe resting orders: this is risky and costly for liquidity providers.</li>
+<li>Liquidity providers increase spread to make up for sniping risk.</li>
+<li>Increased spread means increased transaction cost for naïve investors.</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>High-Frequency Trading Recap</strong></p>
+<ul>
+<li>Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).</li>
+<li>When value changes, snipers and liquidity providers race to update/snipe resting orders: this is risky and costly for liquidity providers.</li>
+<li>Liquidity providers increase spread to make up for sniping risk.</li>
+<li>Increased spread means increased transaction cost for naïve investors.</li>
+</ul>
+<p>Interventions include:</p>
+<ul>
+<li>Naïve (symmetric/random) speed bumps don’t resolve sniping cost.</li>
+<li>Sound proposals<ul>
+<li>Sniper-only speed bumps (fairly specific to fungible good market design).</li>
+<li>Frequent batch auctions (batching is a generally useful design principle).</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>Smart Contracts &amp; DeFi Recap</strong></p>
+<ul>
+<li>
+<p>Smart Contracts:</p>
+<ul>
+<li>Smart: Can run complex computer code (ideally Turing-complete).</li>
+<li>Contract: Both parties agree to terms (and sign).</li>
+<li>Example: Implement an automated market maker or limit order book as a smart contract in DeFi.</li>
+</ul>
+</li>
+<li>
+<p>Atomic transaction:</p>
+<ul>
+<li>Either all steps of the transaction are executed successfully, or all steps are cancelled.</li>
+<li>Example: In a flash loan, Alice pays Bob <span class="arithmatex">\(\$1\)</span>, Bob will pay Alice <span class="arithmatex">\(\$1.1\)</span> in the same block, with no collateral needed.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="summary">
+<p><strong>Miners’ Opportunities in DeFi Recap</strong></p>
+<ul>
+<li>Arbitrage: Simultaneously buying low in market L and selling high on market H.</li>
+<li>Even more arbitrage opportunities with DeFi:<ul>
+<li>Risk-free atomic arbitrage</li>
+<li>Highly volatile cryptocurrencies</li>
+<li>Explicit information broadcast to arbitrageur</li>
+<li>Huge collateral-free flash loans available</li>
+</ul>
+</li>
+<li>Front-running: Alice sees that Bob is on his way to buy a lot of shares of Stock XYZ. Alice runs in front of Bob to by the available shares before the price increase.</li>
+<li>Competition to get to top of the block vs speed arms race. Miners enjoy increasing transaction fees, or steal transactions for themselves.</li>
+<li>Transaction fees distort miners’ incentives:<ul>
+<li>Fee-sniping: create alternative block <span class="arithmatex">\(\widehat{b_t}\)</span> to steal high-fee transactions from <span class="arithmatex">\(b_t\)</span>.</li>
+<li>Undercutting: The <span class="arithmatex">\(\widehat{b_t}\)</span> block steals most large MEV, but leaves some for extension <span class="arithmatex">\(\widehat{b_{t+1}}\)</span>. Miners use selfish tie-breaking to incent other miners to join their fee sniping attack.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Distorted Miner Incentives" src="../images/Distorted%20Miner%20Incentives.png" /></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
