@@ -1,3 +1,5 @@
+_May 26, 2025_
+
 <div class="summary" markdown="1">
 **Blockchain Recap (So Far)**
 
@@ -284,14 +286,231 @@ No collateral is needed when:
 
 Some variants, such as limit order book (IDEX, Paradex, Etherdelta, ...) and Automated market makers (Uniswap, Bancor) can be automated as decentralized smart contracts.
 
-**Punchline:** Extreme sniping opportunities for decentralized finance.
+**Punchline:** Extreme sniping opportunities exist in decentralized finance.
 
 ## Sniping++ on DeFi
 
-## Miners’ Extractable Value (MEV) 
+<div class="definition" markdown="1">
+**Definition: Arbitrage**:
+
+Simultaneously buying low in market L and selling high on market H.
+
+</div>
+
+In centralized finance (e.g. NYSE), the arbitrageur takes some risk: if they buy low first, the price on market H may drop by the time they sell.
+
+In contrast, DeFi allows for risk-free atomic arbitrage by bundling "buy low on market L" and "sell high on market H" into a single atomic transaction. The transaction will execute only if both transactions go through!
+
+Additional arbitrage opportunities in DeFi include:
+
+- Cryptocurrency prices are highly volatile (some markets update slower/faster).
+- More information is broadcast to everyone (including arbitrageur): the full code and state of smart contract automated market makers is available, which makes it easier to discover exploitable bugs.
+- It is easy to amplify arbitrage using huge collateral-free flash loans.
+
+<div class="example" markdown="1">
+**(Extreme) Example: bZx attacks**:
+
+3 times in 2020, hackers/arbitrageurs found bugs in DeFi lending platform bZx.
+They stole about \(\$350K\), \(\$600K\), and \(\$8M\) (the last sum has allegedly been recovered by bZx).
+
+![bZx attacks](images/bZx attacks.png)
+
+In short: bZx used the wrong ETH-sUSD price when computing the collateral, so the borrower was better off just walking away with the borrowed ETH. 
+
+Notice that this complex chain of trades was all executed in a single block because the borrower had to return the flash loan!
+
+</div>
+
+<div class="definition" markdown="1">
+**Definition: Front-Running**:
+
+Alice sees that Bob is on his way to buy a lot of shares of Stock XYZ. This transaction will increase the price of XYZ. So, Alice runs in front of Bob to by the available shares before the price increase (or, even better: Alice sells XYZ to Bob at a higher price).
+
+</div>
+
+Front-running is generally illegal in centralized finance, but in DeFi, everyone sees Bob’s order when it’s broadcast to miners.
+
+An extreme form of front-running is when miners are also traders:
+
+- Suppose an arbitrageur finds a highly profitable risk-free trade. The arbitrageur broadcasts this transaction to miners. Then a miner can execute same trade from their own account instead.
+- The miner still includes the arbitrageur’s transaction in their block (for a high fee), but after the miner’s transaction. The miner’s transaction uses up the liquidity on the profitable trade.
+
+## Miners’ Extractable Value (MEV)
+
+In centralized finance, speed arms race to get to the top of the order book. In DeFi, arbitrageurs compete to have the highest transaction fee to get to the top of the next block. We run auctions for “gas” (space in block), because transaction ordering influences MEV.
+
+**Punchline:** Miners can extract a lot of value.
+
+<div class="remark" markdown="1">
+**Miners’ Rewards Structure**:
+
+- Miners (PoW or PoS) can receive a flat reward for each block they “mine”.
+- Miners also earn custom tips (“transaction fees”), or more generally MEV
+
+Originally, block rewards were greater than MEV, but important trends are changing this:
+
+- Block rewards are decreasing:
+    - On Bitcoin: built-in block rewards are halving every ~4 years
+    - On Ethereum: historically, block rewards have generally been decreasing (more complicated)
+- MEV is increasing: 
+    - There is more competition to be included in limited block space
+    - More sophisticated DeFi means more sophisticated front running, etc.
+    - Flashbots, etc: special networks that auction space in MEV-optimized blocks
+
+![Flashbots](images/flashbots.png)
+
+In September 2020, fees surpaased block rewards on Ethereum for the first time. Due to transaction fees and MEV, not all blocks are the same.
+
+</div>
 
 ## Fee sniping, selfish tie-breaking, and undercutting
 
+<div class="definition" markdown="1">
+**Definition: Fee-Sniping Attack**
+
+Miners prefer to mine an alternative \(\widehat{b_t}\) that includes the large MEV
+
+![Fee Sniping Attack](images/Fee Sniping Attack.png)
+
+With \(\alpha\)-fraction of hash power, we have:
+
+\[
+Pr[2 \; blocks \; to \; make \; new \; chain \; longest] = \alpha^2.
+\]
+
+The attack pays off whenever:
+
+\[
+  \alpha^2 \cdot "largeFees" > \alpha \cdot"smallFees"
+\]
+
+The success probability is even higher if other miners try to attack instead of extending \(b_t\).
+
+</div>
+
+<div class="definition" markdown="1">
+**Definition: Selfish Tie-Breaking**
+
+Given equal-length chains (\(b_t\), \(\widehat{b_t}\)):
+
+- In the default blockchain protocol, we tie-break in favor of the block we saw first.
+- However, strategic miners favor the block that leaves more MEV on the table. Note: this deviation is strategic even for small miners!
+
+![Selfish Tie-Breaking](images/Selfish Tie-Breaking.png)
+
+</div>
+
+<div class="definition" markdown="1">
+**Definition: Undercutting**
+
+Undercutting is essentially fee sniping + selfish tie-breaking:
+
+- The \(\widehat{b_t}\) block steals most large MEV, but leaves some for extension \(\widehat{b_{t+1}}\).
+- Miners use selfish tie-breaking to incent other miners to join their fee sniping attack.
+
+![Undercutting](images/Undercutting.png)
+
+</div>
+
+Some ideas that have been considered to mitigate these issues:
+
+- Transaction fees distributed between the miners of the next \(k\) blocks (e.g. \(k=100\)).
+- Capped transaction fees.
+- “Burn” transaction fees (instead of allocating them to miners).
+
+**What is a fundamental problem that all these proposed mitigation have?**
+
+Users with high-priority transactions can incent miners with side payments (or miners directly extract MEV).
+
 ## “Flashboys 0.0”
 
+<div class="example" markdown="1">
+**Example: 19th Century Speed Arms Race**
+
+![19th Century Speed Arms Race 1](images/19th Century Speed Arms Race 1.png)
+
+- 1816: Israel Beer Josaphat born in Kassel (present Germany). 
+- 1830’s: He moves to Goettingen, hangs out with Gauss who was inventing the telegraph.
+- 1845: He converts to Christianity (Protesant), changes name to Paul Julius Reuter.
+- 1850: He uses Aachen-Brussels pigeon carrier to communicate stock prices between Berlin and Paris (pigeons were faster than trains).
+- 1851: A Aachen-Brussels telegraph line is built, so Reuter moves to London.
+
+![19th Century Speed Arms Race 2](images/19th Century Speed Arms Race 2.png)
+
+- 1863: Reuter constructs a private telegraph link from Cork to Crookhaven (current population: 59). Why? Because it is the first place to catch news traveling from new world by steam boats.
+- 1865: Reuter is the first in Europe to learn about Lincoln’s assassination. His contacts in the stock markets knew about it hours before anyone else!
+
+</div>
+
+Considering Reuters vs Spread Networks:
+
+- The Reuters News Agency quickly became a leading source for news to the general public (in 1865, there were “only” 12 days of latency to learn about Lincoln’s assassination).
+- Will Spread Networks cables eventually find uses outside financial markets speed race?
+
 ## Recap
+
+<div class="summary" markdown="1">
+
+**High-Frequency Trading Recap**
+
+- Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).
+- When value changes, snipers and liquidity providers race to update/snipe resting orders: this is risky and costly for liquidity providers.
+- Liquidity providers increase spread to make up for sniping risk.
+- Increased spread means increased transaction cost for naïve investors.
+
+</div>
+
+<div class="summary" markdown="1">
+
+**High-Frequency Trading Recap**
+
+- Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).
+- When value changes, snipers and liquidity providers race to update/snipe resting orders: this is risky and costly for liquidity providers.
+- Liquidity providers increase spread to make up for sniping risk.
+- Increased spread means increased transaction cost for naïve investors.
+
+Interventions include:
+
+- Naïve (symmetric/random) speed bumps don’t resolve sniping cost.
+- Sound proposals
+    - Sniper-only speed bumps (fairly specific to fungible good market design).
+    - Frequent batch auctions (batching is a generally useful design principle).
+
+</div>
+
+<div class="summary" markdown="1">
+
+**Smart Contracts & DeFi Recap**
+
+- Smart Contracts:
+
+    - Smart: Can run complex computer code (ideally Turing-complete).
+    - Contract: Both parties agree to terms (and sign).
+    - Example: Implement an automated market maker or limit order book as a smart contract in DeFi.
+
+- Atomic transaction:
+
+    - Either all steps of the transaction are executed successfully, or all steps are cancelled.
+    - Example: In a flash loan, Alice pays Bob \(\$1\), Bob will pay Alice \(\$1.1\) in the same block, with no collateral needed.
+
+</div>
+
+<div class="summary" markdown="1">
+
+**Miners’ Opportunities in DeFi Recap**
+
+- Arbitrage: Simultaneously buying low in market L and selling high on market H.
+- Even more arbitrage opportunities with DeFi:
+    - Risk-free atomic arbitrage
+    - Highly volatile cryptocurrencies
+    - Explicit information broadcast to arbitrageur
+    - Huge collateral-free flash loans available
+- Front-running: Alice sees that Bob is on his way to buy a lot of shares of Stock XYZ. Alice runs in front of Bob to by the available shares before the price increase.
+- Competition to get to top of the block vs speed arms race. Miners enjoy increasing transaction fees, or steal transactions for themselves.
+- Transaction fees distort miners’ incentives:
+    - Fee-sniping: create alternative block \(\widehat{b_t}\) to steal high-fee transactions from \(b_t\).
+    - Undercutting: The \(\widehat{b_t}\) block steals most large MEV, but leaves some for extension \(\widehat{b_{t+1}}\). Miners use selfish tie-breaking to incent other miners to join their fee sniping attack.
+
+![Distorted Miner Incentives](images/Distorted Miner Incentives.png)
+
+</div>
