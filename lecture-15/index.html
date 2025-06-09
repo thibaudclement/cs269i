@@ -1,0 +1,1276 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../guest-lecture-geoff-ramseyer/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Course Allocation + End-of-Quarter Party - Stanford CS269I Course Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nostalgic-review-of-cs269i" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-header__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stanford CS269I Course Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Course Allocation + End-of-Quarter Party
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Stanford CS269I Course Notes" class="md-nav__button md-logo" aria-label="Stanford CS269I Course Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stanford CS269I Course Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    One-Sided Matching and Serial Dictatorship
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Two-Sided Matchings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Online Learning and Regret Minimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top Trading Cycles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Equilibria in Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    P2P File-sharing Dilemma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Equilibrium
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Failures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Markets and Information Cascades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mid-Quarter Review Party
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-eric-neyman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Train an AI That Doesn't Lie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scoring Rules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-kshipra-bhawalkar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentives in Sponsored Search Auctions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Work Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof-of-Stake Blockchains
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Markets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Envy and Fairness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guest-lecture-geoff-ramseyer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentive (Mis)alignment in Blockchain Exchanges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Course Allocation + End-of-Quarter Party
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Allocation + End-of-Quarter Party
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nostalgic-review-of-cs269i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nostalgic Review of CS269i
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nostalgic Review of CS269i">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frameworks-and-language-mechanisms-strategyproof-equilibria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frameworks and language: mechanisms, strategyproof, equilibria, …
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stable-matching-welfare-theorem-proper-scoring-rules-vcg-auction-proof-of-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposure-to-great-ideas-from-economic-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposure to great ideas from economic theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theory-vs-applications-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory-vs-Applications Case Studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice-practice-practice-ask-good-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practice, Practice, Practice: Ask Good Questions!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Allocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parting-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parting Words
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nostalgic-review-of-cs269i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nostalgic Review of CS269i
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nostalgic Review of CS269i">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frameworks-and-language-mechanisms-strategyproof-equilibria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frameworks and language: mechanisms, strategyproof, equilibria, …
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stable-matching-welfare-theorem-proper-scoring-rules-vcg-auction-proof-of-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposure-to-great-ideas-from-economic-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposure to great ideas from economic theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theory-vs-applications-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory-vs-Applications Case Studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice-practice-practice-ask-good-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practice, Practice, Practice: Ask Good Questions!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Allocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parting-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parting Words
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Course Allocation + End-of-Quarter Party</h1>
+
+<p><em>June 4, 2025</em></p>
+<h2 id="nostalgic-review-of-cs269i">Nostalgic Review of CS269i</h2>
+<div class="summary">
+<p><strong>Course Goals Recap</strong></p>
+<ul>
+<li>
+<p>Learn to think about incentives</p>
+<ul>
+<li>Frameworks and language: mechanisms, strategyproof, equilibria, …</li>
+<li>Practice, practice, practice: see/understand/discuss a lot of examples</li>
+<li>Practice, practice, practice: ask good questions!</li>
+</ul>
+</li>
+<li>
+<p>Exposure to great ideas from economic theory: Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work</p>
+</li>
+<li>
+<p>Theory-vs-applications case studies</p>
+<ul>
+<li>How can theory inform practice? </li>
+<li>What are the gaps that you should think about before applying theory?   </li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="frameworks-and-language-mechanisms-strategyproof-equilibria">Frameworks and language: mechanisms, strategyproof, equilibria, …</h3>
+<div class="definition">
+<p><strong>Definition: Mechanism</strong></p>
+<p>Soliciting inputs, running an algorithm, and taking actions.</p>
+<blockquote>
+<p>"A procedure for making a decision or taking an action, as a function of what people want (i.e., of participants’ preferences).”</p>
+</blockquote>
+</div>
+<p><strong>Key point:</strong> What (agents believe) we do with agents’ inputs affects these inputs.</p>
+<div class="example">
+<p><strong>Example: Mechanism</strong></p>
+<ul>
+<li>Soliciting inputs: Ranking of dorms.</li>
+<li>Running an algorithm: For each student in random order, find favorite available dorm.</li>
+<li>Taking actions: Assign rooms.</li>
+</ul>
+</div>
+<p>We’ve seen a LOT of mechanisms since:</p>
+<ul>
+<li>Matching mechanisms (Lectures 1-2): <strong>The Draw</strong>, Deferred Acceptance.</li>
+<li>Auctions (Lecture 8 + guest lecture!): 1st price, <strong>2nd price</strong>, all-pay, GSP, <strong>VCG</strong>.</li>
+<li>Crowdsourcing (Lectures 9+10): <strong>Proper scoring rules</strong>, prediction markets.</li>
+<li>Fair division (Lecture 14): I-cut-you-choose, <strong>Dominant Resource Fairness (DRF)</strong>.</li>
+</ul>
+<p>We analyzed them: the ones in <strong>bold</strong> above are strategyproof, the others are not.</p>
+<p><strong>What happens when there’s no dominant strategy?</strong></p>
+<div class="definition">
+<p><strong>Definition: External Regret</strong></p>
+<p>External Regret = <span class="arithmatex">\( \underset{i}{\max} \underset{t}{\sum} r_{i,t} - \underset{t}{\sum} r_{ALG(t),t} \)</span></p>
+<p><img alt="External Regret" src="../images/External%20Regret.jpg" /></p>
+</div>
+<div class="definition">
+<p><strong>Definition: Swap-Regret (Internal Regret)</strong></p>
+<p>Swap-Regret = <span class="arithmatex">\( \underset{\Phi : [n] \to [n]}{\max} \underset{t}{\sum} (r_{\Phi(ALG(t)),t} - r_{ALG(t),t}) \)</span> where <span class="arithmatex">\(\Phi\)</span> maps each action to another action.</p>
+<p><img alt="Swap Regret" src="../images/Swap%20Regret.jpg" /></p>
+</div>
+<div class="definition">
+<p><strong>Algorithm: Follow The Regularized Leader (FTRL)</strong></p>
+<p>On day <span class="arithmatex">\(t\)</span>, choose distribution <span class="arithmatex">\(x\)</span> maximizing <span class="arithmatex">\(\underset{t}{\sum} (r_{x,t} - \frac{1}{\eta}\varphi(x))\)</span> where:</p>
+<ul>
+<li><span class="arithmatex">\(r_{x,t}\)</span> provides the historical performance,</li>
+<li><span class="arithmatex">\(\eta\)</span> balances randomness and history,</li>
+<li><span class="arithmatex">\(\varphi\)</span> is the regularizer, which penalizes unbalanced distributions.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Nash Equilibrium</strong></p>
+<p>Each player samples independently from distribution; nobody has incentive to deviate from distribution.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Correlated Equilibrium</strong></p>
+<p>A correlated distribution of actions that every player would rather follow.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Stackelberg Equilibrium</strong></p>
+<ol>
+<li>Follower’s strategy is optimal given Leader’s strategy</li>
+<li>Leader’s commitment is optimal</li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Definition: Bayesian Nash Equilibrium</strong></p>
+<ul>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> strategy for each Alice.</li>
+<li><span class="arithmatex">\((Mixed = randomized)\)</span> strategy for each Bob.</li>
+</ul>
+<p>Alice and Bob drawn at random.</p>
+<p><strong>Equilibrium:</strong> For each Alice, strategy is optimal in expectation over Bobs + their strategies.</p>
+</div>
+<p><strong>Game Theory in repeated games</strong></p>
+<div class="definition">
+<p><strong>Definition: Tit-for-Tat Strategy</strong></p>
+<ul>
+<li>In Stage 1, upload.</li>
+<li>In Stage <span class="arithmatex">\(i\)</span>, do whatever Marv did in Stage <span class="arithmatex">\(i-1\)</span>.</li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition: Grim Trigger Strategy</strong></p>
+<ul>
+<li>If there was ever a time when Marv didn’t upload, don’t upload.</li>
+<li>Otherwise, upload.</li>
+</ul>
+</div>
+<h3 id="stable-matching-welfare-theorem-proper-scoring-rules-vcg-auction-proof-of-work">Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work</h3>
+<div class="definition">
+<p><strong>Definition: Blocking Pair</strong></p>
+<p>Given a match <span class="arithmatex">\(M\)</span>, the pair (doctor <span class="arithmatex">\(i\)</span>, hospital <span class="arithmatex">\(j\)</span>) forms a blocking pair if they prefer each other to their current assignments in <span class="arithmatex">\(M\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Stable Matching</strong></p>
+<p>A matching <span class="arithmatex">\(M\)</span> is stable if there are no blocking pairs. Equivalently, for every unmatched pair <span class="arithmatex">\((i,j)\)</span>, either:</p>
+<ul>
+<li>Doctor <span class="arithmatex">\(i\)</span> prefers Hospital <span class="arithmatex">\(M(i)\)</span> over Hospital <span class="arithmatex">\(j\)</span>, or;</li>
+<li>Hospital <span class="arithmatex">\(j\)</span> prefers Doctor <span class="arithmatex">\(M(j)\)</span> over Doctor <span class="arithmatex">\(i\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Theorem: First Welfare Theorem</strong></p>
+<p>If <span class="arithmatex">\((p,M)\)</span> is a competitive equilibrium, then <span class="arithmatex">\(M\)</span> is a matching that maximizes social welfare:</p>
+<div class="arithmatex">\[
+\forall M' \; \underset{i}{\sum} v_{i,M(i)} \geq \underset{i}{\sum} v_{i,M'(i)}
+\]</div>
+</div>
+<div class="definition">
+<p><strong>Definition: Vickrey-Clarke-Groves (VCG) Auction</strong></p>
+<ol>
+<li>Solicit bidders’ valuation functions </li>
+<li>Find welfare-maximizing allocation (assuming bids are truthful): <span class="arithmatex">\(X\)</span>.</li>
+<li>Same as <span class="arithmatex">\(\#2\)</span>, but without bidder <span class="arithmatex">\(i\)</span>: <span class="arithmatex">\(X^{-i}\)</span>.</li>
+<li><span class="arithmatex">\(i\)</span> pays <span class="arithmatex">\(i\)</span>’s externality (negated): <span class="arithmatex">\(\displaystyle p_i (X) = \sum_{k \neq i} b_k (X^{-i}) - b_k(X)\)</span>.</li>
+</ol>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> The VCG auction is truthful.</p>
+</div>
+<div class="proof">
+<p><strong>Proof:</strong></p>
+<p>Bidder <span class="arithmatex">\(i\)</span>’s goal is to maximize:</p>
+<p><span class="arithmatex">\(\displaystyle v_i(X) - p_i(X) = v_i(X) + \sum_{k \neq i} b_k(X) - \sum_{k \neq i}b_k (X^{-i})\)</span></p>
+<p>Note that <span class="arithmatex">\(\sum_{k \neq i}b_k (X^{-i})\)</span> is not in <span class="arithmatex">\(i\)</span>’s control.</p>
+<p>The auction chooses the <span class="arithmatex">\(X\)</span> that maximizes welfare, i.e. <span class="arithmatex">\(\displaystyle b_i(X) + \sum_{k \neq i} b_k(X)\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Proof-of-Work (PoW)</strong></p>
+<p><strong>Proof-of-Work:</strong> If you find a valid nonce, it proves that you tried a lot of hashes and got lucky.</p>
+<p>Miners compete to find the first valid nonce and create (mine) the new block. The winner gets a reward (encoded as a transaction in the new block).</p>
+<p><img alt="Proof-of-Work-Recap" src="../images/Proof-of-Work-Recap.png" /></p>
+<p>Miners should try to extend the longest-chain available, i.e. they should prioritize <span class="arithmatex">\(b_{t+1}\)</span> or <span class="arithmatex">\(\hat b_t\)</span>.</p>
+</div>
+<div class="definition">
+<p><strong>Definition: Vanilla Proof-of-Stake (PoS) protocol</strong></p>
+<p>At each iteration:</p>
+<ol>
+<li>Sample a random coin.</li>
+<li>Ask its owner to create the next block.</li>
+</ol>
+</div>
+<p>PoS miners are directly invested in success of blockchain:</p>
+<ul>
+<li>PoW miners’ stake fragile when mining tech can be repurposed.</li>
+<li>PoW miners’ incentives somewhat misaligned (e.g. probably want higher mining rewards).</li>
+</ul>
+<p>PoW is bad for the environment (larger carbon footprint than Argentina), but it’s much harder to get PoS right.</p>
+<h3 id="exposure-to-great-ideas-from-economic-theory">Exposure to great ideas from economic theory</h3>
+<p>Econ Nobel prizes we covered in CS269i</p>
+<ul>
+<li>Deferred Acceptance algorithm for Stable Matching (Lecture 2).</li>
+<li>Nash equilibrium + Correlated equilibrium (2 prizes in Lecture 4).</li>
+<li>Coasian bargaining – auction off public goods (Lecture 5)—This is one way for coping with Externalities.</li>
+<li>Market for Lemons / information asymmetry (Lecture 5)<ul>
+<li>At equilibrium, sellers of good cars may leave the market (only lemons left).</li>
+<li>Implications for grades, insurance, clickbaits.</li>
+</ul>
+</li>
+<li>Myerson’s revenue maximizing auction (Lecture 8)—Second price + reserve.</li>
+<li>VCG auction (HW / Bhawalkar’s guest lecture)—Pay your externality.</li>
+</ul>
+<p>Note that ideas from bullet points 1, 5, and 6 went into the FCC spectrum auction (Milgrom+Wilson ‘20 Nobel Prize).</p>
+<div class="definition">
+<p><strong>Definition: Second-Price Auction With Reserve Price</strong></p>
+<ul>
+<li>Each bidder submits a bid <span class="arithmatex">\(b_i\)</span>.<ul>
+<li>Let <span class="arithmatex">\(i^\star\)</span> be the bidder with the highest bid <span class="arithmatex">\(b_{i^\star}\)</span>.</li>
+<li>Let <span class="arithmatex">\(b^{(-i)} = \underset{j \neq i^\star}{max}\)</span> be the second-highest bid.</li>
+</ul>
+</li>
+<li>If <span class="arithmatex">\(b_{i^\star} \geq p(D)\)</span>, then <span class="arithmatex">\(i^\star\)</span> receives the items and pays <span class="arithmatex">\(max{b^{(-i)}, p(D)}\)</span>.</li>
+<li>If <span class="arithmatex">\(b_{i^\star} &lt; p(D)\)</span>, then the seller keeps the item and no payment occurs.</li>
+</ul>
+<p>This generalizes the optimal auction for single buyers to <span class="arithmatex">\(n\)</span> buyers. This also generalizes the second-price auction if we set the reserve price, i.e. <span class="arithmatex">\(p(D)\)</span>, to <span class="arithmatex">\(0\)</span> or negative infinity.</p>
+<p>This is equivalent to the seller also participating in the auction, with the seller’s bid being the reserve price, i.e. <span class="arithmatex">\(p(D)\)</span>.</p>
+<p>This means that it is strategyproof for the buyers, but it is not exactly strategyproof for the seller, because they have to figure out the optimal reserve price.</p>
+</div>
+<h3 id="theory-vs-applications-case-studies">Theory-vs-Applications Case Studies</h3>
+<div class="summary">
+<p><strong>DA Applications Recap</strong></p>
+<ul>
+<li><strong>In theory:</strong> DA in theory is Pareto-optimal among all matchings, doctor-optimal and hospital-worst among stable matchings, and doctor-strategyproof but not not hospital-strategyproof.</li>
+<li><strong>In practice:</strong> DA is expensive (collecting preferences is costly, e.g. holistic admissions in US colleges and interview in hospitals) and preferences may not be captured by the model (e.g. matching couples).</li>
+</ul>
+</div>
+<div class="theorem">
+<p><strong>Theorem:</strong> In DA, “safety choices” are never “safer”.</p>
+</div>
+<div class="summary">
+<p><strong>Market equilibria: Theory (Optimal Welfare) vs Practice (Market Failures)</strong></p>
+<p>The vanilla assumption at the foundation of classical microeconomics is that a free market ("invisible hand") naturally converges to an optimal outcome.</p>
+<p>A market failure occurs when a market fails to converge to an optimal outcome.</p>
+<p>It is important to understand what can go wrong in market design. We have seen five types of market failures:</p>
+<ol>
+<li>Externalities and public goods</li>
+<li>Transaction costs</li>
+<li>Market thinness</li>
+<li>Timing issues</li>
+<li>Information asymmetry</li>
+</ol>
+<p>Mitigation strategies exist for all five types of market failures.</p>
+</div>
+<div class="summary">
+<p><strong>A Few More Points on Big Miners in Practice</strong></p>
+<p>In 2014, the GHash.io mining pool exceeded 51% of the Bitcoin hashrate. Instead of executing a 51% attack, they encouraged miners to leave the pool. Why? In order to prevent (actually to stop) a drop in the value of Bitcoin.</p>
+<p>For smaller coins (with a lower total hashrate), this is a bigger issue. If there is a lower barrier to reach 51% of the hashrate, and attackers do not care about a drop in value of a small coin, they can divert a lot of mining power for a short time period. Allegedly, 51% attacks happened (multiple times) to “Ethereum Classic.”</p>
+</div>
+<div class="example">
+<p><strong>Examples:</strong> Some fair allocations in practice</p>
+<ul>
+<li>Allocating goods:<ul>
+<li>Spliddit used to maximize social welfare subject to MMS/proportionality/EF. </li>
+<li>They decided that NSW is better.</li>
+</ul>
+</li>
+<li>Allocating classes:<ul>
+<li>Approximate-CEEI</li>
+<li>Combinatorial demand</li>
+<li>The number of students must significantly exceed the number of classes</li>
+</ul>
+</li>
+<li>Allocating chores:<ul>
+<li>Spliddit used to assign chores by assuming they’re divisible (we can use randomized rounding to assign fractional chores) and drawing new chores each week to guarantee approximate “ex-post” fairness.</li>
+<li>Then they looked for an equitable solution, and optimized over all equitable solutions using Linear Programming.</li>
+</ul>
+</li>
+<li>Allocating computing (see upcoming example from Databricks).</li>
+</ul>
+</div>
+<h3 id="practice-practice-practice-ask-good-questions">Practice, Practice, Practice: Ask Good Questions!</h3>
+<p>Thanks to guest speakers Eric, Geoff, Kshipra:</p>
+<ul>
+<li>How to train an AI that doesn’t lie (Eric Neyman)</li>
+</ul>
+<p><img alt="How to train an AI that doesn’t lie" src="../images/How%20to%20train%20an%20AI%20that%20doesn%E2%80%99t%20lie.jpg" /></p>
+<ul>
+<li>Incentives in Sponsored Search Auctions (Kshipra Bhawalkar)</li>
+</ul>
+<p><img alt="Incentives in Sponsored Search Auctions" src="../images/Incentives%20in%20Sponsored%20Search%20Auctions.png" /></p>
+<ul>
+<li>Incentive (Mis)alignment in Blockchain Exchanges (Geoff Ramseyer)</li>
+</ul>
+<p><img alt="Incentive (Mis)alignment in Blockchain Exchanges" src="../images/Incentive%20%28Mis%29alignment%20in%20Blockchain%20Exchanges.png" /></p>
+<h2 id="course-allocation">Course Allocation</h2>
+<p>This is a chance to learn a bit about Aviad's own research that connects to a lot of the topics we saw throughout the quarter.</p>
+<div class="example">
+<p><strong>The Course Allocation Problem</strong></p>
+<p>Most discussion/project/sports classes have enrollment caps. This is extremely important (“career-trajectory changing”) in MBA, law schools, etc. Note that CS269i, like many lecture-based CS classes, is (essentially) uncapped. How should we allocate limited seats in courses to students?</p>
+<p><em><strong>Serial Dictatorship</strong></em></p>
+<ul>
+<li>At Stanford (pre Fall 2023): First-Come-First-Serve, i.e. how quickly students could connect to Axess.</li>
+<li>When Aviad was an undergrad (at Technion): by seniority</li>
+<li>At Stanford (now): Mix of FCFS and seniority.</li>
+</ul>
+<p>This is strategyproof, and Pareto optimal, but not fair: for room assignment, someone always gets a better room.</p>
+<p>Contrast with Serial Dictatorship: The top dictator gets all their favorite classes (including ones they’re just shopping for). Can we at least satisfy EF1 (enfy-free-up-to-1-good)?</p>
+<p><em><strong>Fake money all-pay auction</strong></em></p>
+<ul>
+<li>Used in Aviad's masters program (Tel-Aviv University)</li>
+<li>Each student gets a budget of 100 pts, and bids on various courses</li>
+<li>Why all-pay? (Far from strategyproof):<ul>
+<li>Losing a real-money auction (I keep the money I don't spend)</li>
+<li>Losing a fake-money auction (I keep fake money I don't spend)</li>
+</ul>
+</li>
+<li>Difficult to express complex preferences, such as “I want either CS269i or CS256” </li>
+</ul>
+<p><em><strong>Competitive equilibrium from equal incomes</strong></em></p>
+<ul>
+<li>Give each agent a budget of 1 (fake money); </li>
+<li>Find prices (for courses) + allocation (schedules) such that:<ul>
+<li>Every course is either exactly full or [0-priced and under-demanded].</li>
+<li>Every student allocated favorite schedule can afford given budget constraint.</li>
+</ul>
+</li>
+<li>Note: with fake money, agents maximize value subject to budget constraint. This is different from Lecture 6 where they maximized utility = value-price.</li>
+<li>“Strategyproof in the large”, i.e. approximately strategyproof for large markets. The intuition is:<ul>
+<li>You get optimal schedule given prices.</li>
+<li>In a large market, each student a has small effect on prices.</li>
+</ul>
+</li>
+<li>Parero optimal.</li>
+<li>Fair (“equal budgets” <span class="arithmatex">\(\rightarrow\)</span> envy-free).</li>
+<li>Caveat: such a CEEI often doesn’t exist!</li>
+</ul>
+<p><em><strong>Approximate competitive equilibrium from equal incomes (A-CEEI)</strong></em></p>
+<ul>
+<li>Give each agent budget of approximately 1 (fake money).</li>
+<li>Allocation only required to approximately clear markets.</li>
+<li>Always exists! (some tradeoff in approximations of equal incomes vs market clearing).</li>
+<li>Approximately strategyproof (“SP-L: strategyproof-in-the-large”).</li>
+<li>Approximately Pareto optimal.</li>
+<li>Approximately fair (“EF1: envy-free up-to-1 good”).</li>
+<li>Always exists.</li>
+<li>Caveat: can we find it algorithmically?<ul>
+<li>Computation in theory: an intractable problem (in the worst case).</li>
+<li>Computation in practice: real instances tend to be easier: <ul>
+<li>Used in several MBA programs (medium size: 500~3000 students).</li>
+<li>Algorithm may take a few days (with a lot of compute), but only need to do this once every semester.</li>
+<li>With Ruiquan Gao and Qianfan Zhang (undergrads at the time), Aviad found a much faster heuristic algorithm—See <a href="https://arxiv.org/abs/2305.11406/">Practical algorithms and experimentally validated incentives for equilibrium-based fair division (A-CEEI)</a> paper.</li>
+<li>With that fast new heuristic algorithm we can go back and look at incentives:<ul>
+<li>In theory: Strategyproof “in the large”–need a number of students greater than the number of atoms in universe.</li>
+<li>In practice: use the fast algorithm to search for strategic manipulations. Aviad, Ruiquan, and Qianfan's algorithm found some surprising manipulations, and they used insights to create a new algorithm that is “more strategyproof”.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Punchline:</strong> It is important to think about incentives and algorithms together.</p>
+</div>
+<h2 id="parting-words">Parting Words</h2>
+<div class="remark">
+<p>We are leaving this class empowered with a lot of useful knowledge. Aviad can’t wait to see how we use these ideas 1/3/10 years from now. We should let him know when we do!</p>
+<p>We should also remember that with power comes great responsibility, and use our knowledge to make our world better.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascript/katex-init.js"></script>
+      
+    
+  </body>
+</html>
