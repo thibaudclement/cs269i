@@ -1,6 +1,6 @@
 _April 28, 2025_
 
-In the past few lectures, we discussed markets and auctions. Now, we are going to start talking about learning from the wisdom of the crowd and decentralization systems, as well as how to reason about who knows what and when. Today, in particular, we are discussing prediction markets and wisdom of the crowd.
+In the past few lectures, we discussed markets and auctions. Now, we are going to start talking about learning from the wisdom of the crowd and decentralization systems, as well as how to reason about who knows what and when. Today, in particular, we are discussing prediction markets and the wisdom of the crowd.
 
 ## Wisdom of The Crowd
 
@@ -47,7 +47,7 @@ This is called the **Bradley Effect**, the **Shy Torry Effect**, or the **Social
 
 > "If only HP knew what HP knows, we would be three times more productive." — Lew Platt
 
-Prediction markets are a very popular way to aggregate information, for instance in big corporations such as HP, Ford, Firm X, Google, Ely Lily. Prediction markets help circumbent hierarchical organization structure, and it tends to outperform experts _despite_ optimism bias (prediction markets tend to be overly optimistic).
+Prediction markets are a very popular way to aggregate information, for instance in big corporations such as HP, Ford, Firm X, Google, Ely Lily. Prediction markets help circumvent hierarchical organization structure, and it tends to outperform experts _despite_ optimism bias (prediction markets tend to be overly optimistic).
 
 <div class="example" markdown="1">
 **Example of Prediction Market:** Iowa Electronic Market (IEM)
@@ -117,7 +117,7 @@ Given the rules of the market, we can interpret the price as a probability, aggr
 
 ![Prediction Markets Price as a Probability](images/Prediction Markets Price as a Probability.png)
 
-In theory (assuming the \(\$500\)-per-trader restriction), at equilibrium prices \((p_D, p_R)\): \(Number \; of \; D-contracts = Number \; of \; D-contracts\).
+In theory (assuming the \(\$500\)-per-trader restriction), at equilibrium prices \((p_D, p_R)\): \(Number \; of \; D-contracts = Number \; of \; R-contracts\).
 
 In other words: The total budget of the predictors who think that the Democratic candidate has a probability of winning greater than \(p_D\), divided by \(p_D\), is equal to the total budget of the predictors who think that the Republican candidate has a probability of winning greater than \(p_R\), divided by \(p_R\).
 
@@ -139,7 +139,7 @@ Why was the spread so large?
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Liquidity Providers
+**Definition: Liquidity Providers**
 
 Liquidity providers buy low now and sell high later (or sell high now and buy low later). In other words, liquidity providers leave bid/ask **resting orders** on the book.
 
@@ -263,7 +263,7 @@ Here is the model of this experiment:
 </div>
 
 <div class="example" markdown="1">
-**Example** The Urn Experiment
+**Example:** The Urn Experiment
 
 This is an in-class experiment, with the following rules:
 
