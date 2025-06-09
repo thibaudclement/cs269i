@@ -11,11 +11,11 @@ When the market fails to converge to an optimal outcome.
 
 It is important to understand what can go wrong in market design and which strategies exist for mitigating these issues. In this lecture, we focus on five types of market failures:
 
-1. Externalities and public goods
-2. Transaction costs
-3. Market thinness/monopolies
-4. Timing issues
-5. Information asymmetry
+1. Externalities and public goods.
+2. Transaction costs.
+3. Market thinness/monopolies.
+4. Timing issues.
+5. Information asymmetry.
 
 ## Externalities and Public Goods
 
@@ -34,7 +34,7 @@ An externality is a market failure when market participants don't have incentive
 <div class="definition" markdown="1">
 **Definition: Public Good**
 
-Something that belongs to everybody but owned by nobody.
+Something that belongs to everybody but is owned by nobody.
 </div>
 
 A market failure occurs when market participants are under-incentivized to invest in public goods.
@@ -64,9 +64,13 @@ We usually think of those as public goods and we think of the government not as 
 
 ## Transaction Costs
 
-**Note:** Computer science really kicks in to address this market failure.
+_**Note:** Computer science really kicks in to address this market failure._
 
-Costs associated with making transactions that prevent beneficial trades.
+<div class="definition" markdown="1">
+**Definition: Transaction Costs**
+
+Transaction costs are costs associated with making transactions that prevent beneficial trades.
+</div>
 
 <div class="example" markdown="1">
 **Example**
@@ -77,7 +81,9 @@ I would be willing to pay \(\$10,000\) for a boat. You are happy at home, so you
 - In practice: Probably not, considering a \(9\%\) sales tax.
 </div>
 
-What can we do about it? Legally, not much: "nothing is certain except death and taxes."
+What can we do about it? Legally, not much:
+
+> "nothing is certain except death and taxes."
 
 <div class="example" markdown="1">
 **Example**
@@ -93,9 +99,9 @@ Finding someone with an apple might cost more than \(\$10\), even though they ar
 <div class="remark" markdown="1">
 **Transaction Costs Mitigation Strategies**
 
-Facilitating transactions matters because, even if in theory I would rather than an apple, and someone would rather have \(\$0.99\), finding them and paying them is hard.
+Facilitating transactions matters because, even if in theory I would rather have an apple, and someone would rather have \(\$0.99\), finding them and paying them is hard.
 
-Lots of companies facilitate transactions: dating apps, Couchsurfing, Airbnb, ride hailing apps, Craigslist, eBay, Amazon, TaskRabbit, StubHub, Mechanical Turk, etc.
+Lots of companies facilitate transactions: dating apps, Couchsurfing, Airbnb, ride-hailing apps, Craigslist, eBay, Amazon, TaskRabbit, StubHub, Mechanical Turk, etc.
 </div>
 
 ## Market Thickness
@@ -136,24 +142,27 @@ In a thin market:
 
 **Why are monopolies a problem?**
 
-When we consider sellers' incentives, the First Welfare Theorem extends to good with reserve prices to cover costs. For example, an Airbnb host should never rent a room below the total of their cleaning cost, insurance, and hotel tax.
+When we consider sellers' incentives, the First Welfare Theorem extends to goods with reserve prices to cover costs. For example, an Airbnb host should never rent a room below the total of their cleaning cost, insurance, and hotel tax.
 
 However, sellers setting reserve prices is _not_ strategyproof (like hospitals in DA). Moreover, sellers have simple, obvious manipulations (unlike hospitals, who had to know what other hospitals and doctors were bidding, sellers do not need that information).
 
 <div class="example" markdown="1">
 **Example: Monopoly** 
 
-Let's consider a scenario with 1 seller (\(true cost = 0\)) and 1 buyer (\(value = 100\)):
+Let's consider a scenario with 1 seller (\(true \; cost = 0\)) and 1 buyer (\(value = 100\)):
 
 - Any price between \(0\) and \(100\) would be a competitive equilibrium.
 - DA-with-prices would suggest \(p = 0\) (buyer-optimal).
 - The seller wants to set the reserve price to \(100\).
 
-On Airbnb, hosts set prices: nobody is actually running DA-with-prices. Let's recall that DA-with-prices is buyer-strategy proof but _super not_ seller-strategy proof anyway.
+On Airbnb, hosts set prices: nobody is actually running DA-with-prices. Let's recall that DA-with-prices is buyer-strategyproof but _super not_ seller-strategyproof anyway.
 </div>
 
-This is why monopolies are a real problem, especially in a thin market. However, there are ways to get around it:
-- **Thick(er) market:** As a market becomes very thick (it is far from a monopoly), then it approaches seller-strategy proof. We say that it is _strategyproof-in-the-large_.
+This is why monopolies are a real problem, especially in a thin market.
+
+However, there are ways to get around it:
+
+- **Thick(er) market:** As a market becomes very thick (it is far from a monopoly), then it approaches seller-strategyproofness. We say that it is _strategyproof-in-the-large_.
 - **Information limitation:** Sellers still need to know the buyer’s value to set a good reserve price, so if they don’t really have a lot of information, even with a monopoly, then they cannot set a very high reserve price, so information limitation helps.
 
 What can we do about it?
@@ -178,6 +187,7 @@ Solutions include:
 **Timing Issue #1: Committing to Contracts Too Early (Market Unravelling)**
 
 In the medical residency (doctor-hospitals) job market pre-NRMP:
+
 - 1900's-1940's: The market was decentralized, and hospitals were racing to make offers earlier.
 - If other hospitals were making offers in December, then you had to make offers in November (slightly more uncertainty, but much less competition).
 - If other hospitals were making offers in Novenber, ...
@@ -216,7 +226,7 @@ _**Note:** David de Gea's transfer to Real Madrid from Manchester United in 2015
 
 According to a 2005 applicant for federal judicial clerkships:
 
-_"I received the offer via voicemail while I was in flight to my second interview. The judge actually left 3 messages: the first to make the offer, the second to tell me that I should respond soon, and the third to rescind the offer. It was a 35-minute flight."_
+> "I received the offer via voicemail while I was in flight to my second interview. The judge actually left 3 messages: the first to make the offer, the second to tell me that I should respond soon, and the third to rescind the offer. It was a 35-minute flight."
 </div>
 
 <div class="example" markdown="1">
@@ -295,7 +305,7 @@ Regardless of whether a car is good or bad, there is a positive **gain from trad
 
 Here, we say that there is information asymmetry, because the seller knows the car condition, but the buyer doesn't.
 
-Let \(g \in \[0,1\]\) be the fraction of cars in the market that are in good condition. Let \(h \leq g\) be the fraction of cars in good condition also available for sale.
+Let \(g \in [0,1]\) be the fraction of cars in the market that are in good condition. Let \(h \leq g\) be the fraction of cars in good condition also available for sale.
 
 What do we expect at market equilibrium?
 
@@ -370,10 +380,10 @@ What can we do about it?
 **Adverse Selection Mitigation Strategies**
 
 - **Provide more information to both sides of the market**
-    - For example, if you sell your car, there are mandatory disclosures, you are required by law in many states to say if you have problems with your car.
+    - For example, if you sell your car, there are mandatory disclosures (you are required by law in many states to say if you have problems with your car).
     - Before Obamacare, by law, you had to declare pre-existing health conditions, and that could hike up health insurance prices.
     - You can invest in reputation systems (rating on Yelp, Amazon), which comes with lots of great incentives in CS questions.
-- **Disallow the use of information on both sides on both sides of the market**
+- **Disallow the use of information on both sides of the market**
     - For instance, with universal healthcare, you have to give health insurance to everyone, which does not allow health insurance companies to use information to pick and choose college students.
     - In the stock market, there are regulations about insider trading, where if you have insider information about whether a stock is going to go up or down, you cannot use this information to invest.
 - **Disincentivize lemons**
@@ -396,11 +406,11 @@ A market failure occurs when a market fails to converge to an optimal outcome.
 
 We have seen five types of market failures:
 
-1. Externalities and public goods
-2. Transaction costs
-3. Market thinness
-4. Timing issues
-5. Information asymmetry
+1. Externalities and public goods.
+2. Transaction costs.
+3. Market thinness.
+4. Timing issues.
+5. Information asymmetry.
 
 Mitigation strategies exist for all five types of market failures.
 </div>
