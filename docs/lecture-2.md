@@ -16,16 +16,16 @@ After medical school, med students start their internship called a "residency." 
 Given a match \(M\), the pair (doctor \(i\), hospital \(j\)) forms a blocking pair if they prefer each other to their current assignments in \(M\).
 </div>
 
-For example, if Doctor \(n\) prefers Stanford over UCSF and Stanford prefers Doctor \(n\) over Doctor 1, who is currently matched, then (Doctor \(n\), Stanford) form a blocking pair. This results in an **Unstable Matching**.
+For example, if Doctor \(n\) prefers Stanford over UCSF and Stanford prefers Doctor \(n\) over Doctor 1, who is currently matched, then (Doctor \(n\), Stanford) forms a blocking pair. This results in an **Unstable Matching**.
 
-**Note:** Blocking pairs exist only in two-sided matching markets. In a 1-sided matching, we cannot have blocking pairs, because in a blocking pair, both participants need to prefer each other. In the Stanford Undergraduate Housing Problem, even though students have preferences over dorms, dorms do not have preferences over students.
+_**Note:** Blocking pairs exist only in two-sided matching markets. In a 1-sided matching, we cannot have blocking pairs, because in a blocking pair, both participants need to prefer each other. In the Stanford Undergraduate Housing Problem, even though students have preferences over dorms, dorms do not have preferences over students._
 
 <div class="definition" markdown="1">
 <strong>Definition: Stable Matching</strong>
 
 A matching \(M\) is stable if there are no blocking pairs. Equivalently, for every unmatched pair \((i,j)\), either:
 
-- Doctor \(i\) prefers Hospital \(M(i)\) over Hospital \(j\), or;
+- Doctor \(i\) prefers Hospital \(M(i)\) over Hospital \(j\), or
 - Hospital \(j\) prefers Doctor \(M(j)\) over Doctor \(i\).
 </div>
 
@@ -61,7 +61,7 @@ Consider the following agents and their respective preferences:
 Stable matching result: \((Alice, X), (Bob, Y), (Charlie, Z)\).
 </div>
 
-**Note:** No matter the order chosen to process the doctors, we always find the stable matching. 
+_**Note:** No matter the order chosen to process the doctors, we always find the stable matching._
 
 <div class="theorem" markdown="1">
 <strong>Theorem: Runtime of Deferred Acceptance</strong>
@@ -84,7 +84,7 @@ This is important, because when inputs are of non-trivial size, we want to make 
 **Why is each proposal \(O(1)\)?** We assume that doctor \(i\) already has a ranked list of preferences (how we get the preferences is non-trivial but outside of this algorithm). On every iteration, all we do is advance to the next hospital in the list of a doctor’s preferences (for instance, in the case of \(Bob\) above, we moved from Hospital \(Y\) to Hospital \(X\)). When a hospital needs to determine whether it prefers its current match \(i'\) over \(i\) (or not), it can use an array with the preferences of doctors (ranked): this way, it can compare the ranks in \(O(1)\) time.
 
 <div class="theorem" markdown="1">
-<strong>Theorem: Deferred Acceptance is Stable</strong>
+<strong>Theorem: Deferred Acceptance is Stable.</strong>
 
 Given \(n\) doctors and \(n\) hospitals, Deferred Acceptance outputs a complete stable matching.
 </div>
@@ -107,7 +107,7 @@ We prove that Deferred Acceptance outputs a complete stable matching with three 
 Therefore, no blocking pairs exist.
 </div>
 
-**How does this proof work?** _Claim 1_ states that we have already matched some doctors and hospitals, and we assume that the matching so far is stable. _Claim 2_ states tgat once a hospital is matched, it may be matched to another doctor, but it never gets unmatched (however, doctors can get unmatched). _Claim 3_ states that no doctor, and no hospital, is unmatched at the end of the matching. Since we know that the matching is stable after each iteration, and there is no one left unmatched at the end, then the matching at the end is stable.
+**How does this proof work?** _Claim 1_ states that we have already matched some doctors and hospitals, and we assume that the matching so far is stable. _Claim 2_ states that once a hospital is matched, it may be matched to another doctor, but it never gets unmatched (however, doctors can get unmatched). _Claim 3_ states that no doctor, and no hospital, is unmatched at the end of the matching. Since we know that the matching is stable after each iteration, and there is no one left unmatched at the end, then the matching at the end is stable.
 
 <div class="proof" markdown="1">
 <strong>Proof of Claims:</strong>
@@ -122,18 +122,18 @@ Therefore, no blocking pairs exist.
 We know that Deferred Acceptance always finds a stable matching. Is it optimal? What does optimality mean?
 
 <div class="theorem" markdown="1">
-<strong>Theorem: Efficiency of Stable Matchings</strong>
+<strong>Theorem: Efficiency of Stable Matchings.</strong>
 
 Every stable matching is Pareto-optimal.
 </div>
 
-**Reminder:** An assignment \( A \) is Pareto-optimal if for any other assignment \( B \), there is a participan that (strictly) prefers \( A \) over \( B \).
+**Reminder:** An assignment \( A \) is Pareto-optimal if for any other assignment \( B \), there is a participant that (strictly) prefers \( A \) over \( B \).
 
 <div class="proof" markdown="1">
 <strong>Proof:</strong> Any deviation from a stable matching worsens at least one participant’s outcome.
 </div>
 
-**Comment:** If we take the stable matching, and any other matching (whether it is stable or not), there are going to be some doctors and/or some hospitals that prefer the stable matching over that other matching.
+_**Note:** If we take the stable matching, and any other matching (whether it is stable or not), there are going to be some doctors and/or some hospitals that prefer the stable matching over that other matching._
 
 <div class="theorem" markdown="1">
 <strong>Theorem: The matching returned by the Deferred Acceptance mechanism is doctor-optimal.</strong>
@@ -141,7 +141,9 @@ Every stable matching is Pareto-optimal.
 In other words, every doctor is matched to their favorite hospital possible in any stable matching.
 </div>
 
-**If we have multiple stable matchings, which one is the best one?** Doctor-optimality means that every doctor gets the best hospital they can possibly get out of any stable matching. When we talked about the student-dorms 1-sided matching, it was possible that some students were happier, while others were sadder, depending on the matching (we had some trade-offs). However, here, among all stable matchings, the matching that DA outputs is the best for every single doctor simultaneously. An implication of this theorem is that the Deferred Acceptance mechanism is also doctor-strategyproof.
+**If we have multiple stable matchings, which one is the best one?** 
+
+Doctor-optimality means that every doctor gets the best hospital they can possibly get out of any stable matching. When we talked about the student-dorms 1-sided matching, it was possible that some students were happier, while others were sadder, depending on the matching (we had some trade-offs). However, here, among all stable matchings, the matching that DA outputs is the best for every single doctor simultaneously. An implication of this theorem is that the Deferred Acceptance mechanism is also doctor-strategyproof.
 
 <div class="theorem" markdown="1">
 <strong>Corollary: Deferred Acceptance is doctor-strategyproof.</strong>
@@ -192,7 +194,7 @@ In practice, doctors do not rank all possible hospitals, and hospitals do not ra
 
 **Question 5: As a doctor, if you know that a hospital is misrepresenting their preferences, is it still doctor-stragegyproof?**
 
-From the doctor’s perspective, the hospitals submit some ranked lists of doctors, but they don’t know whether it truthful or not, so this is still doctor-stragegyproof. However, if a doctor can influence how a hospital reports their preferences, then they can game the system.
+From the doctor’s perspective, the hospitals submit some ranked lists of doctors, but they don’t know whether it is truthful or not, so this is still doctor-stragegyproof. However, if a doctor can influence how a hospital reports their preferences, then they can game the system.
 
 ## Deferred Acceptance in Practice
 
@@ -235,11 +237,11 @@ Hospitals also use "safety choices" after interviews: they may not rank first th
 **Yet, hospitals still strategically use "safety choices" when ranking doctors post interview. Why?**
 
 - One possible explanation is ignorance of matching mechanisms and their properties (they did not take CS269I).
-- Another possible explanation is that they consider their reputation/ego. after the matching is complete, the organization that handles the matching publishes the “number needed to fill” metric, which is the lowest ranking a hospital had to go to fill their positions. This is helpful for doctors the following year to get a sense of how competitive a program is, which is therefore also a signal of how prestigious a program is. For instance, Stanford probably don’t have to be turned down by many doctors, so their number is low, while less prestigious hospitals may need to go through more doctors and have a higher number. If a hospital ranks higher doctors that they think will join them, they can reduce their “number needed to fill” metric and appear more prestigious.
+- Another possible explanation is that they consider their reputation/ego. After the matching is complete, the organization that handles the matching publishes the “number needed to fill” metric, which is the lowest ranking a hospital had to go to fill their positions. This is helpful for doctors the following year to get a sense of how competitive a program is, which is therefore also a signal of how prestigious a program is. For instance, Stanford probably don’t have to be turned down by many doctors, so their number is low, while less prestigious hospitals may need to go through more doctors and have a higher number. If a hospital ranks higher doctors that they think will join them, they can reduce their “number needed to fill” metric and appear more prestigious.
 
 **Other DA Applications:**
 
-- **Routing Network Packets:** Suppose that instead of doctors and hospitals, you want to match packets to servers on the internet. When you own all the servers, you don't have to worry about them matching outside of your algorithm. This would apply to a company like Akamai, who owns a lot of servers—and it actually works better in practice than in theory (because DA is very fact in practice). Packets typically get one of the top servers, so preferences lists are truncated, and the total running time is closer to \(O(n)\). Given the highly distributed nature of packet routing, every packet looks for its own server. 
+- **Routing Network Packets:** Suppose that instead of doctors and hospitals, you want to match packets to servers on the internet. When you own all the servers, you don't have to worry about them matching outside of your algorithm. This would apply to a company like Akamai, who owns a lot of servers—and it actually works better in practice than in theory (because DA is very fast in practice). Packets typically get one of the top servers, so preferences lists are truncated, and the total running time is closer to \(O(n)\). Given the highly distributed nature of packet routing, every packet looks for its own server. 
 - **Stanford Marriage Pact:** Matches are made between Stanford students who want to make a pact, i.e. "If we don't get married by time X, we will marry each other." DA is not used anymore (they use something closer to max weight matching instead) because in the 21st century, the graph is not bipartite, due to people having many different preferences. Stability is not a very important part of the requirement, because in practice, Stanford students spend their time looking for a partner outside of the pact/matching.
 
 ## Recap
@@ -247,6 +249,6 @@ Hospitals also use "safety choices" after interviews: they may not rank first th
 <div class="summary" markdown="1">
 <strong>Recap:</strong>
 
-- **In theory:** DA in theory is Pareto-optimal among all matchings, doctor-optimal and hospital-worst among stable matchings, and doctor-strategyproof but not not hospital-strategyproof.
+- **In theory:** DA is Pareto-optimal among all matchings, doctor-optimal and hospital-worst among stable matchings, and doctor-strategyproof but not hospital-strategyproof.
 - **In practice:** DA is expensive (collecting preferences is costly, e.g. holistic admissions in US colleges and interview in hospitals) and preferences may not be captured by the model (e.g. matching couples).
 </div>
