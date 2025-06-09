@@ -854,7 +854,7 @@
 <p>Given a demand curve <span class="arithmatex">\(D\)</span>, Myerson's theorem provides a formula to determine the price <span class="arithmatex">\(p(D)\)</span> that maximizes revenue, i.e. the rectangle under the curve.</p>
 </div>
 <p>This is the revenue-optimal way to sell one item to one buyer: we fix the price and we charge the price from this one buyer.</p>
-<p><strong>Note:</strong> This is non-trivial. There are many extensions of this simple setting where the theorem does not hold.</p>
+<p><em><strong>Note:</strong> This is non-trivial. There are many extensions of this simple setting where the theorem does not hold.</em></p>
 <div class="example">
 <p><strong>Motivation #2: Ad Auctions</strong></p>
 <p>In ad auctions, we tend to have a lot of data and very good machine learning, which enables very accurate targeting.</p>
@@ -876,7 +876,7 @@
 <li>In contrast, the utility of a bidder who <em>doesn't receive</em> the item and still pays <span class="arithmatex">\(p_i\)</span> is: <span class="arithmatex">\(u = -p_i\)</span>.</li>
 </ul>
 </div>
-<p><strong>Note:</strong> We are still auctioning only one item. Auctioning multiple items is super complicated: this is where Myerson’s theorem completely breaks, a,d there is a lot of complicated math involved.</p>
+<p><em><strong>Note:</strong> We are still auctioning only one item. Auctioning multiple items is super complicated: this is where Myerson’s theorem completely breaks, as there is a lot of complicated math involved.</em></p>
 <div class="definition">
 <p><strong>Definitions: Types of Auctions</strong></p>
 <p><em><strong>Open-Cry Auctions</strong></em></p>
@@ -921,7 +921,7 @@
 <p>Intuitively, bids should be lower than with first-price auctions.</p>
 <p><strong>What are some applications of all-pay auction in practice?</strong></p>
 <p>In practice, all-pay auctions are rarely used. They are useful for modeling sunk-cost of losers in situations like political lobbying, where players are putting a lot of money to get people to vote yes/no on a ballot, and regardless of the outcome, the money for campaigning is gone. Another example will be covered in the last lecture of the quarter.</p>
-<p><strong>Note:</strong> In general, all-pay auctions are very hard for bidders to determine how to bid. They are very not truthful.</p>
+<p><em><strong>Note:</strong> In general, all-pay auctions are very hard for bidders to determine how to bid. They are very not truthful.</em></p>
 <div class="definition">
 <p><strong>Definition: Second-Price Auction</strong></p>
 <ul>
@@ -932,7 +932,7 @@
 <p><em><strong>Note:</strong> This is an important type of auction.</em></p>
 </div>
 <p><strong>Do we expect bidders to bid higher or lower than their true value?</strong></p>
-<p>We expect bidders to bid exactly their true value: this is strategy-proof.</p>
+<p>We expect bidders to bid exactly their true value: this is strategyproof.</p>
 <div class="theorem">
 <p><strong>Theorem:</strong> Second-price auction is strategyproof.</p>
 <p>Formally, truthful bidding is a dominant strategy, i.e. for any fixed bids <span class="arithmatex">\(b_j\)</span>, for all <span class="arithmatex">\(j \neq i\)</span>, bidding <span class="arithmatex">\(b_i = v_i\)</span> is optimal for bidder <span class="arithmatex">\(i\)</span>.</p>
@@ -1020,7 +1020,7 @@
 <p>This is a Bayesian example: Alice does not know Bob’s value, Bob does not know Alice’s value, and the auctioneer does not know any of their values.</p>
 <p>We assume that we draw both Alice and Bob's values, respectively (independently), uniformly at random between 0 and 1. Because this is strategyproof, regardless of what Alice bids, Bob wants to bid their true value, and by symmetry, the same is true for Alice: we expect their bids to be their true values.</p>
 <p>So, in expectation, the revenue is the expectation over the minimum of their true values, since the higher bid is going to win and pay the lower bid.</p>
-<p><strong>Note:</strong> The expectation of the minimum of two independent random variables drawn uniformly between zero and one is <span class="arithmatex">\(\frac{1}{3}\)</span>, hence the result.</p>
+<p><em><strong>Note:</strong> The expectation of the minimum of two independent random variables drawn uniformly between zero and one is <span class="arithmatex">\(\frac{1}{3}\)</span>, hence the result.</em></p>
 <div class="example">
 <p><strong>Example 2:</strong> Bayesian</p>
 <p>Consider the case of a first-price auction, with the same two bidders:</p>
@@ -1051,8 +1051,8 @@
 <div class="remark">
 <p>Interestingly:</p>
 <ul>
-<li>In Example 1: Full Information, where <span class="arithmatex">\(v_A = 1\)</span> and <span class="arithmatex">\(v_B = 2\)</span>, first-price auction and second-price auction both had <span class="arithmatex">\(Revenue = 1\)</span>.</li>
-<li>In Example 2: Bayesian, where <span class="arithmatex">\(v_A = Uni[0,1]\)</span> and <span class="arithmatex">\(v_B = Uni[0,1]\)</span>, first-price auction and second-price auction (as well as all-pay auction) had <span class="arithmatex">\(Revenue = \frac{1}{3}\)</span>.</li>
+<li>In <strong>Example 1</strong>: Full Information, where <span class="arithmatex">\(v_A = 1\)</span> and <span class="arithmatex">\(v_B = 2\)</span>, first-price auction and second-price auction both had <span class="arithmatex">\(Revenue = 1\)</span>.</li>
+<li>In <strong>Example 2</strong>: Bayesian, where <span class="arithmatex">\(v_A = Uni[0,1]\)</span> and <span class="arithmatex">\(v_B = Uni[0,1]\)</span>, first-price auction and second-price auction (as well as all-pay auction) had <span class="arithmatex">\(Revenue = \frac{1}{3}\)</span>.</li>
 </ul>
 <p>This is not a coincidence.</p>
 </div>
@@ -1061,7 +1061,7 @@
 <p>At equilibrium, expected payments are fully determined by the auction's allocation rule.</p>
 </div>
 <p>In other words, in any auction that always gives the good to the max-value buyer, in expectation every buyer pays the same, and in particular, revenue is the same.</p>
-<p>In all auction types seen so far, the allocation rule was that the bidder with the highest true true always got the item, which is why they all have the same revenue.</p>
+<p>In all auction types seen so far, the allocation rule was that the bidder with the highest true value always got the item, which is why they all have the same revenue.</p>
 <p>However, this is not always satisfied in real life, for example in the following cases:</p>
 <ul>
 <li>When a bidder overbids in a second-price auction: if Alice bids <span class="arithmatex">\(100\)</span> and Bib bids <span class="arithmatex">\(0\)</span>, then Alice pays <span class="arithmatex">\(0\)</span> and gets the item. This is an equilibrium, although not a stable one.</li>
