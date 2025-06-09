@@ -913,16 +913,18 @@
 <p><strong>Question: Are both Messi and Lloris’s decisions happening at the same time or is one reacting to the other?</strong></p>
 <p>Lloris does not have time to see what Messi does, so both are happening at the same time.</p>
 <h2 id="equilibrium-in-2-player-zero-sum-games">Equilibrium in 2-Player Zero-Sum Games</h2>
-<p>Assumptions:
-- There are 2 players (Lloris and Messi).
-- This is a Zero-sum game, meaning that their incentives are perfectly misaligned: what Lloris wants is exactly the opposite of what Messi wants.</p>
+<p>Assumptions:</p>
+<ul>
+<li>There are 2 players (Lloris and Messi).</li>
+<li>This is a Zero-sum game, meaning that their incentives are perfectly misaligned: what Lloris wants is exactly the opposite of what Messi wants.</li>
+</ul>
 <p>Messi wants to optimize the probability of goal, i.e. he wants to maximize over all his possible kick strategies, assuming the worst possible jumping strategy for Lloris:</p>
 <div class="arithmatex">\[
-  Messi's \; opt: \underset{kick-stratregy}{max} \underset{jump-stratregy}{min} Pr[goal]
+  Messi's \; opt: \underset{kick-stratregy}{max} \; \underset{jump-stratregy}{min} \; Pr[goal]
 \]</div>
 <p>Lloris has the opposite optimization problem: he wants to figure out how to jump, he knows Messi is going to kick in the direction that makes it as hard as possible for him, and he wants to minimize the probability of goal:</p>
 <div class="arithmatex">\[
-  Lloris's \; opt: \underset{jump-stratregy}{min} \underset{kick-stratregy}{max}  Pr[goal]
+  Lloris's \; opt: \underset{jump-stratregy}{min} \; \underset{kick-stratregy}{max} \; Pr[goal]
 \]</div>
 <div class="theorem">
 <p><strong>Theorem:</strong> Messi’s max-min = Nash equilibrium = Lloris’s min-max.</p>
@@ -935,31 +937,31 @@
 <p><strong>Case Study: "Heads Up" (2-Player) Poker</strong></p>
 <p>Rough rules of Poker:</p>
 <ul>
-<li>Every player is dealt 2 cards (private information)</li>
-<li>Players bet during betting round</li>
-<li>There are some open cards on the table (public information)</li>
-<li>We determine which player's private cards are a better match to the cards on the table</li>
+<li>Every player is dealt 2 cards (private information).</li>
+<li>Players bet during betting round.</li>
+<li>There are some open cards on the table (public information).</li>
+<li>We determine which player's private cards are a better match to the cards on the table.</li>
 </ul>
 <p><strong>Can we use Linear Programming to compute the Nash Equilibrium strategy?</strong></p>
-<p>Linear Programming is fast, but Poker is a <em>very</em> large game. How large? Large enough that someone write a research paper about it—actually, about an <em>algorithm</em> for <em>estimating</em> how large it is.</p>
-<p>In fact, there 56 trillion possible card combinations. However, this is not the only thing to consider: we also need to take into account how the other player is betting. Then, the number of possible combinations of what could happen becomes <span class="arithmatex">\(10^{160}\)</span>. Efficient Linear Programming algorithms are not fast enough.</p>
+<p>Linear Programming is fast, but Poker is a <em>very</em> large game. How large? Large enough that someone wrote a research paper about it—actually, about an <em>algorithm</em> for <em>estimating</em> how large it is.</p>
+<p>In fact, there are 56 trillion possible card combinations. However, this is not the only thing to consider: we also need to take into account how the other player is betting. Then, the number of possible combinations of what could happen becomes <span class="arithmatex">\(10^{160}\)</span>. Efficient Linear Programming algorithms are not fast enough.</p>
 </div>
 <p>Poker is an extensive-form game, because there are turns. In game theory, an extensive-form game represents a strategic interaction where players make decisions sequentially, and the order of moves is explicitly modeled using a game tree.</p>
-<div class="theorem">
+<div class="definition">
 <p><strong>Definitions: Game Theory Terminology Overload</strong></p>
 <ul>
-<li><strong>Game Node:</strong> State of the game (i.e. all cards dealt, and all bets made, so far)</li>
-<li><strong>Game Tree:</strong> Graph representing which game nodes are reachable from which game node (i.e. there is an edge if we can go from <span class="arithmatex">\(A\)</span> to <span class="arithmatex">\(B\)</span> by calling another bet)</li>
+<li><strong>Game Node:</strong> State of the game (i.e. all cards dealt, and all bets made, so far).</li>
+<li><strong>Game Tree:</strong> Graph representing which game nodes are reachable from which game node (i.e. there is an edge if we can go from <span class="arithmatex">\(A\)</span> to <span class="arithmatex">\(B\)</span> by calling another bet).</li>
 <li><strong>Information Set:</strong> All the game nodes consistent with a player's information.</li>
 </ul>
 </div>
 <p>The most important part is the <em>Information Set</em>, which represents all the games nodes consistent with a player’s information, i.e. there are different states of the game that correspond to different cards that other players could be holding.</p>
-<p><strong>Why should we worry about all the possible game states? Why can't we just solve the current state/information ste in real time?</strong></p>
+<p><strong>Why should we worry about all the possible game states? Why can't we just solve the current state/information set in real time?</strong></p>
 <p>What a player wants to do at a given state of the the game depends on what they know (what they see), but it also depends on what the other players are going to do, which in turns depends on what they think that original player is going to do, and what they think that player is going to do depends on the cards they have now, but also what they might do with other cards.</p>
 <div class="definition">
 <p><strong>Algorithmic Insight #1: Use the Blueprint strategy.</strong></p>
 <ol>
-<li>Blueprint solves a corase approximation of Poker ("only" <span class="arithmatex">\(10^13\)</span> states, i.e. <span class="arithmatex">\(50TB\)</span> to store 1 strategy).</li>
+<li>Blueprint solves a coarse approximation of Poker ("only" <span class="arithmatex">\(10^{13}\)</span> states, i.e. <span class="arithmatex">\(50TB\)</span> to store 1 strategy).</li>
 <li>During live play: we can use Blueprint to solve the actual information set, i.e. to estimate what the other player thinks we would do if we had their informations set.</li>
 </ol>
 </div>
@@ -977,14 +979,14 @@
 <p><strong>Recap: 2-Player 0-Sum Game</strong></p>
 <p>At Nash equilibirum:</p>
 <ul>
-<li>Both players choose actions randomly</li>
-<li>Neither player can gain from changing distribution</li>
-<li>Theorem: max-min = Nash equilibrium = min-max</li>
+<li>Both players choose actions randomly.</li>
+<li>Neither player can gain from changing distribution.</li>
+<li>Theorem: max-min = Nash equilibrium = min-max.</li>
 </ul>
 <p>Algorithms for computing Nash equilibrium:</p>
 <ul>
-<li>Linear programming</li>
-<li>Regret minimization</li>
+<li>Linear programming.</li>
+<li>Regret minimization.</li>
 </ul>
 </div>
 <h2 id="nash-equilibrium-in-non-zero-sum-games">Nash Equilibrium in Non-Zero-Sum Games</h2>
@@ -1037,7 +1039,7 @@
 </tr>
 </tbody>
 </table>
-<p>Therefore: <span class="arithmatex">\(Lloris's utility = Pr[save] - Pr[goal]\)</span>.</p>
+<p>Therefore: <span class="arithmatex">\(Lloris's \; utility = Pr[save] - Pr[goal]\)</span>.</p>
 <table>
 <thead>
 <tr>
@@ -1144,15 +1146,15 @@
 <p>What does this mean?</p>
 <ul>
 <li>If we both wait, we both get 0, nobody is moving.</li>
-<li>If we go and other person waits, we get 1 and they get 0.</li>
+<li>If we go and the other person waits, we get 1 and they get 0.</li>
 <li>If we wait and the other person goes, we get 0 and they get 1.</li>
-<li>If we both go, we are very happy, we get a very negative utility, we have an accident.</li>
+<li>If we both go, we are very unhappy, we get a very negative utility, we have an accident.</li>
 </ul>
 <p>This implies the following equilibria:</p>
 <ul>
 <li><strong>Asymmmetric equilibria:</strong> (Go, Wait), (Wait, Go), i.e. if they go, we want to wait, and vice versa.</li>
-<li><strong>Symmetric equilibria:</strong> Go with a probability of <span class="arithmatex">\(1\%\)</span> and Wait with a probability of <span class="arithmatex">\(99\%\)</span>, i.e. we each independently go with a probability of <span class="arithmatex">\(1\%\)</span> and wait with a probability of <span class="arithmatex">\(99\%\)</span>—which is not great, since there is still a <span class="arithmatex">\(1/10000\)</span> probability of colliding.</li>
-<li><strong>Correlated Equilibrium</strong>: (Go, Wait) with a probability of <span class="arithmatex">\(50\%\)</span> and (Wait, Go) with a probability of <span class="arithmatex">\(50\%\)</span>, i.e. we go and they wait with a probability of <span class="arithmatex">\(50\%\)</span>, and we wait and they go with a probability of <span class="arithmatex">\(50\%\)</span>. This is a correlated distribution: it is not independent. To implement this, we need a correlating device, i.e. something that is going to help us correlate our choices, such as a spotlight. For instance, the spotlight, with a probability of <span class="arithmatex">\(50\%\)</span> is going to show us red and show them green, or vice versa, but it is never going to show us both green (hopefully).</li>
+<li><strong>Symmetric equilibria:</strong> Go with a probability of <span class="arithmatex">\(1\%\)</span> and Wait with a probability of <span class="arithmatex">\(99\%\)</span>, i.e. we each independently go with a probability of <span class="arithmatex">\(1\%\)</span> and wait with a probability of <span class="arithmatex">\(99\%\)</span>—which is not great, since there is still a <span class="arithmatex">\(\frac{1}{10000}\)</span> probability of colliding.</li>
+<li><strong>Correlated Equilibrium</strong>: (Go, Wait) with a probability of <span class="arithmatex">\(50\%\)</span> and (Wait, Go) with a probability of <span class="arithmatex">\(50\%\)</span>, i.e. we go and they wait with a probability of <span class="arithmatex">\(50\%\)</span>, and we wait and they go with a probability of <span class="arithmatex">\(50\%\)</span>. This is a correlated distribution: it is not independent. To implement this, we need a correlating device, i.e. something that is going to help us correlate our choices, such as a traffic light. For instance, the traffic light, with a probability of <span class="arithmatex">\(50\%\)</span> is going to show us red and show them green, or vice versa, but it is never going to show us both green (hopefully).</li>
 </ul>
 </div>
 <div class="definition">
@@ -1160,8 +1162,8 @@
 <p>A correlating device sends each player a secret recommended action ("signal") from a pubicly-known correlated distribution. No player can gain from deviating from the recommended action.</p>
 </div>
 <p>In other words, when we have a correlated distribution over actions that gives a signal/recommended action, if the other player follows their recommended action, it is in our best interest to follow our own recommended action.</p>
-<p>For instance, if the spotlight shows us red, it is probably because someone else has green, so we don’t want to go, but if the spotlight shows us green, then we know everyone must have red, so we might as well go.</p>
-<p><strong>Note:</strong> Every Nash equilibrium is an (un)correlated equilibrium.</p>
+<p>For instance, if the traffic light shows us red, it is probably because someone else has green, so we don’t want to go, but if the traffic light shows us green, then we know everyone must have red, so we might as well go.</p>
+<p><em><strong>Note:</strong> Every Nash equilibrium is an (un)correlated equilibrium.</em></p>
 <p><strong>Good news:</strong></p>
 <ul>
 <li>A correlated equilibrium can be computed efficiently (e.g. with Linear Programming).</li>
@@ -1173,10 +1175,10 @@
 <p>Both types of equilibria rely on a correlating device to send each player a secret recommended action ("signal") from a publicly-known correlated distribution. However:</p>
 <ul>
 <li>In the <strong>correlated equilibrium:</strong> Players choose to follow the recommended action <em>after</em> seeing it.</li>
-<li>In the <strong>coarse correlated equilibrium:</strong> Players want to follow their average recommended action, byt may not like some recommendations.</li>
+<li>In the <strong>coarse correlated equilibrium:</strong> Players want to follow their average recommended action, but may not like some recommendations.</li>
 </ul>
-<p><strong>Question: How do we know which algorithm and the equilibrium are appropriate?</strong></p>
-<p>One way to think about it is to remember that agents are going to do what is good for them. If you think players are going to use the simplest algorithm, it is probably external regret minimizing, they will like end up at the coarse correlated equilibrium. If you expect them to use a more sophisticated swap-regret algorithm (which has other game theory advantages), you expect them to end up at the correlated algorithm.</p>
+<p><strong>Question: How do we know which algorithm and equilibrium are appropriate?</strong></p>
+<p>One way to think about it is to remember that agents are going to do what is good for them. If you think players are going to use the simplest algorithm, it is probably external-regret minimizing, so they will likely end up at the coarse correlated equilibrium. If you expect them to use a more sophisticated swap-regret algorithm (which has other game theory advantages), you expect them to end up at the correlated algorithm.</p>
 <p><strong>Bad News:</strong></p>
 <ul>
 <li>Just like the Nash equilibrium, the correlated equilibrium is not unique, and sometimes, it does not even make sense (cf. the CS269I Grade Game).</li>
@@ -1210,7 +1212,7 @@
 <p>However, suppose now that you are playing against a "dog driver":</p>
 <ul>
 <li>You don't trust the dog to be rational.</li>
-<li>You don't trust the dog to follow the correlating device (the spotlight signal).</li>
+<li>You don't trust the dog to follow the correlating device (the traffic light signal).</li>
 <li>You wait... so the dog can go.</li>
 </ul>
 <p><strong>Conclusion:</strong> The dog is better than you at the Intersection Game. More generally, committing to a strategy gives power.</p>
@@ -1226,9 +1228,9 @@
 </div>
 <p>In other words, the Follower's strategy is a best response to what the strategy chosen by the Leader, and the Leader chooses the optimal strategy for them assuming that the Follower is going to pick a best response.</p>
 <div class="theorem">
-<p>The Leader’s utility, in the optimal Stackerlberg equilibrium, is at least what they can get in any possible equilibrium.</p>
+<p><strong>Theorem:</strong> The Leader’s utility, in the optimal Stackerlberg equilibrium, is at least what they can get in any possible equilibrium.</p>
 </div>
-<p><strong>Note:</strong> If we think about the games we talked about so far, we talked about mixed strategies. For instance, Messi did not want to tell Lloris which side he was going to kick. However, in the Stackelberg equilibrium, without loss of generality, the follower is using a deterministic action, because the leader is already committed to a strategy, and the fact that the follower is using a deterministic action gives us an efficient algorithm using Linear Programming agin (it is something that we can compute efficiently).</p>
+<p><em><strong>Note:</strong> If we think about the games we talked about so far, we talked about mixed strategies. For instance, Messi did not want to tell Lloris which side he was going to kick. However, in the Stackelberg equilibrium, without loss of generality, the follower is using a deterministic action, because the leader is already committed to a strategy, and the fact that the follower is using a deterministic action gives us an efficient algorithm using Linear Programming agin (it is something that we can compute efficiently).</em></p>
 <div class="example">
 <p><strong>Mini Case Study: Security Games</strong></p>
 <p>A Stackelberg equilibrium may be used to model how security games where:</p>
@@ -1238,16 +1240,16 @@
 </ul>
 <p>In practice, this is deployed in a variety of domains:</p>
 <ul>
-<li>Infrastructure (airport security)</li>
-<li>Nature (wildlife protection)</li>
-<li>Urban crime (LA Metro)</li>
-<li>Cybersecurity (honeypots, audits)</li>
+<li>Infrastructure (airport security).</li>
+<li>Nature (wildlife protection).</li>
+<li>Urban crime (LA Metro).</li>
+<li>Cybersecurity (honeypots, audits).</li>
 </ul>
 <p>Challenges in real-world applications include:</p>
 <ul>
 <li><strong>Algorithmic difficulty:</strong> How to deal with the combinatorial number of possible actions (e.g. a route in a large road network)?</li>
 <li><strong>Uncertainty:</strong> What are the attacker's payoffs? Is the attacker rational? Will the defender be able to executed their strategy as planned?</li>
-<li><strong>Collagoration with human defenders:</strong> Will patrol teams follow, or feel "micro-managed" by, the algorithm?</li>
+<li><strong>Collaboration with human defenders:</strong> Will patrol teams follow, or feel "micro-managed" by, the algorithm?</li>
 </ul>
 </div>
 <h2 id="recap">Recap</h2>

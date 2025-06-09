@@ -817,9 +817,10 @@
 <p><em>April 9, 2025</em></p>
 <p>So far in this class, agents had dominant strategies, such as doctor reporting their true preferences in DA, so we had a good guess of what they should do. However, what should agents do without dominant strategies or even knowledge of the game's rules? In other words, what should selfish agents do when the mechanism is not strategyproof, and possibly not fully specified? Let's explore this question from a single agent's perspective.</p>
 <h2 id="regret-minimization">Regret Minimization</h2>
-<p>If we know which stocks are going to go up and down, we should buy the stocks that are going to go up and sell them before they are going to go down. But what do we do when we don’t know that? We want an algorithm that will explain how to invest well in the stock market First, we will try to use historical performance of stocks to determine what to do tomorrow.</p>
+<p>If we know which stocks are going to go up and down, we should buy the stocks that are going to go up and sell them before they are going to go down. But what do we do when we don’t know that? We want an algorithm that will explain how to invest well in the stock market. First, we will try to use historical performance of stocks to determine what to do tomorrow.</p>
 <div class="example">
-<p><strong>Scenario 1:</strong> Consider investing in stocks without knowledge of future performance:</p>
+<p><strong>Scenario 1</strong></p>
+<p>Consider investing in stocks without knowledge of future performance:</p>
 <ul>
 <li>There are <span class="arithmatex">\(n\)</span> possible actions (stocks).</li>
 <li>We run an algorithm over <span class="arithmatex">\(T\)</span> days.</li>
@@ -834,12 +835,13 @@
 <p>A pretty natural guess is to try a greedy algorithm, called <strong>Follow The Leader</strong>, where on every day, we just take the action that has generated the most reward so far.</p>
 <div class="definition">
 <p><strong>Algorithm: Follow The Leader (FTL)</strong></p>
-<p>On day <span class="arithmatex">\(t\)</span>: Take the action with the highest total reward up to day <span class="arithmatex">\(t-1\)</span>. Break ties arbitrarily.</p>
+<p>On day <span class="arithmatex">\(t\)</span>, take the action with the highest total reward up to day <span class="arithmatex">\(t-1\)</span>. Break ties arbitrarily.</p>
 </div>
-<p>How can we reason about whether this first idea is a good idea or not? We measure the success of online learning algorithms in terms of <strong>regret</strong>. Our benchmark is a fixed action over time: we are comparing with the best stock overall, not the best stock every single day. The intuition is that, if the algorithm has low regret, then we are doing almost as well as the best stock.</p>
+<p><strong>How can we reason about whether this first idea is a good idea or not?</strong></p>
+<p>We measure the success of online learning algorithms in terms of <strong>regret</strong>. Our benchmark is a fixed action over time: we are comparing with the best stock overall, not the best stock every single day. The intuition is that, if the algorithm has low regret, then we are doing almost as well as the best stock.</p>
 <div class="definition">
 <p><strong>Definition: External Regret</strong></p>
-<p>External Regret = <span class="arithmatex">\( \underset{i}{\max} \underset{t}{\sum} r_{i,t} - \underset{t}{\sum} r_{ALG(t),t} \)</span></p>
+<p>External Regret = <span class="arithmatex">\( \underset{i}{\max} \underset{t}{\sum} r_{i,t} - \underset{t}{\sum} r_{ALG(t),t} \)</span>.</p>
 </div>
 <p><strong>Question: Can regret be negative?</strong> Yes! That is a fantastic case, when we are doing better than the best stock.</p>
 <p>So, is FTL (i.e. the greedy algorithm that takes the best action every time) a good idea?</p>
@@ -847,7 +849,8 @@
 <p><strong>Claim 1:</strong> For independently, identically distributed (iid) rewards, FTL's expected regret is <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span>.</p>
 </div>
 <p>In other words, if, for each action, the rewards on different days are <strong>independently, identically distributed</strong>, aka <strong>iid</strong> (i.e. every day, the rewards are drawn from the same distribution—some stocks tend to do better, some stocks tend to do worse), then FTL has an expected regret in the order of <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span>.</p>
-<p><strong>What does this mean?</strong> It means that, as long as <span class="arithmatex">\(T\)</span> is much bigger than <span class="arithmatex">\(\log(n)\)</span>, the whole thing inside the square root is going to be less than <span class="arithmatex">\(T^2\)</span> (because <span class="arithmatex">\(\log(n)\)</span> is less than <span class="arithmatex">\(T\)</span>, so <span class="arithmatex">\(T \log(n)\)</span> is less than <span class="arithmatex">\(T \cdot T\)</span>, so the whole thing is less than <span class="arithmatex">\(T^2\)</span>.</p>
+<p><strong>What does this mean?</strong></p>
+<p>It means that, as long as <span class="arithmatex">\(T\)</span> is much bigger than <span class="arithmatex">\(\log(n)\)</span>, the whole thing inside the square root is going to be less than <span class="arithmatex">\(T^2\)</span> (because <span class="arithmatex">\(\log(n)\)</span> is less than <span class="arithmatex">\(T\)</span>, so <span class="arithmatex">\(T \log(n)\)</span> is less than <span class="arithmatex">\(T \cdot T\)</span>, so the whole thing is less than <span class="arithmatex">\(T^2\)</span>).</p>
 <p>Regret is less than 1 on average, so regret is less than the number of days, and regret per day is diminishing (going to 0).</p>
 <p>For instance, the NYSE only lists 2,000 companies, and <span class="arithmatex">\(\log(2000) \approx 11\)</span>, so it takes about <span class="arithmatex">\(11\)</span> days to start doing as well as the best stock on the NYSE (we can replace <span class="arithmatex">\(11\)</span> days with <span class="arithmatex">\(11\)</span> seconds if we are trading really fast).</p>
 <div class="theorem">
@@ -856,7 +859,7 @@
 <p><strong>Why is this claim true?</strong></p>
 <p>Let’s assume that the reward for every action, every day, is just a random coin flip (<span class="arithmatex">\(+1\)</span> or <span class="arithmatex">\(-1\)</span>), completely independently at random. So, in any algorithm based on history, the next choice is going to be a random coin flip.</p>
 <p>However, if we have <span class="arithmatex">\(n\)</span> actions, one of them is going to do a little bit better than average (each one has a <span class="arithmatex">\(50/50\)</span> expectation, but one of them is going to be a little bit better than average). If we do the math of how much better than average it is going to be, it comes out to roughly this magic number of <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span>.</p>
-<p>The number <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span> itself is not super important. However, the intuition is that it is the right bound: <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span> converges very fast, and as long as <span class="arithmatex">\(T\)</span> is much bigger than <span class="arithmatex">\(\log(n)\)</span>. Since <span class="arithmatex">\(\log(n)\)</span> is a tiny number, the algorithm is doing really well.</p>
+<p>The number <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span> itself is not super important. However, the intuition is that it is the right bound: <span class="arithmatex">\(O(\sqrt{T \log(n)})\)</span> converges very fast, and as long as <span class="arithmatex">\(T\)</span> is much bigger than <span class="arithmatex">\(\log(n)\)</span>, since <span class="arithmatex">\(\log(n)\)</span> is a tiny number, the algorithm is doing really well.</p>
 <div class="remark">
 <p><strong>Key Idea #2:</strong> External regret is the difference between the algorithm's total reward and the reward from the single best-in-hindsight action, i.e. </p>
 <p>External Regret = <span class="arithmatex">\( \underset{i}{\max} \underset{t}{\sum} r_{i,t} - \underset{t}{\sum} r_{ALG(t),t} \)</span>.</p>
@@ -881,7 +884,8 @@
 <li><span class="arithmatex">\(\varphi\)</span> is the regularizer, which penalizes unbalanced distributions.</li>
 </ul>
 </div>
-<p><strong>How does <span class="arithmatex">\(\varphi\)</span> work?</strong> <span class="arithmatex">\(\varphi\)</span> is a (usually convex) function that “penalizes” unbalanced distributions. For instance, if we have a distribution that puts all the weight on one stock, then <span class="arithmatex">\(\varphi\)</span> is going to determine that it is a bad distribution and give it a bad score. We can pick different functions that are going to give different performance.</p>
+<p><strong>How does <span class="arithmatex">\(\varphi\)</span> work?</strong></p>
+<p><span class="arithmatex">\(\varphi\)</span> is a (usually convex) function that “penalizes” unbalanced distributions. For instance, if we have a distribution that puts all the weight on one stock, then <span class="arithmatex">\(\varphi\)</span> is going to determine that it is a bad distribution and give it a bad score. We can pick different functions that are going to give different performance.</p>
 <p>Now, let's consider another famous algorithm.</p>
 <div class="definition">
 <p><strong>Algorithm: Multiplicative Weight Update (MWU)</strong></p>
@@ -894,13 +898,13 @@
 </li>
 </ul>
 </div>
-<p>The idea is that, at the beginning, all the weights are going to be 1. Each day, we are going to choose an action with a probability proportional to the weight. Then, there are updates: we multiply the weight of each action by the reward the the action got. If an action got a big positive reward, we are multiplying its weight by a big number, and its weight next time is going to be bigger. If an action got a small or negative reward, we are multiplying its weight by a small number, and its weight next time is going to be smaller.</p>
+<p>The idea is that, at the beginning, all the weights are going to be 1. Each day, we are going to choose an action with a probability proportional to the weight. Then, there are updates: we multiply the weight of each action by the reward the action got. If an action got a big positive reward, we are multiplying its weight by a big number, and its weight next time is going to be bigger. If an action got a small or negative reward, we are multiplying its weight by a small number, and its weight next time is going to be smaller.</p>
 <p><span class="arithmatex">\(\eta\)</span> is called “learning rate”. It is a parameter that balances between randomness and FTRL:</p>
 <ul>
 <li>If we have a higher <span class="arithmatex">\(\eta\)</span>, it is putting a lot of weight into learning really fast (fitting to historical performance).</li>
 <li>If we have a smaller <span class="arithmatex">\(\eta\)</span>, we are staying very close for a long time to the original distribution, which is uniform over all actions, so it is more random.</li>
 </ul>
-<p>Although we are not going to prove this claim in lecture, it turns out that this Multiplicative weight update (MWU) algorithm is the same as FTL when using the entropy regularizer.</p>
+<p>Although we are not going to prove this claim in lecture, it turns out that this Multiplicative Weight Update (MWU) algorithm is the same as FTL when using the entropy regularizer.</p>
 <div class="theorem">
 <p><strong>Claim:</strong> MWU = FTRL with entropy regularizer <span class="arithmatex">\(\varphi(x) = - \sum x_i \log(x_i) \)</span>.</p>
 </div>
@@ -910,14 +914,14 @@
 </div>
 <p>This is optimal, even against adversarial input. As long as the adversary does not know the inside randomness of the algorithm, this algorithm is completely adversary proof.</p>
 <h2 id="swap-regret-minimization-algorithms">Swap-Regret Minimization Algorithms</h2>
-<p>So far, we have formalized the idea of measuring online algorithms with regret, and we have seen actual optimal algorithms that minimize regret even against very adversarial input. However, what happens if there is an adversary who can look at our algorithm’s choices, and use that to do better than us? This is embarrassing: how can avoid that?</p>
-<p>In Judo, winning is not about our own strength, but about using our opponent’s strength to make them fall over. Similarly, in the stock market, winning is not about knowing the market ourselves, but instead using oour opponent’s power to beat them.</p>
+<p>So far, we have formalized the idea of measuring online algorithms with regret, and we have seen actual optimal algorithms that minimize regret even against very adversarial input. However, what happens if there is an adversary who can look at our algorithm’s choices, and use that to do better than us? This is embarrassing: how can we avoid that?</p>
+<p>In Judo, winning is not about our own strength, but about using our opponent’s strength to make them fall over. Similarly, in the stock market, winning is not about knowing the market ourselves, but instead using our opponent’s power to beat them.</p>
 <div class="definition">
 <p><strong>Definition: Swap-Regret (Internal Regret)</strong></p>
 <p>Swap-Regret = <span class="arithmatex">\( \underset{\Phi : [n] \to [n]}{\max} \underset{t}{\sum} (r_{\Phi(ALG(t)),t} - r_{ALG(t),t}) \)</span> where <span class="arithmatex">\(\Phi\)</span> maps each action to another action.</p>
 </div>
 <p>In the context of external regret, our algorithm was just competing with the best single action (i.e. the best stock). In the context of swap regret, our algorithm has to compete with a friend, who is seeing what our algorithm is recommending, and using that to do something else.</p>
-<p><strong>How is the swap function determined?</strong> We are taking the best of all possible swap functions?</p>
+<p><strong>How is the swap function determined?</strong> We are taking the best of all possible swap functions.</p>
 <p><strong>Between external regret and swap regret, which one is higher?</strong> The swap regret is always at least as high as the external regret.</p>
 <p><strong>Which kind of regret is it better to minimize?</strong> It is better to minimize swap regret.</p>
 <p>One way to see this is that we can have everything mapping to the same action (i.e. the best action in hindsight) in the swap function. So, if we can minimize the swap regret, it is better, although it is also much harder because the benchmark is more complex.</p>
@@ -932,14 +936,15 @@
 </ul>
 </div>
 <div class="theorem">
-<p><strong>Claim:</strong> The Total Swap-Regret is in the order of <span class="arithmatex">\(O(\sqrt{T n \log(n)})\)</span>).</p>
+<p><strong>Claim:</strong> The Total Swap-Regret is in the order of <span class="arithmatex">\(O(\sqrt{T n \log(n)})\)</span>.</p>
 </div>
-<p>The total swap regret looks like the external regret, except that instead of <span class="arithmatex">\(n\)</span> action, we have to take the <span class="arithmatex">\(\log\)</span> of <span class="arithmatex">\(n^n\)</span> actions. This is a higher regret, so it is going to take more time to achieve vanishing regret.</p>
+<p>The total swap regret looks like the external regret, except that instead of <span class="arithmatex">\(n\)</span> actions, we have to take the <span class="arithmatex">\(\log\)</span> of <span class="arithmatex">\(n^n\)</span> actions. This is a higher regret, so it is going to take more time to achieve vanishing regret.</p>
 <p>For instance, if we think about the NYSE, with 2,000 actions, instead of <span class="arithmatex">\(\log(2000) \approx 11\)</span>, it is going to be <span class="arithmatex">\(\log(2000^{2000})\)</span>, which is <span class="arithmatex">\(\log(2000) \cdot 2000 \approx 11 \cdot 2000 \approx 22000\)</span>.</p>
 <p>So, for instance, if <span class="arithmatex">\(T\)</span> is in days, it is going to take <span class="arithmatex">\(60\)</span> years for the swap to beat the entire stock exchange, but if we are talking in seconds, then <span class="arithmatex">\(22000\)</span> seconds is not very long (about <span class="arithmatex">\(6\)</span> hours).</p>
 <h2 id="regret-minimization-with-bandit-feedback">Regret Minimization with Bandit Feedback</h2>
 <div class="example">
-<p><strong>Scenario 2:</strong> Consider a new portal/feed editor:</p>
+<p><strong>Scenario 2</strong></p>
+<p>Consider a new portal/feed editor:</p>
 <ul>
 <li>We run an algorithm over <span class="arithmatex">\(T\)</span> days.</li>
 <li>There are <span class="arithmatex">\(n\)</span> possible "arms" (i.e. actions), where an "arm" is a news category or a reporter, for instance.</li>
@@ -948,7 +953,7 @@
 </ul>
 <p>Our goal is to minimize regret, namely <span class="arithmatex">\(\underset{i}{max} \underset{t}{\sum}(r_{i,t} - r_{ALG(t),t})\)</span>.</p>
 </div>
-<p><strong>Challenge:</strong> With partial (bandit) feedback, we see how long a user engaged with what we showed them, but we don’t know long the user would have engaged with the content we did not show them. Yet, we still have to compete with all the other actions.</p>
+<p><strong>Challenge:</strong> With partial (bandit) feedback, we see how long a user engaged with what we showed them, but we don’t know how long the user would have engaged with the content we did not show them. Yet, we still have to compete with all the other actions.</p>
 <p><strong>Solution:</strong> We need to arbitrate how much we want to learn about how each arm is doing (i.e. exploration) and how much we want to extract reward from the best arm (i.e. exploitation).</p>
 <div class="remark">
 <p><strong>Key Idea #5:</strong> To account for bandit/partial feedback, we may apply a similar regret minimization framework, with a trade-off between exploration and exploitation.</p>
@@ -985,7 +990,7 @@ Pr\left[\text{expectation} &gt; \text{average of samples} + \sqrt{\frac{2\ln(T)}
 <li><strong>Under-explored arms</strong> (few samples) have a high exploration incentive.</li>
 <li><strong>High-performing arms</strong> (high averages) encourage exploitation.</li>
 </ul>
-<p>The expected regret under iid rewards (between -1 and 1) is in the order of <span class="arithmatex">\(O(\sqrt{nT\log(T)})\)</span> as long as <span class="arithmatex">\(T &gt; n\log(n)\)</span>, which is not as good as full feedback scenarios remains but reasonable for bandit feedback.</p>
+<p>The expected regret under iid rewards (between -1 and 1) is in the order of <span class="arithmatex">\(O(\sqrt{nT\log(T)})\)</span> as long as <span class="arithmatex">\(T &gt; n\log(n)\)</span>, which is not as good as in full feedback scenarios, but remains reasonable for bandit feedback.</p>
 <p>In other words:</p>
 <ul>
 <li><strong>Good:</strong> Regret per day approaches 0 if <span class="arithmatex">\(T &gt; n\log(n)\)</span>.</li>
