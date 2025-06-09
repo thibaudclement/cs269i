@@ -36,7 +36,7 @@ Consider the following game:
 In other words:
 
 - If Harry free-rides and Marvin uploads, their utility is respectively \(3\) and \(-1\)—and vice versa, if Harry uploads and Marvin free rides, their utility is respectively \(-1\) and \(3\).
-- If they are both uploading, they both get \(3\) for downloading and \(-1\) for uploading.
+- If they are both uploading, they both get \(2\), i.e. \(3\) for downloading and \(-1\) for uploading.
 - If they are both free riding, there is nothing happening in the network, so their utility is \(0\).
 
 **What should they do?**

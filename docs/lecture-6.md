@@ -29,7 +29,7 @@ Starting today, we want to measure utility with money:
 
 </div>
 
-Is one type of utilities better than the other?
+**Is one type of utilities better than the other?**
 
 Cardinal utilities convey richer information (ordinal can be derived from cardinal), are intuitive in economic analysis, and typically monetarily measurable.
 
@@ -53,7 +53,7 @@ However, there are also some challenges in non-monetary transfers:
 
 - Without monetary transfers, we are limited to ordinal preferences.
 - When we force non-monetary transfers, people try to get their way under the table, which comes with legal issues (admissions scandal) and risks (illegal organ transplants, for both people who buy and sell organs)
-- We need a permission systems (as opposed to a permission-less system, such as the Internet or Bitcoin), otherwise,
+- We need a permissions systems (as opposed to a permission-less system, such as the Internet or Bitcoin), otherwise:
       - For instance in the Stanford housing lottery, you need a SUNet ID, so that applicants do not enter the draw with a bot and get a million lottery tickets.
       - With online reviews, we really have a problem with restaurants writing really good reviews for themselves and bad reviews for competing restaurants.
 
@@ -65,7 +65,7 @@ However, there are also some challenges in non-monetary transfers:
 
 </div>
 
-In other words, goods are fungible when there lots of interchangeable copies of an item, such as copies of a new book. In contrast, goods idiosyncratic when they have intrinsic features. If you try to buy a house, every house is very different from the house down the street (problems with the roof, nicer garden, better location, etc.), so we need to understand the value of each house. In dating apps, it is similar: each person is very different. NFTs (Non-Fungible Tokens) by definition are idiosyncratic.
+In other words, goods are fungible when there lots of interchangeable copies of an item, such as copies of a new book. In contrast, goods are idiosyncratic when they have intrinsic features. If you try to buy a house, every house is very different from the house down the street (problems with the roof, nicer garden, better location, etc.), so we need to understand the value of each house. In dating apps, it is similar: each person is very different. NFTs (Non-Fungible Tokens) by definition are idiosyncratic.
 
 In practice, many things are a mix of fungible and idiosyncratic. For instance, in a ride-sharing app, we don’t really care who the driver is (the driver is fungible), but we really care where we go (the destination is idiosyncratic).
 
@@ -87,7 +87,7 @@ We can plot this aggregate **demand curve**, which is typically decreasing, as m
 
 </div>
 
-**Note:** The demand curve represents how many buyers are willing to buy at each price. We plot the Price as the y-axis and the Demand as the x-axis, even though it is really the demand as a function of the price.
+_**Note:** The demand curve represents how many buyers are willing to buy at each price. We plot the Price as the y-axis and the Demand as the x-axis, even though it is really the demand as a function of the price._
 
 <div class="definition" markdown="1">
 <strong>Definition: Supply Curve</strong>
@@ -105,27 +105,27 @@ We can plot this aggregate **supply curve**, which is typically increasing, at l
 
 </div>
 
-**Note:** The supply curve represents how many sellers are willing to sell at each price. We plot the Price as the y-axis and the Supply as the x-axis, even though it is really the supply as a function of the price.
+_**Note:** The supply curve represents how many sellers are willing to sell at each price. We plot the Price as the y-axis and the Supply as the x-axis, even though it is really the supply as a function of the price._
 
 <div class="remark" markdown="1">
 
 **Side Note: Law of Supply vs. Digital Goods**
 
-If the applies to _used_ books, then what about new books?
+If the above applies to _used_ books, then what about new books?
 
 The Law of Supply says that the supply curve should be increasing, but sometimes, this does not hold.
 
 For instance, for new books:
 
 - There is a monopoly (the publisher is selling all the copies): increasing the price does not mean that they are willing to sell it more.
-- Marginal cost of printing another book is negligible (most of the price is editorial work, promotion, etc.)
+- Marginal cost of printing another book is negligible (most of the price is editorial work, promotion, etc.).
 
 If we think of digital goods, the marginal cost of making another copy is zero, so the Law of Supply does not hold anymore:
 
 - For ordinary physical goods, the supply curve slopes upward because each additional unit costs a little more to make. Producers only expand output when price at least covers that rising marginal cost.
 - For a pure digital good—software, an e‑book, a music file—the marginal cost of copying and distributing one more unit is essentially zero, so a seller is already willing to supply any quantity at any price just above zero. Raising the price therefore doesn’t unlock extra output the way it does for physical goods. Instead, the constraint is usually legal (who owns the copyright) or strategic (how the seller wants to segment the market), not technological cost.
 
-In the short run the supply curve is therefore flat (perfectly elastic) at roughly zero cost, and in the long run depends on covering the fixed cost of creating the first copy rather than on the per‑unit price, so the classic Law of Supply tied to marginal production cost doesn’t bite.
+In the short run, the supply curve is therefore flat (perfectly elastic) at roughly zero cost, and in the long run, depends on covering the fixed cost of creating the first copy rather than on the per‑unit price, so the classic Law of Supply tied to marginal production cost doesn’t bite.
 </div>
 
 <div class="definition" markdown="1">
@@ -152,20 +152,24 @@ We are trying to think of a single price that works for the entire market. We wi
 <div class="example" markdown="1">
 **The Airbnb Market Model**
 
+Consider:
+
 - \(m\) different (**idiosyncratic**) rooms for rent.
 - \(n\) guests, each willing to stay in at most one room (**unit-demand**).
 - Guest \(i\) has **value** \(v_{i,j}\) for staying in room \(j\).
-- If guest \(i\) pays\(p_j\) to stay in room \(j\), their happiness is given by \(U_{i,j} = v_{i,j} - p_j\).
+- If guest \(i\) pays \(p_j\) to stay in room \(j\), their happiness is given by \(U_{i,j} = v_{i,j} - p_j\).
 - If guest \(i\) doesn't stay in any room (e.g., camps outside), their happiness is given by \(U_{i,\emptyset} = 0\).
 </div>
 
 <div class="example" markdown="1">
 **The Airbnb Market Model (in Economics Jargon)**
 
+Consider:
+
 - \(m\) different (**idiosyncratic**) goods for rent.
 - \(n\) buyers, each willing to buy at most one good (**unit-demand**).
 - Buyer \(i\) has **value** \(v_{i,j}\) for buying good \(j\).
-- If buyer \(i\) pays\(p_j\) for good \(j\), their utility is given by \(U_{i,j} = v_{i,j} - p_j\).
+- If buyer \(i\) pays \(p_j\) for good \(j\), their utility is given by \(U_{i,j} = v_{i,j} - p_j\).
 - If buyer \(i\) doesn't buy any good (e.g., camps outside), their utility is given by \(U_{i,\emptyset} = 0\).
 </div>
 
@@ -177,7 +181,7 @@ A competitive equilibrium is the combination of a price vector \(\overrightarrow
 - Each buyer is matched to their favorite good (given prices): 
 
 \[
-\forall i,j' v_{i,M(i)} - p_{M(i)} \geq v_{i,j'} - p_{j'}.
+\forall i,j' \; v_{i,M(i)} - p_{M(i)} \geq v_{i,j'} - p_{j'}.
 \]
 
 - If no buyer is matched to good \(j\), then \(p_j = 0\).
@@ -208,13 +212,13 @@ We are not modeling this here. It is just that every buyer has some value for ea
 
 **Reminder:** In a competitive equilibrium:
 
-1. Each buyer is matched to their favorit good (given prices) or no good if they don't want any.
+1. Each buyer is matched to their favorite good (given prices), or no good if they don't want any.
 2. If no buyer is matched to good \(j\), then \(p_j = 0\).
 
 Therefore:
 
 - By \((1)\), no buyer wants to deviate to a different room, they are given their favorite room given the prices.
-- No good is over-demanded (we are matching each buyer to a room, but we are not matching two buyers to the same room), so no there is no pressure to increase prices.
+- No good is over-demanded (we are matching each buyer to a room, but we are not matching two buyers to the same room), so there is no pressure to increase prices.
 - By \((2)\), under-demanded goods are priced at \(0\), so we can't decrease their price lower any more.
 
 </div>
@@ -251,7 +255,7 @@ The social welfare of an allocation \(M\) is the total buyers' value: \(\underse
 
 **Question: Why don't we include prices in the definition of social welfare?**
 
-We did not include prices in the definition of social welfare, even though happiness is equal to the value minus the price, because we count the total utility of everyone, including sellers, so prices they cancel out.
+We did not include prices in the definition of social welfare, even though happiness is equal to the value minus the price, because we count the total utility of everyone, including sellers, so prices cancel out.
 
 The price goes from the buyers to the sellers, so it is zero-sum, it does not change the total happiness, while what changes the total happiness is the quality of the matching.
 
@@ -304,7 +308,7 @@ What is interesting in this proof is how it uses the second condition of the def
 There are more rooms than guests, so we are not necessarily matching all the rooms, but in \(M\) we are matching all the rooms that have a non-zero price. It is possible that something that is matched in \(M\) (with a positive price) is not matched in \(M'\) (so the price is \(0\)), because \(M'\) does not necessarily match all the goods, since it is _not_ a competitive equilibrium).
 
 <div class="theorem" markdown="1">
-In the "Airbnb market model", a competitive equilibrium always exists.
+<strong>Theorem:</strong> In the "Airbnb market model", a competitive equilibrium always exists.
 </div>
 
 This is non-trivial: We will see later a simple example where each buyer wants two goods and a competitive equilibrium does _not_ exist.
@@ -317,9 +321,11 @@ Let's consider the following setting:
 - **Ordinal Preferences:** For each buyer, we construct a list of all the \((good,price)\) options, ordered by utility. We can truncate the list a the \((receive \;nothing, pay \; nothing)\) option.
 - **At each iteration of the algorithm**: The unmatched buyer whose next-favorite option is \((j,p)\) proposes price \(p\) to good \(j\). Good \(j\) tentatively accepts if price \(p\) is higher than the prices it was offered so far.
 
-This is a twist on the DA we saw before because it is **DA with prices**. Here, ordinal preferences are not only established (like in the past) based on ordinarily over rooms, but over combinations of rooms and prices. We can truncate the list at the (receive nothing, pay nothing) option, which is like an outside option (e.g. sleep in a tent instead). Note that the room preferences (over buyers) are only based on prices (i.e. rooms are indifferent over buyers).
+This is a twist on the DA we saw before because it is **DA with prices**. Here, ordinal preferences are not only established (like in the past) based on ordinarily over rooms, but over combinations of rooms and prices. We can truncate the list at the \((receive \;nothing, pay \; nothing)\) option, which is like an outside option (e.g. sleep in a tent instead). Note that the room preferences (over buyers) are only based on prices (i.e. rooms are indifferent over buyers).
 
 <div class="example" markdown="1">
+**Example**
+
 Let's consider the following scenario, when Mario, Luigi, and Yoshi are going to Paris and are looking for a place to stay near famous monuments:
 
 - Mario is willing to pay \(18\) for the room near the Eiffel Tower, and \(16\) for the room near the Pasteur Institute.
@@ -336,10 +342,10 @@ This is an overview of what happened:
 
 - When the prices are \(2\) for Eiffel Tower or \(0\) for Pasteur, Mario is indifferent between both rooms, so Mario proposes \(0\) to Pasteur.
 - But Luigi and Yoshi still competing for Eiffel Tower, so they keep raising their prices, until the price for Eiffel Tower is \(4\), which means that Yoshi is now indifferent between the two rooms.
-- Then, Yoshi is going to switch back and forth between Paster and Eiffel Tower as Mario and Luigi raise the price for Eiffel Tower (every time one place is over-demanded and Mario and Luigi raise the price, Yoshi switches to the other one)- …
+- Then, Yoshi is going to switch back and forth between Paster and Eiffel Tower as Mario and Luigi raise the price for Eiffel Tower (every time one place is over-demanded and Mario and Luigi raise the price, Yoshi switches to the other one)…
 - … until Yoshi gets priced out.
 
-**Note:** For more details, refer to slides 37-61.
+_**Note:** For more details, refer to slides 37-61._
 
 **Question: What causes Mario to become indifferent to the Eiffel Tower in the first place?**
 
@@ -347,14 +353,14 @@ When the Eiffel Tower costs \(2\) and Pasteur costs \(0\), the difference betwee
 
 Here is how to interpret the results:
 
-- The price that Mario wants to pay for Pasteur (\(9\)) is higher than Yoshi’s (\(8\)), and similarly, the price Luigi wants to pay for Eiffel Tower (\(12\)) is equal than Yoshi’s (\(12\)).
+- The price that Mario wants to pay for Pasteur (\(9\)) is higher than Yoshi’s (\(8\)), and similarly, the price Luigi wants to pay for Eiffel Tower (\(12\)) is equal to Yoshi’s (\(12\)).
 - Mario could have also paid \(8\), but this is just due to how the tie-breaking worked out.
 - This is the matching that maximizes the total values on the edges.
 - This is not only a competitive equilibrium, it is also the unique buyer-optimal competitive equilibrium.
 
 **Question: Does the order matter?**
 
-Just like in DA, order does not really matter, except for when it comes to tie-breaking, which may only matter up to \(1\) (increment).
+Just like in DA, order does not really matter, except for when it comes to tie-breaking, which may only matter up to \(1\) (increment unit).
 
 **Question: What is the total social welfare 16 +14?**
 
@@ -374,12 +380,12 @@ The algorithm always terminates because every buyer is either matched to a good 
 The running time of DA with prices is in the order of \(O(n \cdot m \cdot i)\), where \(i\) is the number of increments.
 </div>
 
-The running time is at most the number of buyers (\(n\)) times the number of rooms (\(m\)) times the number of increments (\(i\)), i.e 1,000 increments of $1 our example. This is really fast when (\(i\)) is small (and there is a way to make it faster when (\(i\)) is not too small), so it is a really fast algorithm with nice economic properties.
+The running time is at most the number of buyers (\(n\)) times the number of rooms (\(m\)) times the number of increments (\(i\)), i.e 1,000 increments of $1 in our example. This is really fast when (\(i\)) is small (and there is a way to make it faster when (\(i\)) is not too small), so it is a really fast algorithm with nice economic properties.
 
 <div class="remark" markdown="1">
 The DA with prices algorithm finds a competitive equilibrium:
 
-1. Each buyer is matched to their favorite \(\(good,price\)\). If there were any more preferred \(\(good,price\)\), the buyer would have already proposed and get kicked out, so the other goods raise the price higher.
+1. Each buyer is matched to their favorite \((good,price)\). If there were any more preferred \((good,price)\), the buyer would have already proposed and get kicked out, so the other goods raise the price higher.
 2. If a good is unmatched, its price is zero. Once a buyer proposes to a good, a good is always matched, even if to another buyer (and its price is above \(0\)), so the only way a good is unmatched is if it is never proposed to (and its price is \(0\)).
 
 Bonus Features (inherited from DA):
@@ -387,7 +393,7 @@ Bonus Features (inherited from DA):
 - Buyer-optimal among competitive equilibria.
 - Buyer-strategyproof.
 
-**Note:** This is not seller-strategy proof though, since they can set a reserve price, i.e. a minimum price that needs to be met.
+_**Note:** This is not seller-strategy proof though, since they can set a reserve price, i.e. a minimum price that needs to be met._
 </div>
 
 <div class="summary" markdown="1">
