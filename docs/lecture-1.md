@@ -73,9 +73,9 @@ A mechanism is strategyproof if it's in every agent's best interest to act truth
 Even more formally, game theorists somtimes use the term **Dominant Strategy Incentive Compatible**:
 
 <div class="definition" markdown="1">
-<strong>Definition: Dominant Strategy Incentive Compatible - DSIC</strong>
+<strong>Definition: Dominant Strategy Incentive Compatible (DSIC)</strong>
 
-A mechanism is dominant strategy incentive compatible if truthfulness is a dominant strategy for each participant. That is, being truthful is a best response regardless of other players' actions.
+A mechanism is dominant strategy incentive compatible if truthfulness is a dominant strategy for each participant. That is, being truthful is the best response regardless of other players' actions.
 </div>
 
 <div class="theorem" markdown="1">
@@ -100,9 +100,7 @@ An assignment \( A \) is Pareto optimal if, for any other assignment \( B \), th
 </div>
 
 <div class="theorem" markdown="1">
-<strong>Theorem: You Cannot Make Everyone Happier Without Making Someone Sadder</strong>
-
-Serial Dictatorship assignments are Pareto Optimal.
+<strong>Theorem:</strong> You cannot make everyone happier without making someone sadder. Serial Dictatorship assignments are Pareto Optimal.
 </div>
 
 <div class="proof" markdown="1">
@@ -127,13 +125,13 @@ Therefore, Serial Dictatorship is Pareto Optimal.
 
 **Fairness/equity issues with Serial Dictatorship:** Fairness depends on sorting order. Seniority or randomness provide fairness ex-ante but not necessarily ex-post.
 
-**Is there any other flaws in Serial Dictatorship?** A dictator's seemingly insignificant decision may have huge impact on other agents. For instance, by the time my turn arrive, only my 9th and 10th choices are available. Since I am almost indifferent between them, I break ties and take my 9th choice. However, it is possible that my 9th choice was in fact someone else's top choice and they _really_ wanted it. This may be even worse if their 2nd-10th choices happen to be already taken.
+**Is there any other flaws in Serial Dictatorship?** A dictator's seemingly insignificant decision may have a huge impact on other agents. For instance, by the time my turn arrive, assume that only my 9th and 10th choices are available. Since I am almost indifferent between them, I break ties and take my 9th choice. However, it is possible that my 9th choice was in fact someone else's top choice and they _really_ wanted it. This may be even worse if their 2nd-10th choices happen to be already taken.
 
 ## Recap
 
 <div class="summary" markdown="1">
 
-- **Definition: Mechanism.** A mechanism meaning soliciting inputs, running an algorithm, and taking actions.
+- **Definition: Mechanism.** A mechanism means soliciting inputs, running an algorithm, and taking actions.
 - **Definition: Strategyproof/truthful.** A mechanism is strategyproof/truthful is misreporting preferences can never make a participant better off.
-- **Defintion: Pareto-optimal.** An assignment \( A \) is Pareto-optimal if for any other assignment \( B \), there is a participan that (strictly) prefers \( A \) over \( B \).
+- **Defintion: Pareto-optimal.** An assignment \( A \) is Pareto-optimal if for any other assignment \( B \), there is a participant that (strictly) prefers \( A \) over \( B \).
 </div>

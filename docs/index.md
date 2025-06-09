@@ -8,7 +8,7 @@ When it comes to incentives, leveraging more GPUs is not the solution. Computer 
 
 ## Goals
 
-CS269I aims to teach students how to think about incentives (through lagnauge, frameworks, and practice), to get familiar with economic theory concepts (i.e. stable matching, proof-of-work, etc.), and analyze case studies to understand potential gaps between theory and practice.
+CS269I aims to teach students how to think about incentives (through language, frameworks, and practice), to get familiar with economic theory concepts (i.e. stable matching, proof-of-work, etc.), and analyze case studies to understand potential gaps between theory and practice.
 
 ## Credit
 
