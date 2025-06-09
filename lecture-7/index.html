@@ -840,11 +840,11 @@
 </div>
 <p>It is important to understand what can go wrong in market design and which strategies exist for mitigating these issues. In this lecture, we focus on five types of market failures:</p>
 <ol>
-<li>Externalities and public goods</li>
-<li>Transaction costs</li>
-<li>Market thinness/monopolies</li>
-<li>Timing issues</li>
-<li>Information asymmetry</li>
+<li>Externalities and public goods.</li>
+<li>Transaction costs.</li>
+<li>Market thinness/monopolies.</li>
+<li>Timing issues.</li>
+<li>Information asymmetry.</li>
 </ol>
 <h2 id="externalities-and-public-goods">Externalities and Public Goods</h2>
 <p>This is probably the most important market failure.</p>
@@ -856,7 +856,7 @@
 <p>An externality is a market failure when market participants don't have incentives to reduce negative externalities and increase positive externalities.</p>
 <div class="definition">
 <p><strong>Definition: Public Good</strong></p>
-<p>Something that belongs to everybody but owned by nobody.</p>
+<p>Something that belongs to everybody but is owned by nobody.</p>
 </div>
 <p>A market failure occurs when market participants are under-incentivized to invest in public goods.</p>
 <p>Ecological damage is considered as "the biggest market failure of all time." It is a side-effect of many economic activities, from hunting, to farming, and Bitcoin mining.</p>
@@ -875,8 +875,11 @@
 <p>We usually think of those as public goods and we think of the government not as a participant in the market but like an organization that is formed to take care of those public goods.</p>
 <p><strong>Key point:</strong> Environmental impact is a huge example of market failure, even though it is a fairly simple one.</p>
 <h2 id="transaction-costs">Transaction Costs</h2>
-<p><strong>Note:</strong> Computer science really kicks in to address this market failure.</p>
-<p>Costs associated with making transactions that prevent beneficial trades.</p>
+<p><em><strong>Note:</strong> Computer science really kicks in to address this market failure.</em></p>
+<div class="definition">
+<p><strong>Definition: Transaction Costs</strong></p>
+<p>Transaction costs are costs associated with making transactions that prevent beneficial trades.</p>
+</div>
 <div class="example">
 <p><strong>Example</strong></p>
 <p>I would be willing to pay <span class="arithmatex">\(\$10,000\)</span> for a boat. You are happy at home, so you would rather have <span class="arithmatex">\(\$9,900\)</span> than your boat. Should you sell me your boat?</p>
@@ -885,7 +888,10 @@
 <li>In practice: Probably not, considering a <span class="arithmatex">\(9\%\)</span> sales tax.</li>
 </ul>
 </div>
-<p>What can we do about it? Legally, not much: "nothing is certain except death and taxes."</p>
+<p>What can we do about it? Legally, not much:</p>
+<blockquote>
+<p>"nothing is certain except death and taxes."</p>
+</blockquote>
 <div class="example">
 <p><strong>Example</strong></p>
 <p>I am hungry and willing to pay <span class="arithmatex">\(\$10\)</span> for an apple. Someone out there would rather have <span class="arithmatex">\(\$0.99\)</span> than their apple. Should I buy the apple from them?</p>
@@ -897,8 +903,8 @@
 <p>Finding someone with an apple might cost more than <span class="arithmatex">\(\$10\)</span>, even though they are out there. There is another form of transaction cost (distinct from taxes), associated with search, finding matches, and payment.</p>
 <div class="remark">
 <p><strong>Transaction Costs Mitigation Strategies</strong></p>
-<p>Facilitating transactions matters because, even if in theory I would rather than an apple, and someone would rather have <span class="arithmatex">\(\$0.99\)</span>, finding them and paying them is hard.</p>
-<p>Lots of companies facilitate transactions: dating apps, Couchsurfing, Airbnb, ride hailing apps, Craigslist, eBay, Amazon, TaskRabbit, StubHub, Mechanical Turk, etc.</p>
+<p>Facilitating transactions matters because, even if in theory I would rather have an apple, and someone would rather have <span class="arithmatex">\(\$0.99\)</span>, finding them and paying them is hard.</p>
+<p>Lots of companies facilitate transactions: dating apps, Couchsurfing, Airbnb, ride-hailing apps, Craigslist, eBay, Amazon, TaskRabbit, StubHub, Mechanical Turk, etc.</p>
 </div>
 <h2 id="market-thickness">Market Thickness</h2>
 <p>Market thinness is actually one <em>reason</em> for high transaction costs.</p>
@@ -929,21 +935,24 @@
 <p><strong>Example of a Thin Market:</strong> One motorcycle selling ice cream in the Faysoum Desert, Egypt. There is one seller, and zero buyer. If a buyer shows up in the middle of the desert and really wants ice cream, the seller will hike up the price and take advantage of the fact that there is only one ice cream seller in the desert.</p>
 </div>
 <p><strong>Why are monopolies a problem?</strong></p>
-<p>When we consider sellers' incentives, the First Welfare Theorem extends to good with reserve prices to cover costs. For example, an Airbnb host should never rent a room below the total of their cleaning cost, insurance, and hotel tax.</p>
+<p>When we consider sellers' incentives, the First Welfare Theorem extends to goods with reserve prices to cover costs. For example, an Airbnb host should never rent a room below the total of their cleaning cost, insurance, and hotel tax.</p>
 <p>However, sellers setting reserve prices is <em>not</em> strategyproof (like hospitals in DA). Moreover, sellers have simple, obvious manipulations (unlike hospitals, who had to know what other hospitals and doctors were bidding, sellers do not need that information).</p>
 <div class="example">
 <p><strong>Example: Monopoly</strong> </p>
-<p>Let's consider a scenario with 1 seller (<span class="arithmatex">\(true cost = 0\)</span>) and 1 buyer (<span class="arithmatex">\(value = 100\)</span>):</p>
+<p>Let's consider a scenario with 1 seller (<span class="arithmatex">\(true \; cost = 0\)</span>) and 1 buyer (<span class="arithmatex">\(value = 100\)</span>):</p>
 <ul>
 <li>Any price between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(100\)</span> would be a competitive equilibrium.</li>
 <li>DA-with-prices would suggest <span class="arithmatex">\(p = 0\)</span> (buyer-optimal).</li>
 <li>The seller wants to set the reserve price to <span class="arithmatex">\(100\)</span>.</li>
 </ul>
-<p>On Airbnb, hosts set prices: nobody is actually running DA-with-prices. Let's recall that DA-with-prices is buyer-strategy proof but <em>super not</em> seller-strategy proof anyway.</p>
+<p>On Airbnb, hosts set prices: nobody is actually running DA-with-prices. Let's recall that DA-with-prices is buyer-strategyproof but <em>super not</em> seller-strategyproof anyway.</p>
 </div>
-<p>This is why monopolies are a real problem, especially in a thin market. However, there are ways to get around it:
-- <strong>Thick(er) market:</strong> As a market becomes very thick (it is far from a monopoly), then it approaches seller-strategy proof. We say that it is <em>strategyproof-in-the-large</em>.
-- <strong>Information limitation:</strong> Sellers still need to know the buyer’s value to set a good reserve price, so if they don’t really have a lot of information, even with a monopoly, then they cannot set a very high reserve price, so information limitation helps.</p>
+<p>This is why monopolies are a real problem, especially in a thin market.</p>
+<p>However, there are ways to get around it:</p>
+<ul>
+<li><strong>Thick(er) market:</strong> As a market becomes very thick (it is far from a monopoly), then it approaches seller-strategyproofness. We say that it is <em>strategyproof-in-the-large</em>.</li>
+<li><strong>Information limitation:</strong> Sellers still need to know the buyer’s value to set a good reserve price, so if they don’t really have a lot of information, even with a monopoly, then they cannot set a very high reserve price, so information limitation helps.</li>
+</ul>
 <p>What can we do about it?</p>
 <div class="remark">
 <p><strong>Market Thinness Mitigation Strategies</strong></p>
@@ -962,11 +971,13 @@
 <h2 id="timing-issues">Timing Issues</h2>
 <div class="example">
 <p><strong>Timing Issue #1: Committing to Contracts Too Early (Market Unravelling)</strong></p>
-<p>In the medical residency (doctor-hospitals) job market pre-NRMP:
-- 1900's-1940's: The market was decentralized, and hospitals were racing to make offers earlier.
-- If other hospitals were making offers in December, then you had to make offers in November (slightly more uncertainty, but much less competition).
-- If other hospitals were making offers in Novenber, ...
-- ... by 1945, hospitals were making job offers to first-year students.</p>
+<p>In the medical residency (doctor-hospitals) job market pre-NRMP:</p>
+<ul>
+<li>1900's-1940's: The market was decentralized, and hospitals were racing to make offers earlier.</li>
+<li>If other hospitals were making offers in December, then you had to make offers in November (slightly more uncertainty, but much less competition).</li>
+<li>If other hospitals were making offers in Novenber, ...</li>
+<li>... by 1945, hospitals were making job offers to first-year students.</li>
+</ul>
 <p>This is a market failure because commitments were made too early: first-year students don’t know which speciality they want and how good they really are. There was a lot of uncertainty, it was hard to tell whether doctors were a good match, yet <em>because of</em> uncertainty, hospitals were sending offers too early.</p>
 <p>However, now, with the centralized system, offers are sent during the final year of study, so doctors know better what they want.</p>
 </div>
@@ -992,7 +1003,9 @@
 <div class="example">
 <p><strong>An Extreme Case</strong></p>
 <p>According to a 2005 applicant for federal judicial clerkships:</p>
-<p><em>"I received the offer via voicemail while I was in flight to my second interview. The judge actually left 3 messages: the first to make the offer, the second to tell me that I should respond soon, and the third to rescind the offer. It was a 35-minute flight."</em></p>
+<blockquote>
+<p>"I received the offer via voicemail while I was in flight to my second interview. The judge actually left 3 messages: the first to make the offer, the second to tell me that I should respond soon, and the third to rescind the offer. It was a 35-minute flight."</p>
+</blockquote>
 </div>
 <div class="example">
 <p><strong>Timing Issue #3: Not Waiting For The Market To Clear</strong></p>
@@ -1069,7 +1082,7 @@
 </table>
 <p>Regardless of whether a car is good or bad, there is a positive <strong>gain from trade</strong>, i.e. the seller and the buyer are happier if they transact. This is why in an optimal market, you buy some car.</p>
 <p>Here, we say that there is information asymmetry, because the seller knows the car condition, but the buyer doesn't.</p>
-<p>Let <span class="arithmatex">\(g \in \[0,1\]\)</span> be the fraction of cars in the market that are in good condition. Let <span class="arithmatex">\(h \leq g\)</span> be the fraction of cars in good condition also available for sale.</p>
+<p>Let <span class="arithmatex">\(g \in [0,1]\)</span> be the fraction of cars in the market that are in good condition. Let <span class="arithmatex">\(h \leq g\)</span> be the fraction of cars in good condition also available for sale.</p>
 <p>What do we expect at market equilibrium?</p>
 <p><strong>Possible bad equilibrium:</strong></p>
 <ul>
@@ -1142,12 +1155,12 @@
 <p><strong>Adverse Selection Mitigation Strategies</strong></p>
 <ul>
 <li><strong>Provide more information to both sides of the market</strong><ul>
-<li>For example, if you sell your car, there are mandatory disclosures, you are required by law in many states to say if you have problems with your car.</li>
+<li>For example, if you sell your car, there are mandatory disclosures (you are required by law in many states to say if you have problems with your car).</li>
 <li>Before Obamacare, by law, you had to declare pre-existing health conditions, and that could hike up health insurance prices.</li>
 <li>You can invest in reputation systems (rating on Yelp, Amazon), which comes with lots of great incentives in CS questions.</li>
 </ul>
 </li>
-<li><strong>Disallow the use of information on both sides on both sides of the market</strong><ul>
+<li><strong>Disallow the use of information on both sides of the market</strong><ul>
 <li>For instance, with universal healthcare, you have to give health insurance to everyone, which does not allow health insurance companies to use information to pick and choose college students.</li>
 <li>In the stock market, there are regulations about insider trading, where if you have insider information about whether a stock is going to go up or down, you cannot use this information to invest.</li>
 </ul>
@@ -1168,11 +1181,11 @@
 <p>A market failure occurs when a market fails to converge to an optimal outcome.</p>
 <p>We have seen five types of market failures:</p>
 <ol>
-<li>Externalities and public goods</li>
-<li>Transaction costs</li>
-<li>Market thinness</li>
-<li>Timing issues</li>
-<li>Information asymmetry</li>
+<li>Externalities and public goods.</li>
+<li>Transaction costs.</li>
+<li>Market thinness.</li>
+<li>Timing issues.</li>
+<li>Information asymmetry.</li>
 </ol>
 <p>Mitigation strategies exist for all five types of market failures.</p>
 </div>
