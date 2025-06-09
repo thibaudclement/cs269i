@@ -62,19 +62,20 @@ Lloris does not have time to see what Messi does, so both are happening at the s
 ## Equilibrium in 2-Player Zero-Sum Games
 
 Assumptions:
+
 - There are 2 players (Lloris and Messi).
 - This is a Zero-sum game, meaning that their incentives are perfectly misaligned: what Lloris wants is exactly the opposite of what Messi wants.
 
 Messi wants to optimize the probability of goal, i.e. he wants to maximize over all his possible kick strategies, assuming the worst possible jumping strategy for Lloris:
 
 \[
-  Messi's \; opt: \underset{kick-stratregy}{max} \underset{jump-stratregy}{min} Pr[goal]
+  Messi's \; opt: \underset{kick-stratregy}{max} \; \underset{jump-stratregy}{min} \; Pr[goal]
 \]
 
 Lloris has the opposite optimization problem: he wants to figure out how to jump, he knows Messi is going to kick in the direction that makes it as hard as possible for him, and he wants to minimize the probability of goal:
 
 \[
-  Lloris's \; opt: \underset{jump-stratregy}{min} \underset{kick-stratregy}{max}  Pr[goal]
+  Lloris's \; opt: \underset{jump-stratregy}{min} \; \underset{kick-stratregy}{max} \; Pr[goal]
 \]
 
 <div class="theorem" markdown="1">
@@ -94,38 +95,38 @@ One way to compute them is to use Linear Programming (LP), which generalizes the
 
 Rough rules of Poker:
 
-- Every player is dealt 2 cards (private information)
-- Players bet during betting round
-- There are some open cards on the table (public information)
-- We determine which player's private cards are a better match to the cards on the table
+- Every player is dealt 2 cards (private information).
+- Players bet during betting round.
+- There are some open cards on the table (public information).
+- We determine which player's private cards are a better match to the cards on the table.
 
 **Can we use Linear Programming to compute the Nash Equilibrium strategy?**
 
-Linear Programming is fast, but Poker is a _very_ large game. How large? Large enough that someone write a research paper about it—actually, about an _algorithm_ for _estimating_ how large it is.
+Linear Programming is fast, but Poker is a _very_ large game. How large? Large enough that someone wrote a research paper about it—actually, about an _algorithm_ for _estimating_ how large it is.
 
-In fact, there 56 trillion possible card combinations. However, this is not the only thing to consider: we also need to take into account how the other player is betting. Then, the number of possible combinations of what could happen becomes \(10^{160}\). Efficient Linear Programming algorithms are not fast enough.
+In fact, there are 56 trillion possible card combinations. However, this is not the only thing to consider: we also need to take into account how the other player is betting. Then, the number of possible combinations of what could happen becomes \(10^{160}\). Efficient Linear Programming algorithms are not fast enough.
 </div>
 
 Poker is an extensive-form game, because there are turns. In game theory, an extensive-form game represents a strategic interaction where players make decisions sequentially, and the order of moves is explicitly modeled using a game tree.
 
-<div class="theorem" markdown="1">
+<div class="definition" markdown="1">
 **Definitions: Game Theory Terminology Overload**
 
-- **Game Node:** State of the game (i.e. all cards dealt, and all bets made, so far)
-- **Game Tree:** Graph representing which game nodes are reachable from which game node (i.e. there is an edge if we can go from \(A\) to \(B\) by calling another bet)
+- **Game Node:** State of the game (i.e. all cards dealt, and all bets made, so far).
+- **Game Tree:** Graph representing which game nodes are reachable from which game node (i.e. there is an edge if we can go from \(A\) to \(B\) by calling another bet).
 - **Information Set:** All the game nodes consistent with a player's information.
 </div>
 
 The most important part is the _Information Set_, which represents all the games nodes consistent with a player’s information, i.e. there are different states of the game that correspond to different cards that other players could be holding.
 
-**Why should we worry about all the possible game states? Why can't we just solve the current state/information ste in real time?**
+**Why should we worry about all the possible game states? Why can't we just solve the current state/information set in real time?**
 
 What a player wants to do at a given state of the the game depends on what they know (what they see), but it also depends on what the other players are going to do, which in turns depends on what they think that original player is going to do, and what they think that player is going to do depends on the cards they have now, but also what they might do with other cards.
 
 <div class="definition" markdown="1">
 **Algorithmic Insight #1: Use the Blueprint strategy.**
 
-1. Blueprint solves a corase approximation of Poker ("only" \(10^13\) states, i.e. \(50TB\) to store 1 strategy).
+1. Blueprint solves a coarse approximation of Poker ("only" \(10^{13}\) states, i.e. \(50TB\) to store 1 strategy).
 2. During live play: we can use Blueprint to solve the actual information set, i.e. to estimate what the other player thinks we would do if we had their informations set.
 </div>
 
@@ -148,14 +149,14 @@ In 2017, CMU's Poker bot beat top human Poker players for the first time.
 
 At Nash equilibirum:
 
-- Both players choose actions randomly
-- Neither player can gain from changing distribution
-- Theorem: max-min = Nash equilibrium = min-max
+- Both players choose actions randomly.
+- Neither player can gain from changing distribution.
+- Theorem: max-min = Nash equilibrium = min-max.
 
 Algorithms for computing Nash equilibrium:
 
-- Linear programming
-- Regret minimization
+- Linear programming.
+- Regret minimization.
 </div>
 
 ## Nash Equilibrium in Non-Zero-Sum Games
@@ -178,7 +179,7 @@ Lloris's incentives:
 | **Lloris jumps Left**  | 0.4              | 0                 |
 | **Lloris jumps Right** | 0                | 0.6               |
 
-Therefore: \(Lloris's utility = Pr[save] - Pr[goal]\).
+Therefore: \(Lloris's \; utility = Pr[save] - Pr[goal]\).
 
 | U_{Messi}              | Messi kicks Left | Messi kicks Right |
 |------------------------|------------------|-------------------|
@@ -249,15 +250,15 @@ This is similar to the "Chicken" and the "Hawk-Dove" games. Essentially, you arr
 What does this mean?
 
 - If we both wait, we both get 0, nobody is moving.
-- If we go and other person waits, we get 1 and they get 0.
+- If we go and the other person waits, we get 1 and they get 0.
 - If we wait and the other person goes, we get 0 and they get 1.
-- If we both go, we are very happy, we get a very negative utility, we have an accident.
+- If we both go, we are very unhappy, we get a very negative utility, we have an accident.
 
 This implies the following equilibria:
 
 - **Asymmmetric equilibria:** (Go, Wait), (Wait, Go), i.e. if they go, we want to wait, and vice versa.
-- **Symmetric equilibria:** Go with a probability of \(1\%\) and Wait with a probability of \(99\%\), i.e. we each independently go with a probability of \(1\%\) and wait with a probability of \(99\%\)—which is not great, since there is still a \(1/10000\) probability of colliding.
-- **Correlated Equilibrium**: (Go, Wait) with a probability of \(50\%\) and (Wait, Go) with a probability of \(50\%\), i.e. we go and they wait with a probability of \(50\%\), and we wait and they go with a probability of \(50\%\). This is a correlated distribution: it is not independent. To implement this, we need a correlating device, i.e. something that is going to help us correlate our choices, such as a spotlight. For instance, the spotlight, with a probability of \(50\%\) is going to show us red and show them green, or vice versa, but it is never going to show us both green (hopefully).
+- **Symmetric equilibria:** Go with a probability of \(1\%\) and Wait with a probability of \(99\%\), i.e. we each independently go with a probability of \(1\%\) and wait with a probability of \(99\%\)—which is not great, since there is still a \(\frac{1}{10000}\) probability of colliding.
+- **Correlated Equilibrium**: (Go, Wait) with a probability of \(50\%\) and (Wait, Go) with a probability of \(50\%\), i.e. we go and they wait with a probability of \(50\%\), and we wait and they go with a probability of \(50\%\). This is a correlated distribution: it is not independent. To implement this, we need a correlating device, i.e. something that is going to help us correlate our choices, such as a traffic light. For instance, the traffic light, with a probability of \(50\%\) is going to show us red and show them green, or vice versa, but it is never going to show us both green (hopefully).
 </div>
 
 <div class="definition" markdown="1">
@@ -268,9 +269,9 @@ A correlating device sends each player a secret recommended action ("signal") fr
 
 In other words, when we have a correlated distribution over actions that gives a signal/recommended action, if the other player follows their recommended action, it is in our best interest to follow our own recommended action.
 
-For instance, if the spotlight shows us red, it is probably because someone else has green, so we don’t want to go, but if the spotlight shows us green, then we know everyone must have red, so we might as well go.
+For instance, if the traffic light shows us red, it is probably because someone else has green, so we don’t want to go, but if the traffic light shows us green, then we know everyone must have red, so we might as well go.
 
-**Note:** Every Nash equilibrium is an (un)correlated equilibrium.
+_**Note:** Every Nash equilibrium is an (un)correlated equilibrium._
 
 **Good news:**
 
@@ -285,11 +286,11 @@ What is the difference between a correlated equilibrium and a coarse correlated 
 Both types of equilibria rely on a correlating device to send each player a secret recommended action ("signal") from a publicly-known correlated distribution. However:
 
 - In the **correlated equilibrium:** Players choose to follow the recommended action _after_ seeing it.
-- In the **coarse correlated equilibrium:** Players want to follow their average recommended action, byt may not like some recommendations.
+- In the **coarse correlated equilibrium:** Players want to follow their average recommended action, but may not like some recommendations.
 
-**Question: How do we know which algorithm and the equilibrium are appropriate?**
+**Question: How do we know which algorithm and equilibrium are appropriate?**
 
-One way to think about it is to remember that agents are going to do what is good for them. If you think players are going to use the simplest algorithm, it is probably external regret minimizing, they will like end up at the coarse correlated equilibrium. If you expect them to use a more sophisticated swap-regret algorithm (which has other game theory advantages), you expect them to end up at the correlated algorithm.
+One way to think about it is to remember that agents are going to do what is good for them. If you think players are going to use the simplest algorithm, it is probably external-regret minimizing, so they will likely end up at the coarse correlated equilibrium. If you expect them to use a more sophisticated swap-regret algorithm (which has other game theory advantages), you expect them to end up at the correlated algorithm.
 
 **Bad News:**
 
@@ -311,7 +312,7 @@ As a reminder:
 However, suppose now that you are playing against a "dog driver":
 
 - You don't trust the dog to be rational.
-- You don't trust the dog to follow the correlating device (the spotlight signal).
+- You don't trust the dog to follow the correlating device (the traffic light signal).
 - You wait... so the dog can go.
 
 **Conclusion:** The dog is better than you at the Intersection Game. More generally, committing to a strategy gives power.
@@ -331,10 +332,10 @@ A Stackelberg equilibrium is a pair of strategies (Leader's strategy, Follower's
 In other words, the Follower's strategy is a best response to what the strategy chosen by the Leader, and the Leader chooses the optimal strategy for them assuming that the Follower is going to pick a best response.
 
 <div class="theorem" markdown="1">
-The Leader’s utility, in the optimal Stackerlberg equilibrium, is at least what they can get in any possible equilibrium.
+**Theorem:** The Leader’s utility, in the optimal Stackerlberg equilibrium, is at least what they can get in any possible equilibrium.
 </div>
 
-**Note:** If we think about the games we talked about so far, we talked about mixed strategies. For instance, Messi did not want to tell Lloris which side he was going to kick. However, in the Stackelberg equilibrium, without loss of generality, the follower is using a deterministic action, because the leader is already committed to a strategy, and the fact that the follower is using a deterministic action gives us an efficient algorithm using Linear Programming agin (it is something that we can compute efficiently).
+_**Note:** If we think about the games we talked about so far, we talked about mixed strategies. For instance, Messi did not want to tell Lloris which side he was going to kick. However, in the Stackelberg equilibrium, without loss of generality, the follower is using a deterministic action, because the leader is already committed to a strategy, and the fact that the follower is using a deterministic action gives us an efficient algorithm using Linear Programming agin (it is something that we can compute efficiently)._
 
 <div class="example" markdown="1">
 <strong>Mini Case Study: Security Games</strong>
@@ -346,16 +347,16 @@ A Stackelberg equilibrium may be used to model how security games where:
 
 In practice, this is deployed in a variety of domains:
 
-- Infrastructure (airport security)
-- Nature (wildlife protection)
-- Urban crime (LA Metro)
-- Cybersecurity (honeypots, audits)
+- Infrastructure (airport security).
+- Nature (wildlife protection).
+- Urban crime (LA Metro).
+- Cybersecurity (honeypots, audits).
 
 Challenges in real-world applications include:
 
 - **Algorithmic difficulty:** How to deal with the combinatorial number of possible actions (e.g. a route in a large road network)?
 - **Uncertainty:** What are the attacker's payoffs? Is the attacker rational? Will the defender be able to executed their strategy as planned?
-- **Collagoration with human defenders:** Will patrol teams follow, or feel "micro-managed" by, the algorithm?
+- **Collaboration with human defenders:** Will patrol teams follow, or feel "micro-managed" by, the algorithm?
 </div>
 
 ## Recap
