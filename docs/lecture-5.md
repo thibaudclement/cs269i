@@ -3,19 +3,19 @@ _April 14, 2025_
 
 **P2P File-Sharing History:**
 
-- Napster (1999-2001)
-    - Major file-sharing network at the time (mostly .mp3 music files)
-    - Represented an estimated 40\%-60\% of college dorms Internet traffic
-    - Network shut down in 2001 due to copyright infringement
-- Gnutella (2000 onwards).
-    - Decentralized P2P file-sharing network, harder to shut down
-    - 2010 court order to shut down popular client LimeWire (other clients remain available, but the popularity of the network is in decline)
+- Napster (1999-2001):
+    - Major file-sharing network at the time (mostly .mp3 music files).
+    - Represented an estimated 40%-60% of college dorms Internet traffic.
+    - Network shut down in 2001 due to copyright infringement.
+- Gnutella (2000 onwards):
+    - Decentralized P2P file-sharing network, harder to shut down.
+    - 2010 court order to shut down popular client LimeWire (other clients remain available, but the popularity of the network is in decline).
 
 **Challenge: Free-Riding**
 
-- P2P file-sharing networks rely on users uploading content for sharing
+- P2P file-sharing networks rely on users uploading content for sharing.
 - Users want to download files for free, but there aren’t really many incentives when uploading files, so some people do not want to contribute back.
-- On Gnutella, a large fraction of users only download (66\% in 2000, 85\% in 2005)
+- On Gnutella, a large fraction of users only download (66% in 2000, 85% in 2005).
 
 <div class="example" markdown="1">
 **A Simplified Game Theory Model of File-Sharing**
@@ -36,7 +36,7 @@ Consider the following game:
 In other words:
 
 - If Harry free-rides and Marvin uploads, their utility is respectively \(3\) and \(-1\)—and vice versa, if Harry uploads and Marvin free rides, their utility is respectively \(-1\) and \(3\).
-- If they are both uploading, they both get \(2\): \(3\) for downloading and \(-1\) for uploading.
+- If they are both uploading, they both get \(3\) for downloading and \(-1\) for uploading.
 - If they are both free riding, there is nothing happening in the network, so their utility is \(0\).
 
 **What should they do?**
@@ -47,7 +47,7 @@ For anything Marv would do, Harry would rather free ride (and vice versa), so th
 
 ## Iterated File-Sharing Dilemma
 
-Let's now file-sharing dilemma game \(n\) times.
+Let's now iterate the file-sharing dilemma game \(n\) times.
 
 <div class="example" markdown="1">
 Harry and Marvin now repeat the file-sharing game \(n\) times.
@@ -76,7 +76,7 @@ Another way to think about this is that it is like a Nash equilibrium (they are 
 
 In a way, this inability to commit is almost like the opposite of the Stackelberg equilibrium where the leader cannot commit to a strategy profile even when the strategy profile is suboptimal given what the follower is doing.
 
-**Note:** Anything that Harry does will change what Marvin does, and vice versa, and Harry needs to have some model of what Marvin will do in order to determine what will maximize his utility. However, one assumption we can make is that they are never doing something that is suboptimal.
+_**Note:** Anything that Harry does will change what Marvin does, and vice versa, and Harry needs to have some model of what Marvin will do in order to determine what will maximize his utility. However, one assumption we can make is that they are never doing something that is suboptimal._
 
 <div class="example" markdown="1">
 **Example: SPE for the File-Sharing Dilemma Game Iterated \(n\) Times**
@@ -101,7 +101,7 @@ In a way, this inability to commit is almost like the opposite of the Stackelber
 | **Upload**    | (2,2)  | (-1,3)    |
 | **Free-ride** | (3,-1) | (0,0)     |
 
-**Random-stopping assumption:** We are playing—possibly forever, when \(p = 0\). At every iteration, we stop playing with probability \(p\) (for instance because another player’s connection defaults, or because there was a lawsuit against the network, etc.).
+**Random-stopping assumption:** We are playing—possibly forever when \(p = 0\). At every iteration, we stop playing with probability \(p\) (for instance because another player’s connection defaults, or because there was a lawsuit against the network, etc.).
 
 In other words, Harry and Marvin repeat the file-sharing game:
 
@@ -112,7 +112,7 @@ In other words, Harry and Marvin repeat the file-sharing game:
 Here, it is less obvious what players should do (due to the random stopping rule).
 </div>
 
-**Note:** This is also a popular model in general (outside of file-sharing) to model interest rates because you would rather have your money today than tomorrow, so every day in the future is worth a little less.
+_**Note:** This is also a popular model in general (outside of file-sharing) to model interest rates because you would rather have your money today than tomorrow, so every day in the future is worth a little less._
 
 One possible strategy that Harry can choose is called the Grim Trigger Strategy.
 
@@ -136,12 +136,12 @@ Let's analyze Marvin’s optimal strategy, given that Harry is playing the Grim 
 | **Free-ride** | (3,-1) | (0,0)     |
 
 **Always Uploading:** If Marvin always uploads, Harry also always uploads, so every day they keep playing, Marvin has an expected payoff of \(2\).
-This is why the payoff is basically \(2 \cdot the \; geometric \; sequence \; for \; (1-p)\), which comes down to \(2/p\).
-In other words, if Marvin always uploads, his expected utility is \(2/p\).
+This is why the payoff is basically \(2 \cdot the \; geometric \; sequence \; for \; (1-p)\), which comes down to \(\frac{2}{p}\).
+In other words, if Marvin always uploads, his expected utility is \(\frac{2}{p}\).
 
 **Never Uploading:** If Marvin never uploads, in the first iteration, Harry uploads, and then Harry sees that Marvin did not upload, so he is never going to upload again. The payoff for Marvin is \(3\) for the first day, and \(0\) for the rest of time, meaning that his utility is \(3\).
 
-**Conclusion:** To decide whether he should always upload or never upload, Marvin should ask when \(3\) is greater than \(2/p\), which means that he should always upload when \(p \leq \frac{2}{3}\).
+**Conclusion:** To decide whether he should always upload or never upload, Marvin should ask when \(3\) is greater than \(\frac{2}{p}\), which means that he should always upload when \(p \leq \frac{2}{3}\).
  
 </div>
 
@@ -160,7 +160,7 @@ If the players are patient enough, then repeated interaction can result in virtu
 
 In other words, the Folk theorem gives general conditions on when Harry can incentivize Marvin to play certain actions (e.g., uploading) using threats like the Grim Trigger strategy.
 
-On issue with the Grim Trigger strategy is that, if for some reason, Marvin's connection goes down one day and he cannot upload, then Harry will never upload again, and Marvin in turn will not upload again, so they get stuck with a utilit of \(0\) until the end of the game.
+One issue with the Grim Trigger strategy is that, if for some reason, Marvin's connection goes down one day and he cannot upload, then Harry will never upload again, and Marvin in turn will not upload again, so they get stuck with a utility of \(0\) until the end of the game.
 
 A more practical, robust alternative to the Grim Trigger strategy is called the Tit-for-Tat strategy.
 
@@ -188,15 +188,15 @@ At stage \(i\), Marvin can:
 
 </div>
 
-**Notes:**
+_**Notes:**_
 
-- The conclusion is the same for Tit-for-Tat as for Grim Trigger, but this is a coincidence: in general, Grim Trigger is a stronger threat.
-- When \(p = \frac{2}{3}\), then both “always upload” “never upload” are strategic.
+- _The conclusion is the same for Tit-for-Tat as for Grim Trigger, but this is a coincidence: in general, Grim Trigger is a stronger threat._
+- _When \(p = \frac{2}{3}\), then both “always upload” and “never upload” are strategic._
 
 <div class="summary" markdown="1">
 **Iterated File-Sharing Dilemma Recap**
 
-1. In a one-shot game, free-riding is a strictly dominant strategy, i.e. for any action Marvin takes, Harry is always better of _not_ uploading.
+1. In a one-shot game, free-riding is a strictly dominant strategy, i.e. for any action Marvin takes, Harry is always better off _not_ uploading.
 2. With any fixed number of iterations, free-riding is the SPE.
 3. With a random number of iterations, a credible threat of future retaliation can lead to cooperation.
 </div>
@@ -207,7 +207,7 @@ In practice, game theory predicts that:
 2. Players do not cooperate in \(n\)-round games.
 3. Players likely cooperate in games with a random number of rounds.
 
-In fact, in the real world, we frequently observe \((1)\) and \((3)\): in tourist traps, restaurants they might as well charge customers as much as they can, because they will only see them once, while in locals’ favorite spots, restaurants expect customers to come over and over, so they have incentives to serve them well.
+In fact, in the real world, we frequently observe \((1)\) and \((3)\): in tourist traps, restaurants might as well charge customers as much as they can, because they will only see them once, while in locals’ favorite spots, restaurants expect customers to come over and over, so they have incentives to serve them well.
 
 What about \((2)\)?
 
@@ -220,13 +220,13 @@ Out of 15 submissions, Tit-for-Tat won first place.
 
 **Notes:**
 
-- Tit-for-Tat can never win a head-to-head match, but encouraging cooperating leads to a higher score on average.
+- Tit-for-Tat can never win a head-to-head match, but encouraging cooperation leads to a higher score on average.
 - You can always do better than Tit-for-Tat: you can play Tit-for-Tat during \(199\) rounds, and not upload in the last round, but in practice, no participant tried this strategy.
 
 Later on, Professor Axelrod invited his friends to play again. Out of 62 submissions, Tit-for-Tat won first place again.
 </div>
 
-**Note:** Veritasium's _[What Game Theory Reveals About Life, The Universe, and Everything](https://www.youtube.com/watch?v=mScpHTIi-kM)_ YouTube video offers an excellent perspective on this topic.
+_**Note:** Veritasium's _[What Game Theory Reveals About Life, The Universe, and Everything](https://www.youtube.com/watch?v=mScpHTIi-kM)_ YouTube video offers an excellent perspective on this topic._
 
 So, in practice, \((2)\) requires fragile assumptions: Harry assumes in round \(i\) that \(\rightarrow\) Marvin assumes in round \(i+1\) that \(\rightarrow\) Harry assumes in round \(i+2\) that \(\rightarrow\) ... plays optimally in round \(n\).
 
@@ -236,7 +236,7 @@ So, in practice, \((2)\) requires fragile assumptions: Harry assumes in round \(
 **Definition: BitTorrent Overview**
 
 - BitTorrent is currently the main P2P protocol for file-sharing.
-- In 2019, BitTorrent accounted for almost 30\% of upload traffic (with major spikes after episodes of Game of Thrones).
+- In 2019, BitTorrent accounted for almost 30% of upload traffic (with major spikes after episodes of Game of Thrones).
 - Users are organized into swrams sharing the same file.
 - A decentralized tracker coordinates active users in a given swarm.
 - Each file is broken down into a number of pieces (e.g. 1,000).
@@ -248,7 +248,7 @@ So, in practice, \((2)\) requires fragile assumptions: Harry assumes in round \(
 
 This is the strategy most users play because they just download the default BitTorrent client that uses this strategy by default:
 
-- Every 15-30 minutes, a user contact the tracker, requesting a new random subset of swarm peers. So, their number of known swarm peers grows over time.
+- Every 15-30 minutes, a user contacts the tracker, requesting a new random subset of swarm peers. So, their number of known swarm peers grows over time.
 - Each user attempts to download from their peers.
 - Each user has \(s\) slots and allocates \(\frac{1}{s}\) of upload bandwidth to each slot.
 - \(s\) peers receive a slot ("unchoked"), chosen using a variant of the Tit-for-Tat strategy: each user prioritizes peers who sends them the most data. One slot is reserved for "pity uploads" to random peers ("optimistic unchoking"), i.e. a freebee for users who do not have data yet (to give "newbies" a chance).
@@ -261,7 +261,7 @@ This is the strategy most users play because they just download the default BitT
 - Never upload anything.
 - Ask tracker for peers much more frequently (to grow the number of peers quickly).
 
-The idea is to maximize the chances of optimistic unchoke. In experiements, though, this strategy is \(5x\) slower than the default BitTorrent strategy. It still completes downloads in reasonable time without any uploads.
+The idea is to maximize the chances of optimistic unchoke. In experiments, though, this strategy is \(5\) times slower than the default BitTorrent strategy. It still completes downloads in reasonable time without any uploads.
 </div>
 
 <div class="definition" markdown="1">
@@ -283,7 +283,7 @@ In experiments, this provides \(\approx 70\%\) download speed gains over the sta
 <div class="summary" markdown="1">
 **BitTorrent Strategies Recap**
 
-- **Tit-for-Tat (default):** Prioritize sendint data to peers who send you the most data. Reserve one upload slot for new users ("optimistic unchoke").
+- **Tit-for-Tat (default):** Prioritize sending data to peers who send you the most data. Reserve one upload slot for new users ("optimistic unchoke").
 - **BitThief:** Don't upload anything. Contact as many peers as possible to maximize chances of optimistic unchoke.
 - **BitTyrant:** Prioritize sending data to peers who would send you the most data in return.
 </div>
