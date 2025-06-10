@@ -829,7 +829,7 @@
 <p>This mechanism is also very simple: Aviad uses it often at home with his kids.</p>
 <p>Yet, is I-cut-you-choose strategyproof?</p>
 <div class="theorem">
-<p><strong>Claim:</strong> I-cut-you-choose is not strategyproof.</p>
+<p><strong>Claim:</strong> I-cut-you-choose is <em>not</em> strategyproof.</p>
 </div>
 <div class="proof">
 <p><strong>Proof:</strong></p>
@@ -842,7 +842,7 @@
 </div>
 <p>In other words, I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).</p>
 <div class="definition">
-<p><strong>Definition:</strong> Envy-Freeness (1/2).</p>
+<p><strong>Definition: Envy-Freeness (1/2)</strong></p>
 <p>An allocation is envy-free if no agent envies another agent’s allocation (i.e. no agent would rather have the other’s allocation over their own).</p>
 </div>
 <div class="theorem">
@@ -862,7 +862,7 @@
 </ul>
 <p>For this part of lecture, we can just think about additive valuations: If <span class="arithmatex">\(x,y\)</span> are disjoint, then <span class="arithmatex">\(v_i(x \cup y) = v(x) + v(y)\)</span>.</p>
 <div class="definition">
-<p><strong>Definition:</strong> Envy-Freeness (2/2).</p>
+<p><strong>Definition: Envy-Freeness (2/2)</strong></p>
 <p>We may re-define envy-free allocations as:</p>
 <div class="arithmatex">\[
   \forall i,j \; v_i(A_i) \geq v_i(A_j).
@@ -870,7 +870,7 @@
 </div>
 <p>There exists a lot of ways to define fair allocations.</p>
 <div class="definition">
-<p><strong>Definition:</strong> Proportional.</p>
+<p><strong>Definition: Proportional</strong></p>
 <p>We may define proportional allocations as:</p>
 <div class="arithmatex">\[
   \forall i \; v_i(A_i) \geq \frac{v_i(A)}{n}.
@@ -878,7 +878,7 @@
 <p>In other words: my happiness guarantee doesn’t depend on others’ allocation.</p>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Perfect.</p>
+<p><strong>Definition: Perfect</strong></p>
 <p>We may define perfect allocations as:</p>
 <div class="arithmatex">\[
   \forall i \; v_i(A_i) = \frac{v_i(A)}{n}.
@@ -886,7 +886,7 @@
 <p>This is similar to proportional, but also making sure that no one is too happy (we may want to think about why this may be helpful).</p>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Equitable.</p>
+<p><strong>Definition: Equitable</strong></p>
 <p>We may define equitable allocations as:</p>
 <div class="arithmatex">\[
   \forall i,j \; v_i(A_i) = v_j(A_j).
@@ -894,7 +894,7 @@
 <p>This a little funny because we have to compare <span class="arithmatex">\(i\)</span>’s happiness to <span class="arithmatex">\(j\)</span>’s happiness (we may want to think about how to achieve this).</p>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Competitive equilibrium from equal incomes (CEEI)</p>
+<p><strong>Definition: Competitive equilibrium from equal incomes (CEEI)</strong></p>
 <ul>
 <li>Give each agent a budget of 1 (fake money).</li>
 <li>Find prices (for pieces of cake) and an allocation such that:<ul>
@@ -908,7 +908,7 @@
 <p>With indivisible goods, often none of these can be satisfied! For example, if we want to allocate 1 hat, then both Alice and Bob want it.</p>
 <p>Notice that for this example we would have a competitive equilibrium with real money: Alice gets the hat and pays for it, Bob gets nothing and keeps his money. But with fake money Bob isn’t satisfied with keeping his fake money.</p>
 <div class="definition">
-<p><strong>Definition:</strong> Maximin Share (MMS)</p>
+<p><strong>Definition: Maximin Share (MMS)</strong></p>
 <p>Each agent <span class="arithmatex">\(i\)</span> proposes (cuts) allocation <span class="arithmatex">\(A^i\)</span> to <span class="arithmatex">\(n\)</span> agents.</p>
 <p>(<span class="arithmatex">\(A\)</span> still denotes the real allocation.)</p>
 <p>MMS condition:</p>
@@ -920,7 +920,7 @@
 <p>Surprisingly, sometimes, even MMS cannot be satisfied.</p>
 <p>One idea is to approximately-fairly dividing indivisible items.</p>
 <div class="definition">
-<p><strong>Definition:</strong> Envy-Free-Up-to-1-Item (EF1)</p>
+<p><strong>Definition: Envy-Free-Up-to-1-Item (EF1)</strong></p>
 <div class="arithmatex">\[
   v_i(A_i) \geq v_i(\frac{A_j}{"best" \; item}).
 \]</div>
@@ -930,7 +930,7 @@
 \]</div>
 <p>EF1 in words: </p>
 <ul>
-<li><span class="arithmatex">\(v_i(A_j)\)</span> = the value agent <span class="arithmatex">\(i\)</span> would have for agent <span class="arithmatex">\(j\)</span>’s allocation <span class="arithmatex">\((A_j\)</span>.</li>
+<li><span class="arithmatex">\(v_i(A_j)\)</span> = the value agent <span class="arithmatex">\(i\)</span> would have for agent <span class="arithmatex">\(j\)</span>’s allocation <span class="arithmatex">\(A_j\)</span>.</li>
 <li>A weaker benchmark is: <span class="arithmatex">\(v_i(\frac{A_j}{"best" \; item})\)</span> = the same as <span class="arithmatex">\(v_i(A_j)\)</span>, but we discard <span class="arithmatex">\(i\)</span>’s favorite item.</li>
 </ul>
 </div>
@@ -940,15 +940,15 @@
 <li>Also EF1: each gets one car, and Alice gets all the chairs.</li>
 </ul>
 <div class="definition">
-<p><strong>Definition:</strong> Envy-Free-Up-to-Any-Item (EFX)</p>
+<p><strong>Definition: Envy-Free-Up-to-Any-Item (EFX)</strong></p>
 <div class="arithmatex">\[
   v_i(A_i) \geq v_i(\frac{A_j}{"worst" \; item}).
 \]</div>
 </div>
 <p>Can EFX always be satisfied? This is an open problem.</p>
 <div class="definition">
-<p><strong>Definition:</strong> <span class="arithmatex">\(\alpha\)</span>-Maximin Share (MMS)</p>
-<p>“Only a bit (\alpha) worse than worst-case I-cut-you-choose.”</p>
+<p><strong>Definition: <span class="arithmatex">\(\alpha\)</span>-Maximin Share (MMS)</strong></p>
+<p>“Only a bit <span class="arithmatex">\((\alpha)\)</span> worse than worst-case I-cut-you-choose.”</p>
 <p><span class="arithmatex">\(\alpha\)</span>-MMS condition:</p>
 <div class="arithmatex">\[
   v_i(A_i) \geq \alpha \; \underset{A^i}{max} \; \underset{j}{min} \; v_i(A_j^i)
@@ -959,7 +959,7 @@
 </div>
 <p>Is more-than-<span class="arithmatex">\(\frac{3}{4}\)</span>-MMS always impossible? This is another open problem.</p>
 <div class="definition">
-<p><strong>Definition:</strong> <em>Approximate</em> Competitive equilibrium from equal incomes (A-CEEI)</p>
+<p><strong>Definition: <em>Approximate</em> Competitive equilibrium from equal incomes (A-CEEI)</strong></p>
 <ul>
 <li>Give each agent a budget of <em>approximately</em> 1 (fake money).</li>
 <li>The allocation is only required to <em>approximately</em> clear markets.</li>
@@ -970,21 +970,21 @@
 <p>What do we mean by approximately market clearing? We have to allocate non-existing goods.</p>
 <p>Another approach is to look for an allocation that maximizes <strong>fair objective functions</strong>.</p>
 <div class="definition">
-<p><strong>Definition:</strong> Utilitarian/Social Welfare</p>
-<p>“Maximum total happiness”</p>
+<p><strong>Definition: Utilitarian/Social Welfare</strong></p>
+<p>“Maximum total happiness”:</p>
 <div class="arithmatex">\[
   \underset{A_1, ..., A_n}{max} \sum_i v_i(A_i)
 \]</div>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Egalitarian/Maximin</p>
-<p>“Maximum happiness of the saddest person”</p>
+<p><strong>Definition: Egalitarian/Maximin</strong></p>
+<p>“Maximum happiness of the saddest person”:</p>
 <div class="arithmatex">\[
   \underset{A_1, ..., A_n}{max} \; \underset{j}{min} \; v_i(A_i)
 \]</div>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Nash Social Welfare</p>
+<p><strong>Definition: Nash Social Welfare</strong></p>
 <p>Middle ground between utilitarian and egalitarian:</p>
 <ul>
 <li>Emphasis on increasing lower <span class="arithmatex">\(𝑣_𝑖\)</span> (we can think of the extreme case where one <span class="arithmatex">\(v_i\)</span> is close to zero).</li>
@@ -1007,9 +1007,9 @@
 </ul>
 </li>
 <li>Allocating classes:<ul>
-<li>Approximate-CEEI</li>
-<li>Combinatorial demand</li>
-<li>The number of students must significantly exceed the number of classes</li>
+<li>Approximate-CEEI.</li>
+<li>Combinatorial demand.</li>
+<li>The number of students must significantly exceed the number of classes.</li>
 </ul>
 </li>
 <li>Allocating chores:<ul>
@@ -1022,7 +1022,7 @@
 </div>
 <h2 id="dominant-resource-fairness-drf">Dominant Resource Fairness (DRF)</h2>
 <div class="definition">
-<p><strong>Definition:</strong> Leontieff Utility</p>
+<p><strong>Definition: Leontieff Utility</strong></p>
 <p>I want to make as much cake as possible, so I need fixed ratios of <span class="arithmatex">\(flour : oil : sugar\)</span>.</p>
 </div>
 <div class="example">
@@ -1037,9 +1037,11 @@
 </ul>
 </li>
 </ul>
-<p>How can we allocate these resources to these users? In particular, we want to
-- Ensure fairness, efficiency.
-- Avoid monetary transfers (e.g. allocation inside a given organization).</p>
+<p>How can we allocate these resources to these users? In particular, we want to:</p>
+<ul>
+<li>Ensure fairness, efficiency.</li>
+<li>Avoid monetary transfers (e.g. allocation inside a given organization).</li>
+</ul>
 </div>
 <p>Incentives are important in compute allocation:</p>
 <ul>
@@ -1047,7 +1049,7 @@
 <li>“A big search company provided dedicated machines for jobs only if the users could guarantee high utilization. The company soon found that users would sprinkle their code with infinite loops to artificially inflate utilization levels.”</li>
 </ul>
 <div class="definition">
-<p><strong>Definition:</strong> Dominant Resource Fairness</p>
+<p><strong>Definition: Dominant Resource Fairness</strong></p>
 <p>Fix an allocation of resources to users:</p>
 <ul>
 <li>User <span class="arithmatex">\(i\)</span> has some share (fraction) of the total capacity of each resource.</li>
@@ -1083,7 +1085,7 @@
 <p>Ali’s dominant resource is memory and Beth's dominant resource is GPU: this is DRF.</p>
 </div>
 <div class="definition">
-<p><strong>Definition:</strong> Dominant Resource Fairness Mechanism</p>
+<p><strong>Definition: Dominant Resource Fairness Mechanism</strong></p>
 <ul>
 <li>Every user submits their ratio of demands (e.g. 2 GPU : 1 TB).</li>
 <li>The algorithm computes the (unique) maximal allocation subject to DRF.</li>
@@ -1117,7 +1119,7 @@
 <p><span class="arithmatex">\(\rightarrow\)</span> By simplifying assumption, we can’t make someone happier without taking some <span class="arithmatex">\(j^\star\)</span> from someone else.</p>
 </div>
 <div class="theorem">
-<p><strong>Theorem:</strong> The DRF mechanism is strategyproof</p>
+<p><strong>Theorem:</strong> The DRF mechanism is strategyproof.</p>
 </div>
 <div class="proof">
 <p><strong>Proof:</strong> Let <span class="arithmatex">\(A_T\)</span> denote the allocation of DRF with true preferences.</p>
@@ -1156,7 +1158,7 @@
 <p><strong>Envy and Fairness Recap</strong></p>
 <ul>
 <li>
-<p>Envy-free Cake Cutting</p>
+<p>Envy-free Cake Cutting:</p>
 <ul>
 <li>I-cut-you-choose mechanism: 1. Alice cuts the cake into two equal-for-her pieces, and then 2. Bob chooses his favorite of the two pieces.</li>
 <li>I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).</li>
