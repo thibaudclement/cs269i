@@ -7,9 +7,9 @@ Market Algorithms, Google Research.
 
 If you do a Google search, you will find different elements on the results page:
 
-- Knowledge Panel: wikipedia-level information about what you are searching for.
-- Local Results: to help you find stores to go buy the products.
-- Web Search Results: for places that will tell you more about what you are looking for.
+- **Knowledge Panel:** wikipedia-level information about what you are searching for.
+- **Local Results:** to help you find stores to go buy the products.
+- **Web Search Results:** for places that will tell you more about what you are looking for.
 
 ![Google Search Engine Result Page](images/Google Search Engine Result Page.png)
 
@@ -387,7 +387,7 @@ We see that:
 
 </div>
 
-**Note:* Linear programs in general can be solved in polynomial time, so we can solve them pretty fast, even though they might give us a fractional result. However, for proving approximation guarantees for these algorithms we should always use them. They can be a good tool for being able to reason about what the optimal solution looks like, and thinking about how we can approach it.
+_**Note:** Linear programs in general can be solved in polynomial time, so we can solve them pretty fast, even though they might give us a fractional result. However, for proving approximation guarantees for these algorithms we should always use them. They can be a good tool for being able to reason about what the optimal solution looks like, and thinking about how we can approach it._
 
 So, that was for the Knapsack Problem, but the rich ad problem is a bit more complicated: it is _Multiple-Choice Knapsack Problem_. In addition to the knapsack constraint of packing these ads, we also have the constraint that we are only allowed to choose one ad per advertiser.
 
