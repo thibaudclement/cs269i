@@ -36,7 +36,8 @@ Anyone who has my \(public \_ key\) can \(verify(x, y, public \_ key)\) to make 
 
 <div class="remark" markdown="1">
 
-Per the lecture slides: "This is intended to be a slow introduction for those of you who have never seen blockchains."
+Per the lecture slides:
+>"This is intended to be a slow introduction for those of you who have never seen blockchains."
 
 </div>
 
