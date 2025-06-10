@@ -495,7 +495,7 @@ Below are questions asked by some of the students who attended the lecture in pe
 
 **How does regret converge to coarse correlated equilibrium?**
 
-Reminder: In a coarse correlated equilibrium, I would rather follow the signal than ignore the signal. The regret is the sum, over time, of the difference between the reward of the overall best action and the reward from my algorithm.
+_**Reminder:** In a coarse correlated equilibrium, I would rather follow the signal than ignore the signal. The regret is the sum, over time, of the difference between the reward of the overall best action and the reward from my algorithm._
 
 If we use a regret-minimization algorithm, we expect this regret to approach or approximately approach zero.
 In a candidate coarse correlated equilibrium CCE:
@@ -507,7 +507,7 @@ So, each player is getting the action they took on day \(t\). Therefore, the exp
 
 **How does swap-regret converge to correlated equilibrium?**
 
-Reminder: the definition of correlated equilibrium is that I am looking at the signal, and still after seeing the signal, I cannot do better than the signal. Swap-regret is harder to minimize, but if you get to minimize, it is better.
+_**Reminder:** the definition of correlated equilibrium is that I am looking at the signal, and still after seeing the signal, I cannot do better than the signal. Swap-regret is harder to minimize, but if you get to minimize, it is better._
 
 **Can we talk about Myerson’s theorem?**
 
@@ -517,7 +517,7 @@ Here is what Myerson’s theorem is saying:
 - The second part says that this is the best way to sell one item. It is not trivial but it is true: you can do a lot of complicated things, but none of this helps, you might as well just set one price.
 - The third part says that if we have some fixed number of buyers \(n\), and we don’t know their values, but we assume that they are iid, they come from the same distribution \(D\). It turns out that the revenue-optimal auction to sell one item to these \(n\) buyers it to do a second-price with reserve price \(p(D)\) auction (where the reserve price is the same whether we have \(1\) buyer or \(100\) buyers).
 
-Reminder: in a second-price auction, everyone submits their sealed bid, but to win the auction, you don’t need to only beat everyone else, but also the reserve price, and then you pay the maximum of everyone else and the reserve price.
+_**Reminder:** in a second-price auction, everyone submits their sealed bid, but to win the auction, you don’t need to only beat everyone else, but also the reserve price, and then you pay the maximum of everyone else and the reserve price._
 
 As the competition increases, it becomes more likely that we have two buyers whose value exceed the reserve price, and as soon as that happens, we don’t need the reserve price anymore, because to win the auction, we don’t need to beat the reserve price, we need to beat the second highest bid.
 
