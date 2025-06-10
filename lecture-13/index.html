@@ -886,19 +886,19 @@
 <p><strong>Blockchain Recap (So Far)</strong></p>
 <p>Main goal: Maintain a ledger (i.e. a history of events that we all/mostly agree on) that is:</p>
 <ul>
-<li>Decentralized: Messages are delayed/dropped (no uniform time)</li>
-<li>Permissionless: Users join, leave, come back at any time</li>
+<li>Decentralized: Messages are delayed/dropped (no uniform time).</li>
+<li>Permissionless: Users join, leave, come back at any time.</li>
 </ul>
 <p>Risks of Sybil attacks require alternatives to “majority”:</p>
 <ul>
 <li>Vanilla Proof-of-Stake (PoS) protocol: At each iteration:<ul>
-<li>(1) Sample a random coin;</li>
+<li>(1) Sample a random coin.</li>
 <li>(2) Ask its owner to create the next block.</li>
 </ul>
 </li>
 <li>Proof-of-Work (PoW): At each iteration:<ul>
-<li>(1) Miners compete to invert a hash function;</li>
-<li>(2) First miner to succeed creates new block</li>
+<li>(1) Miners compete to invert a hash function.</li>
+<li>(2) First miner to succeed creates new block.</li>
 </ul>
 </li>
 </ul>
@@ -908,11 +908,11 @@
 <p>A <strong>market failure</strong> occurs when a market fails to converge to an optimal outcome.</p>
 <p>We have seen five types of market failures:</p>
 <ol>
-<li>Externalities (side effects on other parties)</li>
-<li>Transaction costs</li>
-<li>Thinness (flow of buyers/sellers too small)</li>
-<li>Timing issues</li>
-<li>Information asymmetry</li>
+<li>Externalities (side effects on other parties).</li>
+<li>Transaction costs.</li>
+<li>Thinness (flow of buyers/sellers too small).</li>
+<li>Timing issues.</li>
+<li>Information asymmetry.</li>
 </ol>
 </div>
 <div class="summary">
@@ -968,8 +968,8 @@
 <p><strong>Continuous Limit Order Book Recap</strong></p>
 <p>Definitions:</p>
 <ul>
-<li>Bid: highest buy order</li>
-<li>Ask: lowest sell order</li>
+<li>Bid: highest buy order.</li>
+<li>Ask: lowest sell order.</li>
 </ul>
 <p>Rules:</p>
 <ul>
@@ -1022,7 +1022,7 @@ Homer can buy 1 stock from Abe!</p>
 <p>Luck also helps: sometimes, a slower order is accepted due to randomness in the stock exchange’s computer!</p>
 </div>
 <div class="summary">
-<p>Putting it all together:</p>
+<p><strong>Putting it all together:</strong></p>
 <ul>
 <li>Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).</li>
 <li>When a stock value changes, snipers and liquidity providers race to update/snipe resting orders. This is risky and costly for liquidity providers.</li>
@@ -1032,7 +1032,7 @@ Homer can buy 1 stock from Abe!</p>
 </div>
 <h2 id="fixes-for-these-market-failures">Fixes for These Market Failures?</h2>
 <p>Can the following speed bumps resolve speed arm races and reduce risk for liquidity providers?</p>
-<p>Naïve attempts do not work:</p>
+<p><strong>Naïve attempts do not work:</strong></p>
 <ul>
 <li>Symmetric speed bumps (i.e. all orders get delayed by the same amount):<ul>
 <li>Don’t solve speed arm races.</li>
@@ -1045,7 +1045,7 @@ Homer can buy 1 stock from Abe!</p>
 </ul>
 </li>
 </ul>
-<p>Better proposals exist:</p>
+<p><strong>Better proposals exist:</strong></p>
 <ul>
 <li>Sniper-only speed bumps (i.e. only delay sniping orders, which is technically a speed bonus to cancelling resting orders):<ul>
 <li>Give liquidity providers time to react to value-changing events.</li>
@@ -1072,8 +1072,8 @@ Homer can buy 1 stock from Abe!</p>
 <p><strong>Definition: Smart Contracts</strong></p>
 <p>So far we talked about blockchains that record payments (“transactions”).Ethereum and other blockchains (but not Bitcoin) support smart contracts:</p>
 <ul>
-<li>Smart: Can run complex computer code (ideally Turing-complete).</li>
-<li>Contract: Both parties agree to terms (and sign).</li>
+<li><strong>Smart:</strong> Can run complex computer code (ideally Turing-complete).</li>
+<li><strong>Contract:</strong> Both parties agree to terms (and sign).</li>
 </ul>
 </div>
 <div class="example">
@@ -1115,7 +1115,7 @@ Homer can buy 1 stock from Abe!</p>
 <p><strong>Definition: Decentralized Finance (DeFi)</strong>:</p>
 <ul>
 <li>Supports trading of cryptocurrencies, stocks, contracts, derivatives, etc.</li>
-<li>Is a popular application of smart contracts</li>
+<li>Is a popular application of smart contracts.</li>
 </ul>
 </div>
 <p>Some variants, such as limit order book (IDEX, Paradex, Etherdelta, ...) and Automated market makers (Uniswap, Bancor) can be automated as decentralized smart contracts.</p>
@@ -1158,19 +1158,19 @@ They stole about <span class="arithmatex">\(\$350K\)</span>, <span class="arithm
 <p><strong>Miners’ Rewards Structure</strong>:</p>
 <ul>
 <li>Miners (PoW or PoS) can receive a flat reward for each block they “mine”.</li>
-<li>Miners also earn custom tips (“transaction fees”), or more generally MEV</li>
+<li>Miners also earn custom tips (“transaction fees”), or more generally MEV.</li>
 </ul>
 <p>Originally, block rewards were greater than MEV, but important trends are changing this:</p>
 <ul>
 <li>Block rewards are decreasing:<ul>
-<li>On Bitcoin: built-in block rewards are halving every ~4 years</li>
-<li>On Ethereum: historically, block rewards have generally been decreasing (more complicated)</li>
+<li>On Bitcoin: built-in block rewards are halving every ~4 years.</li>
+<li>On Ethereum: historically, block rewards have generally been decreasing (more complicated).</li>
 </ul>
 </li>
 <li>MEV is increasing: <ul>
-<li>There is more competition to be included in limited block space</li>
+<li>There is more competition to be included in limited block space.</li>
 <li>More sophisticated DeFi means more sophisticated front running, etc.</li>
-<li>Flashbots, etc: special networks that auction space in MEV-optimized blocks</li>
+<li>Flashbots, etc: special networks that auction space in MEV-optimized blocks.</li>
 </ul>
 </li>
 </ul>
@@ -1180,7 +1180,7 @@ They stole about <span class="arithmatex">\(\$350K\)</span>, <span class="arithm
 <h2 id="fee-sniping-selfish-tie-breaking-and-undercutting">Fee sniping, selfish tie-breaking, and undercutting</h2>
 <div class="definition">
 <p><strong>Definition: Fee-Sniping Attack</strong></p>
-<p>Miners prefer to mine an alternative <span class="arithmatex">\(\widehat{b_t}\)</span> that includes the large MEV</p>
+<p>Miners prefer to mine an alternative <span class="arithmatex">\(\widehat{b_t}\)</span> that includes the large MEV:</p>
 <p><img alt="Fee Sniping Attack" src="../images/Fee%20Sniping%20Attack.png" /></p>
 <p>With <span class="arithmatex">\(\alpha\)</span>-fraction of hash power, we have:</p>
 <div class="arithmatex">\[
@@ -1261,7 +1261,7 @@ Pr[2 \; blocks \; to \; make \; new \; chain \; longest] = \alpha^2.
 <p>Interventions include:</p>
 <ul>
 <li>Naïve (symmetric/random) speed bumps don’t resolve sniping cost.</li>
-<li>Sound proposals<ul>
+<li>Sound proposals:<ul>
 <li>Sniper-only speed bumps (fairly specific to fungible good market design).</li>
 <li>Frequent batch auctions (batching is a generally useful design principle).</li>
 </ul>
