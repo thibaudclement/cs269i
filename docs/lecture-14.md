@@ -27,7 +27,7 @@ This mechanism is also very simple: Aviad uses it often at home with his kids.
 Yet, is I-cut-you-choose strategyproof?
 
 <div class="theorem" markdown="1">
-**Claim:** I-cut-you-choose is not strategyproof.
+**Claim:** I-cut-you-choose is _not_ strategyproof.
 
 </div>
 
@@ -46,7 +46,7 @@ To cut optimally, Alice wants to know Bob’s preferences—and Bob probably doe
 In other words, I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).
 
 <div class="definition" markdown="1">
-**Definition:** Envy-Freeness (1/2).
+**Definition: Envy-Freeness (1/2)**
 
 An allocation is envy-free if no agent envies another agent’s allocation (i.e. no agent would rather have the other’s allocation over their own).
 
@@ -78,7 +78,7 @@ Formalizing fair allocations:
 For this part of lecture, we can just think about additive valuations: If \(x,y\) are disjoint, then \(v_i(x \cup y) = v(x) + v(y)\).
 
 <div class="definition" markdown="1">
-**Definition:** Envy-Freeness (2/2).
+**Definition: Envy-Freeness (2/2)**
 
 We may re-define envy-free allocations as:
 
@@ -91,7 +91,7 @@ We may re-define envy-free allocations as:
 There exists a lot of ways to define fair allocations.
 
 <div class="definition" markdown="1">
-**Definition:** Proportional.
+**Definition: Proportional**
 
 We may define proportional allocations as:
 
@@ -103,7 +103,7 @@ In other words: my happiness guarantee doesn’t depend on others’ allocation.
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Perfect.
+**Definition: Perfect**
 
 We may define perfect allocations as:
 
@@ -115,7 +115,7 @@ This is similar to proportional, but also making sure that no one is too happy (
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Equitable.
+**Definition: Equitable**
 
 We may define equitable allocations as:
 
@@ -127,7 +127,7 @@ This a little funny because we have to compare \(i\)’s happiness to \(j\)’s 
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Competitive equilibrium from equal incomes (CEEI)
+**Definition: Competitive equilibrium from equal incomes (CEEI)**
 
 - Give each agent a budget of 1 (fake money).
 - Find prices (for pieces of cake) and an allocation such that:
@@ -143,7 +143,7 @@ With indivisible goods, often none of these can be satisfied! For example, if we
 Notice that for this example we would have a competitive equilibrium with real money: Alice gets the hat and pays for it, Bob gets nothing and keeps his money. But with fake money Bob isn’t satisfied with keeping his fake money.
 
 <div class="definition" markdown="1">
-**Definition:** Maximin Share (MMS)
+**Definition: Maximin Share (MMS)**
 
 Each agent \(i\) proposes (cuts) allocation \(A^i\) to \(n\) agents.
 
@@ -165,7 +165,7 @@ Surprisingly, sometimes, even MMS cannot be satisfied.
 One idea is to approximately-fairly dividing indivisible items.
 
 <div class="definition" markdown="1">
-**Definition:** Envy-Free-Up-to-1-Item (EF1)
+**Definition: Envy-Free-Up-to-1-Item (EF1)**
 
 \[
   v_i(A_i) \geq v_i(\frac{A_j}{"best" \; item}).
@@ -179,7 +179,7 @@ EF1 in equations:
 
 EF1 in words: 
 
-- \(v_i(A_j)\) = the value agent \(i\) would have for agent \(j\)’s allocation \((A_j\).
+- \(v_i(A_j)\) = the value agent \(i\) would have for agent \(j\)’s allocation \(A_j\).
 - A weaker benchmark is: \(v_i(\frac{A_j}{"best" \; item})\) = the same as \(v_i(A_j)\), but we discard \(i\)’s favorite item.
 
 </div>
@@ -190,7 +190,7 @@ EF1 can always be satisfied, e.g., agents taking turns selecting one item at a t
 - Also EF1: each gets one car, and Alice gets all the chairs.
 
 <div class="definition" markdown="1">
-**Definition:** Envy-Free-Up-to-Any-Item (EFX)
+**Definition: Envy-Free-Up-to-Any-Item (EFX)**
 
 \[
   v_i(A_i) \geq v_i(\frac{A_j}{"worst" \; item}).
@@ -201,9 +201,9 @@ EF1 can always be satisfied, e.g., agents taking turns selecting one item at a t
 Can EFX always be satisfied? This is an open problem.
 
 <div class="definition" markdown="1">
-**Definition:** \(\alpha\)-Maximin Share (MMS)
+**Definition: \(\alpha\)-Maximin Share (MMS)**
 
-“Only a bit (\alpha) worse than worst-case I-cut-you-choose.”
+“Only a bit \((\alpha)\) worse than worst-case I-cut-you-choose.”
 
 \(\alpha\)-MMS condition:
 
@@ -221,7 +221,7 @@ Can EFX always be satisfied? This is an open problem.
 Is more-than-\(\frac{3}{4}\)-MMS always impossible? This is another open problem.
 
 <div class="definition" markdown="1">
-**Definition:** _Approximate_ Competitive equilibrium from equal incomes (A-CEEI)
+**Definition: _Approximate_ Competitive equilibrium from equal incomes (A-CEEI)**
 
 - Give each agent a budget of _approximately_ 1 (fake money).
 - The allocation is only required to _approximately_ clear markets.
@@ -237,9 +237,9 @@ What do we mean by approximately market clearing? We have to allocate non-existi
 Another approach is to look for an allocation that maximizes **fair objective functions**.
 
 <div class="definition" markdown="1">
-**Definition:** Utilitarian/Social Welfare
+**Definition: Utilitarian/Social Welfare**
 
-“Maximum total happiness”
+“Maximum total happiness”:
 
 \[
   \underset{A_1, ..., A_n}{max} \sum_i v_i(A_i)
@@ -248,9 +248,9 @@ Another approach is to look for an allocation that maximizes **fair objective fu
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Egalitarian/Maximin
+**Definition: Egalitarian/Maximin**
 
-“Maximum happiness of the saddest person”
+“Maximum happiness of the saddest person”:
 
 
 \[
@@ -260,7 +260,7 @@ Another approach is to look for an allocation that maximizes **fair objective fu
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Nash Social Welfare
+**Definition: Nash Social Welfare**
 
 Middle ground between utilitarian and egalitarian:
 
@@ -287,9 +287,9 @@ The Nash Social Welfare is scale-invariant, which makes it easier to compare dif
     - Spliddit used to maximize social welfare subject to MMS/proportionality/EF. 
     - They decided that NSW is better.
 - Allocating classes:
-    - Approximate-CEEI
-    - Combinatorial demand
-    - The number of students must significantly exceed the number of classes
+    - Approximate-CEEI.
+    - Combinatorial demand.
+    - The number of students must significantly exceed the number of classes.
 - Allocating chores:
     - Spliddit used to assign chores by assuming they’re divisible (we can use randomized rounding to assign fractional chores) and drawing new chores each week to guarantee approximate “ex-post” fairness.
     - Then they looked for an equitable solution, and optimized over all equitable solutions using Linear Programming.
@@ -300,7 +300,7 @@ The Nash Social Welfare is scale-invariant, which makes it easier to compare dif
 ## Dominant Resource Fairness (DRF)
 
 <div class="definition" markdown="1">
-**Definition:** Leontieff Utility
+**Definition: Leontieff Utility**
 
 I want to make as much cake as possible, so I need fixed ratios of \(flour : oil : sugar\).
 
@@ -317,7 +317,8 @@ Consider the following computational resource sharing model:
     - Each task demands a fixed vector of resources (2 GPU, 3 TB RAM).
     - For now, tasks are infinitesimally small (2\(\epsilon\) GPU, 3\(\epsilon\) TB RAM).
 
-How can we allocate these resources to these users? In particular, we want to
+How can we allocate these resources to these users? In particular, we want to:
+
 - Ensure fairness, efficiency.
 - Avoid monetary transfers (e.g. allocation inside a given organization).
 
@@ -329,7 +330,7 @@ Incentives are important in compute allocation:
 - “A big search company provided dedicated machines for jobs only if the users could guarantee high utilization. The company soon found that users would sprinkle their code with infinite loops to artificially inflate utilization levels.”
 
 <div class="definition" markdown="1">
-**Definition:** Dominant Resource Fairness
+**Definition: Dominant Resource Fairness**
 
 Fix an allocation of resources to users:
 
@@ -374,7 +375,7 @@ Ali’s dominant resource is memory and Beth's dominant resource is GPU: this is
 </div>
 
 <div class="definition" markdown="1">
-**Definition:** Dominant Resource Fairness Mechanism
+**Definition: Dominant Resource Fairness Mechanism**
 
 - Every user submits their ratio of demands (e.g. 2 GPU : 1 TB).
 - The algorithm computes the (unique) maximal allocation subject to DRF.
@@ -430,7 +431,7 @@ In other words, every user prefers DRF over naïve resource allocation. This pro
 </div>
 
 <div class="theorem" markdown="1">
-**Theorem:** The DRF mechanism is strategyproof
+**Theorem:** The DRF mechanism is strategyproof.
 
 </div>
 
@@ -480,7 +481,7 @@ In practice:
 <div class="summary" markdown="1">
 **Envy and Fairness Recap**
 
-- Envy-free Cake Cutting
+- Envy-free Cake Cutting:
     - I-cut-you-choose mechanism: 1. Alice cuts the cake into two equal-for-her pieces, and then 2. Bob chooses his favorite of the two pieces.
     - I-cut-you-choose is not strategyproof for the cutter (but it is strategyproof for the chooser).
     - Definition: An allocation is envy-free if no agent envies another agent’s allocation (i.e. no agent would rather have the other’s allocation over their own).
