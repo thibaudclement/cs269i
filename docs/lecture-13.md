@@ -5,17 +5,17 @@ _May 26, 2025_
 
 Main goal: Maintain a ledger (i.e. a history of events that we all/mostly agree on) that is:
 
-- Decentralized: Messages are delayed/dropped (no uniform time)
-- Permissionless: Users join, leave, come back at any time
+- Decentralized: Messages are delayed/dropped (no uniform time).
+- Permissionless: Users join, leave, come back at any time.
 
 Risks of Sybil attacks require alternatives to “majority”:
 
 - Vanilla Proof-of-Stake (PoS) protocol: At each iteration:
-    - (1) Sample a random coin;
+    - (1) Sample a random coin.
     - (2) Ask its owner to create the next block.
 - Proof-of-Work (PoW): At each iteration:
-    - (1) Miners compete to invert a hash function;
-    - (2) First miner to succeed creates new block
+    - (1) Miners compete to invert a hash function.
+    - (2) First miner to succeed creates new block.
 </div>
 
 <div class="summary" markdown="1">
@@ -25,11 +25,11 @@ A **market failure** occurs when a market fails to converge to an optimal outcom
 
 We have seen five types of market failures:
 
-1. Externalities (side effects on other parties)
-2. Transaction costs
-3. Thinness (flow of buyers/sellers too small)
-4. Timing issues
-5. Information asymmetry
+1. Externalities (side effects on other parties).
+2. Transaction costs.
+3. Thinness (flow of buyers/sellers too small).
+4. Timing issues.
+5. Information asymmetry.
 
 </div>
 
@@ -107,8 +107,8 @@ Main model points:
 
 Definitions:
 
-- Bid: highest buy order
-- Ask: lowest sell order
+- Bid: highest buy order.
+- Ask: lowest sell order.
 
 Rules:
 
@@ -181,7 +181,7 @@ Luck also helps: sometimes, a slower order is accepted due to randomness in the 
 </div>
 
 <div class="summary" markdown="1">
-Putting it all together:
+**Putting it all together:**
 
 - Naïve investors rely on trading with resting orders by liquidity providers (especially in thin markets).
 - When a stock value changes, snipers and liquidity providers race to update/snipe resting orders. This is risky and costly for liquidity providers.
@@ -194,7 +194,7 @@ Putting it all together:
 
 Can the following speed bumps resolve speed arm races and reduce risk for liquidity providers?
 
-Naïve attempts do not work:
+**Naïve attempts do not work:**
 
 - Symmetric speed bumps (i.e. all orders get delayed by the same amount):
     - Don’t solve speed arm races.
@@ -203,7 +203,7 @@ Naïve attempts do not work:
     - Mostly solve speed arm races (when the random delay is greater than the speed difference).
     - Make sniping risk worse, as one liquidity provider may compete with many snipe attempts.
 
-Better proposals exist:
+**Better proposals exist:**
 
 - Sniper-only speed bumps (i.e. only delay sniping orders, which is technically a speed bonus to cancelling resting orders):
     - Give liquidity providers time to react to value-changing events.
@@ -227,8 +227,8 @@ Things get even wackier on the blockchain.
 
 So far we talked about blockchains that record payments (“transactions”).Ethereum and other blockchains (but not Bitcoin) support smart contracts:
 
-- Smart: Can run complex computer code (ideally Turing-complete).
-- Contract: Both parties agree to terms (and sign).
+- **Smart:** Can run complex computer code (ideally Turing-complete).
+- **Contract:** Both parties agree to terms (and sign).
 
 </div>
 
@@ -280,7 +280,7 @@ No collateral is needed when:
 **Definition: Decentralized Finance (DeFi)**:
 
 - Supports trading of cryptocurrencies, stocks, contracts, derivatives, etc.
-- Is a popular application of smart contracts
+- Is a popular application of smart contracts.
 
 </div>
 
@@ -345,17 +345,17 @@ In centralized finance, speed arms race to get to the top of the order book. In 
 **Miners’ Rewards Structure**:
 
 - Miners (PoW or PoS) can receive a flat reward for each block they “mine”.
-- Miners also earn custom tips (“transaction fees”), or more generally MEV
+- Miners also earn custom tips (“transaction fees”), or more generally MEV.
 
 Originally, block rewards were greater than MEV, but important trends are changing this:
 
 - Block rewards are decreasing:
-    - On Bitcoin: built-in block rewards are halving every ~4 years
-    - On Ethereum: historically, block rewards have generally been decreasing (more complicated)
+    - On Bitcoin: built-in block rewards are halving every ~4 years.
+    - On Ethereum: historically, block rewards have generally been decreasing (more complicated).
 - MEV is increasing: 
-    - There is more competition to be included in limited block space
+    - There is more competition to be included in limited block space.
     - More sophisticated DeFi means more sophisticated front running, etc.
-    - Flashbots, etc: special networks that auction space in MEV-optimized blocks
+    - Flashbots, etc: special networks that auction space in MEV-optimized blocks.
 
 ![Flashbots](images/flashbots.png)
 
@@ -368,7 +368,7 @@ In September 2020, fees surpaased block rewards on Ethereum for the first time. 
 <div class="definition" markdown="1">
 **Definition: Fee-Sniping Attack**
 
-Miners prefer to mine an alternative \(\widehat{b_t}\) that includes the large MEV
+Miners prefer to mine an alternative \(\widehat{b_t}\) that includes the large MEV:
 
 ![Fee Sniping Attack](images/Fee Sniping Attack.png)
 
@@ -472,7 +472,7 @@ Considering Reuters vs Spread Networks:
 Interventions include:
 
 - Naïve (symmetric/random) speed bumps don’t resolve sniping cost.
-- Sound proposals
+- Sound proposals:
     - Sniper-only speed bumps (fairly specific to fungible good market design).
     - Frequent batch auctions (batching is a generally useful design principle).
 
