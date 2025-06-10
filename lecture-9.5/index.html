@@ -1303,7 +1303,7 @@ Otherwise, play Tit-for-Tat!
 <h2 id="questions">Questions</h2>
 <p>Below are questions asked by some of the students who attended the lecture in person.</p>
 <p><strong>How does regret converge to coarse correlated equilibrium?</strong></p>
-<p>Reminder: In a coarse correlated equilibrium, I would rather follow the signal than ignore the signal. The regret is the sum, over time, of the difference between the reward of the overall best action and the reward from my algorithm.</p>
+<p><em><strong>Reminder:</strong> In a coarse correlated equilibrium, I would rather follow the signal than ignore the signal. The regret is the sum, over time, of the difference between the reward of the overall best action and the reward from my algorithm.</em></p>
 <p>If we use a regret-minimization algorithm, we expect this regret to approach or approximately approach zero.
 In a candidate coarse correlated equilibrium CCE:</p>
 <ul>
@@ -1312,7 +1312,7 @@ In a candidate coarse correlated equilibrium CCE:</p>
 </ul>
 <p>So, each player is getting the action they took on day <span class="arithmatex">\(t\)</span>. Therefore, the expected utility from following the signal is the sum of the rewards the actual algorithm got. The utility from ignoring the signal is the sum of the rewards the best action got. The regret going to zero means that following the signal is almost as good as ignoring the signal and playing the overall best action.</p>
 <p><strong>How does swap-regret converge to correlated equilibrium?</strong></p>
-<p>Reminder: the definition of correlated equilibrium is that I am looking at the signal, and still after seeing the signal, I cannot do better than the signal. Swap-regret is harder to minimize, but if you get to minimize, it is better.</p>
+<p><em><strong>Reminder:</strong> the definition of correlated equilibrium is that I am looking at the signal, and still after seeing the signal, I cannot do better than the signal. Swap-regret is harder to minimize, but if you get to minimize, it is better.</em></p>
 <p><strong>Can we talk about Myerson’s theorem?</strong></p>
 <p>Here is what Myerson’s theorem is saying:</p>
 <ul>
@@ -1320,7 +1320,7 @@ In a candidate coarse correlated equilibrium CCE:</p>
 <li>The second part says that this is the best way to sell one item. It is not trivial but it is true: you can do a lot of complicated things, but none of this helps, you might as well just set one price.</li>
 <li>The third part says that if we have some fixed number of buyers <span class="arithmatex">\(n\)</span>, and we don’t know their values, but we assume that they are iid, they come from the same distribution <span class="arithmatex">\(D\)</span>. It turns out that the revenue-optimal auction to sell one item to these <span class="arithmatex">\(n\)</span> buyers it to do a second-price with reserve price <span class="arithmatex">\(p(D)\)</span> auction (where the reserve price is the same whether we have <span class="arithmatex">\(1\)</span> buyer or <span class="arithmatex">\(100\)</span> buyers).</li>
 </ul>
-<p>Reminder: in a second-price auction, everyone submits their sealed bid, but to win the auction, you don’t need to only beat everyone else, but also the reserve price, and then you pay the maximum of everyone else and the reserve price.</p>
+<p><em><strong>Reminder:</strong> in a second-price auction, everyone submits their sealed bid, but to win the auction, you don’t need to only beat everyone else, but also the reserve price, and then you pay the maximum of everyone else and the reserve price.</em></p>
 <p>As the competition increases, it becomes more likely that we have two buyers whose value exceed the reserve price, and as soon as that happens, we don’t need the reserve price anymore, because to win the auction, we don’t need to beat the reserve price, we need to beat the second highest bid.</p>
 <p><strong>If the reserve price becomes irrelevant as the number of bidders increases, and the revenue equivalence holds, why is the second price auction revenue optimal and not also the first price auction?</strong></p>
 <p>As competition increases, it does not matter whether we are doing second-price or first-price, because we are reaching this point where the market is setting the price. The advantage of second-price auction is that it is strategyproof, so it is easier to analyze, while first price auction is not.</p>
