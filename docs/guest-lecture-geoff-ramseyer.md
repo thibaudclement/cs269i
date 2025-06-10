@@ -53,7 +53,7 @@ _June 2, 2025_
 
 **How does this break an exchange?**
 
-- Manipulate ordering for profit
+- Manipulate ordering for profit:
     - Historically called "Miner Extractable Value" or "MEV".
     - Illegal on regulated exchanges.
 - On Ethereum: front-running widespread, most blocks produced by 2 or 3 entities.
@@ -126,7 +126,7 @@ Settlement risk prevents open access.
 
 **Problem:** Ordering determines pricing in an exchange.
 
-**Solution:** A Different Pricing Mechanism
+**Solution:** A Different Pricing Mechanism:
 
 - Input: Set of Open Offers
 - Step 1: Compute Valuations
@@ -155,17 +155,17 @@ There always exists a unique\(^\star\) set of valuations \(\{p_A\}\) that clears
 
 Economic Performance:
 
-- No In-Batch Front-Running
+- No In-Batch Front-Running:
     - Everyone gets the same rates
     - Open question: MEV and low-latency advantage?
-- Optimal Trade Routing & Eliminate Cyclic Arbitrage
+- Optimal Trade Routing & Eliminate Cyclic Arbitrage:
 
 ![Uniform Clearing Valuations](images/Uniform Clearing Valuations.png)
 
 > “... I am receptive to more flexible, competitive solutions that could be adopted by trading venues. These could include frequent batch auctions or other mechanisms designed to minimize speed advantages."—SEC Chair Mary Jo White, June 5, 2014
 
-- The cost of batch trading is latency
-- Active research area (2-asset case)
+- The cost of batch trading is latency.
+- Active research area (2-asset case):
     - [Budish, Crampton, and Shim, 2015]
     - [Aquilina, Budish, and O’Neill, 2022]
     - [Indriawan, Pascual, and Shkilko, 2024]
@@ -178,7 +178,7 @@ Economic Performance:
 
 - \(N\) agents, \(M\) (divisible, fungible) goods.
 - Agent \(i\) has endowment \(e_i \in \mathbb{R}_{\geq 0}^M\) and quasi concave utility \(u_i : \mathbb{R}_{\geq 0}^M → \mathbb{R}\).
-- The “Market” specifies prices \(\{p_j\}_{j \in [N]}\)
+- The “Market” specifies prices \(\{p_j\}_{j \in [N]}\).
 - Each agent sells their endowment to buy \(x_i \in \mathbb{R}_{\geq 0}^M\) that maximises their utility.
 - \(p \cdot e_i \geq p \cdot x_i\).
 - \((p, x)\) is equilibrium if all assets conserved (or price is 0).
@@ -203,10 +203,10 @@ We need to compute an equilibrium efficient at scale.
 
 - Offer to sell \(e\) units of \(M\) for \(Y\), at a minimum price \(r > 0\).
 - Equivalent: maximize \(u(x,y) = r \cdot x + y\) subject to \(p \cdot x + y \leq p \cdot e\).
-- Key points
-    - Linear utilities
-    - Non zero minimum prices
-    - Sparse utilities
+- Key points:
+    - Linear utilities.
+    - Non zero minimum prices.
+    - Sparse utilities.
 
 <div class="theorem" markdown="1">
 
@@ -221,7 +221,7 @@ We need to compute an equilibrium efficient at scale.
 
 ![Compute Equilibria At Scale](images/Compute Equilibria At Scale.png)
 
-Classic theory problem
+Classic theory problem:
 
 - Iterative processes (Tâtonnement [CMV05])
 - Convex programs ([DGV13])
@@ -231,32 +231,32 @@ Classic theory problem
 **Fast Equilibria Computation**
 
 - Geoff's team's approach: Tâtonnement (basedon[CMV05])
-- Iteration runtime \(O (\#assets ^2 \cdot \log(\#offers ) )\)
-    - Incrementally sort offers by limit price
-    - \(\approx 100μs\) per iteration, \(\approx 1000\) iterations
-    - Memory access pattern is extremely cache-friendly
+- Iteration runtime \(O (\#assets ^2 \cdot \log(\#offers ) )\):
+    - Incrementally sort offers by limit price.
+    - \(\approx 100μs\) per iteration, \(\approx 1000\) iterations.
+    - Memory access pattern is extremely cache-friendly.
 
 ![Fast Equilibria Computation](images/Fast Equilibria Computation.png)
 
 **Approximate Equilibria Computation**
 
-- Exact calculation is intractable (infinite precision)
-- Wem ust be careful:
-    - We cannot mint money
-    - We cannot make invalid trades
+- Exact calculation is intractable (infinite precision).
+- We must be careful:
+    - We cannot mint money.
+    - We cannot make invalid trades.
     - We cannot ...
 
 **2 Acceptable Approximations**
 
 - Demand Smoothing: Smooth thresholds
-    - Reduces iterative oscillation
-    - Experiments use \(2^{-10} \approx 0.1\%\)
+    - Reduces iterative oscillation.
+    - Experiments use \(2^{-10} \approx 0.1\%\).
 
 ![Demand Smoothing](images/Demand Smoothing.png)
 
 - Transaction Fees: Charge small percentage fee
-    - Range of approximate clearing prices, not single point
-    - Experiments use \(2^{-15} \approx 0.003\%\)
+    - Range of approximate clearing prices, not single point.
+    - Experiments use \(2^{-15} \approx 0.003\%\).
 
 ![Transaction Fees](images/Transaction Fees.png)
 
@@ -285,8 +285,8 @@ Assets Conserved (After Fees):
 
 **Overall Performance**
 
-- Linear Scalability (contention with background work (logging))
-- Log Dependence on \(\#offers\)
+- Linear Scalability (contention with background work (logging)).
+- Log Dependence on \(\#offers\).
 
 ![Overall Performance](images/Overall Performance.png)
 
@@ -294,43 +294,43 @@ Assets Conserved (After Fees):
 
 - Cost of batch exchange model is trade latency: If we’re already paying for consensus latency, the marginal cost is 0.
 - Does this latency matter?
-    - This is a policy question, not a technical question
-    - Good policymaking requires mapping out the entire designs pace
+    - This is a policy question, not a technical question.
+    - Good policymaking requires mapping out the entire designs pace.
 
 **Implementation**
 
 - Self-contained replicated state machine:
     - [https://github.com/scslab/speedex](https://github.com/scslab/speedex)
-    - \(\approx 30,000\) LOC (C++20)
+    - \(\approx 30,000\) LOC (C++20).
 - Planned (then cancelled? then uncancelled and cancelled again? unclear) deployment in Stellar (a public blockchain):
     - [https://github.com/gramseyer/stellar-core](https://github.com/gramseyer/stellar-core)
-    - Required only \(\approx 2,000\) LOC (C++17)
-    - Commutative semantics and economic improvements valuable on their own: This is the only piece that needs a coordinated upgrade (“hardfork")
-    - Implement scaling later, as needed (much easier)
+    - Required only \(\approx 2,000\) LOC (C++17).
+    - Commutative semantics and economic improvements valuable on their own: This is the only piece that needs a coordinated upgrade (“hardfork").
+    - Implement scaling later, as needed (much easier).
 
 **Constraints from the Stellar Implementation**
 
 - Limiting factors on scaling number of assets:
-    - Tâtonnement iteration runtime
-    - A fewhundred is probably fine
-    - Linear program runtime (Off the shelf solver becomes a problem around \(\approx 80\) assets
-- Hard (legal) constraint: Can’t charge trading fees
-- Need absolute runtime guarantee
+    - Tâtonnement iteration runtime.
+    - A fewhundred is probably fine.
+    - Linear program runtime (Off the shelf solver becomes a problem around \(\approx 80\) assets.
+- Hard (legal) constraint: Can’t charge trading fees.
+- Need absolute runtime guarantee.
 
 **Accounting for Stellar’s Constraints**
 
-- Run Tâtonnement as normal, then solve this (different) LP
-- Cannot enforce lower bound on \(x_{AB}\) (cannot guarantee LP feasibility)—Also allows guaranteed runtime bound
+- Run Tâtonnement as normal, then solve this (different) LP.
+- Cannot enforce lower bound on \(x_{AB}\) (cannot guarantee LP feasibility)—Also allows guaranteed runtime bound.
 - Linear program without fees is “totally unimodular”:
-    - \(p_{\Alpha} x_{\Alpha \Beta} \rightarrow y_{\Alpha \Beta}\)
-    - Much faster to solve (flow problem)
+    - \(p_{\Alpha} x_{\Alpha \Beta} \rightarrow y_{\Alpha \Beta}\).
+    - Much faster to solve (flow problem).
 
 **Everything Else in an Exchange**
 
-- Asset transfers
-- Replay prevention
-- Signatures
-- Double-spends
+- Asset transfers,
+- Replay prevention,
+- Signatures,
+- Double-spends,
 - ...
 
 <div class="example" markdown="1">
@@ -363,9 +363,9 @@ Efficient reserve-commit process (2-phase commit)
 
 **Detour: Smart Contracts**
 
-- We can give these tools to a smart contract-Not just for purpose-built applications
-- For example: Lending markets and collateral deposits
-- Groundhog [Ramseyer-Mazières, 2023]-Context: this is Geoff's day job
+- We can give these tools to a smart contract-Not just for purpose-built applications.
+- For example: Lending markets and collateral deposits.
+- Groundhog [Ramseyer-Mazières, 2023]-Context: this is Geoff's day job.
 - Open question: What applications need purpose-built mechanisms, and what do not?
 
 </div>
@@ -376,11 +376,11 @@ Efficient reserve-commit process (2-phase commit)
 
 **Incentive (Mis)alignment in Blockchain Exchanges Recap**
 
-- Mismatch between blockchain abstaction and implementation
-- Especially bad for implementing an exchange (Arbitrage spam, front-running, MEV, ...)
+- Mismatch between blockchain abstaction and implementation.
+- Especially bad for implementing an exchange (Arbitrage spam, front-running, MEV, ...).
 - How can we redesign an exchange to fit on a blockchain?
-- Different computational model: State machine on unordered batches of transactions
-- Exchange needs a different pricing mechanism (Compute Arrow-Debreu equilibria efficiently)
+- Different computational model: State machine on unordered batches of transactions.
+- Exchange needs a different pricing mechanism (Compute Arrow-Debreu equilibria efficiently).
 
 </div>
 
