@@ -815,9 +815,9 @@ Market Algorithms, Google Research.</p>
 <h2 id="motivation-optimizing-sponsored-search-ads">Motivation: Optimizing Sponsored Search Ads</h2>
 <p>If you do a Google search, you will find different elements on the results page:</p>
 <ul>
-<li>Knowledge Panel: wikipedia-level information about what you are searching for.</li>
-<li>Local Results: to help you find stores to go buy the products.</li>
-<li>Web Search Results: for places that will tell you more about what you are looking for.</li>
+<li><strong>Knowledge Panel:</strong> wikipedia-level information about what you are searching for.</li>
+<li><strong>Local Results:</strong> to help you find stores to go buy the products.</li>
+<li><strong>Web Search Results:</strong> for places that will tell you more about what you are looking for.</li>
 </ul>
 <p><img alt="Google Search Engine Result Page" src="../images/Google%20Search%20Engine%20Result%20Page.png" /></p>
 <p>Most prominently, there are a few text ads, that are placed there to fund the rest of the page: this is 3-digit billion dollar a year business that allows us to access free search results. In particular, our ability to search for the most esoteric queries that nobody would advertise for is funded by commercial queries.</p>
@@ -1199,7 +1199,7 @@ This problem is still in NP hard, but over the next few slides, we'll look at a 
 <p><span class="arithmatex">\(\geq \frac{Value(linear \; program)}{2}\)</span></p>
 <p><span class="arithmatex">\(\geq \frac{Value(OPT)}{2}\)</span></p>
 </div>
-<p>*<em>Note:</em> Linear programs in general can be solved in polynomial time, so we can solve them pretty fast, even though they might give us a fractional result. However, for proving approximation guarantees for these algorithms we should always use them. They can be a good tool for being able to reason about what the optimal solution looks like, and thinking about how we can approach it.</p>
+<p><em><strong>Note:</strong> Linear programs in general can be solved in polynomial time, so we can solve them pretty fast, even though they might give us a fractional result. However, for proving approximation guarantees for these algorithms we should always use them. They can be a good tool for being able to reason about what the optimal solution looks like, and thinking about how we can approach it.</em></p>
 <p>So, that was for the Knapsack Problem, but the rich ad problem is a bit more complicated: it is <em>Multiple-Choice Knapsack Problem</em>. In addition to the knapsack constraint of packing these ads, we also have the constraint that we are only allowed to choose one ad per advertiser.</p>
 <p>There is in fact a similar result, which comes from Sinha and Zoltners's paper from 1978, where they again characterize the optimal solution for the linear program. It does allocation using incremental bang-for-buck, and then they can show that that kind of algorithm will give you a 2-approximation.</p>
 <div class="theorem">
