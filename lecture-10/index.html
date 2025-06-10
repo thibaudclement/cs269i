@@ -792,11 +792,11 @@
   <h1>Scoring Rules</h1>
 
 <p><em>May 7, 2025</em></p>
-<p>Say that weather.com predicts a 40% chance of rain:</p>
+<p>Say that Weather.com predicts a 40% chance of rain:</p>
 <ul>
 <li>If it rains, will we say that the forecast was wrong?</li>
 <li>What if it doesn't rain?</li>
-<li>Is weather.com more accurate than other weather websites?</li>
+<li>Is Weather.com more accurate than other weather websites?</li>
 </ul>
 <p>In other words: how can we evaluate this forecast of 40% chance of rain?</p>
 <h2 id="scoring-rules">Scoring Rules</h2>
@@ -807,7 +807,7 @@
 <li>A realized event <span class="arithmatex">\(i\)</span> in the outcome space <span class="arithmatex">\(O\)</span>, i.e. "rain/no rain."</li>
 <li>A probability distribution <span class="arithmatex">\(q\)</span> over <span class="arithmatex">\(O\)</span>, i.e. "<span class="arithmatex">\(40\%/60\%\)</span>."</li>
 </ul>
-<p>A scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying weather.com.</p>
+<p>A scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying Weather.com.</p>
 <p>In other words, a scoring rule takes the function of a probabilistic forecast and quantifies how good it was.</p>
 </div>
 <div class="example">
@@ -923,7 +923,7 @@
 <p>Just for the purposes of the proof, let's consider  <span class="arithmatex">\(S_{log}(q,i) = log (q_i) - \sum q_j\)</span>.</p>
 </div>
 <div class="theorem">
-<p><strong>Claim 1:</strong> The <em>normalize</em> logarithmic scoring rule is proper.</p>
+<p><strong>Claim 1:</strong> The <em>normalized</em> logarithmic scoring rule is proper.</p>
 </div>
 <div class="proof">
 <p><strong>Proof:</strong></p>
@@ -973,6 +973,7 @@
 </ul>
 </div>
 <div class="example">
+<p><strong>Example</strong></p>
 <ul>
 <li>Let <span class="arithmatex">\(S_{log}(q,i) = log(q_i)\)</span>.</li>
 <li>Initialize <span class="arithmatex">\(q^O\)</span> as the probability that it will rain with a chance of 50%.</li>
@@ -1030,9 +1031,9 @@
 \]</div>
 <p>You may have to pay forecasters (unlike prediction markets):</p>
 <ul>
-<li>Paying is reasonable in exchange for useful information</li>
-<li>Positive payment (in expectation) is necessary to avoid no-trade theorems</li>
-<li>You actually make a profit if your original forecast was better</li>
+<li>Paying is reasonable in exchange for useful information.</li>
+<li>Positive payment (in expectation) is necessary to avoid no-trade theorems.</li>
+<li>You actually make a profit if your original forecast was better.</li>
 </ul>
 <p>The total payout is bounded–it doesn’t scale with number of forecasters. For instance, it is at most <span class="arithmatex">\(log(O)\)</span> when using the logarithmic scoring rule with <span class="arithmatex">\(q^O\)</span> is the uniform distribution.</p>
 </div>
@@ -1045,7 +1046,7 @@
 <p>Since <span class="arithmatex">\(S(q^{t-1},i)\)</span> does <strong><em>not</em></strong> depend on <span class="arithmatex">\(q\)</span>, the optimality of the true forecast follows from the strategyproofness of the scoring rule.</p>
 </div>
 <p>In other words, since every forecaster has no control over the score of the pervious forecast(s), they just want to maximize the score of the new forecast, which means just maximizing their own profits, and this is strategyproof.</p>
-<p>The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades)=</p>
+<p>The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades):</p>
 <ul>
 <li>In theory, your forecast now can strategically throw off the market.</li>
 <li>The “more wrong” the market is, the more opportunity to profit.</li>
@@ -1062,7 +1063,7 @@
 <h2 id="automated-prediction-market-makers">Automated Prediction Market Makers</h2>
 <p>In simple prediction markets like IEM, one problem is that liquidity providers risk unfavorable trades with more informed traders:</p>
 <ul>
-<li>Large bid-ask spread to cover risk (low liquidity) </li>
+<li>Large bid-ask spread to cover risk (low liquidity).</li>
 <li>Poor information aggregation, e.g. anywhere between 5%-40% (in the example of LeBron James potentially joining the Chicago Bulls).</li>
 </ul>
 <p>One solution to this problem is called automated market makers (AMM).</p>
@@ -1076,8 +1077,8 @@
 <p>In a prediction market with AMM:</p>
 <ul>
 <li>There are contracts, like in IEM, for instance:<ul>
-<li>D-contract that pays $1 if Democratic candidate wins</li>
-<li>R-contract that pays $1 if Republican candidate wins</li>
+<li>D-contract that pays $1 if Democratic candidate wins.</li>
+<li>R-contract that pays $1 if Republican candidate wins.</li>
 </ul>
 </li>
 <li>The AMM (“house”) offers: buy/sell D-contract for price <span class="arithmatex">\(P_D\)</span> (respectively R-contract for price <span class="arithmatex">\(P_R\)</span>).</li>
@@ -1156,7 +1157,7 @@ q_D(x_D,x_R) = \frac{e^{x_D}}{e^{x_D}+e^{x_R}}
 <p>In the extreme case of a single forecaster, proper scoring rules provide the incentives. More generally, we can have an automated market maker based on a proper scoring rule.</p>
 </li>
 <li>
-<p>For a given input, including a realized event <span class="arithmatex">\(i\)</span> in the outcome space <span class="arithmatex">\(O\)</span>, i.e. "rain/no rain", and a probability distribution <span class="arithmatex">\(q\)</span> over <span class="arithmatex">\(O\)</span>, i.e. "<span class="arithmatex">\(40\%/60\%\)</span>", a scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying weather.com.</p>
+<p>For a given input, including a realized event <span class="arithmatex">\(i\)</span> in the outcome space <span class="arithmatex">\(O\)</span>, i.e. "rain/no rain", and a probability distribution <span class="arithmatex">\(q\)</span> over <span class="arithmatex">\(O\)</span>, i.e. "<span class="arithmatex">\(40\%/60\%\)</span>", a scoring outputs a score <span class="arithmatex">\(S(q,i)\)</span>, i.e. how much we are paying Weather.com.</p>
 </li>
 <li>
 <p>A scoring rule <span class="arithmatex">\(S\)</span> is proper if it is <em>strictly strategyproof</em>, i.e. the true distribution is the unique argmax of the expected score.</p>
