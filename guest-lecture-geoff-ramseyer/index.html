@@ -814,7 +814,7 @@
 </ol>
 <p><strong>How does this break an exchange?</strong></p>
 <ul>
-<li>Manipulate ordering for profit<ul>
+<li>Manipulate ordering for profit:<ul>
 <li>Historically called "Miner Extractable Value" or "MEV".</li>
 <li>Illegal on regulated exchanges.</li>
 </ul>
@@ -876,7 +876,7 @@
 </ul>
 <p><img alt="A different system design" src="../images/A%20different%20system%20design.png" /></p>
 <p><strong>Problem:</strong> Ordering determines pricing in an exchange.</p>
-<p><strong>Solution:</strong> A Different Pricing Mechanism</p>
+<p><strong>Solution:</strong> A Different Pricing Mechanism:</p>
 <ul>
 <li>Input: Set of Open Offers</li>
 <li>Step 1: Compute Valuations</li>
@@ -901,20 +901,20 @@
 <p><strong>Why Uniform Clearing Valuations?</strong></p>
 <p>Economic Performance:</p>
 <ul>
-<li>No In-Batch Front-Running<ul>
+<li>No In-Batch Front-Running:<ul>
 <li>Everyone gets the same rates</li>
 <li>Open question: MEV and low-latency advantage?</li>
 </ul>
 </li>
-<li>Optimal Trade Routing &amp; Eliminate Cyclic Arbitrage</li>
+<li>Optimal Trade Routing &amp; Eliminate Cyclic Arbitrage:</li>
 </ul>
 <p><img alt="Uniform Clearing Valuations" src="../images/Uniform%20Clearing%20Valuations.png" /></p>
 <blockquote>
 <p>“... I am receptive to more flexible, competitive solutions that could be adopted by trading venues. These could include frequent batch auctions or other mechanisms designed to minimize speed advantages."—SEC Chair Mary Jo White, June 5, 2014</p>
 </blockquote>
 <ul>
-<li>The cost of batch trading is latency</li>
-<li>Active research area (2-asset case)<ul>
+<li>The cost of batch trading is latency.</li>
+<li>Active research area (2-asset case):<ul>
 <li>[Budish, Crampton, and Shim, 2015]</li>
 <li>[Aquilina, Budish, and O’Neill, 2022]</li>
 <li>[Indriawan, Pascual, and Shkilko, 2024]</li>
@@ -928,7 +928,7 @@
 <ul>
 <li><span class="arithmatex">\(N\)</span> agents, <span class="arithmatex">\(M\)</span> (divisible, fungible) goods.</li>
 <li>Agent <span class="arithmatex">\(i\)</span> has endowment <span class="arithmatex">\(e_i \in \mathbb{R}_{\geq 0}^M\)</span> and quasi concave utility <span class="arithmatex">\(u_i : \mathbb{R}_{\geq 0}^M → \mathbb{R}\)</span>.</li>
-<li>The “Market” specifies prices <span class="arithmatex">\(\{p_j\}_{j \in [N]}\)</span></li>
+<li>The “Market” specifies prices <span class="arithmatex">\(\{p_j\}_{j \in [N]}\)</span>.</li>
 <li>Each agent sells their endowment to buy <span class="arithmatex">\(x_i \in \mathbb{R}_{\geq 0}^M\)</span> that maximises their utility.</li>
 <li><span class="arithmatex">\(p \cdot e_i \geq p \cdot x_i\)</span>.</li>
 <li><span class="arithmatex">\((p, x)\)</span> is equilibrium if all assets conserved (or price is 0).</li>
@@ -948,10 +948,10 @@
 <ul>
 <li>Offer to sell <span class="arithmatex">\(e\)</span> units of <span class="arithmatex">\(M\)</span> for <span class="arithmatex">\(Y\)</span>, at a minimum price <span class="arithmatex">\(r &gt; 0\)</span>.</li>
 <li>Equivalent: maximize <span class="arithmatex">\(u(x,y) = r \cdot x + y\)</span> subject to <span class="arithmatex">\(p \cdot x + y \leq p \cdot e\)</span>.</li>
-<li>Key points<ul>
-<li>Linear utilities</li>
-<li>Non zero minimum prices</li>
-<li>Sparse utilities</li>
+<li>Key points:<ul>
+<li>Linear utilities.</li>
+<li>Non zero minimum prices.</li>
+<li>Sparse utilities.</li>
 </ul>
 </li>
 </ul>
@@ -964,7 +964,7 @@
 <li>Many-asset case: Many curves, high-dimensional search space.</li>
 </ul>
 <p><img alt="Compute Equilibria At Scale" src="../images/Compute%20Equilibria%20At%20Scale.png" /></p>
-<p>Classic theory problem</p>
+<p>Classic theory problem:</p>
 <ul>
 <li>Iterative processes (Tâtonnement [CMV05])</li>
 <li>Convex programs ([DGV13])</li>
@@ -974,20 +974,20 @@
 <p><strong>Fast Equilibria Computation</strong></p>
 <ul>
 <li>Geoff's team's approach: Tâtonnement (basedon[CMV05])</li>
-<li>Iteration runtime <span class="arithmatex">\(O (\#assets ^2 \cdot \log(\#offers ) )\)</span><ul>
-<li>Incrementally sort offers by limit price</li>
-<li><span class="arithmatex">\(\approx 100μs\)</span> per iteration, <span class="arithmatex">\(\approx 1000\)</span> iterations</li>
-<li>Memory access pattern is extremely cache-friendly</li>
+<li>Iteration runtime <span class="arithmatex">\(O (\#assets ^2 \cdot \log(\#offers ) )\)</span>:<ul>
+<li>Incrementally sort offers by limit price.</li>
+<li><span class="arithmatex">\(\approx 100μs\)</span> per iteration, <span class="arithmatex">\(\approx 1000\)</span> iterations.</li>
+<li>Memory access pattern is extremely cache-friendly.</li>
 </ul>
 </li>
 </ul>
 <p><img alt="Fast Equilibria Computation" src="../images/Fast%20Equilibria%20Computation.png" /></p>
 <p><strong>Approximate Equilibria Computation</strong></p>
 <ul>
-<li>Exact calculation is intractable (infinite precision)</li>
-<li>Wem ust be careful:<ul>
-<li>We cannot mint money</li>
-<li>We cannot make invalid trades</li>
+<li>Exact calculation is intractable (infinite precision).</li>
+<li>We must be careful:<ul>
+<li>We cannot mint money.</li>
+<li>We cannot make invalid trades.</li>
 <li>We cannot ...</li>
 </ul>
 </li>
@@ -995,16 +995,16 @@
 <p><strong>2 Acceptable Approximations</strong></p>
 <ul>
 <li>Demand Smoothing: Smooth thresholds<ul>
-<li>Reduces iterative oscillation</li>
-<li>Experiments use <span class="arithmatex">\(2^{-10} \approx 0.1\%\)</span></li>
+<li>Reduces iterative oscillation.</li>
+<li>Experiments use <span class="arithmatex">\(2^{-10} \approx 0.1\%\)</span>.</li>
 </ul>
 </li>
 </ul>
 <p><img alt="Demand Smoothing" src="../images/Demand%20Smoothing.png" /></p>
 <ul>
 <li>Transaction Fees: Charge small percentage fee<ul>
-<li>Range of approximate clearing prices, not single point</li>
-<li>Experiments use <span class="arithmatex">\(2^{-15} \approx 0.003\%\)</span></li>
+<li>Range of approximate clearing prices, not single point.</li>
+<li>Experiments use <span class="arithmatex">\(2^{-15} \approx 0.003\%\)</span>.</li>
 </ul>
 </li>
 </ul>
@@ -1026,16 +1026,16 @@
 </div>
 <p><strong>Overall Performance</strong></p>
 <ul>
-<li>Linear Scalability (contention with background work (logging))</li>
-<li>Log Dependence on <span class="arithmatex">\(\#offers\)</span></li>
+<li>Linear Scalability (contention with background work (logging)).</li>
+<li>Log Dependence on <span class="arithmatex">\(\#offers\)</span>.</li>
 </ul>
 <p><img alt="Overall Performance" src="../images/Overall%20Performance.png" /></p>
 <p><strong>Tradeoff: Batch Latency</strong></p>
 <ul>
 <li>Cost of batch exchange model is trade latency: If we’re already paying for consensus latency, the marginal cost is 0.</li>
 <li>Does this latency matter?<ul>
-<li>This is a policy question, not a technical question</li>
-<li>Good policymaking requires mapping out the entire designs pace</li>
+<li>This is a policy question, not a technical question.</li>
+<li>Good policymaking requires mapping out the entire designs pace.</li>
 </ul>
 </li>
 </ul>
@@ -1043,44 +1043,44 @@
 <ul>
 <li>Self-contained replicated state machine:<ul>
 <li><a href="https://github.com/scslab/speedex">https://github.com/scslab/speedex</a></li>
-<li><span class="arithmatex">\(\approx 30,000\)</span> LOC (C++20)</li>
+<li><span class="arithmatex">\(\approx 30,000\)</span> LOC (C++20).</li>
 </ul>
 </li>
 <li>Planned (then cancelled? then uncancelled and cancelled again? unclear) deployment in Stellar (a public blockchain):<ul>
 <li><a href="https://github.com/gramseyer/stellar-core">https://github.com/gramseyer/stellar-core</a></li>
-<li>Required only <span class="arithmatex">\(\approx 2,000\)</span> LOC (C++17)</li>
-<li>Commutative semantics and economic improvements valuable on their own: This is the only piece that needs a coordinated upgrade (“hardfork")</li>
-<li>Implement scaling later, as needed (much easier)</li>
+<li>Required only <span class="arithmatex">\(\approx 2,000\)</span> LOC (C++17).</li>
+<li>Commutative semantics and economic improvements valuable on their own: This is the only piece that needs a coordinated upgrade (“hardfork").</li>
+<li>Implement scaling later, as needed (much easier).</li>
 </ul>
 </li>
 </ul>
 <p><strong>Constraints from the Stellar Implementation</strong></p>
 <ul>
 <li>Limiting factors on scaling number of assets:<ul>
-<li>Tâtonnement iteration runtime</li>
-<li>A fewhundred is probably fine</li>
-<li>Linear program runtime (Off the shelf solver becomes a problem around <span class="arithmatex">\(\approx 80\)</span> assets</li>
+<li>Tâtonnement iteration runtime.</li>
+<li>A fewhundred is probably fine.</li>
+<li>Linear program runtime (Off the shelf solver becomes a problem around <span class="arithmatex">\(\approx 80\)</span> assets.</li>
 </ul>
 </li>
-<li>Hard (legal) constraint: Can’t charge trading fees</li>
-<li>Need absolute runtime guarantee</li>
+<li>Hard (legal) constraint: Can’t charge trading fees.</li>
+<li>Need absolute runtime guarantee.</li>
 </ul>
 <p><strong>Accounting for Stellar’s Constraints</strong></p>
 <ul>
-<li>Run Tâtonnement as normal, then solve this (different) LP</li>
-<li>Cannot enforce lower bound on <span class="arithmatex">\(x_{AB}\)</span> (cannot guarantee LP feasibility)—Also allows guaranteed runtime bound</li>
+<li>Run Tâtonnement as normal, then solve this (different) LP.</li>
+<li>Cannot enforce lower bound on <span class="arithmatex">\(x_{AB}\)</span> (cannot guarantee LP feasibility)—Also allows guaranteed runtime bound.</li>
 <li>Linear program without fees is “totally unimodular”:<ul>
-<li><span class="arithmatex">\(p_{\Alpha} x_{\Alpha \Beta} \rightarrow y_{\Alpha \Beta}\)</span></li>
-<li>Much faster to solve (flow problem)</li>
+<li><span class="arithmatex">\(p_{\Alpha} x_{\Alpha \Beta} \rightarrow y_{\Alpha \Beta}\)</span>.</li>
+<li>Much faster to solve (flow problem).</li>
 </ul>
 </li>
 </ul>
 <p><strong>Everything Else in an Exchange</strong></p>
 <ul>
-<li>Asset transfers</li>
-<li>Replay prevention</li>
-<li>Signatures</li>
-<li>Double-spends</li>
+<li>Asset transfers,</li>
+<li>Replay prevention,</li>
+<li>Signatures,</li>
+<li>Double-spends,</li>
 <li>...</li>
 </ul>
 <div class="example">
@@ -1099,9 +1099,9 @@
 <div class="remark">
 <p><strong>Detour: Smart Contracts</strong></p>
 <ul>
-<li>We can give these tools to a smart contract-Not just for purpose-built applications</li>
-<li>For example: Lending markets and collateral deposits</li>
-<li>Groundhog [Ramseyer-Mazières, 2023]-Context: this is Geoff's day job</li>
+<li>We can give these tools to a smart contract-Not just for purpose-built applications.</li>
+<li>For example: Lending markets and collateral deposits.</li>
+<li>Groundhog [Ramseyer-Mazières, 2023]-Context: this is Geoff's day job.</li>
 <li>Open question: What applications need purpose-built mechanisms, and what do not?</li>
 </ul>
 </div>
@@ -1109,11 +1109,11 @@
 <div class="summary">
 <p><strong>Incentive (Mis)alignment in Blockchain Exchanges Recap</strong></p>
 <ul>
-<li>Mismatch between blockchain abstaction and implementation</li>
-<li>Especially bad for implementing an exchange (Arbitrage spam, front-running, MEV, ...)</li>
+<li>Mismatch between blockchain abstaction and implementation.</li>
+<li>Especially bad for implementing an exchange (Arbitrage spam, front-running, MEV, ...).</li>
 <li>How can we redesign an exchange to fit on a blockchain?</li>
-<li>Different computational model: State machine on unordered batches of transactions</li>
-<li>Exchange needs a different pricing mechanism (Compute Arrow-Debreu equilibria efficiently)</li>
+<li>Different computational model: State machine on unordered batches of transactions.</li>
+<li>Exchange needs a different pricing mechanism (Compute Arrow-Debreu equilibria efficiently).</li>
 </ul>
 </div>
 <div class="remark">
