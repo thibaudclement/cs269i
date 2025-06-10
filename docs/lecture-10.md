@@ -1,10 +1,10 @@
 _May 7, 2025_
 
-Say that weather.com predicts a 40% chance of rain:
+Say that Weather.com predicts a 40% chance of rain:
 
 - If it rains, will we say that the forecast was wrong?
 - What if it doesn't rain?
-- Is weather.com more accurate than other weather websites?
+- Is Weather.com more accurate than other weather websites?
 
 In other words: how can we evaluate this forecast of 40% chance of rain?
 
@@ -18,7 +18,7 @@ For a given input, including:
 - A realized event \(i\) in the outcome space \(O\), i.e. "rain/no rain."
 - A probability distribution \(q\) over \(O\), i.e. "\(40\%/60\%\)."
 
-A scoring outputs a score \(S(q,i)\), i.e. how much we are paying weather.com.
+A scoring outputs a score \(S(q,i)\), i.e. how much we are paying Weather.com.
 
 In other words, a scoring rule takes the function of a probabilistic forecast and quantifies how good it was.
 
@@ -205,7 +205,7 @@ Just for the purposes of the proof, let's consider  \(S_{log}(q,i) = log (q_i) -
 </div>
 
 <div class="theorem" markdown="1">
-**Claim 1:** The _normalize_ logarithmic scoring rule is proper.
+**Claim 1:** The _normalized_ logarithmic scoring rule is proper.
 
 </div>
 
@@ -280,6 +280,8 @@ Now, we want to cosnider something in the middle, in the hope of getting the bes
 </div>
 
 <div class="example" markdown="1">
+
+**Example**
 
 - Let \(S_{log}(q,i) = log(q_i)\).
 - Initialize \(q^O\) as the probability that it will rain with a chance of 50%.
@@ -371,9 +373,9 @@ The total payout to forecasters is:
 
 You may have to pay forecasters (unlike prediction markets):
 
-- Paying is reasonable in exchange for useful information
-- Positive payment (in expectation) is necessary to avoid no-trade theorems
-- You actually make a profit if your original forecast was better
+- Paying is reasonable in exchange for useful information.
+- Positive payment (in expectation) is necessary to avoid no-trade theorems.
+- You actually make a profit if your original forecast was better.
 
 The total payout is bounded–it doesn’t scale with number of forecasters. For instance, it is at most \(log(O)\) when using the logarithmic scoring rule with \(q^O\) is the uniform distribution.
 
@@ -397,7 +399,7 @@ Since \(S(q^{t-1},i)\) does **_not_** depend on \(q\), the optimality of the tru
 
 In other words, since every forecaster has no control over the score of the pervious forecast(s), they just want to maximize the score of the new forecast, which means just maximizing their own profits, and this is strategyproof.
 
-The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades)=
+The dynamic game is harder to analyze/model, as forecasts may affect other forecasters’ beliefs (think info cascades):
 
 - In theory, your forecast now can strategically throw off the market.
 - The “more wrong” the market is, the more opportunity to profit.
@@ -417,7 +419,7 @@ The dynamic game is harder to analyze/model, as forecasts may affect other forec
 
 In simple prediction markets like IEM, one problem is that liquidity providers risk unfavorable trades with more informed traders:
 
-- Large bid-ask spread to cover risk (low liquidity) 
+- Large bid-ask spread to cover risk (low liquidity).
 - Poor information aggregation, e.g. anywhere between 5%-40% (in the example of LeBron James potentially joining the Chicago Bulls).
 
 One solution to this problem is called automated market makers (AMM).
@@ -434,8 +436,8 @@ One solution to this problem is called automated market makers (AMM).
 In a prediction market with AMM:
 
 - There are contracts, like in IEM, for instance:
-    - D-contract that pays $1 if Democratic candidate wins
-    - R-contract that pays $1 if Republican candidate wins
+    - D-contract that pays $1 if Democratic candidate wins.
+    - R-contract that pays $1 if Republican candidate wins.
 - The AMM (“house”) offers: buy/sell D-contract for price \(P_D\) (respectively R-contract for price \(P_R\)).
 
 How should the AMM set prices? Using market scoring rules! Actually, this is one answer, and we will discuss more answers later in the quarter.
@@ -537,7 +539,7 @@ With this formula, if we do the right math, it looks and feel like a prediction 
 
 - In the extreme case of a single forecaster, proper scoring rules provide the incentives. More generally, we can have an automated market maker based on a proper scoring rule.
 
-- For a given input, including a realized event \(i\) in the outcome space \(O\), i.e. "rain/no rain", and a probability distribution \(q\) over \(O\), i.e. "\(40\%/60\%\)", a scoring outputs a score \(S(q,i)\), i.e. how much we are paying weather.com.
+- For a given input, including a realized event \(i\) in the outcome space \(O\), i.e. "rain/no rain", and a probability distribution \(q\) over \(O\), i.e. "\(40\%/60\%\)", a scoring outputs a score \(S(q,i)\), i.e. how much we are paying Weather.com.
 
 - A scoring rule \(S\) is proper if it is _strictly strategyproof_, i.e. the true distribution is the unique argmax of the expected score.
 
