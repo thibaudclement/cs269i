@@ -243,8 +243,8 @@ This explanation is still a bunch of numbers, and it does not actually lead to a
 
 The way we want to use it is to distinguish between two different reasons for why the diamond may appear on camera at the end of the day:
 
-- Reason 1: The SmartVault protected the diamond.
-- Reason 2: The SmartVault tampered with the cameras.
+- **Reason 1:** The SmartVault protected the diamond.
+- **Reason 2:** The SmartVault tampered with the cameras.
 
 The hope is that if we mechanistically explain why the neural net led to the diamond appearing on camera, then the explanation would appear very different in these two cases.
 
