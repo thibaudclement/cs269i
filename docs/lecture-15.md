@@ -5,14 +5,14 @@ _June 4, 2025_
 <div class="summary" markdown="1">
 **Course Goals Recap**
 
-- Learn to think about incentives
+- Learn to think about incentives:
     - Frameworks and language: mechanisms, strategyproof, equilibria, …
-    - Practice, practice, practice: see/understand/discuss a lot of examples
+    - Practice, practice, practice: see/understand/discuss a lot of examples.
     - Practice, practice, practice: ask good questions!
 
-- Exposure to great ideas from economic theory: Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work
+- Exposure to great ideas from economic theory: Stable matching, welfare theorem, proper scoring rules, VCG auction, Proof-of-Work.
 
-- Theory-vs-applications case studies
+- Theory-vs-applications case studies:
     - How can theory inform practice? 
     - What are the gaps that you should think about before applying theory?   
 
@@ -98,8 +98,8 @@ A correlated distribution of actions that every player would rather follow.
 <div class="definition" markdown="1">
 <strong>Definition: Stackelberg Equilibrium</strong>
 
-1. Follower’s strategy is optimal given Leader’s strategy
-2. Leader’s commitment is optimal
+1. Follower’s strategy is optimal given Leader’s strategy.
+2. Leader’s commitment is optimal.
 
 </div>
 
@@ -223,18 +223,18 @@ PoW is bad for the environment (larger carbon footprint than Argentina), but it�
 
 ### Exposure to great ideas from economic theory
 
-Econ Nobel prizes we covered in CS269i
+Econ Nobel prizes we covered in CS269i:
 
 - Deferred Acceptance algorithm for Stable Matching (Lecture 2).
 - Nash equilibrium + Correlated equilibrium (2 prizes in Lecture 4).
 - Coasian bargaining – auction off public goods (Lecture 5)—This is one way for coping with Externalities.
-- Market for Lemons / information asymmetry (Lecture 5)
+- Market for Lemons / information asymmetry (Lecture 5):
     - At equilibrium, sellers of good cars may leave the market (only lemons left).
     - Implications for grades, insurance, clickbaits.
 - Myerson’s revenue maximizing auction (Lecture 8)—Second price + reserve.
 - VCG auction (HW / Bhawalkar’s guest lecture)—Pay your externality.
 
-Note that ideas from bullet points 1, 5, and 6 went into the FCC spectrum auction (Milgrom+Wilson ‘20 Nobel Prize).
+_**Note:** Ideas from bullet points 1, 5, and 6 went into the FCC spectrum auction (Milgrom+Wilson ‘20 Nobel Prize)._
 
 <div class="definition" markdown="1">
 
@@ -277,11 +277,11 @@ A market failure occurs when a market fails to converge to an optimal outcome.
 
 It is important to understand what can go wrong in market design. We have seen five types of market failures:
 
-1. Externalities and public goods
-2. Transaction costs
-3. Market thinness
-4. Timing issues
-5. Information asymmetry
+1. Externalities and public goods.
+2. Transaction costs.
+3. Market thinness.
+4. Timing issues.
+5. Information asymmetry.
 
 Mitigation strategies exist for all five types of market failures.
 </div>
@@ -295,15 +295,17 @@ For smaller coins (with a lower total hashrate), this is a bigger issue. If ther
 </div>
 
 <div class="example" markdown="1">
-**Examples:** Some fair allocations in practice
+**Examples**
+
+Some fair allocations in practice:
 
 - Allocating goods:
     - Spliddit used to maximize social welfare subject to MMS/proportionality/EF. 
     - They decided that NSW is better.
 - Allocating classes:
-    - Approximate-CEEI
-    - Combinatorial demand
-    - The number of students must significantly exceed the number of classes
+    - Approximate-CEEI.
+    - Combinatorial demand.
+    - The number of students must significantly exceed the number of classes.
 - Allocating chores:
     - Spliddit used to assign chores by assuming they’re divisible (we can use randomized rounding to assign fractional chores) and drawing new chores each week to guarantee approximate “ex-post” fairness.
     - Then they looked for an equitable solution, and optimized over all equitable solutions using Linear Programming.
@@ -319,11 +321,11 @@ Thanks to guest speakers Eric, Geoff, Kshipra:
 
 ![How to train an AI that doesn’t lie](images/How to train an AI that doesn’t lie.jpg)
 
-- Incentives in Sponsored Search Auctions (Kshipra Bhawalkar)
+- Incentives in Sponsored Search Auctions (Kshipra Bhawalkar):
 
 ![Incentives in Sponsored Search Auctions](images/Incentives in Sponsored Search Auctions.png)
 
-- Incentive (Mis)alignment in Blockchain Exchanges (Geoff Ramseyer)
+- Incentive (Mis)alignment in Blockchain Exchanges (Geoff Ramseyer):
 
 ![Incentive (Mis)alignment in Blockchain Exchanges](images/Incentive (Mis)alignment in Blockchain Exchanges.png)
 
@@ -348,24 +350,24 @@ Contrast with Serial Dictatorship: The top dictator gets all their favorite clas
 
 _**Fake money all-pay auction**_
 
-- Used in Aviad's masters program (Tel-Aviv University)
-- Each student gets a budget of 100 pts, and bids on various courses
+- Used in Aviad's masters program (Tel-Aviv University).
+- Each student gets a budget of 100 pts, and bids on various courses.
 - Why all-pay? (Far from strategyproof):
-    - Losing a real-money auction (I keep the money I don't spend)
-    - Losing a fake-money auction (I keep fake money I don't spend)
-- Difficult to express complex preferences, such as	“I want either CS269i or CS256” 
+    - Losing a real-money auction (I keep the money I don't spend).
+    - Losing a fake-money auction (I keep fake money I don't spend).
+- Difficult to express complex preferences, such as	“I want either CS269i or CS256”.
 
 _**Competitive equilibrium from equal incomes**_
 
-- Give each agent a budget of 1 (fake money); 
+- Give each agent a budget of 1 (fake money).
 - Find prices (for courses) + allocation (schedules) such that:
     - Every course is either exactly full or [0-priced and under-demanded].
     - Every student allocated favorite schedule can afford given budget constraint.
-- Note: with fake money, agents maximize value subject to budget constraint. This is different from Lecture 6 where they maximized utility = value-price.
+- _**Note:** with fake money, agents maximize value subject to budget constraint. This is different from Lecture 6 where they maximized utility = value-price._
 - “Strategyproof in the large”, i.e. approximately strategyproof for large markets. The intuition is:
     - You get optimal schedule given prices.
     - In a large market, each student a has small effect on prices.
-- Parero optimal.
+- Pareto optimal.
 - Fair (“equal budgets” \(\rightarrow\) envy-free).
 - Caveat: such a CEEI often doesn’t exist!
 
