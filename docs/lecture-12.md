@@ -2,7 +2,7 @@ _May 21, 2025_
 
 <div class="remark" markdown="1">
 
-**Note:** Throughout this lecture, we talk about “miners” who create new blocks. In Ethereum’s Proof-of-Stake, there are “proposers” and “validators” (there are also “builders”), and neither are called “miners”.
+_**Note:** Throughout this lecture, we talk about “miners” who create new blocks. In Ethereum’s Proof-of-Stake, there are “proposers” and “validators” (there are also “builders”), and neither are called “miners”._
 
 </div>
 
@@ -16,8 +16,8 @@ In theory, big miners (e.g. miners whose hash power exceeds 50% or 33%) can have
 
 In practice:
 
-- Bad News: It is relatively cheap to attack smaller blockchains by temporarily diverting a large amount of compute resources.
-- Good News: When the GHash.io mining pool passed 50%, it encouraged miners to leave instead of misusing its power. Why? Because pool leaders and miners were invested in the success of Bitcoin.
+- **Bad News:** It is relatively cheap to attack smaller blockchains by temporarily diverting a large amount of compute resources.
+- **Good News:** When the GHash.io mining pool passed 50%, it encouraged miners to leave instead of misusing its power. Why? Because pool leaders and miners were invested in the success of Bitcoin.
 
 </div>
 
@@ -45,14 +45,17 @@ At each iteration:
 </div>
 
 The intuition behind the (vanilla) Proof-of-Stake protocol is this:
+
 - If someone has a lot of coins, they want the cryptocurrency value to go up.
 - If they don’t (have a lot of coins), they are unlikely to be sampled to mine the next block.
 
 The upside is that PoS miners are directly invested in the success of the blockchain:
+
 - PoW miners’ stake are fragile when mining resources can be repurposed.
 - PoW miners’ incentives are somewhat misaligned (e.g. probably want higher mining rewards).
 
 The downisdes include:
+
 - PoW is bad for the environment (e.g. a larger carbon footprint than Argentina).
 - It is much harder to get PoS right (details coming up).
 
