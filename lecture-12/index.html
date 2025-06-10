@@ -811,7 +811,7 @@
 
 <p><em>May 21, 2025</em></p>
 <div class="remark">
-<p><strong>Note:</strong> Throughout this lecture, we talk about “miners” who create new blocks. In Ethereum’s Proof-of-Stake, there are “proposers” and “validators” (there are also “builders”), and neither are called “miners”.</p>
+<p><em><strong>Note:</strong> Throughout this lecture, we talk about “miners” who create new blocks. In Ethereum’s Proof-of-Stake, there are “proposers” and “validators” (there are also “builders”), and neither are called “miners”.</em></p>
 </div>
 <h2 id="context">Context</h2>
 <div class="summary">
@@ -819,8 +819,8 @@
 <p>In theory, big miners (e.g. miners whose hash power exceeds 50% or 33%) can have serious incentive issues with the Proof-of-Work protocol, including, notably 51%-attacks.</p>
 <p>In practice:</p>
 <ul>
-<li>Bad News: It is relatively cheap to attack smaller blockchains by temporarily diverting a large amount of compute resources.</li>
-<li>Good News: When the GHash.io mining pool passed 50%, it encouraged miners to leave instead of misusing its power. Why? Because pool leaders and miners were invested in the success of Bitcoin.</li>
+<li><strong>Bad News:</strong> It is relatively cheap to attack smaller blockchains by temporarily diverting a large amount of compute resources.</li>
+<li><strong>Good News:</strong> When the GHash.io mining pool passed 50%, it encouraged miners to leave instead of misusing its power. Why? Because pool leaders and miners were invested in the success of Bitcoin.</li>
 </ul>
 </div>
 <p>Continuing this train of thought:</p>
@@ -841,15 +841,21 @@
 <li>Ask its owner to create the next block.</li>
 </ol>
 </div>
-<p>The intuition behind the (vanilla) Proof-of-Stake protocol is this:
-- If someone has a lot of coins, they want the cryptocurrency value to go up.
-- If they don’t (have a lot of coins), they are unlikely to be sampled to mine the next block.</p>
-<p>The upside is that PoS miners are directly invested in the success of the blockchain:
-- PoW miners’ stake are fragile when mining resources can be repurposed.
-- PoW miners’ incentives are somewhat misaligned (e.g. probably want higher mining rewards).</p>
-<p>The downisdes include:
-- PoW is bad for the environment (e.g. a larger carbon footprint than Argentina).
-- It is much harder to get PoS right (details coming up).</p>
+<p>The intuition behind the (vanilla) Proof-of-Stake protocol is this:</p>
+<ul>
+<li>If someone has a lot of coins, they want the cryptocurrency value to go up.</li>
+<li>If they don’t (have a lot of coins), they are unlikely to be sampled to mine the next block.</li>
+</ul>
+<p>The upside is that PoS miners are directly invested in the success of the blockchain:</p>
+<ul>
+<li>PoW miners’ stake are fragile when mining resources can be repurposed.</li>
+<li>PoW miners’ incentives are somewhat misaligned (e.g. probably want higher mining rewards).</li>
+</ul>
+<p>The downisdes include:</p>
+<ul>
+<li>PoW is bad for the environment (e.g. a larger carbon footprint than Argentina).</li>
+<li>It is much harder to get PoS right (details coming up).</li>
+</ul>
 <div class="remark">
 <p>After many delays, on September 15, 2022, Ethereum switched from PoW to PoS (i.e. “The Merge”). It is harder to switch from PoW to PoS Bitcoin because Bitcoin doesn’t have a “governance” mechanism for changing the protocol.</p>
 </div>
